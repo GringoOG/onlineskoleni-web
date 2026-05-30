@@ -94,8 +94,15 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
             otázek, minimum pro úspěch {QUIZ_MIN_CORRECT_ANSWERS} správných odpovědí).
             Výsledek byl uložen do systému.
           </p>
+          <p className="mt-2 text-sm text-green-800">
+            Evidenční kód certifikátu:{" "}
+            <strong className="font-mono">{result.certificateCode}</strong>
+          </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/skoleni/bozp" className="btn-primary">
+            <a href={result.downloadUrl} className="btn-primary" download>
+              Stáhnout certifikát (PDF)
+            </a>
+            <Link href="/skoleni/bozp" className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100">
               Zpět na kurz BOZP
             </Link>
             <Link

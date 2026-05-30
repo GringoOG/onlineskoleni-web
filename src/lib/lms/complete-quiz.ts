@@ -1,5 +1,6 @@
 import { and, eq } from "drizzle-orm";
 import { db, quizAttempts, userCourses } from "@/db";
+import { issueCertificate } from "@/lib/lms/issue-certificate";
 import {
   QUIZ_MIN_CORRECT_ANSWERS,
   QUIZ_PASS_THRESHOLD_PERCENT,
@@ -25,6 +26,9 @@ export type CompleteQuizResult =
       scorePercent: number;
       totalQuestions: number;
       attemptId: string;
+      certificateId: string;
+      certificateCode: string;
+      downloadUrl: string;
     }
   | {
       ok: true;
@@ -115,7 +119,9 @@ export async function completeQuizTest(
         and(eq(userCourses.userId, userId), eq(userCourses.courseId, courseId))
       );
 
-    return attempt;
+    const certificate = await issueCertificate(userId, courseId, tx);
+
+    return { attempt, certificate };
   });
 
   return {
@@ -123,6 +129,9 @@ export async function completeQuizTest(
     passed: true,
     scorePercent,
     totalQuestions,
-    attemptId: result.id,
+    attemptId: result.attempt.id,
+    certificateId: result.certificate.certificateId,
+    certificateCode: result.certificate.certificateCode,
+    downloadUrl: result.certificate.downloadUrl,
   };
 }

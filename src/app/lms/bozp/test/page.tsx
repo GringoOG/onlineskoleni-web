@@ -54,7 +54,7 @@ export default async function BozpTestPage() {
               <h2 className="text-xl font-bold text-foreground">Přihlášení do testu</h2>
               <p className="mt-2 text-sm text-muted">
                 Pro spuštění demo testu BOZP se přihlaste demo účtem. Po úspěšném testu se
-                výsledek uloží do systému školení.
+                výsledek uloží do systému a můžete si stáhnout PDF certifikát.
               </p>
               <div className="mt-6">
                 <LmsLoginForm redirectTo="/lms/bozp/test" />
