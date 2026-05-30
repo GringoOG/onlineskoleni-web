@@ -1,0 +1,35 @@
+{
+  "intro": "Nabízíme nejnižší zaváděcí cenu e-learning kurzů na trhu. Konkrétní ceny závisí na počtu zaměstnanců a typu školení – kontaktujte nás pro individuální nabídku.",
+  "note": "Ceník je orientační. Pro přesnou kalkulaci nás kontaktujte na info@onlineskoleni.eu.",
+  "plans": [
+    {
+      "name": "BOZP – základní školení",
+      "description": "Školení bezpečnosti a ochrany zdraví při práci pro zaměstnance",
+      "priceFrom": "od 199 Kč",
+      "per": "osoba / kurz",
+      "features": ["Online prezentace a test", "Certifikát po absolvování", "Aktualizace dle legislativy"]
+    },
+    {
+      "name": "Požární ochrana (PO)",
+      "description": "Zákonné školení požární ochrany",
+      "priceFrom": "od 199 Kč",
+      "per": "osoba / kurz",
+      "features": ["Kompletní obsah PO", "Test navazující na prezentaci", "Certifikát v systému"]
+    },
+    {
+      "name": "Řidiči – referenti",
+      "description": "Referenční školení řidičů",
+      "priceFrom": "od 149 Kč",
+      "per": "osoba / kurz",
+      "features": ["Pro zaměstnance na služebních cestách", "Online absolvování", "Certifikát"]
+    },
+    {
+      "name": "První pomoc",
+      "description": "Kurz první pomoci pro zaměstnance",
+      "priceFrom": "od 149 Kč",
+      "per": "osoba / kurz",
+      "features": ["Základní pokyny první pomoci", "Test a certifikát", "Kdykoliv a odkudkoliv"]
+    }
+  ],
+  "bulkDiscount": "Při větším počtu zaměstnanců nabízíme množstevní slevy. Využijte také náhradní plnění díky našemu zaměstnávání osob se zdravotním postižením."
+}

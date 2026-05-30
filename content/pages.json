@@ -1,0 +1,85 @@
+{
+  "site": {
+    "name": "OnlineŠkolení.cz",
+    "tagline": "Levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO",
+    "company": "TechnikPO s.r.o.",
+    "ico": "04986458",
+    "address": {
+      "street": "Komenského 96",
+      "city": "Černošice",
+      "zip": "252 28"
+    },
+    "email": "info@onlineskoleni.eu",
+    "phone": "+420 720 028 655"
+  },
+  "hero": {
+    "title": "Online školení BOZP, PO a další zákonné kurzy",
+    "subtitle": "Splňte zákonné povinnosti bez organizace školících prostor a lektorů. Zaměstnanci se školí kdykoliv a odkudkoliv.",
+    "ctaPrimary": "Kontaktovat",
+    "ctaSecondary": "Vyzkoušet test zdarma"
+  },
+  "about": {
+    "title": "O nás",
+    "intro": "Zaměstnáváme více než 50 % občanů se zdravotním postižením. Tato skutečnost vám umožňuje uplatňovat náhradní plnění ve smyslu § 81 zákona 435/2004 Sb. a ušetřit tak nemalé prostředky na odvodech do státního rozpočtu.",
+    "body": "Nabízíme vám levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO (bezpečnost a ochrana zdraví při práci a požární ochrana), včetně zákonného školení řidičů – referentů a první pomoci. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb."
+  },
+  "whyUs": {
+    "title": "Proč právě u nás?",
+    "items": [
+      "Všechny kurzy zpracovány odborně způsobilou osobou a splňují požadavky platné legislativy",
+      "Kurzy jsou přehledné a zakončené testovou částí navazující na prezentaci",
+      "Po úspěšném absolvování je automaticky vygenerován certifikát",
+      "Nesbíráme e-mailové adresy vašich zaměstnanců – komunikujeme pouze s objednatelem",
+      "Nabízíme nejnižší zaváděcí cenu e-learning kurzů na trhu"
+    ]
+  },
+  "howToOrder": {
+    "title": "Jak postupovat v případě zájmu?",
+    "steps": [
+      "Napište nám jména zaměstnanců a druh školení – zašleme přihlašovací údaje každého zaměstnance.",
+      "Nezapomeňte rozlišit vedoucí zaměstnance.",
+      "Po úspěšném složení testu bude v systému automaticky vygenerován certifikát k tisku."
+    ]
+  },
+  "pillars": [
+    { "title": "Spolehlivost", "description": "Hlídáme termíny školení a přehledy pro zaměstnavatele." },
+    { "title": "Profesionalita", "description": "Odborná garance a aktualizace obsahu dle legislativy." },
+    { "title": "Jednoduchost", "description": "Minimum administrativy – školení online kdykoliv a odkudkoliv." }
+  ],
+  "onlineBenefits": {
+    "title": "Vybrané výhody online školení",
+    "items": [
+      "Nemusíte nic organizovat, zajišťovat školící prostory ani lektory",
+      "Zaměstnanci mohou absolvovat školení kdykoliv a odkudkoliv",
+      "Kurzy vždy aktuální",
+      "Ověření znalostí a certifikace probíhají online"
+    ]
+  },
+  "services": {
+    "title": "Naše další služby",
+    "elearning": {
+      "title": "Výroba e-learningových kurzů",
+      "description": "Nabízíme výrobu e-learningových kurzů na jakékoliv téma. Od vás potřebujeme pouze podklady v podobě obsahu školení ve Wordu či PowerPointu, vše ostatní uděláme my."
+    },
+    "fireSafety": {
+      "title": "Požární ochrana a revize",
+      "description": "Provádíme periodické zkoušky a plnění hasicích přístrojů. Prodáváme kvalitní české hasicí přístroje. Provádíme kontrolu provozuschopnosti hasicích přístrojů, hydrantů, požárních klapek, dveří, ucpávek, detektorů plynů a revize nouzového osvětlení."
+    },
+    "legalNote": "Každý zaměstnavatel má ze zákona povinnost školit své zaměstnance o BOZP, PO včetně školení řidičů a první pomoci. Uvedená školení často představují velkou administrativní zátěž."
+  },
+  "demoTest": {
+    "title": "Vyzkoušejte test zdarma",
+    "description": "Demo test BOZP s 10 otázkami – přihlaste se demo účtem a vyzkoušejte si závěrečný test online.",
+    "username": "testik",
+    "password": "test1234",
+    "note": "Po úspěšném testu (min. 8/10 správně) se výsledek uloží do systému školení."
+  },
+  "relatedLinks": [
+    { "title": "Technik požární ochrany", "url": "https://www.technikpo.cz" },
+    { "title": "Hasící přístroje", "url": "https://www.hasicipristroje3.webnode.cz" },
+    { "title": "Revize požárních zařízení", "url": "https://www.revize-pozarni.cz" }
+  ],
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com" }
+  ]
+}

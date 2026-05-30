@@ -1,0 +1,117 @@
+{
+  "courseSlug": "bozp",
+  "title": "Závěrečný test – BOZP",
+  "subtitle": "Bezpečnost a ochrana zdraví při práci",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kdo je podle zákona o BOZP povinen zajišťovat bezpečnost a ochranu zdraví zaměstnanců?",
+      "options": [
+        "Pouze vedoucí zaměstnanci",
+        "Zaměstnavatel",
+        "Pouze odborně způsobilá osoba",
+        "Každý zaměstnanec sám za sebe"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "text": "Co je první prioritou při poskytování první pomoci na pracovišti?",
+      "options": [
+        "Zajistit vlastní bezpečí zachránce",
+        "Okamžitě převézt postiženého do ordinace",
+        "Vyhledat svědky nehody",
+        "Pořídit fotodokumentaci"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q3",
+      "text": "Jaký je účel osobních ochranných pracovních prostředků (OOPP)?",
+      "options": [
+        "Zkrášlit pracovní oděv",
+        "Ochránit zdraví a bezpečnost při práci",
+        "Nahradit bezpečnou organizaci práce",
+        "Sloužit pouze pro úklid pracoviště"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "text": "Co musí zaměstnavatel provést před tím, než zaměstnanec poprvé nastoupí k výkonu práce?",
+      "options": [
+        "Pouze uzavřít pracovní smlouvu",
+        "Seznámit ho s právními a ostatními předpisy k zajištění BOZP",
+        "Předat mu firemní telefon",
+        "Zajistit mu parkovací místo"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q5",
+      "text": "Jak se správně hlásí pracovní úraz?",
+      "options": [
+        "Pouze ústně kolegům",
+        "Zaměstnanec nebo svědek neprodleně oznámí úraz nadřízenému",
+        "Až po ukončení směny e-mailem",
+        "Pouze pokud je nutná hospitalizace"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q6",
+      "text": "Co je cílem evakuace z budovy při požáru?",
+      "options": [
+        "Zachránit majetek firmy",
+        "Bezpečně opustit ohrožený prostor a shromáždit se na místě určeném vedoucím evakuace",
+        "Zhasnout všechna světla",
+        "Zůstat na pracovišti a čekat na pokyn hasičů"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q7",
+      "text": "Kdy je zaměstnanec povinen používat přidělené OOPP?",
+      "options": [
+        "Pouze při kontrole inspektorátu",
+        "Vždy, když to vyžaduje charakter práce a předpisy BOZP",
+        "Jen pokud mu to přikáže kolega",
+        "Pouze v zimních měsících"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q8",
+      "text": "Co patří mezi prevenci rizik na pracovišti?",
+      "options": [
+        "Ignorování drobných nedostatků",
+        "Identifikace nebezpečí, hodnocení rizik a přijetí opatření",
+        "Pouze pořízení hasicího přístroje",
+        "Pravidelné prodlužování směn"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q9",
+      "text": "Jaký postoj zaujme zaměstnanec k pokynům k bezpečnosti práce?",
+      "options": [
+        "Dodržuje je jen při přítomnosti vedoucího",
+        "Dodržuje je a dbá na ně i v součinnosti s ostatními",
+        "Platí jen pro nové zaměstnance",
+        "Může je ignorovat, pokud spěchá"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q10",
+      "text": "Proč je důležité udržovat pořádek na pracovišti?",
+      "options": [
+        "Kvůli estetice prostoru",
+        "Neupravené pracoviště zvyšuje riziko úrazu a škod na zdraví",
+        "Pořádek vyžaduje pouze sklad",
+        "Slouží jen k usnadnění úklidu o víkendu"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

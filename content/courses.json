@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "bozp",
+    "title": "Bezpečnost a ochrana zdraví",
+    "shortTitle": "BOZP",
+    "color": "blue",
+    "description": "On-line kurz školení BOZP sestavil odborník. S námi získáváte odborné garance školení BOZP, kvalitní lektorskou podporu, aktualizace obsahu školení, informování v případě změn legislativy a non stop podporu pro správu školení.",
+    "highlights": [
+      "Hlídáme za vás termíny a vytváříme přehledy o školení",
+      "Aktualizace obsahu při změnách legislativy",
+      "Certifikát po úspěšném absolvování pro zaměstnavatele"
+    ]
+  },
+  {
+    "slug": "pozarni",
+    "title": "Požární bezpečnost",
+    "shortTitle": "PO",
+    "color": "red",
+    "description": "Komplexní školení požární ochrany pro zaměstnance i vedoucí pracovníky.",
+    "highlights": [
+      "Práva a povinnosti v PO, dokumentace PO",
+      "Zásady požární prevence a nejčastější příčiny požárů",
+      "Postup hlášení a likvidace požáru",
+      "Správné použití hasicích přístrojů a zařízení PO",
+      "Zásady evakuace a požárně-bezpečnostní značení"
+    ]
+  },
+  {
+    "slug": "ridici",
+    "title": "Referenční školení řidičů",
+    "shortTitle": "Řidiči",
+    "color": "amber",
+    "description": "Školení řidičů referentů je určeno pro zaměstnance, kteří řídí služební nebo vlastní vozidlo v rámci služební cesty, avšak nejedná se o přímý výkon z povolání.",
+    "highlights": [
+      "Zákonné školení pro referenční řidiče",
+      "Online absolvování bez organizace školení na místě",
+      "Certifikát po úspěšném testu"
+    ]
+  },
+  {
+    "slug": "prvni-pomoc",
+    "title": "První pomoc",
+    "shortTitle": "První pomoc",
+    "color": "green",
+    "description": "Kurz první pomoci pro zaměstnance slouží k seznámení se základními pokyny pro poskytnutí nezbytné lékařské péče před příjezdem zdravotníka.",
+    "highlights": [
+      "Chování v krizových situacích na pracovišti",
+      "Základní pokyny pro poskytnutí první pomoci",
+      "Připomenutí priorit záchrany lidského života"
+    ]
+  }
+]

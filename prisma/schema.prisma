@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id                String   @id @default(cuid())
+  orderNumber       String   @unique
+  status            String   @default("PENDING")
+  companyName       String
+  ico               String?
+  contactName       String
+  email             String
+  phone             String?
+  totalAmountHalere Int
+  currency          String      @default("CZK")
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  items             OrderItem[]
+  payment           Payment?
+}
+
+model OrderItem {
+  id                String @id @default(cuid())
+  orderId           String
+  order             Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  courseSlug        String
+  name              String
+  quantity          Int
+  unitPriceHalere   Int
+  lineTotalHalere   Int
+}
+
+model Payment {
+  id             String   @id @default(cuid())
+  orderId        String   @unique
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  gopayPaymentId String?  @unique
+  state          String   @default("CREATED")
+  gwUrl          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

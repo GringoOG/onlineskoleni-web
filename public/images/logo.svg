@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 88" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="brandGrad" x1="8" y1="6" x2="72" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB347"/>
+      <stop offset="0.45" stop-color="#F5A623"/>
+      <stop offset="1" stop-color="#D05F2B"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M40 4L68 16V40C68 58.5 56.8 72.8 40 84C23.2 72.8 12 58.5 12 40V16L40 4Z"
+    stroke="url(#brandGrad)"
+    stroke-width="5"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M40 28C40 28 32 36 32 44C32 50 35.5 54 40 54C44.5 54 48 50 48 44C48 36 40 28 40 28ZM40 54C40 54 34 58 34 64C34 68 36.5 70 40 70C43.5 70 46 68 46 64C46 58 40 54 40 54Z"
+    fill="url(#brandGrad)"
+  />
+  <path
+    d="M40 30C36 38 35 42 35 44C35 48 37 51 40 51C43 51 45 48 45 44C45 41 43 36 40 30Z"
+    fill="#FFD08A"
+    opacity="0.45"
+  />
+</svg>

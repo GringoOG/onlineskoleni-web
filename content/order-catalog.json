@@ -1,0 +1,26 @@
+[
+  {
+    "courseSlug": "bozp",
+    "name": "BOZP – základní školení",
+    "pricePerPersonHalere": 19900,
+    "vatRate": 21
+  },
+  {
+    "courseSlug": "pozarni",
+    "name": "Požární ochrana (PO)",
+    "pricePerPersonHalere": 19900,
+    "vatRate": 21
+  },
+  {
+    "courseSlug": "ridici",
+    "name": "Řidiči – referenti",
+    "pricePerPersonHalere": 14900,
+    "vatRate": 21
+  },
+  {
+    "courseSlug": "prvni-pomoc",
+    "name": "První pomoc",
+    "pricePerPersonHalere": 14900,
+    "vatRate": 21
+  }
+]
