@@ -1,0 +1,96 @@
+import { and, eq } from "drizzle-orm";
+import { db, userCourses } from "@/db";
+import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
+import { findOrCreateStudent } from "@/lib/lms/find-or-create-student";
+
+export interface OrderItemForEnrollment {
+  courseSlug: string;
+  name: string;
+  quantity: number;
+}
+
+export interface EnrollmentResult {
+  userId: string;
+  courseId: string;
+  courseSlug: string;
+  courseTitle: string;
+  courseName: string;
+  seatsPurchased: number;
+  isNewEnrollment: boolean;
+  isNewUser: boolean;
+  temporaryPassword?: string;
+  studentEmail: string;
+  studentName: string;
+}
+
+export async function enrollContactForOrderItems(input: {
+  email: string;
+  name: string;
+  companyName: string;
+  orderNumber: string;
+  items: OrderItemForEnrollment[];
+}): Promise<EnrollmentResult[]> {
+  if (input.items.length === 0) {
+    return [];
+  }
+
+  const student = await findOrCreateStudent({
+    email: input.email,
+    name: input.name,
+    companyName: input.companyName,
+  });
+
+  const results: EnrollmentResult[] = [];
+
+  for (const item of input.items) {
+    const course = await ensureLmsCourse(item.courseSlug);
+
+    const [existingEnrollment] = await db
+      .select({ id: userCourses.id })
+      .from(userCourses)
+      .where(
+        and(
+          eq(userCourses.userId, student.id),
+          eq(userCourses.courseId, course.id)
+        )
+      )
+      .limit(1);
+
+    let isNewEnrollment = false;
+
+    if (!existingEnrollment) {
+      await db.insert(userCourses).values({
+        userId: student.id,
+        courseId: course.id,
+        isCompleted: false,
+        orderNumber: input.orderNumber,
+        seatsPurchased: item.quantity,
+      });
+      isNewEnrollment = true;
+    } else {
+      await db
+        .update(userCourses)
+        .set({
+          orderNumber: input.orderNumber,
+          seatsPurchased: item.quantity,
+        })
+        .where(eq(userCourses.id, existingEnrollment.id));
+    }
+
+    results.push({
+      userId: student.id,
+      courseId: course.id,
+      courseSlug: course.slug,
+      courseTitle: course.title,
+      courseName: item.name,
+      seatsPurchased: item.quantity,
+      isNewEnrollment,
+      isNewUser: student.isNew,
+      temporaryPassword: student.temporaryPassword,
+      studentEmail: student.email,
+      studentName: student.name,
+    });
+  }
+
+  return results;
+}

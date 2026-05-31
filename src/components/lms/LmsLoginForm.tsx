@@ -18,7 +18,7 @@ export function LmsLoginForm({
 }: LmsLoginFormProps) {
   const router = useRouter();
   const [username, setUsername] = useState(pages.demoTest.username);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(pages.demoTest.password);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -43,13 +43,13 @@ export function LmsLoginForm({
     <form onSubmit={handleSubmit} className={compact ? "space-y-3" : "space-y-4"}>
       <div>
         <label htmlFor="lms-username" className="block text-sm font-medium text-foreground">
-          Uživatelské jméno
+          Uživatelské jméno nebo e-mail
         </label>
         <input
           id="lms-username"
           name="username"
           type="text"
-          autoComplete="username"
+          autoComplete="username email"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -77,6 +77,8 @@ export function LmsLoginForm({
         <p className="text-sm text-muted">
           Demo účet: <strong>{pages.demoTest.username}</strong> /{" "}
           <strong>{pages.demoTest.password}</strong>
+          <br />
+          Po objednávce použijte e-mail a heslo z uvítacího e-mailu.
         </p>
       )}
 

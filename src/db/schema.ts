@@ -6,6 +6,7 @@ export const users = pgTable("users", {
   email: text("email").notNull().unique(),
   name: text("name").notNull(), // Celé jméno studenta (půjde na certifikát)
   companyName: text("company_name"), // Nepovinné: Pro jakou firmu školení dělá
+  passwordHash: text("password_hash"), // Pro přihlášení po zaplacení objednávky
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -30,6 +31,8 @@ export const userCourses = pgTable("user_courses", {
   isCompleted: boolean("is_completed").default(false).notNull(), // Dokončil celou teorii i test?
   purchasedAt: timestamp("purchased_at").defaultNow().notNull(),
   completedAt: timestamp("completed_at"),
+  orderNumber: text("order_number"), // Objednávka, ze které enrollment vznikl
+  seatsPurchased: integer("seats_purchased"), // Počet zakoupených míst (quantity z košíku)
 });
 
 // 4. Pokusy v testech / kvízech

@@ -5,7 +5,10 @@ import {
   markOrderFailed,
   markOrderPaid,
 } from "@/lib/orders";
-import { notifyOrderPaid } from "@/lib/order-notify";
+import {
+  processPaidOrder,
+  toPaidOrderForEnrollment,
+} from "@/lib/lms/process-paid-order";
 
 /** GoPay posílá notifikaci jako HTTP GET s parametrem `id` (payment id). */
 export async function GET(request: Request) {
@@ -31,28 +34,34 @@ export async function GET(request: Request) {
       return NextResponse.json({ received: true });
     }
 
-    if (existing.order.status === "PAID") {
+    const order = existing.order;
+
+    if (order.status === "PAID") {
+      try {
+        await processPaidOrder(toPaidOrderForEnrollment(order));
+      } catch (enrollError) {
+        console.error("[GoPay webhook] LMS enrollment (retry):", enrollError);
+      }
       return NextResponse.json({ received: true, status: "already_paid" });
     }
 
     if (state === "PAID" || state === "AUTHORIZED") {
-      await markOrderPaid(existing.order.id, paymentId, state);
-      const order = existing.order;
-      await notifyOrderPaid({
-        orderNumber: order.orderNumber,
-        companyName: order.companyName,
-        contactName: order.contactName,
-        email: order.email,
-        phone: order.phone,
-        totalAmountHalere: order.totalAmountHalere,
-        items: order.items.map((i) => ({ name: i.name, quantity: i.quantity })),
-      });
+      await markOrderPaid(order.id, paymentId, state);
+
+      const paidOrder = await getOrderByGoPayId(paymentId);
+      if (paidOrder?.order) {
+        try {
+          await processPaidOrder(toPaidOrderForEnrollment(paidOrder.order));
+        } catch (enrollError) {
+          console.error("[GoPay webhook] LMS enrollment failed:", enrollError);
+        }
+      }
     } else if (state === "CANCELED" || state === "TIMEOUTED") {
-      await markOrderFailed(existing.order.id, paymentId, state);
+      await markOrderFailed(order.id, paymentId, state);
     } else {
       const { prisma } = await import("@/lib/prisma");
       await prisma.payment.update({
-        where: { orderId: existing.order.id },
+        where: { orderId: order.id },
         data: { state },
       });
     }

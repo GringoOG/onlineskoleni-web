@@ -1,6 +1,7 @@
 "use server";
 
 import { pages } from "@/lib/content";
+import { authenticateStudentByEmail } from "@/lib/lms/authenticate-student";
 import { ensureDemoEnrollment } from "@/lib/lms/demo-enrollment";
 import {
   completeQuizTest,
@@ -22,7 +23,7 @@ export type LoginDemoResult =
 
 export type SubmitBozpQuizResult = CompleteQuizResult;
 
-/** Demo přihlášení – ověří údaje z content/pages.json a vytvoří session. */
+/** Přihlášení – demo účet (testik) nebo e-mail + heslo z objednávky. */
 export async function loginDemoUser(
   username: string,
   password: string
@@ -30,19 +31,37 @@ export async function loginDemoUser(
   const expectedUser = pages.demoTest.username;
   const expectedPass = pages.demoTest.password;
 
-  if (username.trim() !== expectedUser || password !== expectedPass) {
-    return {
-      ok: false,
-      message: "Neplatné přihlašovací údaje. Použijte demo účet uvedený na webu.",
-    };
+  if (username.trim() === expectedUser && password === expectedPass) {
+    try {
+      const enrollment = await ensureDemoEnrollment();
+      await setLmsSession(enrollment);
+      return { ok: true };
+    } catch (error) {
+      console.error("[loginDemoUser demo]", error);
+      return {
+        ok: false,
+        message: "Nepodařilo se připojit k systému školení. Zkuste to prosím později.",
+      };
+    }
   }
 
   try {
-    const enrollment = await ensureDemoEnrollment();
-    await setLmsSession(enrollment);
+    const student = await authenticateStudentByEmail(username, password);
+    if (!student) {
+      return {
+        ok: false,
+        message:
+          "Neplatné přihlašovací údaje. Použijte e-mail a heslo z uvítacího e-mailu po objednávce, nebo demo účet uvedený na webu.",
+      };
+    }
+
+    await setLmsSession({
+      userId: student.userId,
+      courseId: student.courseId,
+    });
     return { ok: true };
   } catch (error) {
-    console.error("[loginDemoUser]", error);
+    console.error("[loginDemoUser student]", error);
     return {
       ok: false,
       message: "Nepodařilo se připojit k systému školení. Zkuste to prosím později.",
@@ -60,7 +79,7 @@ export async function submitBozpQuiz(
 ): Promise<SubmitBozpQuizResult> {
   const session = await getLmsSession();
   if (!session) {
-    return { ok: false, message: "Nejste přihlášeni. Přihlaste se demo účtem." };
+    return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
   }
 
   if (selectedIndices.length !== QUIZ_TOTAL_QUESTIONS) {

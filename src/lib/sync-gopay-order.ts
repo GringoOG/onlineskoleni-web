@@ -1,6 +1,9 @@
 import { getGoPayClient, isGoPayConfigured } from "@/lib/gopay";
 import { getOrderByNumber, markOrderFailed, markOrderPaid } from "@/lib/orders";
-import { notifyOrderPaid } from "@/lib/order-notify";
+import {
+  processPaidOrder,
+  toPaidOrderForEnrollment,
+} from "@/lib/lms/process-paid-order";
 
 /** Ověří stav platby u GoPay a aktualizuje objednávku (důležité po return_url, webhook na localhost často nepřijde). */
 export async function syncOrderPaymentFromGoPay(orderNumber: string) {
@@ -14,6 +17,11 @@ export async function syncOrderPaymentFromGoPay(orderNumber: string) {
   }
 
   if (order.status === "PAID") {
+    try {
+      await processPaidOrder(toPaidOrderForEnrollment(order));
+    } catch (enrollError) {
+      console.error("[syncOrderPaymentFromGoPay] LMS enrollment (retry):", enrollError);
+    }
     return { synced: true, status: "PAID" as const, alreadyPaid: true };
   }
 
@@ -23,15 +31,16 @@ export async function syncOrderPaymentFromGoPay(orderNumber: string) {
 
   if (state === "PAID" || state === "AUTHORIZED") {
     await markOrderPaid(order.id, order.payment.gopayPaymentId, state);
-    await notifyOrderPaid({
-      orderNumber: order.orderNumber,
-      companyName: order.companyName,
-      contactName: order.contactName,
-      email: order.email,
-      phone: order.phone,
-      totalAmountHalere: order.totalAmountHalere,
-      items: order.items.map((i) => ({ name: i.name, quantity: i.quantity })),
-    });
+
+    const refreshed = await getOrderByNumber(orderNumber);
+    if (refreshed) {
+      try {
+        await processPaidOrder(toPaidOrderForEnrollment(refreshed));
+      } catch (enrollError) {
+        console.error("[syncOrderPaymentFromGoPay] LMS enrollment failed:", enrollError);
+      }
+    }
+
     return { synced: true, status: "PAID" as const };
   }
 
