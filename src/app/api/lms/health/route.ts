@@ -3,13 +3,15 @@ import { db, users } from "@/db";
 /** Ověření připojení LMS databáze (Supabase/Neon). */
 export async function GET() {
   const hasUrl =
-    !!process.env.LMS_DATABASE_URL &&
-    (process.env.LMS_DATABASE_URL.startsWith("postgresql://") ||
-      process.env.LMS_DATABASE_URL.startsWith("postgres://"));
+    !!process.env.DATABASE_URL ||
+    !!process.env.LMS_DATABASE_URL;
 
   if (!hasUrl) {
     return Response.json(
-      { ok: false, error: "LMS_DATABASE_URL není nastavená." },
+      {
+        ok: false,
+        error: "DATABASE_URL (PostgreSQL) není nastavená.",
+      },
       { status: 503 }
     );
   }

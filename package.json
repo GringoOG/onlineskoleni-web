@@ -9,6 +9,8 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
     "db:lms:push": "drizzle-kit push",
     "db:lms:studio": "drizzle-kit studio",
     "preview": "npm run build && (lsof -ti :3000 | xargs kill -9 2>/dev/null || true) && next start -H 127.0.0.1 -p 3000"

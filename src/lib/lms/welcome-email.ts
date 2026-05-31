@@ -1,4 +1,5 @@
 import { site } from "@/lib/content";
+import { sendEmail } from "@/lib/email/resend";
 import type { EnrollmentResult } from "@/lib/lms/enroll-from-order";
 import { getLmsEntryUrl } from "@/lib/lms/course-paths";
 
@@ -10,13 +11,15 @@ interface WelcomeEmailInput {
 
 /** Uvítací e-mail kontaktní osobě po zaplacení objednávky a enrollmentu do LMS. */
 export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> {
-  const resendKey = process.env.RESEND_API_KEY;
   const first = input.enrollments[0];
   if (!first) {
     return;
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "https://onlineskoleni-web.vercel.app";
+  const appUrl =
+    process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ??
+    "https://onlineskoleni-web.vercel.app";
+
   const courseLines = input.enrollments.map((e) => {
     const link = getLmsEntryUrl(e.courseSlug);
     const seats =
@@ -60,25 +63,9 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> 
 
   console.info("[Welcome email]\n" + text);
 
-  if (!resendKey) {
-    return;
-  }
-
-  try {
-    await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resendKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: process.env.RESEND_FROM ?? `${site.name} <onboarding@resend.dev>`,
-        to: [first.studentEmail],
-        subject: `Přístup ke školení – objednávka ${input.orderNumber}`,
-        text,
-      }),
-    });
-  } catch (error) {
-    console.error("[Welcome email failed]", error);
-  }
+  await sendEmail({
+    to: first.studentEmail,
+    subject: `Přístup ke školení – objednávka ${input.orderNumber}`,
+    text,
+  });
 }

@@ -4,11 +4,11 @@ import { defineConfig } from "drizzle-kit";
 config({ path: ".env.local" });
 config({ path: ".env" });
 
-const url = process.env.LMS_DATABASE_URL;
+const url = process.env.DATABASE_URL ?? process.env.LMS_DATABASE_URL;
 
 if (!url) {
   throw new Error(
-    "Chybí LMS_DATABASE_URL v .env – vložte connection string z Supabase nebo Neon (PostgreSQL)."
+    "Chybí DATABASE_URL v .env – vložte Supabase PostgreSQL connection string."
   );
 }
 

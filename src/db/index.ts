@@ -1,5 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import { getPostgresDatabaseUrl } from "@/lib/database-url";
 import * as schema from "./schema";
 
 const globalForDb = globalThis as unknown as {
@@ -12,13 +13,7 @@ function getLmsDb() {
     return globalForDb.lmsDb;
   }
 
-  const url = process.env.LMS_DATABASE_URL;
-  if (!url?.startsWith("postgresql://") && !url?.startsWith("postgres://")) {
-    throw new Error(
-      "LMS vyžaduje LMS_DATABASE_URL s PostgreSQL connection stringem (Supabase nebo Neon)."
-    );
-  }
-
+  const url = getPostgresDatabaseUrl();
   const client = postgres(url, { prepare: false, max: 1 });
   const db = drizzle(client, { schema });
 
