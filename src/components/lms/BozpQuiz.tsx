@@ -102,6 +102,9 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
             <a href={result.downloadUrl} className="btn-primary" download>
               Stáhnout certifikát (PDF)
             </a>
+            <Link href="/lms" className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100">
+              Moje školení
+            </Link>
             <Link href="/skoleni/bozp" className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100">
               Zpět na kurz BOZP
             </Link>

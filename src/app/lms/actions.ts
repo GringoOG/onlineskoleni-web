@@ -1,5 +1,6 @@
 "use server";
 
+import { markTheoryStartedForUserCourse } from "@/lib/lms/mark-theory-started";
 import { pages } from "@/lib/content";
 import { authenticateStudentByEmail } from "@/lib/lms/authenticate-student";
 import { ensureDemoEnrollment } from "@/lib/lms/demo-enrollment";
@@ -71,6 +72,24 @@ export async function loginDemoUser(
 
 export async function logoutDemoUser(): Promise<void> {
   await clearLmsSession();
+}
+
+/** Označí zahájení studia teorie u kurzu (pro progress ve dashboardu). */
+export async function markTheoryStarted(
+  courseId: string
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  const session = await getLmsSession();
+  if (!session) {
+    return { ok: false, message: "Nejste přihlášeni." };
+  }
+
+  try {
+    await markTheoryStartedForUserCourse(session.userId, courseId);
+    return { ok: true };
+  } catch (error) {
+    console.error("[markTheoryStarted]", error);
+    return { ok: false, message: "Nepodařilo se uložit průběh studia." };
+  }
 }
 
 /** Odeslání BOZP testu – skóre se počítá na serveru z odpovědí. */

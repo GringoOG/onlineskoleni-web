@@ -12,6 +12,7 @@ const navItems = [
   { href: "/sluzby", label: "Služby" },
   { href: "/cenik", label: "Ceník" },
   { href: "/objednavka", label: "Objednat" },
+  { href: "/lms", label: "Moje školení" },
   { href: "/lms/bozp/test", label: "Zkusit test" },
   { href: "/kontakt", label: "Kontakt" },
 ];

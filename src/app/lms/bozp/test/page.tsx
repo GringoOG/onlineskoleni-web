@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { BozpQuiz } from "@/components/lms/BozpQuiz";
-import { LmsLoginForm } from "@/components/lms/LmsLoginForm";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
@@ -23,15 +23,17 @@ export default async function BozpTestPage() {
   const quiz = getBozpQuiz();
   const session = await getLmsSession();
 
-  let userName = "Demo student";
-  if (session) {
-    const [user] = await db
-      .select({ name: users.name })
-      .from(users)
-      .where(eq(users.id, session.userId))
-      .limit(1);
-    if (user) userName = user.name;
+  if (!session) {
+    redirect("/lms/login?redirect=%2Flms%2Fbozp%2Ftest");
   }
+
+  let userName = "Demo student";
+  const [user] = await db
+    .select({ name: users.name })
+    .from(users)
+    .where(eq(users.id, session.userId))
+    .limit(1);
+  if (user) userName = user.name;
 
   return (
     <>
@@ -40,30 +42,21 @@ export default async function BozpTestPage() {
         subtitle={`${quiz.subtitle} · ${QUIZ_TOTAL_QUESTIONS} otázek · úspěch od ${QUIZ_MIN_CORRECT_ANSWERS} správných (80 %)`}
       >
         <Link
-          href="/skoleni/bozp"
+          href="/lms"
           className="mt-4 inline-block text-sm text-white/80 hover:text-white"
         >
-          ← Kurz BOZP
+          ← Moje školení
+        </Link>
+        <Link
+          href="/skoleni/bozp"
+          className="mt-2 block text-sm text-white/70 hover:text-white"
+        >
+          Kurz BOZP
         </Link>
       </PageHero>
 
       <Section>
-        {!session ? (
-          <div className="mx-auto max-w-md">
-            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-foreground">Přihlášení do testu</h2>
-              <p className="mt-2 text-sm text-muted">
-                Pro spuštění demo testu BOZP se přihlaste demo účtem. Po úspěšném testu se
-                výsledek uloží do systému a můžete si stáhnout PDF certifikát.
-              </p>
-              <div className="mt-6">
-                <LmsLoginForm redirectTo="/lms/bozp/test" />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <BozpQuiz questions={getBozpQuestionsPublic()} userName={userName} />
-        )}
+        <BozpQuiz questions={getBozpQuestionsPublic()} userName={userName} />
       </Section>
     </>
   );

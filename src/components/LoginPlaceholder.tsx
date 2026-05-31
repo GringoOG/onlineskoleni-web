@@ -45,7 +45,7 @@ export function LoginPlaceholder({ open, onClose }: LoginPlaceholderProps) {
         <div className="mt-4">
           <LmsLoginForm
             compact
-            redirectTo="/lms/bozp/test"
+            redirectTo="/lms"
             onSuccess={onClose}
           />
         </div>
@@ -53,11 +53,11 @@ export function LoginPlaceholder({ open, onClose }: LoginPlaceholderProps) {
         <p className="mt-4 text-center text-sm text-slate-500">
           Nebo přejděte přímo na{" "}
           <Link
-            href="/lms/bozp/test"
+            href="/lms/login"
             className="font-semibold text-brand-dark hover:underline"
             onClick={onClose}
           >
-            stránku testu BOZP
+            stránku přihlášení
           </Link>
           .
         </p>

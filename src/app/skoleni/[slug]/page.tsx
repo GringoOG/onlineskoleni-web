@@ -5,6 +5,8 @@ import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { getCourse, getCourseSlugs, courses } from "@/lib/content";
 import { courseColorClasses } from "@/lib/course-colors";
+import { markTheoryStartedForCourseSlug } from "@/lib/lms/mark-theory-started";
+import { getLmsSession } from "@/lib/lms/session";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,6 +30,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const course = getCourse(slug);
   if (!course) notFound();
+
+  const session = await getLmsSession();
+  if (session) {
+    await markTheoryStartedForCourseSlug(session.userId, slug);
+  }
 
   const colors = courseColorClasses[course.color];
   const otherCourses = courses.filter((c) => c.slug !== slug);

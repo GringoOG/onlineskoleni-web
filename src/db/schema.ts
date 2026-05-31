@@ -31,6 +31,7 @@ export const userCourses = pgTable("user_courses", {
   isCompleted: boolean("is_completed").default(false).notNull(), // Dokončil celou teorii i test?
   purchasedAt: timestamp("purchased_at").defaultNow().notNull(),
   completedAt: timestamp("completed_at"),
+  theoryStartedAt: timestamp("theory_started_at"),
   orderNumber: text("order_number"), // Objednávka, ze které enrollment vznikl
   seatsPurchased: integer("seats_purchased"), // Počet zakoupených míst (quantity z košíku)
 });

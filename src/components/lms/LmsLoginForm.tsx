@@ -12,7 +12,7 @@ interface LmsLoginFormProps {
 }
 
 export function LmsLoginForm({
-  redirectTo = "/lms/bozp/test",
+  redirectTo = "/lms",
   onSuccess,
   compact = false,
 }: LmsLoginFormProps) {
@@ -93,7 +93,7 @@ export function LmsLoginForm({
         disabled={isPending}
         className="btn-primary w-full disabled:cursor-wait disabled:opacity-70"
       >
-        {isPending ? "Přihlašuji…" : "Vstoupit do testu"}
+        {isPending ? "Přihlašuji…" : "Přihlásit se"}
       </button>
     </form>
   );
