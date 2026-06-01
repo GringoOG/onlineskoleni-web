@@ -21,10 +21,16 @@ export async function GET() {
     return Response.json({ ok: true });
   } catch (error) {
     console.error("[GET /api/lms/health]", error);
+    const message =
+      error instanceof Error ? error.message : "Nepodařilo se připojit k LMS databázi.";
+    const poolExhausted = message.includes("max clients");
     return Response.json(
       {
         ok: false,
-        error: "Nepodařilo se připojit k LMS databázi.",
+        error: poolExhausted
+          ? "Databáze má dočasně vyčerpaný limit připojení. Zkuste za 1–2 minuty znovu, nebo na Vercelu použijte Supabase Transaction pooler (port 6543)."
+          : "Nepodařilo se připojit k LMS databázi.",
+        detail: process.env.NODE_ENV === "development" ? message : undefined,
       },
       { status: 503 }
     );

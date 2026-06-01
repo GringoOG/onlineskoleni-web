@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { getPostgresDatabaseUrl } from "@/lib/database-url";
+import { getDrizzleDatabaseUrl } from "@/lib/database-url";
 import * as schema from "./schema";
 
 const globalForDb = globalThis as unknown as {
@@ -9,18 +9,21 @@ const globalForDb = globalThis as unknown as {
 };
 
 function getLmsDb() {
-  if (globalForDb.lmsDb) {
+  if (globalForDb.lmsDb && globalForDb.lmsClient) {
     return globalForDb.lmsDb;
   }
 
-  const url = getPostgresDatabaseUrl();
-  const client = postgres(url, { prepare: false, max: 1 });
+  const url = getDrizzleDatabaseUrl();
+  const client = postgres(url, {
+    prepare: false,
+    max: 1,
+    idle_timeout: 20,
+    connect_timeout: 10,
+  });
   const db = drizzle(client, { schema });
 
-  if (process.env.NODE_ENV !== "production") {
-    globalForDb.lmsClient = client;
-    globalForDb.lmsDb = db;
-  }
+  globalForDb.lmsClient = client;
+  globalForDb.lmsDb = db;
 
   return db;
 }
