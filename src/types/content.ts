@@ -1,4 +1,4 @@
-export type CourseColor = "blue" | "red" | "amber" | "green";
+export type CourseColor = "blue" | "red" | "amber" | "green" | "violet";
 
 export interface Course {
   slug: string;

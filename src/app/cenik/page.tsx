@@ -8,7 +8,7 @@ import { orderCatalog } from "@/lib/order-catalog";
 
 export const metadata: Metadata = {
   title: "Ceník",
-  description: "Orientační ceník online školení BOZP, PO, řidičů a první pomoci.",
+  description: "Orientační ceník online školení BOZP, PO, řidičů, ergonomie a GDPR.",
 };
 
 export default function CenikPage() {

@@ -22,7 +22,7 @@ export interface DashboardCourse {
   title: string;
   description: string | null;
   shortTitle: string;
-  color: "blue" | "red" | "amber" | "green";
+  color: "blue" | "red" | "amber" | "green" | "violet";
   progress: CourseProgressStatus;
   theoryStartedAt: Date | null;
   completedAt: Date | null;

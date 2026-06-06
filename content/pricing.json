@@ -24,11 +24,18 @@
       "features": ["Pro zaměstnance na služebních cestách", "Online absolvování", "Certifikát"]
     },
     {
-      "name": "První pomoc",
-      "description": "Kurz první pomoci pro zaměstnance",
+      "name": "Ergonomie práce",
+      "description": "Ergonomie práce u počítače a na pracovišti",
       "priceFrom": "od 149 Kč",
       "per": "osoba / kurz",
-      "features": ["Základní pokyny první pomoci", "Test a certifikát", "Kdykoliv a odkudkoliv"]
+      "features": ["Prevence bolesti zad a přetížení", "Home office i kancelář", "Test a certifikát"]
+    },
+    {
+      "name": "GDPR a ochrana údajů",
+      "description": "Školení ochrany osobních údajů pro zaměstnance",
+      "priceFrom": "od 149 Kč",
+      "per": "osoba / kurz",
+      "features": ["GDPR v praxi firmy", "Bezpečné nakládání s daty", "Test a certifikát"]
     }
   ],
   "bulkDiscount": "Při větším počtu zaměstnanců nabízíme množstevní slevy. Využijte také náhradní plnění díky našemu zaměstnávání osob se zdravotním postižením."

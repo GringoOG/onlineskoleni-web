@@ -28,4 +28,10 @@ export const courseColorClasses: Record<
     border: "border-emerald-200",
     badge: "bg-emerald-600 text-white",
   },
+  violet: {
+    bg: "bg-violet-50",
+    text: "text-violet-900",
+    border: "border-violet-200",
+    badge: "bg-violet-600 text-white",
+  },
 };

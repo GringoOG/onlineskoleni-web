@@ -21,7 +21,7 @@
   "about": {
     "title": "O nás",
     "intro": "Zaměstnáváme více než 50 % občanů se zdravotním postižením. Tato skutečnost vám umožňuje uplatňovat náhradní plnění ve smyslu § 81 zákona 435/2004 Sb. a ušetřit tak nemalé prostředky na odvodech do státního rozpočtu.",
-    "body": "Nabízíme vám levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO (bezpečnost a ochrana zdraví při práci a požární ochrana), včetně zákonného školení řidičů – referentů a první pomoci. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb."
+    "body": "Nabízíme vám levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO (bezpečnost a ochrana zdraví při práci a požární ochrana), včetně školení řidičů – referentů, ergonomie práce a ochrany osobních údajů (GDPR). Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb."
   },
   "whyUs": {
     "title": "Proč právě u nás?",
@@ -65,7 +65,7 @@
       "title": "Požární ochrana a revize",
       "description": "Provádíme periodické zkoušky a plnění hasicích přístrojů. Prodáváme kvalitní české hasicí přístroje. Provádíme kontrolu provozuschopnosti hasicích přístrojů, hydrantů, požárních klapek, dveří, ucpávek, detektorů plynů a revize nouzového osvětlení."
     },
-    "legalNote": "Každý zaměstnavatel má ze zákona povinnost školit své zaměstnance o BOZP, PO včetně školení řidičů a první pomoci. Uvedená školení často představují velkou administrativní zátěž."
+    "legalNote": "Každý zaměstnavatel má ze zákona povinnost školit své zaměstnance o BOZP, PO a dalších oblastech bezpečnosti. Doplňkově nabízíme ergonomii práce a školení GDPR. Uvedená školení často představují velkou administrativní zátěž."
   },
   "demoTest": {
     "title": "Vyzkoušejte test zdarma",

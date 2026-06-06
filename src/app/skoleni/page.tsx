@@ -9,7 +9,7 @@ import { courses } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Školení",
   description:
-    "Online kurzy BOZP, požární ochrany, referenčního školení řidičů a první pomoci s certifikátem.",
+    "Online kurzy BOZP, požární ochrany, referenčního školení řidičů, ergonomie a GDPR s certifikátem.",
 };
 
 export default function SkoleniPage() {

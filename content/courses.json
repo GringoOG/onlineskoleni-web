@@ -38,15 +38,29 @@
     ]
   },
   {
-    "slug": "prvni-pomoc",
-    "title": "První pomoc",
-    "shortTitle": "První pomoc",
+    "slug": "ergonomie",
+    "title": "Ergonomie práce",
+    "shortTitle": "Ergonomie",
     "color": "green",
-    "description": "Kurz první pomoci pro zaměstnance slouží k seznámení se základními pokyny pro poskytnutí nezbytné lékařské péče před příjezdem zdravotníka.",
+    "description": "Praktické online školení ergonomie práce u počítače i na pracovišti. Prevence bolesti zad, správné pracovní polohy a bezpečné pracovní návyky pro zaměstnance i home office.",
     "highlights": [
-      "Chování v krizových situacích na pracovišti",
-      "Základní pokyny pro poskytnutí první pomoci",
-      "Připomenutí priorit záchrany lidského života"
+      "Správné sezení, poloha monitoru a klávesnice",
+      "Prevence muskuloskeletálních poruch",
+      "Ergonomie při práci z domova i v kanceláři",
+      "Certifikát po úspěšném testu"
+    ]
+  },
+  {
+    "slug": "gdpr",
+    "title": "GDPR a ochrana osobních údajů",
+    "shortTitle": "GDPR",
+    "color": "violet",
+    "description": "Školení zaměstnanců o ochraně osobních údajů, právech subjektů údajů a bezpečném nakládání s daty ve firmě dle GDPR a zákona o zpracování osobních údajů.",
+    "highlights": [
+      "Zásady GDPR v praxi zaměstnavatele",
+      "Povinnosti při zpracování osobních údajů",
+      "Bezpečnost dat a hlášení incidentů",
+      "Certifikát po úspěšném testu"
     ]
   }
 ]

@@ -6,27 +6,24 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
-import {
-  getDemoQuizConfig,
-  getQuizQuestionsPublic,
-} from "@/lib/lms/quiz-data";
+import { getDemoQuizConfig, getQuizQuestionsPublic } from "@/lib/lms/quiz-data";
 import { getOfficialTestHubPath } from "@/lib/lms/course-paths";
 import { getLmsSession } from "@/lib/lms/session";
 
-const COURSE_SLUG = "bozp" as const;
+const COURSE_SLUG = "pozarni" as const;
 
 export const metadata: Metadata = {
-  title: "Demo test BOZP",
+  title: "Demo test požární ochrany",
   description:
-    "Vyzkoušejte si formát závěrečného testu BOZP – zkrácená ukázka se 10 otázkami.",
+    "Vyzkoušejte si formát závěrečného testu PO – zkrácená ukázka se 10 otázkami.",
 };
 
-export default async function BozpDemoTestPage() {
+export default async function PozarniDemoTestPage() {
   const config = getDemoQuizConfig(COURSE_SLUG);
   const session = await getLmsSession();
 
   if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fbozp%2Ftest");
+    redirect("/lms/login?redirect=%2Flms%2Fpozarni%2Ftest");
   }
 
   let userName = "Demo student";

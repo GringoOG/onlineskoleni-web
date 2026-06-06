@@ -9,11 +9,16 @@ import {
   type CompleteQuizInput,
   type CompleteQuizResult,
 } from "@/lib/lms/complete-quiz";
-import { scoreBozpAnswers } from "@/lib/lms/quiz-data";
 import {
-  QUIZ_MIN_CORRECT_ANSWERS,
-  QUIZ_TOTAL_QUESTIONS,
-} from "@/lib/lms/quiz-config";
+  getDemoQuizConfig,
+  getOfficialQuizConfig,
+  scoreDemoAnswers,
+  scoreOfficialAnswers,
+  type LmsQuizCourseSlug,
+  type QuizAnswerSubmission,
+  type QuizAudience,
+} from "@/lib/lms/quiz-data";
+import { QUIZ_PASS_THRESHOLD_PERCENT } from "@/lib/lms/quiz-config";
 import { getLmsSession, setLmsSession, clearLmsSession } from "@/lib/lms/session";
 
 export type SubmitQuizResult = CompleteQuizResult;
@@ -92,29 +97,125 @@ export async function markTheoryStarted(
   }
 }
 
-/** Odeslání BOZP testu – skóre se počítá na serveru z odpovědí. */
-export async function submitBozpQuiz(
+export type SubmitDemoQuizResult =
+  | {
+      ok: true;
+      passed: true;
+      scorePercent: number;
+      totalQuestions: number;
+      correctAnswers: number;
+    }
+  | {
+      ok: true;
+      passed: false;
+      scorePercent: number;
+      totalQuestions: number;
+      message: string;
+    }
+  | { ok: false; message: string };
+
+function validateAnswerIndices(
+  selectedIndices: number[],
+  expectedCount: number
+): string | null {
+  if (selectedIndices.length !== expectedCount) {
+    return `Vyplňte prosím všech ${expectedCount} otázek.`;
+  }
+  if (selectedIndices.some((index) => !Number.isInteger(index) || index < 0)) {
+    return "Neplatný formát odpovědí.";
+  }
+  return null;
+}
+
+/** Demo test – bez certifikátu, pouze ukázka formátu. */
+export async function submitDemoQuiz(
+  courseSlug: LmsQuizCourseSlug,
   selectedIndices: number[]
+): Promise<SubmitDemoQuizResult> {
+  const session = await getLmsSession();
+  if (!session) {
+    return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
+  }
+
+  const config = getDemoQuizConfig(courseSlug);
+  const validationError = validateAnswerIndices(
+    selectedIndices,
+    config.totalQuestions
+  );
+  if (validationError) {
+    return { ok: false, message: validationError };
+  }
+
+  let correctAnswers: number;
+  try {
+    correctAnswers = scoreDemoAnswers(courseSlug, selectedIndices);
+  } catch {
+    return { ok: false, message: "Neplatný formát odpovědí." };
+  }
+
+  const { totalQuestions, minCorrectAnswers } = config;
+  const scorePercent = Math.round((correctAnswers / totalQuestions) * 100);
+  const passed = correctAnswers >= minCorrectAnswers;
+
+  if (!passed) {
+    return {
+      ok: true,
+      passed: false,
+      scorePercent,
+      totalQuestions,
+      message: `Demo test nebyl úspěšný (${correctAnswers}/${totalQuestions}, ${scorePercent} %). Pro splnění je potřeba alespoň ${minCorrectAnswers} správných odpovědí.`,
+    };
+  }
+
+  return {
+    ok: true,
+    passed: true,
+    scorePercent,
+    totalQuestions,
+    correctAnswers,
+  };
+}
+
+function validateOfficialAnswers(
+  answers: QuizAnswerSubmission[],
+  expectedCount: number
+): string | null {
+  if (answers.length !== expectedCount) {
+    return `Vyplňte prosím všech ${expectedCount} otázek.`;
+  }
+  if (
+    answers.some(
+      (answer) =>
+        !answer.questionId ||
+        !Number.isInteger(answer.selectedIndex) ||
+        answer.selectedIndex < 0
+    )
+  ) {
+    return "Neplatný formát odpovědí.";
+  }
+  return null;
+}
+
+/** Oficiální závěrečný test – zaměstnanec / vedoucí nebo jednotný test (řidiči). */
+export async function submitOfficialQuiz(
+  courseSlug: LmsQuizCourseSlug,
+  answers: QuizAnswerSubmission[],
+  audience?: QuizAudience
 ): Promise<SubmitBozpQuizResult> {
   const session = await getLmsSession();
   if (!session) {
     return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
   }
 
-  if (selectedIndices.length !== QUIZ_TOTAL_QUESTIONS) {
-    return {
-      ok: false,
-      message: `Vyplňte prosím všech ${QUIZ_TOTAL_QUESTIONS} otázek.`,
-    };
-  }
-
-  if (selectedIndices.some((index) => !Number.isInteger(index) || index < 0)) {
-    return { ok: false, message: "Neplatný formát odpovědí." };
+  const config = getOfficialQuizConfig(courseSlug, audience);
+  const validationError = validateOfficialAnswers(answers, config.totalQuestions);
+  if (validationError) {
+    return { ok: false, message: validationError };
   }
 
   let correctAnswers: number;
   try {
-    correctAnswers = scoreBozpAnswers(selectedIndices);
+    correctAnswers = scoreOfficialAnswers(courseSlug, answers, audience);
   } catch {
     return { ok: false, message: "Neplatný formát odpovědí." };
   }
@@ -124,14 +225,60 @@ export async function submitBozpQuiz(
       userId: session.userId,
       courseId: session.courseId,
       correctAnswers,
+      totalQuestions: config.totalQuestions,
+      minCorrectAnswers: config.minCorrectAnswers,
     });
   } catch (error) {
-    console.error("[submitBozpQuiz]", error);
+    console.error("[submitOfficialQuiz]", error);
     return {
       ok: false,
       message: "Nepodařilo se uložit výsledek testu. Zkuste to prosím znovu.",
     };
   }
+}
+
+/** Demo test BOZP – bez certifikátu, pouze ukázka formátu. */
+export async function submitBozpDemoQuiz(
+  selectedIndices: number[]
+): Promise<SubmitDemoQuizResult> {
+  return submitDemoQuiz("bozp", selectedIndices);
+}
+
+/** Demo test PO – bez certifikátu, pouze ukázka formátu. */
+export async function submitPozarniDemoQuiz(
+  selectedIndices: number[]
+): Promise<SubmitDemoQuizResult> {
+  return submitDemoQuiz("pozarni", selectedIndices);
+}
+
+/** Oficiální závěrečný test BOZP – zaměstnanec nebo vedoucí. */
+export async function submitBozpOfficialQuiz(
+  audience: QuizAudience,
+  answers: QuizAnswerSubmission[]
+): Promise<SubmitBozpQuizResult> {
+  return submitOfficialQuiz("bozp", answers, audience);
+}
+
+/** Oficiální závěrečný test PO – zaměstnanec nebo vedoucí. */
+export async function submitPozarniOfficialQuiz(
+  audience: QuizAudience,
+  answers: QuizAnswerSubmission[]
+): Promise<SubmitBozpQuizResult> {
+  return submitOfficialQuiz("pozarni", answers, audience);
+}
+
+/** Oficiální závěrečný test referentů řidičů. */
+export async function submitRidiciOfficialQuiz(
+  answers: QuizAnswerSubmission[]
+): Promise<SubmitBozpQuizResult> {
+  return submitOfficialQuiz("ridici", answers);
+}
+
+/** @deprecated Použijte submitBozpDemoQuiz nebo submitBozpOfficialQuiz. */
+export async function submitBozpQuiz(
+  selectedIndices: number[]
+): Promise<SubmitDemoQuizResult> {
+  return submitBozpDemoQuiz(selectedIndices);
 }
 
 /** Volá se po dokončení testu v LMS. Při ≥ 8/10 správných zapíše pokus a označí kurz jako dokončený. */
@@ -149,9 +296,11 @@ export async function submitQuizResult(
   }
 }
 
-export async function getQuizPassInfo() {
+export async function getQuizPassInfo(courseSlug: LmsQuizCourseSlug = "bozp") {
+  const demo = getDemoQuizConfig(courseSlug);
   return {
-    totalQuestions: QUIZ_TOTAL_QUESTIONS,
-    minCorrect: QUIZ_MIN_CORRECT_ANSWERS,
+    totalQuestions: demo.totalQuestions,
+    minCorrect: demo.minCorrectAnswers,
+    passThresholdPercent: QUIZ_PASS_THRESHOLD_PERCENT,
   };
 }

@@ -1,0 +1,37 @@
+{
+  "trainer": "TechnikPO s.r.o.",
+  "validityLabel": "Platnost certifikátu 1 rok.",
+  "successText": "Jmenovaný absolvoval/a úspěšně kurz a online složil/a úspěšně test.",
+  "instructionsTitle": "Poučení:",
+  "instructions": [
+    "Školení zaměstnanců se provádí při nástupu do zaměstnání a při každé změně pracoviště nebo pracovního zařízení zaměstnance.",
+    "Znalost získaná při školení zaměstnance se ověřuje testem."
+  ],
+  "courses": {
+    "bozp": {
+      "codePrefix": "BOZP",
+      "trainingTitle": "Školení bezpečnosti práce",
+      "legalBasis": "O školení zaměstnanců v bezpečnosti práce dle § 103 zákona č. 262/2006 Sb. v platném znění."
+    },
+    "pozarni": {
+      "codePrefix": "PO",
+      "trainingTitle": "Školení o požární ochraně",
+      "legalBasis": "O školení zaměstnanců v požární ochraně dle § 23 vyhlášky 246/2001 Sb. v platném znění."
+    },
+    "ridici": {
+      "codePrefix": "RID",
+      "trainingTitle": "Školení řidičů referentů",
+      "legalBasis": "O školení zaměstnanců dále jen referenti řidiči."
+    },
+    "ergonomie": {
+      "codePrefix": "ERG",
+      "trainingTitle": "Školení ergonomie práce",
+      "legalBasis": "O školení zaměstnanců v oblasti ergonomie práce a prevence muskuloskeletálních poruch."
+    },
+    "gdpr": {
+      "codePrefix": "GDPR",
+      "trainingTitle": "GDPR a ochrana osobních údajů",
+      "legalBasis": "O proškolení zaměstnanců v oblasti ochrany osobních údajů dle nařízení GDPR a zákona č. 110/2019 Sb. o zpracování osobních údajů."
+    }
+  }
+}

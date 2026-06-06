@@ -6,30 +6,28 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
-import {
-  getDemoQuizConfig,
-  getQuizQuestionsPublic,
-} from "@/lib/lms/quiz-data";
-import { getOfficialTestHubPath } from "@/lib/lms/course-paths";
+import { getOfficialQuizConfig, getQuizQuestionsPublic } from "@/lib/lms/quiz-data";
+import { getDemoTestPath } from "@/lib/lms/course-paths";
+import { shuffleQuizQuestions } from "@/lib/lms/shuffle-quiz-questions";
 import { getLmsSession } from "@/lib/lms/session";
 
-const COURSE_SLUG = "bozp" as const;
+const COURSE_SLUG = "ridici" as const;
 
 export const metadata: Metadata = {
-  title: "Demo test BOZP",
-  description:
-    "Vyzkoušejte si formát závěrečného testu BOZP – zkrácená ukázka se 10 otázkami.",
+  title: "Závěrečný test referentů řidičů",
+  description: "Oficiální závěrečný test pro referenty řidičů s certifikátem.",
 };
 
-export default async function BozpDemoTestPage() {
-  const config = getDemoQuizConfig(COURSE_SLUG);
+export default async function RidiciOfficialTestPage() {
+  const config = getOfficialQuizConfig(COURSE_SLUG);
+  const shuffledQuestions = shuffleQuizQuestions(config.questions);
   const session = await getLmsSession();
 
   if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fbozp%2Ftest");
+    redirect("/lms/login?redirect=%2Flms%2Fridici%2Fzaverecny");
   }
 
-  let userName = "Demo student";
+  let userName = "Student";
   const [user] = await db
     .select({ name: users.name })
     .from(users)
@@ -41,7 +39,7 @@ export default async function BozpDemoTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${config.totalQuestions} otázek · úspěch od ${config.minCorrectAnswers} správných (80 %)`}
+        subtitle={`${config.subtitle} · ${config.totalQuestions} otázek · úspěch od ${config.minCorrectAnswers} správných (80 %) · otázky v náhodném pořadí`}
       >
         <Link
           href="/lms"
@@ -50,28 +48,21 @@ export default async function BozpDemoTestPage() {
           ← Moje školení
         </Link>
         <Link
-          href={getOfficialTestHubPath(COURSE_SLUG)!}
+          href={getDemoTestPath(COURSE_SLUG)!}
           className="mt-2 block text-sm text-white/70 hover:text-white"
         >
-          Oficiální závěrečný test →
+          Demo test (10 otázek) →
         </Link>
       </PageHero>
 
       <Section>
-        <p className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Toto je <strong>demo ukázka</strong> – certifikát se vydává až po úspěšném absolvování{" "}
-          <Link href={getOfficialTestHubPath(COURSE_SLUG)!} className="font-semibold underline">
-            oficiálního testu
-          </Link>
-          .
-        </p>
         <CourseQuiz
           courseSlug={COURSE_SLUG}
-          questions={getQuizQuestionsPublic(config.questions)}
+          questions={getQuizQuestionsPublic(shuffledQuestions)}
           userName={userName}
           totalQuestions={config.totalQuestions}
           minCorrectAnswers={config.minCorrectAnswers}
-          variant="demo"
+          variant="oficialni"
         />
       </Section>
     </>

@@ -1,0 +1,90 @@
+{
+  "courseSlug": "bozp",
+  "variant": "oficialni",
+  "audience": "vedouci",
+  "title": "Závěrečný test BOZP – vedoucí zaměstnanec",
+  "subtitle": "Oficiální test pro vedoucí zaměstnance",
+  "sourceNumbers": ["147", "148", "173", "174", "176", "178", "179", "180"],
+  "questions": [
+    {
+      "id": "q147",
+      "text": "Na pracovištích, na kterých jsou vykonávány práce, při nichž může dojít k poškození zdraví, je zaměstnavatel povinen umístit:",
+      "options": [
+        "bezpečnostní značky a značení, které poskytují informace týkající se bezpečnosti a ochrany zdraví při práci, a seznámit s nimi zaměstnance nemusí",
+        "bezpečnostní značky a značení a zavést signály, které poskytují informace nebo instrukce týkající se bezpečnosti a ochrany zdraví při práci, a seznámit s nimi zaměstnance",
+        "osobu, která bude poučovat zaměstnance o možných rizicích"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q148",
+      "text": "Zaměstnavatel je povinen organizovat práci a stanovit pracovní postupy tak, aby byly dodržovány zásady bezpečného chování na pracovišti a aby zaměstnanci:",
+      "options": [
+        "byli chráněni proti pádu nebo zřícení",
+        "byli chráněni proti alkoholu",
+        "byli chráněni proti dešti a větru"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q173",
+      "text": "Pracoviště, na kterém je vykonávána práce, při které může dojít k poškození zdraví:",
+      "options": [
+        "se umísťují bezpečnostní značky a značení a zavádějí signály k ochraně zdraví při práci",
+        "nejsou nutné opatření k ochraně zdraví při práci",
+        "se umísťují bezpečnostní značky a značení, ale zvukové signály se na pracovišti vyskytovat nesmí"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q174",
+      "text": "Zaměstnanci na pracovišti se zvýšeným rizikem nesmí pracovat osamoceně bez dohledu dalšího zaměstnance:",
+      "options": [
+        "ano, mohou pracovat osamoceně, ale pouze pokud je jejich ochrana zajištěna jinak",
+        "musí pracovat vždy ve dvou",
+        "záleží na zaměstnavateli"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q176",
+      "text": "Ochranné prostředky:",
+      "options": [
+        "zaměstnanci musí být s používáním ochranných prostředků seznámeni. Používání ochranných prostředků více zaměstnanci je možné pouze v případě, že byla učiněna opatření, která zamezí ohrožení přenosnými chorobami.",
+        "zaměstnanci nemusí být s používáním ochranných prostředků seznámeni.",
+        "zaměstnanci musí být s používáním ochranných prostředků seznámeni. Používání ochranných prostředků více zaměstnanci je možné v každém případě, aby se zabránilo diskriminaci."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q178",
+      "text": "Dveře, kterými prochází úniková cesta, pro případ nebezpečí musí:",
+      "options": [
+        "být vždy zamčené. Z důvodu možnosti vniknutí cizí osoby",
+        "být průchodné. V případech nakládky zboží, stěhování apod. se může úniková cesta stát neprůchodnou a dveře být neprůchodné",
+        "být průchodné bez dalších opatření a zvláštní pomoci"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q179",
+      "text": "Prostředky a zařízení pro poskytování první pomoci musí být umístěny:",
+      "options": [
+        "na dostupném místě a nemusí být označeny značkami",
+        "na dostupném místě a musí být označeny značkami",
+        "prostředky pro poskytování první pomoci se na pracovišti vyskytují pouze v případech, kdy to nařídí Inspekce práce"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q180",
+      "text": "Může zaměstnavatel převést zaměstnance na jinou práci?",
+      "options": [
+        "ano a to kdykoliv a bez udání důvodu",
+        "dle zákoníku práce má na to právo a to za určitých podmínek. Např. požádá-li o to těhotná zaměstnankyně, zaměstnankyně, která kojí, nebo zaměstnankyně-matka do konce devátého měsíce po porodu, která pracuje v noci",
+        "nesmí"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

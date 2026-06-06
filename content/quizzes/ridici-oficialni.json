@@ -1,0 +1,329 @@
+{
+  "courseSlug": "ridici",
+  "variant": "oficialni",
+  "title": "Závěrečný test referentů řidičů",
+  "subtitle": "Oficiální závěrečný test",
+  "sourceNumbers": [
+    "44",
+    "46",
+    "47",
+    "48",
+    "53",
+    "54",
+    "55",
+    "56",
+    "60",
+    "63",
+    "64",
+    "65",
+    "66",
+    "67",
+    "68",
+    "69",
+    "70",
+    "71",
+    "72",
+    "73",
+    "74",
+    "75",
+    "76",
+    "77",
+    "78",
+    "186",
+    "187",
+    "188",
+    "189"
+  ],
+  "questions": [
+    {
+      "id": "q44",
+      "text": "Řídit motorové vozidlo může:",
+      "options": [
+        "osoba, která není v pracovní neschopnosti",
+        "osoba, zdravotně a duševně způsobilá",
+        "osoba, která je držitelem řidičského oprávnění pro příslušnou skupinu motorových vozidel"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q46",
+      "text": "Při účasti na provozu na pozemních komunikacích je každý povinen:",
+      "options": [
+        "věnovat se plně řízení vozidla",
+        "věnovat se plně vozovce",
+        "věnovat se plně vozidlu"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q47",
+      "text": "Při účasti na provozu na pozemních komunikacích je každý povinen:",
+      "options": [
+        "věnovat se plně vozidlu",
+        "přizpůsobit jízdu technickým vlastnostem vozidla",
+        "přizpůsobit svoje schopnosti"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q48",
+      "text": "Při účasti na provozu na pozemních komunikacích je každý povinen:",
+      "options": [
+        "snížit rychlost jízdy nebo zastavit vozidlo před přechodem pro chodce, sníží-li rychlost jízdy nebo zastaví-li vozidlo před přechodem pro chodce i řidiči ostatních vozidel jedoucích stejným směrem",
+        "snižovat rychlost není povinnost řidiče",
+        "zvýšit rychlost jízdy před přechodem pro chodce"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q53",
+      "text": "Řidič předjížděného vozidla nesmí:",
+      "options": [
+        "zvyšovat rychlost jízdy ani jinak bránit předjíždění",
+        "zvyšovat rychlost jízdy, avšak může bránit předjíždění",
+        "bránit předjíždění, avšak může zvyšovat rychlost jízdy"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q54",
+      "text": "Řidič nesmí předjíždět:",
+      "options": [
+        "na přechodu pro chodce, pokud se někdo na přechodu vyskytuje",
+        "na přechodu pro chodce nebo na přejezdu pro cyklisty a bezprostředně před nimi",
+        "na přejezdu pro cyklisty, pokud se někdo na přechodu vyskytuje"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q55",
+      "text": "Řidič nesmí:",
+      "options": [
+        "snížit náhle rychlost jízdy nebo náhle zastavit, pokud to nevyžaduje bezpečnost provozu na pozemních komunikacích",
+        "náhle zastavit, pokud to nevyžaduje bezpečnost provozu na pozemních komunikacích, avšak snížit rychlost bezdůvodně může",
+        "náhle snížit rychlost jízdy, ale náhle zastavit může"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q56",
+      "text": "V obci smí jet řidič rychlostí nejvýše:",
+      "options": [
+        "50 km.h-1, a jde-li o dálnici nebo silnici pro motorová vozidla, nejvýše 80 km.h-1",
+        "60 km.h-1, a jde-li o dálnici nebo silnici pro motorová vozidla, nejvýše 80 km.h-1",
+        "50 km.h-1, a jde-li o dálnici nebo silnici pro motorová vozidla, nejvýše 90 km.h-1"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q60",
+      "text": "Tramvaj, která při odbočování nebo jiné změně směru jízdy křižuje směr jízdy vozidla jedoucího po její pravé nebo levé straně a dává znamení o změně směru jízdy:",
+      "options": [
+        "má přednost v jízdě",
+        "nemá přednost v jízdě",
+        "má přednost v jízdě, pokud křižuje směr jízdy vozidla jedoucího po její levé straně"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q63",
+      "text": "Při couvání řidič:",
+      "options": [
+        "nesmí ohrozit ostatní účastníky provozu na pozemních komunikacích. To neplatí o ostatních vozidlech",
+        "nesmí ohrozit ostatní účastníky provozu na pozemních komunikacích",
+        "smí ohrozit ostatní účastníky provozu na pozemních komunikacích"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q64",
+      "text": "Řidič nesmí otáčet a couvat:",
+      "options": [
+        "na přechodu pro chodce",
+        "na pozemní komunikaci s obousměrným provozem",
+        "na hlavní silnici"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q65",
+      "text": "Řidič nesmí otáčet a couvat:",
+      "options": [
+        "ve městě",
+        "na železničním přejezdu a v jeho těsné blízkosti",
+        "na přehledných nebo jinak bezpečných místech"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q66",
+      "text": "Řidič nesmí zastavit a stát:",
+      "options": [
+        "na přechodu pro chodce nebo na přejezdu pro cyklisty a ve vzdálenosti kratší než 15 m před nimi",
+        "na přechodu pro chodce nebo na přejezdu pro cyklisty a ve vzdálenosti kratší než 25 m před nimi",
+        "na přechodu pro chodce nebo na přejezdu pro cyklisty a ve vzdálenosti kratší než 5 m před nimi"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q67",
+      "text": "Řidič nesmí vjíždět na železniční přejezd:",
+      "options": [
+        "je-li dávána výstraha dvěma červenými střídavě přerušovanými světly signálu přejezdového zabezpečovacího zařízení",
+        "je-li v dálce slyšet houkání vlakové soupravy",
+        "je-li dávána výstraha zvukovým zařízením"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q68",
+      "text": "Při vjíždění na kruhový objezd a jízdě po kruhovém objezdu, nepřejíždí-li z jednoho jízdního pruhu do druhého, řidič:",
+      "options": [
+        "nedává znamení o změně směru jízdy; při vyjíždění z kruhového objezdu řidič je povinen dát znamení o změně směru jízdy",
+        "vždy dává znamení o změně směru jízdy; při vyjíždění z kruhového objezdu řidič je povinen dát znamení o změně směru jízdy",
+        "nedává znamení o změně směru jízdy; při vyjíždění z kruhového objezdu řidič nedává znamení o změně směru jízdy"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q69",
+      "text": "Při vlečení motorového vozidla se smí jet rychlostí:",
+      "options": [
+        "nejvýše 80 km.h-1",
+        "nejméně 60 km.h-1",
+        "nejvýše 60 km.h-1"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q70",
+      "text": "Řidiči je na dálnici zakázáno:",
+      "options": [
+        "otáčení, couvání. Vjíždění na střední dělicí pás včetně míst, kde je pás přerušen, je dovoleno",
+        "otáčení, couvání a vjíždění na střední dělicí pás včetně míst, kde je pás přerušen",
+        "couvání"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q71",
+      "text": "Vyberte správnou odpověď:",
+      "options": [
+        "Dojde-li během jízdy na vozidle nebo nákladu k závadě, pro kterou nelze dosáhnout na rovině rychlosti nejméně 60 km.h-1, musí řidič dálnici opustit na nejbližším výjezdu",
+        "Dojde-li během jízdy na vozidle nebo nákladu k závadě, pro kterou nelze dosáhnout na rovině rychlosti nejméně 80 km.h-1, musí řidič dálnici opustit na nejbližším výjezdu",
+        "Dojde-li během jízdy na vozidle nebo nákladu k závadě, pro kterou nelze dosáhnout na rovině rychlosti nejméně 100 km.h-1, musí řidič dálnici opustit na nejbližším výjezdu"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q72",
+      "text": "Vyberte správnou odpověď: Znamení o změně směru jízdy musí řidič dávat včas před započetím jízdního úkonu s ohledem na okolnosti provozu na pozemních komunikacích:",
+      "options": [
+        "ano",
+        "ne",
+        "pouze pokud řidič uzná za nutné"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q73",
+      "text": "Vyberte správnou odpověď: Motorové vozidlo musí mít za jízdy rozsvícena obrysová světla a potkávací světla nebo světla pro denní svícení, pokud je jimi vybaveno:",
+      "options": [
+        "ano",
+        "ne",
+        "pouze pokud řidič uzná za nutné"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q74",
+      "text": "V obytné zóně a pěší zóně smí řidič jet rychlostí:",
+      "options": [
+        "nejvýše 30 km.h-1",
+        "nejvýše 10 km.h-1",
+        "nejvýše 20 km.h-1"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q75",
+      "text": "V prostoru čerpací stanice pohonných hmot je řidiči i přepravované osobě zakázáno:",
+      "options": [
+        "kouřit, zacházet s otevřeným ohněm a seřizovat nebo opravovat motor vozidla",
+        "kouřit, zacházet s otevřeným ohněm a seřizovat nebo opravovat motor vozidla. Přepravovaná osoba má kouření dovoleno",
+        "kouřit, zacházet s otevřeným ohněm, ale seřizovat nebo opravovat motor vozidla je dovoleno"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q76",
+      "text": "Není-li možno překážku provozu na pozemních komunikacích neprodleně odstranit, musí ji její původce:",
+      "options": [
+        "označit a ohlásit policii",
+        "označit a může dále pokračovat v jízdě",
+        "označit a musí dále pokračovat v jízdě"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q77",
+      "text": "Dojde-li při jízdě vozidla v tunelu k poruše vozidla, pro kterou se toto vozidlo stalo nepojízdným, nebo dojde-li k dopravní nehodě, je řidič povinen neprodleně:",
+      "options": [
+        "učinit vhodná opatření. Smí přepravovaná osoba kouřit",
+        "učinit vhodná opatření, aby nebyla ohrožena bezpečnost provozu na pozemních komunikacích v tunelu; vyžadují-li to okolnosti, je oprávněn zastavovat jiná vozidla",
+        "učinit vhodná opatření, aby nebyla ohrožena bezpečnost provozu na pozemních komunikacích v tunelu, ale není oprávněn zastavovat jiná vozidla"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q78",
+      "text": "Řidič, který měl účast na dopravní nehodě, je povinen:",
+      "options": [
+        "neprodleně zastavit vozidlo, může požít alkoholického nápoje a užití jiné návykové látky",
+        "neprodleně zastavit vozidlo, spolupracovat při zjišťování skutkového stavu",
+        "neprodleně zastavit vozidlo, není povinen spolupracovat při zjišťování skutkového stavu"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q186",
+      "text": "Účastníci dopravní nehody jsou povinni:",
+      "options": [
+        "označit místo dopravní nehody, ale nemusí si prokázat na požádání navzájem svou totožnost a sdělit údaje o vozidle, které mělo účast na dopravní nehodě",
+        "označit místo dopravní nehody, prokázat si na požádání navzájem svou totožnost a sdělit údaje o vozidle, které mělo účast na dopravní nehodě",
+        "označit místo dopravní nehody a vždy oznámit nehodu policii"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q187",
+      "text": "Co je referenční vozidlo?",
+      "options": [
+        "Služební vozidlo používané k plnění pracovních úkolů",
+        "Soukromé vozidlo používané bez omezení",
+        "Taxi"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q188",
+      "text": "Před jízdou je nutné:",
+      "options": [
+        "Není nutné nic kontrolovat",
+        "Nastartovat a nahlásit jízdu nadřízenému",
+        "Zkontrolovat technický stav vozidla"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q189",
+      "text": "Dopravní nehodu je zaměstnanec povinen:",
+      "options": [
+        "Nenahlásit",
+        "Nahlásit zaměstnavateli",
+        "Vyřešit soukromě a zaměstnavatele tím neobtěžovat"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "courseSlug": "ridici",
+  "variant": "demo",
+  "title": "Demo test referentů řidičů",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
+  "questions": [
+    {
+      "id": "demo45",
+      "text": "Při účasti na provozu na pozemních komunikacích je každý povinen:",
+      "options": [
+        "chovat se ohleduplně vůči ostatním řidičům motocyklů",
+        "chovat se ohleduplně a ukázněně",
+        "jezdit na zelenou"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo49",
+      "text": "Smí řidič požívat alkoholické nápoje během jízdy:",
+      "options": [
+        "ano",
+        "ne",
+        "o tom rozhodne spolucestující"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo50",
+      "text": "Přepravovaná osoba je povinna:",
+      "options": [
+        "nebýt za jízdy připoutána na sedadle bezpečnostním pásem",
+        "ohrožovat svým chováním bezpečnost provozu na pozemních komunikacích, zejména omezovat řidiče v bezpečném ovládání vozidla",
+        "dbát pokynů řidiče"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo51",
+      "text": "Přejíždět z jednoho jízdního pruhu do druhého smí řidič jen tehdy:",
+      "options": [
+        "neohrozí-li a neomezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom nemusí dávat znamení o změně směru jízdy",
+        "neohrozí-li a neomezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom musí dávat znamení o změně směru jízdy",
+        "omezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom musí dávat znamení o změně směru jízdy"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo52",
+      "text": "Při vjíždění na tramvajový pás nesmí řidič:",
+      "options": [
+        "omezit v jízdě tramvaj, avšak ohrozit tramvaj může",
+        "hrozit v jízdě tramvaj, avšak omezit tramvaj může",
+        "ohrozit ani omezit v jízdě tramvaj"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo57",
+      "text": "Řidiči protijedoucích vozidel se vyhýbají:",
+      "options": [
+        "vlevo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vpravo, vyhýbá se jí vlevo",
+        "vpravo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vlevo, vyhýbá se jí vpravo",
+        "vpravo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vpravo, vyhýbá se jí vlevo"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo58",
+      "text": "Při odbočování na křižovatce nebo na místo ležící mimo pozemní komunikaci musí řidič:",
+      "options": [
+        "dávat znamení o změně směru jízdy; při odbočování smí ohrozit řidiče jedoucí za ním a musí dbát zvýšené opatrnosti",
+        "dávat znamení o změně směru jízdy; při odbočování nesmí ohrozit řidiče jedoucí za ním a nemusí dbát zvýšené opatrnosti",
+        "dávat znamení o změně směru jízdy; při odbočování nesmí ohrozit řidiče jedoucí za ním a musí dbát zvýšené opatrnosti"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo59",
+      "text": "Před odbočováním vpravo se musí řidič zařadit co nejblíže:",
+      "options": [
+        "k pravému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vpravo",
+        "k levému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vpravo",
+        "k pravému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vlevo"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo61",
+      "text": "Řidič nesmí vjet do křižovatky:",
+      "options": [
+        "nedovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou, takže by byl nucen zastavit vozidlo v křižovatce",
+        "dovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou, takže by byl nucen zastavit vozidlo v křižovatce",
+        "dovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo62",
+      "text": "Při vjíždění z místa ležícího mimo pozemní komunikaci na pozemní komunikaci musí řidič:",
+      "options": [
+        "dát přednost v jízdě vozidlům nebo jezdcům na zvířatech jedoucím po pozemní komunikaci nebo organizovanému útvaru chodců nebo průvodcům hnaných zvířat se zvířaty jdoucím po pozemní komunikaci",
+        "dát výstražný zvukový signál",
+        "dát přednost v jízdě vozidlům nebo jezdcům na zvířatech jedoucím po pozemní komunikaci, ale má přednost před organizovaným útvarem chodců nebo průvodcům hnaných zvířat se zvířaty jdoucím po pozemní komunikaci"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

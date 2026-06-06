@@ -5,6 +5,7 @@ import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { getCourse, getCourseSlugs, courses } from "@/lib/content";
 import { courseColorClasses } from "@/lib/course-colors";
+import { getDemoTestPath } from "@/lib/lms/course-paths";
 import { markTheoryStartedForCourseSlug } from "@/lib/lms/mark-theory-started";
 import { getLmsSession } from "@/lib/lms/session";
 
@@ -71,10 +72,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
             </li>
           ))}
         </ul>
-        {slug === "bozp" && (
+        {getDemoTestPath(slug) && (
           <p className="mt-6">
-            <Link href="/lms/bozp/test" className="btn-primary inline-flex">
-              Vyzkoušet demo test BOZP
+            <Link href={getDemoTestPath(slug)!} className="btn-primary inline-flex">
+              Vyzkoušet demo test {course.shortTitle}
             </Link>
           </p>
         )}

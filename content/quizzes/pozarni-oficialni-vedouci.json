@@ -1,0 +1,99 @@
+{
+  "courseSlug": "pozarni",
+  "variant": "oficialni",
+  "title": "Závěrečný test PO – vedoucí",
+  "subtitle": "Oficiální test pro vedoucí zaměstnance",
+  "questions": [
+    {
+      "id": "q22",
+      "text": "Musí být značena rozvodná zařízení elektrické energie, hlavní vypínače elektrického proudu, uzávěry vody, plynu, produktovodů, uzávěry rozvodů ústředního topení:",
+      "options": [
+        "ne",
+        "o označení rozhodne vedoucí zaměstnanec",
+        "ano"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q34",
+      "text": "Kdo kontroluje hasicí přístroj:",
+      "options": [
+        "vedoucí, který je proškolen v požární ochraně",
+        "majitel firmy nebo statutární zástupce firmy",
+        "revizní technik, který je školen na kontrolu provozuschopnosti hasicích přístrojů"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q37",
+      "text": "Jak často se provádí školení zaměstnanců o požární ochraně:",
+      "options": [
+        "školení se provádí nejméně jednou za 6 měsíců",
+        "nejméně jednou za 2 roky",
+        "nejméně jednou za rok"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q38",
+      "text": "jak často se provádí odborná příprava zaměstnanců zařazených do preventivních požárních hlídek:",
+      "options": [
+        "školení se provádí nejméně jednou za 6 měsíců",
+        "nejméně jednou za 2 roky",
+        "nejméně jednou za rok"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q40",
+      "text": "Požární řád se zveřejňuje:",
+      "options": [
+        "jak rozhodne požární hlídka objektu",
+        "aby byl dobře viditelný a trvale přístupný pro všechny osoby vyskytující se v místě provozované činnosti",
+        "aby byl přístupný ve všech chodbách a místnostech, ve kterých se mohou vyskytovat osoby, které neznají únikovou cestu"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q145",
+      "text": "Základní povinnosti fyzických osob:",
+      "options": [
+        "zajistit přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení",
+        "zajistit přístup k rozvodným zařízením elektrické energie, ale k uzávěrům plynu, vody a topení přístup zajistit nemusí",
+        "zajistit přístup k nouzovému osvětlení"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q146",
+      "text": "Každá fyzická osoba musí:",
+      "options": [
+        "zajistit přístup k nouzovému osvětlení",
+        "zajistit přístup k požárně bezpečnostním zařízením požární ochrany, ale udržovat tato zařízení v provozuschopném stavu nemusí",
+        "zajistit přístup k požárně bezpečnostním zařízením a věcným prostředkům požární ochrany za účelem jejich včasného použití a dále udržovat tato zařízení a věcné prostředky v provozuschopném stavu; uvedené povinnosti se vztahují na osoby, které mají uvedená zařízení a věcné prostředky ve vlastnictví či užívání"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q147",
+      "text": "Umístění hasicích přístrojů:",
+      "options": [
+        "hasicí přístroj musí být v červeném provedení",
+        "hasicí přístroj se nesmí nacházet na podlaze",
+        "hasicí přístroje umístěné na podlaze nebo na jiné vodorovné stavební konstrukci musí být vhodným způsobem zajištěny proti pádu"
+      ],
+      "correctIndex": 2
+    }
+  ],
+  "audience": "vedouci",
+  "sourceNumbers": [
+    "145",
+    "146",
+    "22",
+    "34",
+    "37",
+    "38",
+    "40",
+    "147"
+  ]
+}

@@ -1,22 +1,14 @@
 import { and, eq } from "drizzle-orm";
 import { db, quizAttempts, userCourses } from "@/db";
 import { issueCertificate } from "@/lib/lms/issue-certificate";
-import {
-  QUIZ_MIN_CORRECT_ANSWERS,
-  QUIZ_PASS_THRESHOLD_PERCENT,
-  QUIZ_TOTAL_QUESTIONS,
-} from "@/lib/lms/quiz-config";
-
-export {
-  QUIZ_MIN_CORRECT_ANSWERS,
-  QUIZ_PASS_THRESHOLD_PERCENT,
-  QUIZ_TOTAL_QUESTIONS,
-} from "@/lib/lms/quiz-config";
+import { QUIZ_PASS_THRESHOLD_PERCENT } from "@/lib/lms/quiz-config";
 
 export interface CompleteQuizInput {
   userId: string;
   courseId: string;
   correctAnswers: number;
+  totalQuestions: number;
+  minCorrectAnswers: number;
 }
 
 export type CompleteQuizResult =
@@ -55,8 +47,11 @@ function validateInput(input: CompleteQuizInput): string | null {
   if (!Number.isInteger(input.correctAnswers) || input.correctAnswers < 0) {
     return "Počet správných odpovědí musí být nezáporné celé číslo.";
   }
-  if (input.correctAnswers > QUIZ_TOTAL_QUESTIONS) {
-    return `Počet správných odpovědí nemůže být větší než ${QUIZ_TOTAL_QUESTIONS}.`;
+  if (input.correctAnswers > input.totalQuestions) {
+    return `Počet správných odpovědí nemůže být větší než ${input.totalQuestions}.`;
+  }
+  if (input.totalQuestions < 1 || input.minCorrectAnswers < 1) {
+    return "Neplatná konfigurace testu.";
   }
   return null;
 }
@@ -69,10 +64,10 @@ export async function completeQuizTest(
     return { ok: false, message: validationError };
   }
 
-  const { userId, courseId, correctAnswers } = input;
-  const totalQuestions = QUIZ_TOTAL_QUESTIONS;
+  const { userId, courseId, correctAnswers, totalQuestions, minCorrectAnswers } =
+    input;
   const scorePercent = Math.round((correctAnswers / totalQuestions) * 100);
-  const isPassed = correctAnswers >= QUIZ_MIN_CORRECT_ANSWERS;
+  const isPassed = correctAnswers >= minCorrectAnswers;
 
   const [enrollment] = await db
     .select({ id: userCourses.id })
@@ -93,7 +88,7 @@ export async function completeQuizTest(
       passed: false,
       scorePercent,
       totalQuestions,
-      message: `Test nebyl úspěšný (${correctAnswers}/${totalQuestions}, ${scorePercent} %). Pro splnění je potřeba alespoň ${QUIZ_MIN_CORRECT_ANSWERS} správných odpovědí.`,
+      message: `Test nebyl úspěšný (${correctAnswers}/${totalQuestions}, ${scorePercent} %). Pro splnění je potřeba alespoň ${minCorrectAnswers} správných odpovědí (${QUIZ_PASS_THRESHOLD_PERCENT} %).`,
     };
   }
 

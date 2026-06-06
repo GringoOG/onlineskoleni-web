@@ -1,0 +1,108 @@
+{
+  "courseSlug": "pozarni",
+  "variant": "demo",
+  "title": "Demo test požární ochrany",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
+  "questions": [
+    {
+      "id": "demo1",
+      "text": "Základní povinnosti fyzických osob:",
+      "options": [
+        "zajistit přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení",
+        "zajistit přístup k rozvodným zařízením elektrické energie, ale k uzávěrům plynu, vody a topení přístup zajistit nemusí",
+        "zajistit přístup k nouzovému osvětlení"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo2",
+      "text": "Úniková cesta musí být vybavena:",
+      "options": [
+        "hasicími prostředky",
+        "hydranty",
+        "bezpečnostními značkami, tabulkami a texty s bezpečnostním sdělením"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo3",
+      "text": "Hasicí přístroje se umísťují tak, aby byly:",
+      "options": [
+        "snadno viditelné",
+        "snadno viditelné a dosažitelné",
+        "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo4",
+      "text": "Vodní hasicí přístroj je vhodný k hašení:",
+      "options": [
+        "tuhých organických látek hořících plamenem nebo žhnutím",
+        "lehkých a alkalických kovů",
+        "elektrického zařízení pod napětím"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo5",
+      "text": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení:",
+      "options": [
+        "elektrického zařízení pod napětím",
+        "plošných požárů",
+        "požárů lehkých kovů"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo6",
+      "text": "Požární řád se zveřejňuje:",
+      "options": [
+        "jak rozhodne požární hlídka objektu",
+        "aby byl dobře viditelný a trvale přístupný pro všechny osoby vyskytující se v místě provozované činnosti",
+        "aby byl přístupný ve všech chodbách a místnostech, ve kterých se mohou vyskytovat osoby, které neznají únikovou cestu"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo7",
+      "text": "Školení zaměstnanců o požární ochraně obsahuje seznámení:",
+      "options": [
+        "s rozmístěním a se způsobem použití věcných prostředků požární ochrany na pracovišti",
+        "s požárním pořádkem",
+        "s rozmístěním elektrického zařízení na pracovišti"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo8",
+      "text": "Každá fyzická osoba musí:",
+      "options": [
+        "zajistit přístup k nouzovému osvětlení",
+        "zajistit přístup k požárně bezpečnostním zařízením požární ochrany, ale udržovat tato zařízení v provozuschopném stavu nemusí",
+        "zajistit přístup k požárně bezpečnostním zařízením a věcným prostředkům požární ochrany za účelem jejich včasného použití a dále udržovat tato zařízení a věcné prostředky v provozuschopném stavu; uvedené povinnosti se vztahují na osoby, které mají uvedená zařízení a věcné prostředky ve vlastnictví či užívání"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo9",
+      "text": "Každý je povinen s souvislosti se zdolávání požáru:",
+      "options": [
+        "v každém případě uhasit požár",
+        "provést nutná opatření pro záchranu ohrožených osob",
+        "zavolat vedoucího na linku 112"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo10",
+      "text": "Jak často se musí kontrolovat hasicí přístroj:",
+      "options": [
+        "nejméně jednou za 5 let",
+        "nejméně jednou za 2 roky",
+        "nejméně jednou za rok"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import {
   CERTIFICATE_VALIDITY_YEARS,
   getCertificateDownloadPath,
 } from "@/lib/lms/certificate-config";
+import { getCertificateCodePrefix } from "@/lib/lms/certificate-template";
 
 type DbExecutor = Pick<typeof db, "select" | "insert" | "update">;
 
@@ -52,12 +53,15 @@ async function insertCertificate(
   input: {
     userId: string;
     courseId: string;
+    courseSlug: string;
     issuedAt: Date;
     expiresAt: Date;
   }
 ) {
+  const codePrefix = getCertificateCodePrefix(input.courseSlug);
+
   for (let attempt = 0; attempt < 5; attempt++) {
-    const certificateCode = createCertificateCode();
+    const certificateCode = createCertificateCode(codePrefix);
 
     try {
       const [created] = await client
@@ -112,7 +116,7 @@ export async function issueCertificate(
       .where(eq(users.id, userId))
       .limit(1),
     client
-      .select({ title: courses.title })
+      .select({ slug: courses.slug })
       .from(courses)
       .where(eq(courses.id, courseId))
       .limit(1),
@@ -128,6 +132,7 @@ export async function issueCertificate(
   const created = await insertCertificate(client, {
     userId,
     courseId,
+    courseSlug: course.slug,
     issuedAt,
     expiresAt,
   });
@@ -141,7 +146,8 @@ export async function issueCertificate(
 
 export interface CertificateDownloadData {
   studentName: string;
-  courseTitle: string;
+  companyName: string | null;
+  courseSlug: string;
   certificateCode: string;
   issuedAt: Date;
   expiresAt: Date;
@@ -158,7 +164,8 @@ export async function getCertificateForDownload(
       issuedAt: certificates.issuedAt,
       expiresAt: certificates.expiresAt,
       studentName: users.name,
-      courseTitle: courses.title,
+      companyName: users.companyName,
+      courseSlug: courses.slug,
       ownerId: certificates.userId,
     })
     .from(certificates)
@@ -173,7 +180,8 @@ export async function getCertificateForDownload(
 
   return {
     studentName: row.studentName,
-    courseTitle: row.courseTitle,
+    companyName: row.companyName,
+    courseSlug: row.courseSlug,
     certificateCode: row.certificateCode,
     issuedAt: row.issuedAt,
     expiresAt: row.expiresAt,

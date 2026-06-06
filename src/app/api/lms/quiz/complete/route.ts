@@ -7,12 +7,16 @@ export async function POST(request: Request) {
       userId?: string;
       courseId?: string;
       correctAnswers?: number;
+      totalQuestions?: number;
+      minCorrectAnswers?: number;
     };
 
     const result = await completeQuizTest({
       userId: body.userId ?? "",
       courseId: body.courseId ?? "",
       correctAnswers: Number(body.correctAnswers),
+      totalQuestions: Number(body.totalQuestions),
+      minCorrectAnswers: Number(body.minCorrectAnswers),
     });
 
     if (!result.ok) {

@@ -28,7 +28,7 @@ Vývoj s automatickým obnovením: `npm run dev` (stejná adresa).
 |-------|--------|
 | `/` | Úvodní stránka |
 | `/skoleni` | Přehled kurzů |
-| `/skoleni/[slug]` | Detail kurzu (bozp, pozarni, ridici, prvni-pomoc) |
+| `/skoleni/[slug]` | Detail kurzu (bozp, pozarni, ridici, ergonomie, gdpr) |
 | `/sluzby` | Další služby |
 | `/cenik` | Orientační ceník |
 | `/kontakt` | Kontaktní formulář |

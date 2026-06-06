@@ -1,7 +1,8 @@
 {
   "courseSlug": "bozp",
-  "title": "Závěrečný test – BOZP",
-  "subtitle": "Bezpečnost a ochrana zdraví při práci",
+  "variant": "demo",
+  "title": "Demo test BOZP",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
   "questions": [
     {
       "id": "q1",

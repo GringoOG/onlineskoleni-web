@@ -18,8 +18,14 @@
     "vatRate": 21
   },
   {
-    "courseSlug": "prvni-pomoc",
-    "name": "První pomoc",
+    "courseSlug": "ergonomie",
+    "name": "Ergonomie práce",
+    "pricePerPersonHalere": 14900,
+    "vatRate": 21
+  },
+  {
+    "courseSlug": "gdpr",
+    "name": "GDPR a ochrana údajů",
     "pricePerPersonHalere": 14900,
     "vatRate": 21
   }

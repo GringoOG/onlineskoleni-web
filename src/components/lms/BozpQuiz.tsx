@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { useState, useTransition } from "react";
-import {
-  QUIZ_MIN_CORRECT_ANSWERS,
-  QUIZ_TOTAL_QUESTIONS,
-} from "@/lib/lms/quiz-config";
-import { submitBozpQuiz } from "@/app/lms/actions";
+import { submitDemoQuiz, submitOfficialQuiz } from "@/app/lms/actions";
+import { getOfficialTestHubPath } from "@/lib/lms/course-paths";
+import type { LmsQuizCourseSlug, QuizAudience } from "@/lib/lms/quiz-data";
 
 interface PublicQuestion {
   id: string;
@@ -14,22 +12,40 @@ interface PublicQuestion {
   options: string[];
 }
 
-interface BozpQuizProps {
+interface CourseQuizProps {
+  courseSlug: LmsQuizCourseSlug;
   questions: PublicQuestion[];
   userName: string;
+  totalQuestions: number;
+  minCorrectAnswers: number;
+  variant: "demo" | "oficialni";
+  audience?: QuizAudience;
 }
 
 type QuizPhase = "active" | "submitting" | "done";
 
-export function BozpQuiz({ questions, userName }: BozpQuizProps) {
+export function CourseQuiz({
+  courseSlug,
+  questions,
+  userName,
+  totalQuestions,
+  minCorrectAnswers,
+  variant,
+  audience,
+}: CourseQuizProps) {
+  const officialHubPath = getOfficialTestHubPath(courseSlug) ?? "/lms";
+
   const [answers, setAnswers] = useState<(number | null)[]>(
     () => new Array(questions.length).fill(null)
   );
   const [phase, setPhase] = useState<QuizPhase>("active");
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<Awaited<
-    ReturnType<typeof submitBozpQuiz>
-  > | null>(null);
+  const [result, setResult] = useState<
+    Awaited<ReturnType<typeof submitDemoQuiz>> | null
+  >(null);
+  const [officialResult, setOfficialResult] = useState<
+    Awaited<ReturnType<typeof submitOfficialQuiz>> | null
+  >(null);
   const [isPending, startTransition] = useTransition();
 
   const answeredCount = answers.filter((a) => a !== null).length;
@@ -46,7 +62,7 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
 
   function handleSubmit() {
     if (!allAnswered) {
-      setError(`Vyplňte prosím všech ${QUIZ_TOTAL_QUESTIONS} otázek.`);
+      setError(`Vyplňte prosím všech ${totalQuestions} otázek.`);
       return;
     }
 
@@ -54,26 +70,41 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
     setPhase("submitting");
 
     startTransition(async () => {
-      const response = await submitBozpQuiz(answers as number[]);
-      setResult(response);
+      if (variant === "demo") {
+        const indices = answers as number[];
+        const response = await submitDemoQuiz(courseSlug, indices);
+        setResult(response);
+      } else {
+        const submission = questions.map((question, index) => ({
+          questionId: question.id,
+          selectedIndex: answers[index] as number,
+        }));
+        const response = await submitOfficialQuiz(
+          courseSlug,
+          submission,
+          audience
+        );
+        setOfficialResult(response);
+      }
       setPhase("done");
     });
   }
 
-  if (phase === "done" && result) {
+  function resetQuiz() {
+    setAnswers(new Array(questions.length).fill(null));
+    setPhase("active");
+    setResult(null);
+    setOfficialResult(null);
+    setError(null);
+  }
+
+  if (phase === "done" && variant === "demo" && result) {
     if (!result.ok) {
       return (
         <div className="rounded-2xl border border-red-200 bg-red-50 p-6">
           <h2 className="text-xl font-bold text-red-900">Chyba</h2>
           <p className="mt-2 text-red-800">{result.message}</p>
-          <button
-            type="button"
-            onClick={() => {
-              setPhase("active");
-              setResult(null);
-            }}
-            className="btn-primary mt-4"
-          >
+          <button type="button" onClick={resetQuiz} className="btn-primary mt-4">
             Zkusit znovu
           </button>
         </div>
@@ -84,35 +115,82 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
       return (
         <div className="rounded-2xl border border-green-200 bg-green-50 p-6 md:p-8">
           <p className="text-sm font-semibold uppercase tracking-wide text-green-700">
+            Demo test splněn
+          </p>
+          <h2 className="mt-2 text-2xl font-bold text-green-900">
+            Výborně, formát testu jste zvládli
+          </h2>
+          <p className="mt-3 text-green-800">
+            {userName}, dosáhli jste {result.scorePercent}&nbsp;% ({result.correctAnswers}/
+            {result.totalQuestions} správně). Toto byla pouze ukázka – certifikát vydává až
+            oficiální závěrečný test.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href={officialHubPath} className="btn-primary">
+              Přejít na oficiální test
+            </Link>
+            <Link
+              href="/lms"
+              className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100"
+            >
+              Moje školení
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8">
+        <h2 className="text-2xl font-bold text-amber-900">Demo test nebyl úspěšný</h2>
+        <p className="mt-3 text-amber-900">{result.message}</p>
+        <button type="button" onClick={resetQuiz} className="btn-primary mt-6">
+          Opakovat demo test
+        </button>
+      </div>
+    );
+  }
+
+  if (phase === "done" && variant === "oficialni" && officialResult) {
+    if (!officialResult.ok) {
+      return (
+        <div className="rounded-2xl border border-red-200 bg-red-50 p-6">
+          <h2 className="text-xl font-bold text-red-900">Chyba</h2>
+          <p className="mt-2 text-red-800">{officialResult.message}</p>
+          <button type="button" onClick={resetQuiz} className="btn-primary mt-4">
+            Zkusit znovu
+          </button>
+        </div>
+      );
+    }
+
+    if (officialResult.passed) {
+      return (
+        <div className="rounded-2xl border border-green-200 bg-green-50 p-6 md:p-8">
+          <p className="text-sm font-semibold uppercase tracking-wide text-green-700">
             Gratulujeme
           </p>
           <h2 className="mt-2 text-2xl font-bold text-green-900">
-            Test jste úspěšně splnili
+            Oficiální test jste úspěšně splnili
           </h2>
           <p className="mt-3 text-green-800">
-            {userName}, dosáhli jste {result.scorePercent}&nbsp;% ({result.totalQuestions}{" "}
-            otázek, minimum pro úspěch {QUIZ_MIN_CORRECT_ANSWERS} správných odpovědí).
+            {userName}, dosáhli jste {officialResult.scorePercent}&nbsp;% (
+            {officialResult.totalQuestions} otázek, minimum {minCorrectAnswers} správných).
             Výsledek byl uložen do systému.
           </p>
           <p className="mt-2 text-sm text-green-800">
             Evidenční kód certifikátu:{" "}
-            <strong className="font-mono">{result.certificateCode}</strong>
+            <strong className="font-mono">{officialResult.certificateCode}</strong>
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={result.downloadUrl} className="btn-primary" download>
+            <a href={officialResult.downloadUrl} className="btn-primary" download>
               Stáhnout certifikát (PDF)
             </a>
-            <Link href="/lms" className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100">
-              Moje školení
-            </Link>
-            <Link href="/skoleni/bozp" className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100">
-              Zpět na kurz BOZP
-            </Link>
             <Link
-              href="/"
+              href="/lms"
               className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100"
             >
-              Domů
+              Moje školení
             </Link>
           </div>
         </div>
@@ -122,20 +200,8 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
     return (
       <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8">
         <h2 className="text-2xl font-bold text-amber-900">Test nebyl úspěšný</h2>
-        <p className="mt-3 text-amber-900">{result.message}</p>
-        <p className="mt-2 text-sm text-amber-800">
-          Pro splnění potřebujete alespoň {QUIZ_MIN_CORRECT_ANSWERS} správných odpovědí z{" "}
-          {QUIZ_TOTAL_QUESTIONS}.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setAnswers(new Array(questions.length).fill(null));
-            setPhase("active");
-            setResult(null);
-          }}
-          className="btn-primary mt-6"
-        >
+        <p className="mt-3 text-amber-900">{officialResult.message}</p>
+        <button type="button" onClick={resetQuiz} className="btn-primary mt-6">
           Opakovat test
         </button>
       </div>
@@ -147,10 +213,22 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
       <div className="flex flex-col gap-3 rounded-xl border border-border bg-brand-tint px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted">
           Přihlášen: <strong className="text-foreground">{userName}</strong>
+          {variant === "oficialni" && audience && (
+            <>
+              {" "}
+              ·{" "}
+              <strong className="text-foreground">
+                {audience === "zamestnanec" ? "Zaměstnanec" : "Vedoucí zaměstnanec"}
+              </strong>
+            </>
+          )}
         </p>
         <p className="text-sm font-medium text-foreground">
-          Vyplněno {answeredCount}/{questions.length} · úspěch od{" "}
-          {QUIZ_MIN_CORRECT_ANSWERS}/{QUIZ_TOTAL_QUESTIONS}
+          Vyplněno {answeredCount}/{questions.length} · úspěch od {minCorrectAnswers}/
+          {totalQuestions}
+          {variant === "oficialni" && (
+            <span className="text-muted"> · otázky v náhodném pořadí</span>
+          )}
         </p>
       </div>
 
@@ -206,11 +284,12 @@ export function BozpQuiz({ questions, userName }: BozpQuizProps) {
           disabled={!allAnswered || isPending || phase === "submitting"}
           className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isPending || phase === "submitting"
-            ? "Odesílám výsledky…"
-            : "Odevzdat test"}
+          {isPending || phase === "submitting" ? "Odesílám výsledky…" : "Odevzdat test"}
         </button>
       </div>
     </div>
   );
 }
+
+/** @deprecated Use CourseQuiz */
+export const BozpQuiz = CourseQuiz;
