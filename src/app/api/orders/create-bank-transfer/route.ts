@@ -1,0 +1,45 @@
+import { NextResponse } from "next/server";
+import { createPendingOrder } from "@/lib/orders";
+import type { CartLineInput } from "@/lib/order-catalog";
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const companyName = String(body.companyName ?? "").trim();
+    const contactName = String(body.contactName ?? "").trim();
+    const email = String(body.email ?? "").trim();
+    const ico = body.ico ? String(body.ico).trim() : undefined;
+    const phone = body.phone ? String(body.phone).trim() : undefined;
+    const lines = body.lines as CartLineInput[] | undefined;
+
+    if (!companyName || !contactName || !email || !lines?.length) {
+      return NextResponse.json(
+        { error: "Vyplňte firmu, kontakt, e-mail a vyberte alespoň jeden kurz." },
+        { status: 400 }
+      );
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "Neplatný e-mail." }, { status: 400 });
+    }
+
+    const { order } = await createPendingOrder({
+      companyName,
+      contactName,
+      email,
+      ico,
+      phone,
+      lines,
+    });
+
+    return NextResponse.json({
+      orderNumber: order.orderNumber,
+      paymentMethod: "bank_transfer",
+    });
+  } catch (err) {
+    console.error("[create-bank-transfer]", err);
+    const message = err instanceof Error ? err.message : "Nepodařilo se vytvořit objednávku.";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}

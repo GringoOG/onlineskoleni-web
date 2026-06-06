@@ -3,9 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { formatPriceFromHalere } from "@/lib/order-catalog";
+import { QrPaymentPanel } from "@/components/QrPaymentPanel";
 
 interface OrderStatusProps {
   orderNumber: string;
+  showQrPayment?: boolean;
 }
 
 interface OrderData {
@@ -15,6 +17,7 @@ interface OrderData {
   totalAmountHalere: number;
   items: { name: string; quantity: number }[];
   paymentState: string | null;
+  paymentMethod: "gopay" | "bank_transfer";
 }
 
 async function fetchOrder(orderNumber: string): Promise<OrderData | null> {
@@ -23,27 +26,34 @@ async function fetchOrder(orderNumber: string): Promise<OrderData | null> {
   return res.json();
 }
 
-export function OrderStatus({ orderNumber }: OrderStatusProps) {
+export function OrderStatus({ orderNumber, showQrPayment = false }: OrderStatusProps) {
   const [order, setOrder] = useState<OrderData | null>(null);
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
-    await fetch(`/api/orders/${encodeURIComponent(orderNumber)}/sync`, {
-      method: "POST",
-    }).catch(() => {});
+    if (!showQrPayment) {
+      await fetch(`/api/orders/${encodeURIComponent(orderNumber)}/sync`, {
+        method: "POST",
+      }).catch(() => {});
+    }
     const data = await fetchOrder(orderNumber);
     setOrder(data);
     setLoading(false);
-  }, [orderNumber]);
+  }, [orderNumber, showQrPayment]);
 
   useEffect(() => {
     refresh();
+    if (showQrPayment) return;
     const interval = setInterval(refresh, 4000);
     return () => clearInterval(interval);
-  }, [refresh]);
+  }, [refresh, showQrPayment]);
 
   if (loading) {
-    return <p className="text-muted">Ověřujeme stav platby u GoPay…</p>;
+    return (
+      <p className="text-muted">
+        {showQrPayment ? "Načítáme objednávku…" : "Ověřujeme stav platby u GoPay…"}
+      </p>
+    );
   }
 
   if (!order) {
@@ -56,6 +66,7 @@ export function OrderStatus({ orderNumber }: OrderStatusProps) {
 
   const paid = order.status === "PAID";
   const failed = order.status === "FAILED";
+  const isBankTransfer = showQrPayment || order.paymentMethod === "bank_transfer";
 
   return (
     <div className="space-y-6">
@@ -88,6 +99,14 @@ export function OrderStatus({ orderNumber }: OrderStatusProps) {
               <strong>{order.orderNumber}</strong>.
             </p>
           </>
+        ) : isBankTransfer ? (
+          <>
+            <p className="font-semibold">Objednávka vytvořena – čekáme na platbu</p>
+            <p className="mt-1">
+              Uhraďte prosím částku bankovním převodem (QR kód níže). Po připsání platby vás
+              budeme kontaktovat s přihlašovacími údaji.
+            </p>
+          </>
         ) : (
           <>
             <p className="font-semibold">Čekáme na potvrzení platby</p>
@@ -99,6 +118,8 @@ export function OrderStatus({ orderNumber }: OrderStatusProps) {
           </>
         )}
       </div>
+
+      {!paid && isBankTransfer && <QrPaymentPanel orderNumber={orderNumber} />}
 
       <dl className="grid gap-2 text-sm text-muted">
         <div>

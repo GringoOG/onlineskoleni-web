@@ -7,6 +7,7 @@ import {
   formatPriceFromHalere,
   orderCatalog,
 } from "@/lib/order-catalog";
+import { qrPayment } from "@/lib/content";
 
 export function CheckoutForm() {
   const searchParams = useSearchParams();
@@ -27,6 +28,7 @@ export function CheckoutForm() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadingBank, setLoadingBank] = useState(false);
 
   const lines = useMemo(
     () =>
@@ -50,6 +52,39 @@ export function CheckoutForm() {
       ...prev,
       [slug]: Math.max(0, Math.min(500, qty)),
     }));
+  }
+
+  async function handleBankTransfer(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setLoadingBank(true);
+
+    try {
+      const res = await fetch("/api/orders/create-bank-transfer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companyName,
+          ico: ico || undefined,
+          contactName,
+          email,
+          phone: phone || undefined,
+          lines,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Objednávku se nepodařilo vytvořit.");
+        return;
+      }
+
+      window.location.href = `/objednavka/dekujeme?order=${encodeURIComponent(data.orderNumber)}&method=qr`;
+    } catch {
+      setError("Chyba spojení. Zkuste to prosím znovu.");
+    } finally {
+      setLoadingBank(false);
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -231,17 +266,28 @@ export function CheckoutForm() {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={loading || !cart}
-        className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-      >
-        {loading ? "Přesměrování na GoPay…" : "Zaplatit přes GoPay"}
-      </button>
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <button
+          type="submit"
+          disabled={loading || loadingBank || !cart}
+          className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+        >
+          {loading ? "Přesměrování na GoPay…" : "Zaplatit přes GoPay"}
+        </button>
+        <button
+          type="button"
+          disabled={loading || loadingBank || !cart}
+          onClick={handleBankTransfer}
+          className="w-full rounded-lg border border-brand px-6 py-3 text-sm font-semibold text-brand-dark hover:bg-brand-tint disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+        >
+          {loadingBank ? "Vytvářím objednávku…" : "Zaplatit QR převodem"}
+        </button>
+      </div>
 
       <p className="text-xs text-slate-500">
-        Po kliknutí budete přesměrováni na zabezpečenou platební bránu GoPay (karty, bankovní
-        převody). Po zaplacení vám zašleme přihlašovací údaje pro školení.
+        GoPay: karty a online bankovní převody. QR platba: převod na účet{" "}
+        <strong>{qrPayment.accountLabel}</strong> ({qrPayment.accountHolder}) – po připsání platby
+        vám zašleme přihlašovací údaje pro školení.
       </p>
     </form>
   );

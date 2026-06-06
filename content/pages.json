@@ -74,6 +74,12 @@
     "password": "test1234",
     "note": "Po úspěšném testu (min. 8/10 správně) se výsledek uloží do systému školení."
   },
+  "qrPayment": {
+    "accountNumber": "2500979023",
+    "bankCode": "2010",
+    "accountLabel": "2500979023/2010",
+    "accountHolder": "TechnikPO s.r.o."
+  },
   "relatedLinks": [
     { "title": "Technik požární ochrany", "url": "https://www.technikpo.cz" },
     { "title": "Hasící přístroje", "url": "https://www.hasicipristroje3.webnode.cz" },

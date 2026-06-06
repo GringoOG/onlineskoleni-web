@@ -10,11 +10,12 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ order?: string }>;
+  searchParams: Promise<{ order?: string; method?: string }>;
 }
 
 export default async function DekujemePage({ searchParams }: PageProps) {
-  const { order: orderNumber } = await searchParams;
+  const { order: orderNumber, method } = await searchParams;
+  const showQrPayment = method === "qr";
 
   return (
     <>
@@ -25,7 +26,7 @@ export default async function DekujemePage({ searchParams }: PageProps) {
           <p className="text-slate-600">Chybí číslo objednávky v adrese URL.</p>
         ) : (
           <Suspense fallback={<p className="text-slate-600">Načítání…</p>}>
-            <OrderStatus orderNumber={orderNumber} />
+            <OrderStatus orderNumber={orderNumber} showQrPayment={showQrPayment} />
           </Suspense>
         )}
       </Section>

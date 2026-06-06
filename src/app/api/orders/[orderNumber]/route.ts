@@ -23,5 +23,6 @@ export async function GET(_request: Request, { params }: RouteParams) {
       quantity: i.quantity,
     })),
     paymentState: order.payment?.state ?? null,
+    paymentMethod: order.payment?.gopayPaymentId ? "gopay" : "bank_transfer",
   });
 }

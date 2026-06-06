@@ -21,3 +21,4 @@ export function getCourseSlugs(): string[] {
 }
 
 export const site = pages.site;
+export const qrPayment = pages.qrPayment;

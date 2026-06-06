@@ -57,6 +57,12 @@ export interface PagesContent {
     password: string;
     note: string;
   };
+  qrPayment: {
+    accountNumber: string;
+    bankCode: string;
+    accountLabel: string;
+    accountHolder: string;
+  };
   relatedLinks: { title: string; url: string }[];
   social: { name: string; url: string }[];
 }
