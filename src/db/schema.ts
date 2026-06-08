@@ -64,4 +64,5 @@ export const certificates = pgTable("certificates", {
   pdfUrl: text("pdf_url").notNull(), // Odkaz na stažení PDF ze Supabase Storage
   issuedAt: timestamp("issued_at").defaultNow().notNull(),
   expiresAt: timestamp("expires_at").notNull(), // BOZP má platnost většinu 1 nebo 2 roky
+  expiryReminderSentAt: timestamp("expiry_reminder_sent_at"), // Kdy byl odeslán e-mail o konci platnosti
 });

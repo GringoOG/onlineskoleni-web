@@ -26,6 +26,18 @@
     ]
   },
   {
+    "slug": "bremena",
+    "title": "Manipulace s břemeny",
+    "shortTitle": "Břemena",
+    "color": "teal",
+    "description": "Školení zaměstnanců v bezpečné manipulaci s břemeny při práci. Prevence poranění páteře, správné techniky zvedání, přenášení a skladování břemen.",
+    "highlights": [
+      "Zákonné školení dle požadavků BOZP",
+      "Správné techniky manipulace a prevence zranění",
+      "Online absolvování s certifikátem po testu"
+    ]
+  },
+  {
     "slug": "ridici",
     "title": "Referenční školení řidičů",
     "shortTitle": "Řidiči",

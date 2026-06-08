@@ -42,7 +42,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <div className={`${colors.bg} border-b ${colors.border} py-14`}>
+      <div className={`${colors.bg} border-b ${colors.border} py-10 sm:py-14`}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/skoleni"
@@ -55,8 +55,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
           >
             {course.shortTitle}
           </span>
-          <h1 className={`mt-4 text-4xl font-bold ${colors.text}`}>{course.title}</h1>
-          <p className="mt-4 max-w-3xl text-lg text-slate-700">{course.description}</p>
+          <h1 className={`mt-4 break-words text-3xl font-bold leading-tight sm:text-4xl md:text-5xl ${colors.text}`}>
+            {course.title}
+          </h1>
+          <p className="mt-4 max-w-3xl text-base text-slate-700 sm:text-lg">{course.description}</p>
         </div>
       </div>
 

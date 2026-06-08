@@ -8,6 +8,9 @@ export interface CourseCertificateTemplate {
 
 interface CertificateTemplatesFile {
   trainer: string;
+  trainerCredential?: string;
+  logoImage?: string;
+  stampImage?: string;
   validityLabel: string;
   successText: string;
   instructionsTitle: string;
@@ -35,6 +38,18 @@ export function getCertificateCodePrefix(courseSlug: string): string {
 
 export function getCertificateTrainer(): string {
   return templates.trainer;
+}
+
+export function getCertificateTrainerCredential(): string | null {
+  return templates.trainerCredential?.trim() || null;
+}
+
+export function getCertificateLogoImagePath(): string | null {
+  return templates.logoImage?.trim() || null;
+}
+
+export function getCertificateStampImagePath(): string | null {
+  return templates.stampImage?.trim() || null;
 }
 
 export function getCertificateValidityLabel(): string {

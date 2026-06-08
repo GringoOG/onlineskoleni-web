@@ -1,42 +1,78 @@
 {
-  "intro": "Nabízíme nejnižší zaváděcí cenu e-learning kurzů na trhu. Konkrétní ceny závisí na počtu zaměstnanců a typu školení – kontaktujte nás pro individuální nabídku.",
-  "note": "Ceník je orientační. Pro přesnou kalkulaci nás kontaktujte na info@onlineskoleni.eu.",
+  "intro": "Přehled cen za online školení na jednu osobu. Při větším počtu zaměstnanců uplatňujeme firemní slevy uvedené níže.",
+  "note": "Všechny uvedené ceny jsou bez DPH. Pro přesnou kalkulaci včetně DPH nás kontaktujte na info@onlineskoleni.eu.",
   "plans": [
     {
+      "catalogSlug": "bozp",
       "name": "BOZP – základní školení",
       "description": "Školení bezpečnosti a ochrany zdraví při práci pro zaměstnance",
-      "priceFrom": "od 199 Kč",
-      "per": "osoba / kurz",
+      "price": "149 Kč",
+      "per": "osoba / kurz bez DPH",
       "features": ["Online prezentace a test", "Certifikát po absolvování", "Aktualizace dle legislativy"]
     },
     {
+      "catalogSlug": "bremena",
+      "name": "Manipulace s břemeny",
+      "description": "Bezpečná manipulace s břemeny při práci",
+      "price": "99 Kč",
+      "per": "osoba / kurz bez DPH",
+      "features": ["Prevence poranění páteře", "Správné techniky zvedání", "Test a certifikát"]
+    },
+    {
+      "catalogSlug": "pozarni",
       "name": "Požární ochrana (PO)",
       "description": "Zákonné školení požární ochrany",
-      "priceFrom": "od 199 Kč",
-      "per": "osoba / kurz",
+      "price": "149 Kč",
+      "per": "osoba / kurz bez DPH",
       "features": ["Kompletní obsah PO", "Test navazující na prezentaci", "Certifikát v systému"]
     },
     {
+      "catalogSlug": "ridici",
       "name": "Řidiči – referenti",
       "description": "Referenční školení řidičů",
-      "priceFrom": "od 149 Kč",
-      "per": "osoba / kurz",
+      "price": "149 Kč",
+      "per": "osoba / kurz bez DPH",
       "features": ["Pro zaměstnance na služebních cestách", "Online absolvování", "Certifikát"]
     },
     {
-      "name": "Ergonomie práce",
-      "description": "Ergonomie práce u počítače a na pracovišti",
-      "priceFrom": "od 149 Kč",
-      "per": "osoba / kurz",
-      "features": ["Prevence bolesti zad a přetížení", "Home office i kancelář", "Test a certifikát"]
-    },
-    {
+      "catalogSlug": "gdpr",
       "name": "GDPR a ochrana údajů",
       "description": "Školení ochrany osobních údajů pro zaměstnance",
-      "priceFrom": "od 149 Kč",
-      "per": "osoba / kurz",
+      "price": "249 Kč",
+      "per": "osoba / kurz bez DPH",
       "features": ["GDPR v praxi firmy", "Bezpečné nakládání s daty", "Test a certifikát"]
+    },
+    {
+      "catalogSlug": "ergonomie",
+      "name": "Ergonomie práce",
+      "description": "Ergonomie práce u počítače a na pracovišti",
+      "price": "149 Kč",
+      "per": "osoba / kurz bez DPH",
+      "features": ["Prevence bolesti zad a přetížení", "Home office i kancelář", "Test a certifikát"]
     }
   ],
-  "bulkDiscount": "Při větším počtu zaměstnanců nabízíme množstevní slevy. Využijte také náhradní plnění díky našemu zaměstnávání osob se zdravotním postižením."
+  "bundles": [
+    {
+      "catalogSlug": "balicek-bozp-po-bremena",
+      "name": "Balíček BOZP + břemena + PO",
+      "description": "Tři zákonná školení v jedné objednávce za výhodnější cenu",
+      "price": "259 Kč",
+      "per": "osoba / balíček bez DPH",
+      "features": ["BOZP, manipulace s břemeny a PO", "Jedna objednávka pro všechny kurzy", "Certifikát ke každému školení"]
+    },
+    {
+      "catalogSlug": "balicek-komplet",
+      "name": "Kompletní balíček",
+      "description": "BOZP + břemena + PO + GDPR + řidiči",
+      "price": "449 Kč",
+      "per": "osoba / balíček bez DPH",
+      "features": ["Všech 5 školení v jednom balíčku", "Nejvýhodnější cena oproti jednotlivým kurzům", "Certifikát ke každému školení"]
+    }
+  ],
+  "bulkDiscounts": [
+    { "range": "10–49 osob", "discount": "sleva 10 %" },
+    { "range": "50–99 osob", "discount": "sleva 15 %" },
+    { "range": "100+ osob", "discount": "individuální nabídka – kontaktujte nás" }
+  ],
+  "bulkDiscount": "Firemní slevy: 10–49 osob sleva 10 %, 50–99 osob sleva 15 %, od 100 osob individuální nabídka. Slevy se počítají z ceny bez DPH podle počtu osob u daného kurzu nebo balíčku. Nákup školení u nás zároveň lze uplatnit jako náhradní plnění (zaměstnáváme více než 50 % OZP)."
 }

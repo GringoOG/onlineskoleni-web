@@ -209,7 +209,7 @@ export function CourseQuiz({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-28">
       <div className="flex flex-col gap-3 rounded-xl border border-border bg-brand-tint px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted">
           Přihlášen: <strong className="text-foreground">{userName}</strong>
@@ -277,7 +277,7 @@ export function CourseQuiz({
         </p>
       )}
 
-      <div className="sticky bottom-4 rounded-2xl border border-border bg-card/95 p-4 shadow-lg backdrop-blur">
+      <div className="sticky bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 rounded-2xl border border-border bg-card/95 p-4 shadow-lg backdrop-blur">
         <button
           type="button"
           onClick={handleSubmit}

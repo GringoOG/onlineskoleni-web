@@ -16,7 +16,7 @@ export function CourseProgressStepper({ status }: CourseProgressStepperProps) {
   const activeStep = progressStepIndex(status);
 
   return (
-    <ol className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+    <ol className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2 sm:grid-cols-4">
       {STEPS.map((step, index) => {
         const stepNumber = index + 1;
         const isActive = stepNumber === activeStep;
@@ -25,7 +25,7 @@ export function CourseProgressStepper({ status }: CourseProgressStepperProps) {
         return (
           <li
             key={step}
-            className={`rounded-lg border px-3 py-2 text-center text-xs ${
+            className={`rounded-lg border px-3 py-2 text-center text-xs leading-tight ${
               isDone
                 ? "border-green-200 bg-green-50 text-green-800"
                 : isActive
@@ -33,7 +33,7 @@ export function CourseProgressStepper({ status }: CourseProgressStepperProps) {
                   : "border-border bg-white text-muted"
             }`}
           >
-            <span className="block font-medium">{PROGRESS_LABELS[step]}</span>
+            <span className="block break-words font-medium">{PROGRESS_LABELS[step]}</span>
           </li>
         );
       })}

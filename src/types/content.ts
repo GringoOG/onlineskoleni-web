@@ -1,4 +1,4 @@
-export type CourseColor = "blue" | "red" | "amber" | "green" | "violet";
+export type CourseColor = "blue" | "red" | "amber" | "green" | "violet" | "teal";
 
 export interface Course {
   slug: string;
@@ -24,11 +24,36 @@ export interface SiteInfo {
 }
 
 export interface PricingPlan {
+  catalogSlug?: string;
   name: string;
   description: string;
-  priceFrom: string;
+  price: string;
   per: string;
   features: string[];
+}
+
+export interface BulkDiscountTier {
+  range: string;
+  discount: string;
+}
+
+export interface SubstituteFulfillmentContent {
+  badge: string;
+  title: string;
+  summary: string;
+  legalBasis: string;
+  strip: string;
+  whatItMeans: {
+    title: string;
+    paragraphs: string[];
+  };
+  howItWorks: {
+    title: string;
+    items: string[];
+  };
+  benefits: string[];
+  cta: string;
+  ctaButton: string;
 }
 
 export interface PagesContent {
@@ -39,6 +64,7 @@ export interface PagesContent {
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  substituteFulfillment: SubstituteFulfillmentContent;
   about: { title: string; intro: string; body: string };
   whyUs: { title: string; items: string[] };
   howToOrder: { title: string; steps: string[] };

@@ -6,9 +6,12 @@ import { site } from "@/lib/content";
 import { getCertificatePublicUrl } from "@/lib/lms/certificate-config";
 import {
   getCertificateInstructions,
+  getCertificateLogoImagePath,
+  getCertificateStampImagePath,
   getCertificateSuccessText,
   getCertificateTemplate,
   getCertificateTrainer,
+  getCertificateTrainerCredential,
   getCertificateValidityLabel,
 } from "@/lib/lms/certificate-template";
 
@@ -24,6 +27,25 @@ export interface CertificatePdfData {
 const TEXT_MUTED = rgb(0.35, 0.35, 0.35);
 const TEXT_DARK = rgb(0.1, 0.1, 0.1);
 const BRAND_DARK = rgb(208 / 255, 95 / 255, 43 / 255);
+
+const PAGE_WIDTH = 595;
+const PAGE_HEIGHT = 842;
+const MARGIN_LEFT = 34;
+const MARGIN_RIGHT = 27;
+
+/** Logo v hlavičce (plamínek ve štítu). */
+const LOGO_BOX = {
+  top: 36,
+  height: 48,
+  width: 44,
+};
+
+/** Razítko vpravo dole — celé razítko vč. loga, cca 46 × 23 mm. */
+const STAMP_BOX = {
+  bottom: 760,
+  width: 130,
+  height: 65,
+};
 
 const FONT_DIR = path.join(
   process.cwd(),
@@ -69,31 +91,92 @@ function wrapText(text: string, font: PDFFont, size: number, maxWidth: number): 
   return lines.length > 0 ? lines : [text];
 }
 
-function drawCenteredLines(
+function baselineFromTop(top: number, fontSize: number): number {
+  return PAGE_HEIGHT - top - fontSize * 0.85;
+}
+
+function drawLeftText(
   page: PDFPage,
-  lines: string[],
-  startY: number,
+  text: string,
+  top: number,
+  font: PDFFont,
+  size: number,
+  color: ReturnType<typeof rgb>
+): void {
+  page.drawText(text, {
+    x: MARGIN_LEFT,
+    y: baselineFromTop(top, size),
+    size,
+    font,
+    color,
+  });
+}
+
+function drawRightText(
+  page: PDFPage,
+  text: string,
+  top: number,
+  font: PDFFont,
+  size: number,
+  color: ReturnType<typeof rgb>
+): void {
+  const textWidth = font.widthOfTextAtSize(text, size);
+  page.drawText(text, {
+    x: PAGE_WIDTH - MARGIN_RIGHT - textWidth,
+    y: baselineFromTop(top, size),
+    size,
+    font,
+    color,
+  });
+}
+
+function drawCenterText(
+  page: PDFPage,
+  text: string,
+  top: number,
+  font: PDFFont,
+  size: number,
+  color: ReturnType<typeof rgb>
+): void {
+  const textWidth = font.widthOfTextAtSize(text, size);
+  page.drawText(text, {
+    x: (PAGE_WIDTH - textWidth) / 2,
+    y: baselineFromTop(top, size),
+    size,
+    font,
+    color,
+  });
+}
+
+function drawLeftWrapped(
+  page: PDFPage,
+  text: string,
+  top: number,
   font: PDFFont,
   size: number,
   color: ReturnType<typeof rgb>,
+  maxWidth: number,
   lineHeight: number
 ): number {
-  let y = startY;
-  const pageWidth = page.getWidth();
+  const lines = wrapText(text, font, size, maxWidth);
+  let currentTop = top;
 
   for (const line of lines) {
-    const textWidth = font.widthOfTextAtSize(line, size);
-    page.drawText(line, {
-      x: (pageWidth - textWidth) / 2,
-      y,
-      size,
-      font,
-      color,
-    });
-    y -= lineHeight;
+    drawLeftText(page, line, currentTop, font, size, color);
+    currentTop += lineHeight;
   }
 
-  return y;
+  return currentTop;
+}
+
+async function embedImageFromPath(
+  pdfDoc: PDFDocument,
+  relativePath: string
+) {
+  const bytes = await readFile(path.join(process.cwd(), relativePath));
+  return relativePath.endsWith(".jpg") || relativePath.endsWith(".jpeg")
+    ? pdfDoc.embedJpg(bytes)
+    : pdfDoc.embedPng(bytes);
 }
 
 export async function generateCertificatePdf(
@@ -103,6 +186,7 @@ export async function generateCertificatePdf(
   const template = getCertificateTemplate(data.courseSlug);
   const instructions = getCertificateInstructions();
   const companyLabel = data.companyName?.trim() || "neuvedeno";
+  const contentWidth = PAGE_WIDTH - MARGIN_LEFT - MARGIN_RIGHT - 210;
 
   const pdfDoc = await PDFDocument.create();
   pdfDoc.registerFontkit(fontkit);
@@ -110,147 +194,156 @@ export async function generateCertificatePdf(
   const fontRegular = await pdfDoc.embedFont(fonts.regular);
   const fontBold = await pdfDoc.embedFont(fonts.bold);
 
-  const page = pdfDoc.addPage([595, 842]);
-  const { width, height } = page.getSize();
-  const margin = 48;
-  const contentWidth = width - margin * 2;
+  const page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
 
-  let y = height - margin;
-
-  y = drawCenteredLines(
-    page,
-    [site.company, `${site.address.street}, ${site.address.city}, ${site.address.zip}`, `IČO: ${site.ico}`],
-    y,
-    fontRegular,
-    10,
-    TEXT_MUTED,
-    14
-  );
-
-  y -= 10;
-  y = drawCenteredLines(
-    page,
-    [template.trainingTitle],
-    y,
-    fontBold,
-    14,
-    TEXT_DARK,
-    18
-  );
-
-  y -= 6;
-  y = drawCenteredLines(page, ["CERTIFIKÁT"], y, fontBold, 22, BRAND_DARK, 26);
-
-  y -= 4;
-  y = drawCenteredLines(
-    page,
-    wrapText(template.legalBasis, fontRegular, 10, contentWidth),
-    y,
-    fontRegular,
-    10,
-    TEXT_MUTED,
-    13
-  );
-
-  y -= 12;
-  y = drawCenteredLines(page, ["Pan/paní"], y, fontRegular, 11, TEXT_MUTED, 14);
-
-  y -= 2;
-  y = drawCenteredLines(page, [data.studentName], y, fontBold, 20, TEXT_DARK, 24);
-
-  y -= 10;
-  y = drawCenteredLines(
-    page,
-    ["Toto školení je platné pro firmu", companyLabel],
-    y,
-    fontRegular,
-    11,
-    TEXT_DARK,
-    15
-  );
-
-  y -= 8;
-  y = drawCenteredLines(
-    page,
-    [getCertificateValidityLabel()],
-    y,
-    fontRegular,
-    11,
-    TEXT_DARK,
-    14
-  );
-
-  y -= 10;
-  y = drawCenteredLines(
-    page,
-    wrapText(getCertificateSuccessText(), fontRegular, 10, contentWidth),
-    y,
-    fontRegular,
-    10,
-    TEXT_MUTED,
-    13
-  );
-
-  y -= 14;
-  page.drawText(instructions.title, {
-    x: margin,
-    y,
-    size: 11,
-    font: fontBold,
-    color: TEXT_DARK,
-  });
-  y -= 16;
-
-  for (const item of instructions.items) {
-    const lines = wrapText(item, fontRegular, 9, contentWidth - 12);
-    for (const line of lines) {
-      page.drawText(`• ${line}`, {
-        x: margin + 4,
-        y,
-        size: 9,
-        font: fontRegular,
-        color: TEXT_MUTED,
+  const logoPath = getCertificateLogoImagePath();
+  if (logoPath) {
+    try {
+      const logoImage = await embedImageFromPath(pdfDoc, logoPath);
+      const logoX = PAGE_WIDTH - MARGIN_RIGHT - LOGO_BOX.width;
+      page.drawImage(logoImage, {
+        x: logoX,
+        y: PAGE_HEIGHT - LOGO_BOX.top - LOGO_BOX.height,
+        width: LOGO_BOX.width,
+        height: LOGO_BOX.height,
       });
-      y -= 12;
+    } catch {
+      // Logo není povinné — certifikát se vygeneruje i bez něj.
     }
-    y -= 4;
   }
 
-  y -= 6;
-  y = drawCenteredLines(
+  drawLeftText(page, template.trainingTitle, 40, fontBold, 14, TEXT_DARK);
+  drawRightText(page, site.company, 92, fontBold, 14, TEXT_DARK);
+  drawRightText(
     page,
-    ["Jmenovaný absolvoval/a školení dne:", formatCzechDate(data.issuedAt)],
-    y,
+    `${site.address.street}, ${site.address.city}, ${site.address.zip}`,
+    112,
     fontRegular,
     11,
-    TEXT_DARK,
-    15
+    TEXT_MUTED
   );
+  drawRightText(page, `IČO: ${site.ico}`, 124, fontRegular, 11, TEXT_MUTED);
 
-  y -= 12;
-  y = drawCenteredLines(
+  drawCenterText(page, "CERTIFIKÁT", 182, fontBold, 39, BRAND_DARK);
+
+  let top = drawLeftWrapped(
     page,
-    [`Školitel: ${getCertificateTrainer()}`],
-    y,
+    template.legalBasis,
+    251,
     fontRegular,
     11,
-    TEXT_DARK,
-    14
-  );
-
-  const footerY = margin + 28;
-  drawCenteredLines(
-    page,
-    [
-      `Evidenční kód: ${data.certificateCode}`,
-      getCertificatePublicUrl(data.certificateCode),
-      `${site.name} · onlineskoleni.eu`,
-    ],
-    footerY + 28,
-    fontRegular,
-    9,
     TEXT_MUTED,
+    contentWidth + 210,
     12
+  );
+
+  top = Math.max(top, 275);
+  drawLeftText(page, "Pan/paní", top, fontRegular, 11, TEXT_MUTED);
+
+  drawCenterText(page, data.studentName, 303, fontBold, 27, TEXT_DARK);
+  drawCenterText(
+    page,
+    "Toto školení je platné pro firmu",
+    360,
+    fontRegular,
+    11,
+    TEXT_DARK
+  );
+  drawCenterText(page, companyLabel, 399, fontBold, 27, TEXT_DARK);
+
+  drawLeftText(page, getCertificateValidityLabel(), 457, fontRegular, 11, TEXT_DARK);
+
+  top = drawLeftWrapped(
+    page,
+    getCertificateSuccessText(),
+    482,
+    fontRegular,
+    11,
+    TEXT_MUTED,
+    contentWidth + 210,
+    12
+  );
+
+  top = Math.max(top, 562);
+  drawLeftText(page, instructions.title, 550, fontBold, 11, TEXT_DARK);
+
+  top = 563;
+  for (const item of instructions.items) {
+    top = drawLeftWrapped(
+      page,
+      item,
+      top,
+      fontRegular,
+      11,
+      TEXT_MUTED,
+      contentWidth + 210,
+      12
+    );
+    top += 2;
+  }
+
+  drawLeftText(
+    page,
+    "Jmenovaný absolvoval/a školení dne:",
+    636,
+    fontRegular,
+    11,
+    TEXT_DARK
+  );
+  drawLeftText(
+    page,
+    formatCzechDate(data.issuedAt),
+    661,
+    fontRegular,
+    11,
+    TEXT_DARK
+  );
+
+  const trainerCredential = getCertificateTrainerCredential();
+  drawLeftText(
+    page,
+    `Školitel: ${getCertificateTrainer()}, číslo osvědčení.`,
+    729,
+    fontRegular,
+    11,
+    TEXT_DARK
+  );
+  if (trainerCredential) {
+    const certNumber = trainerCredential.replace(/^číslo osvědčení\s*/i, "");
+    drawLeftText(page, certNumber, 741, fontRegular, 11, TEXT_DARK);
+  }
+
+  const stampPath = getCertificateStampImagePath();
+  if (stampPath) {
+    try {
+      const stampImage = await embedImageFromPath(pdfDoc, stampPath);
+      const stampX = PAGE_WIDTH - MARGIN_RIGHT - STAMP_BOX.width;
+      page.drawImage(stampImage, {
+        x: stampX,
+        y: PAGE_HEIGHT - STAMP_BOX.bottom,
+        width: STAMP_BOX.width,
+        height: STAMP_BOX.height,
+      });
+    } catch {
+      // Razítko není povinné — certifikát se vygeneruje i bez něj.
+    }
+  }
+
+  drawLeftText(
+    page,
+    getCertificatePublicUrl(data.certificateCode),
+    818,
+    fontRegular,
+    8,
+    TEXT_MUTED
+  );
+  drawLeftText(
+    page,
+    `Evidenční kód: ${data.certificateCode}`,
+    806,
+    fontRegular,
+    8,
+    TEXT_MUTED
   );
 
   return pdfDoc.save();

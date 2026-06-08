@@ -18,14 +18,47 @@
     "ctaPrimary": "Kontaktovat",
     "ctaSecondary": "Vyzkoušet test zdarma"
   },
+  "substituteFulfillment": {
+    "badge": "Náhradní plnění · zaměstnávání OZP",
+    "title": "Ušetřete na povinném odvodu díky náhradnímu plnění",
+    "summary": "TechnikPO s.r.o. zaměstnává více než 50 % občanů se zdravotním postižením (OZP). Pokud má vaše firma zákonnou povinnost zaměstnávat OZP, můžete ji splnit nákupem našich služeb – online školení se započítává jako náhradní plnění dle § 81 zákona č. 435/2004 Sb.",
+    "legalBasis": "§ 81 zákona č. 435/2004 Sb., o zaměstnanosti",
+    "strip": "Zaměstnáváme více než 50 % OZP → při nákupu školení u nás můžete uplatnit náhradní plnění a snížit odvod do státního rozpočtu.",
+    "whatItMeans": {
+      "title": "Co je náhradní plnění?",
+      "paragraphs": [
+        "Zaměstnavatelé s určitým počtem zaměstnanců mají ze zákona povinnost zaměstnávat osoby se zdravotním postižením (OZP), případně platit do státního rozpočtu zvláštní příspěvek na podporu zaměstnávání OZP.",
+        "Náhradní plnění znamená, že tuto povinnost můžete částečně nebo zcela splnit nákupem zboží, služeb nebo jiného plnění od dodavatele, který sám zaměstnává více než 50 % občanů se zdravotním postižením.",
+        "Částka, kterou u nás za online školení zaplatíte, se vám započítá do náhradního plnění – tedy místo (nebo vedle) odvodu do státního rozpočtu podporujete zaměstnávání OZP a zároveň získáte potřebná školení pro své zaměstnance."
+      ]
+    },
+    "howItWorks": {
+      "title": "Co to pro vaši firmu obnáší?",
+      "items": [
+        "Objednáte u nás online školení (BOZP, PO, břemena, GDPR a další) jako běžnou službu.",
+        "Vystavíme fakturu – částka z faktury slouží jako podklad pro uplatnění náhradního plnění u úřadu práce.",
+        "Vaše firma si může snížit nebo nemusí platit zvláštní příspěvek na podporu zaměstnávání OZP, pokud náhradní plnění pokryje zákonnou povinnost.",
+        "Získáte splnění školení zaměstnanců i ekonomickou výhodu – peníze zůstanou v systému podpory zaměstnávání OZP místo odvodu do rozpočtu."
+      ]
+    },
+    "benefits": [
+      "Úspora nákladů oproti povinnému odvodu do státního rozpočtu",
+      "Splnění zákonných školení a náhradního plnění v jedné objednávce",
+      "Podpora zaměstnávání osob se zdravotním postižením",
+      "Jednoduchá administrativa – stačí faktura za naše služby"
+    ],
+    "cta": "Nevíte, zda na vás povinnost dopadá, nebo jak částku uplatnit? Napište nám – poradíme s náhradním plněním při objednávce školení.",
+    "ctaButton": "Zeptat se na náhradní plnění"
+  },
   "about": {
     "title": "O nás",
-    "intro": "Zaměstnáváme více než 50 % občanů se zdravotním postižením. Tato skutečnost vám umožňuje uplatňovat náhradní plnění ve smyslu § 81 zákona 435/2004 Sb. a ušetřit tak nemalé prostředky na odvodech do státního rozpočtu.",
-    "body": "Nabízíme vám levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO (bezpečnost a ochrana zdraví při práci a požární ochrana), včetně školení řidičů – referentů, ergonomie práce a ochrany osobních údajů (GDPR). Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb."
+    "intro": "Jsme TechnikPO s.r.o. – zaměstnáváme více než 50 % občanů se zdravotním postižením. Díky tomu můžete při nákupu našich online školení uplatnit náhradní plnění dle § 81 zákona č. 435/2004 Sb. a ušetřit na odvodech do státního rozpočtu.",
+    "body": "Nabízíme vám levné, jednoduché a rychlé splnění zákonných požadavků v oblastech BOZP a PO (bezpečnost a ochrana zdraví při práci a požární ochrana), včetně školení manipulace s břemeny, řidičů – referentů, ergonomie práce a ochrany osobních údajů (GDPR). Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb."
   },
   "whyUs": {
     "title": "Proč právě u nás?",
     "items": [
+      "Náhradní plnění – zaměstnáváme více než 50 % OZP, takže nákup školení u nás můžete započítat do povinnosti dle § 81 zákona č. 435/2004 Sb.",
       "Všechny kurzy zpracovány odborně způsobilou osobou a splňují požadavky platné legislativy",
       "Kurzy jsou přehledné a zakončené testovou částí navazující na prezentaci",
       "Po úspěšném absolvování je automaticky vygenerován certifikát",

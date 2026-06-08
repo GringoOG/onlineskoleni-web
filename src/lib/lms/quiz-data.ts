@@ -4,11 +4,23 @@ import bozpOficialniVedouci from "../../../content/quizzes/bozp-oficialni-vedouc
 import pozarniDemo from "../../../content/quizzes/pozarni-demo.json";
 import pozarniOficialniZamestnanec from "../../../content/quizzes/pozarni-oficialni-zamestnanec.json";
 import pozarniOficialniVedouci from "../../../content/quizzes/pozarni-oficialni-vedouci.json";
+import bremenaDemo from "../../../content/quizzes/bremena-demo.json";
+import bremenaOficialni from "../../../content/quizzes/bremena-oficialni.json";
+import ergonomieDemo from "../../../content/quizzes/ergonomie-demo.json";
+import ergonomieOficialni from "../../../content/quizzes/ergonomie-oficialni.json";
+import gdprDemo from "../../../content/quizzes/gdpr-demo.json";
+import gdprOficialni from "../../../content/quizzes/gdpr-oficialni.json";
 import ridiciDemo from "../../../content/quizzes/ridici-demo.json";
 import ridiciOficialni from "../../../content/quizzes/ridici-oficialni.json";
 import { getMinCorrectAnswers } from "@/lib/lms/quiz-config";
 
-export type LmsQuizCourseSlug = "bozp" | "pozarni" | "ridici";
+export type LmsQuizCourseSlug =
+  | "bozp"
+  | "pozarni"
+  | "ridici"
+  | "bremena"
+  | "gdpr"
+  | "ergonomie";
 export type QuizAudience = "zamestnanec" | "vedouci";
 /** @deprecated Use QuizAudience */
 export type BozpQuizAudience = QuizAudience;
@@ -82,6 +94,21 @@ const quizRegistry: Record<LmsQuizCourseSlug, CourseQuizBundle> = {
     officialMode: "single",
     demo: ridiciDemo as QuizDefinition,
     oficialni: ridiciOficialni as QuizDefinition,
+  },
+  bremena: {
+    officialMode: "single",
+    demo: bremenaDemo as QuizDefinition,
+    oficialni: bremenaOficialni as QuizDefinition,
+  },
+  gdpr: {
+    officialMode: "single",
+    demo: gdprDemo as QuizDefinition,
+    oficialni: gdprOficialni as QuizDefinition,
+  },
+  ergonomie: {
+    officialMode: "single",
+    demo: ergonomieDemo as QuizDefinition,
+    oficialni: ergonomieOficialni as QuizDefinition,
   },
 };
 

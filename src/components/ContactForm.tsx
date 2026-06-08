@@ -65,19 +65,21 @@ export function ContactForm() {
 
       <fieldset>
         <legend className="text-sm font-medium text-slate-700">Typ školení</legend>
-        <div className="mt-2 grid gap-2 sm:grid-cols-2">
+        <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
           {courses.map((course) => (
             <label
               key={course.slug}
-              className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm hover:bg-slate-50"
+              className="flex cursor-pointer items-start gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm hover:bg-slate-50"
             >
               <input
                 type="checkbox"
                 name="trainingTypes"
                 value={course.slug}
-                className="rounded border-slate-300 text-brand-dark focus:ring-brand"
+                className="mt-1 shrink-0 rounded border-slate-300 text-brand-dark focus:ring-brand"
               />
-              {course.shortTitle} – {course.title}
+              <span className="break-words">
+                {course.shortTitle} – {course.title}
+              </span>
             </label>
           ))}
         </div>

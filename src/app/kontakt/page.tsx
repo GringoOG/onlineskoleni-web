@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -16,6 +17,10 @@ export default function KontaktPage() {
         title="Kontakt"
         subtitle="Napište nám jména zaměstnanců a druh školení – zašleme přihlašovací údaje."
       />
+
+      <Section>
+        <SubstituteFulfillmentBanner variant="full" />
+      </Section>
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-5">

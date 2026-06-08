@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 import { db, userCourses } from "@/db";
 import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
 import { findOrCreateStudent } from "@/lib/lms/find-or-create-student";
+import {
+  expandOrderItemsForEnrollment,
+  type OrderItemForEnrollment,
+} from "@/lib/order-catalog";
 
-export interface OrderItemForEnrollment {
-  courseSlug: string;
-  name: string;
-  quantity: number;
-}
+export type { OrderItemForEnrollment };
 
 export interface EnrollmentResult {
   userId: string;
@@ -41,8 +41,9 @@ export async function enrollContactForOrderItems(input: {
   });
 
   const results: EnrollmentResult[] = [];
+  const items = expandOrderItemsForEnrollment(input.items);
 
-  for (const item of input.items) {
+  for (const item of items) {
     const course = await ensureLmsCourse(item.courseSlug);
 
     const [existingEnrollment] = await db

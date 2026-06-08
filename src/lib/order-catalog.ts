@@ -5,6 +5,7 @@ export interface OrderCatalogItem {
   name: string;
   pricePerPersonHalere: number;
   vatRate: number;
+  bundleCourses?: string[];
 }
 
 export const orderCatalog = catalogData as OrderCatalogItem[];
@@ -22,6 +23,15 @@ export function formatPriceFromHalere(halere: number): string {
   }).format(halere / 100);
 }
 
+export function getBulkDiscountPercent(
+  quantity: number
+): number | "contact" {
+  if (quantity >= 100) return "contact";
+  if (quantity >= 50) return 15;
+  if (quantity >= 10) return 10;
+  return 0;
+}
+
 export interface CartLineInput {
   courseSlug: string;
   quantity: number;
@@ -32,6 +42,7 @@ export interface ComputedCartLine {
   name: string;
   quantity: number;
   unitPriceHalere: number;
+  discountPercent: number;
   lineTotalHalere: number;
   vatRate: number;
 }
@@ -48,19 +59,34 @@ export function computeCart(lines: CartLineInput[]): {
   let totalAmountHalere = 0;
 
   for (const line of lines) {
-    if (line.quantity < 1 || line.quantity > 500) {
-      return { error: "Neplatný počet zaměstnanců (1–500)." };
+    if (line.quantity < 1 || line.quantity > 99) {
+      return { error: "Neplatný počet zaměstnanců (1–99). Pro 100+ osob nás kontaktujte." };
     }
+
+    const discount = getBulkDiscountPercent(line.quantity);
+    if (discount === "contact") {
+      return {
+        error:
+          "Pro 100 a více osob u jednoho kurzu nebo balíčku nás prosím kontaktujte pro individuální nabídku.",
+      };
+    }
+
     const catalog = getCatalogItem(line.courseSlug);
     if (!catalog) {
       return { error: `Neznámý kurz: ${line.courseSlug}` };
     }
-    const lineTotalHalere = catalog.pricePerPersonHalere * line.quantity;
+
+    const unitPriceHalere = Math.round(
+      (catalog.pricePerPersonHalere * (100 - discount)) / 100
+    );
+    const lineTotalHalere = unitPriceHalere * line.quantity;
+
     items.push({
       courseSlug: catalog.courseSlug,
       name: catalog.name,
       quantity: line.quantity,
-      unitPriceHalere: catalog.pricePerPersonHalere,
+      unitPriceHalere,
+      discountPercent: discount,
       lineTotalHalere,
       vatRate: catalog.vatRate,
     });
@@ -68,6 +94,37 @@ export function computeCart(lines: CartLineInput[]): {
   }
 
   return { items, totalAmountHalere };
+}
+
+export interface OrderItemForEnrollment {
+  courseSlug: string;
+  name: string;
+  quantity: number;
+}
+
+/** Rozbalí balíčky na jednotlivé kurzy pro přiřazení v LMS. */
+export function expandOrderItemsForEnrollment(
+  items: OrderItemForEnrollment[]
+): OrderItemForEnrollment[] {
+  const expanded: OrderItemForEnrollment[] = [];
+
+  for (const item of items) {
+    const catalog = getCatalogItem(item.courseSlug);
+    if (catalog?.bundleCourses?.length) {
+      for (const slug of catalog.bundleCourses) {
+        const course = getCatalogItem(slug);
+        expanded.push({
+          courseSlug: slug,
+          name: course?.name ?? slug,
+          quantity: item.quantity,
+        });
+      }
+      continue;
+    }
+    expanded.push(item);
+  }
+
+  return expanded;
 }
 
 export function generateOrderNumber(): string {

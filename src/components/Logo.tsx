@@ -10,7 +10,7 @@ interface LogoProps {
 
 export function Logo({ showText = true, size = 40, className = "" }: LogoProps) {
   return (
-    <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
+    <Link href="/" className={`flex min-w-0 items-center gap-2 sm:gap-2.5 ${className}`}>
       <Image
         src="/images/logo.svg"
         alt={`${site.name} – logo`}
@@ -21,7 +21,7 @@ export function Logo({ showText = true, size = 40, className = "" }: LogoProps) 
         style={{ width: size, height: "auto" }}
       />
       {showText && (
-        <span className="text-lg font-bold text-white">{site.name}</span>
+        <span className="truncate text-base font-bold text-white sm:text-lg">{site.name}</span>
       )}
     </Link>
   );

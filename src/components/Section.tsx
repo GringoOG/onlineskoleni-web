@@ -26,7 +26,7 @@ export function Section({
         {(title || subtitle) && (
           <div className="mb-10 max-w-2xl">
             {title && (
-              <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
                 {title}
               </h2>
             )}

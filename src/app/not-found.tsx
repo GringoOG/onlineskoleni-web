@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-24 text-center">
+    <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8">
       <h1 className="text-4xl font-bold text-slate-900">Stránka nenalezena</h1>
       <p className="mt-4 text-slate-600">Požadovaná stránka neexistuje.</p>
       <Link

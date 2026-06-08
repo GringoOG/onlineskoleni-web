@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { LoginPlaceholder } from "./LoginPlaceholder";
 
@@ -22,14 +22,30 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
+  useEffect(() => {
+    if (!mobileOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const isActive = (href: string) =>
     pathname === href ||
     (href.startsWith("/skoleni") && pathname.startsWith("/skoleni"));
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-surface-dark/95 text-white backdrop-blur supports-[backdrop-filter]:bg-surface-dark/90">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-surface-dark/95 text-white backdrop-blur supports-[backdrop-filter]:bg-surface-dark/90">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
           <div className="shrink-0">
             <Logo />
           </div>
@@ -82,10 +98,18 @@ export function Header() {
             </button>
           </div>
         </div>
+      </header>
 
-        {mobileOpen && (
+      {mobileOpen && (
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 top-16 z-40 bg-black/50 min-[1320px]:hidden"
+            aria-label="Zavřít menu"
+            onClick={() => setMobileOpen(false)}
+          />
           <nav
-            className="border-t border-white/10 bg-surface-darker px-4 py-4 min-[1320px]:hidden"
+            className="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-surface-darker px-4 py-4 shadow-xl min-[1320px]:hidden"
             aria-label="Mobilní navigace"
           >
             <ul className="space-y-1">
@@ -123,8 +147,8 @@ export function Header() {
               </li>
             </ul>
           </nav>
-        )}
-      </header>
+        </>
+      )}
 
       <LoginPlaceholder open={loginOpen} onClose={() => setLoginOpen(false)} />
     </>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CookieBanner } from "@/components/CookieBanner";
 import { site } from "@/lib/content";
 import "./globals.css";
@@ -33,6 +34,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#1a1a1b",
 };
 
@@ -45,7 +48,10 @@ export default function RootLayout({
     <html lang="cs" className={`${inter.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16">
+          <SubstituteFulfillmentBanner variant="strip" />
+          {children}
+        </main>
         <Footer />
         <CookieBanner />
       </body>

@@ -85,6 +85,19 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="mt-10 rounded-xl border border-amber-400/40 bg-amber-500/10 p-5">
+          <p className="text-xs font-bold uppercase tracking-wider text-amber-300">
+            {pages.substituteFulfillment.badge}
+          </p>
+          <p className="mt-2 text-sm text-slate-200">{pages.substituteFulfillment.summary}</p>
+          <Link
+            href="/#nahradni-plneni"
+            className="mt-3 inline-block text-sm font-semibold text-amber-200 hover:text-white"
+          >
+            Jak funguje náhradní plnění →
+          </Link>
+        </div>
+
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-500">
           <p>
             © {new Date().getFullYear()} {site.company} · {site.name}

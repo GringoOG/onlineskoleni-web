@@ -1,0 +1,308 @@
+{
+  "courseSlug": "gdpr",
+  "variant": "oficialni",
+  "title": "Závěrečný test GDPR",
+  "subtitle": "Oficiální test s vydáním certifikátu",
+  "questions": [
+    {
+      "id": "off-g1",
+      "text": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května 2018?",
+      "options": [
+        "Směrnice Evropského parlamentu a Rady 95/46/ES",
+        "Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR)",
+        "Zákon č. 101/2000 Sb., o ochraně osobních údajů"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g2",
+      "text": "Jaký je vztah mezi evropským nařízením GDPR a českým zákonem č. 110/2019 Sb.?",
+      "options": [
+        "Zákon č. 110/2019 Sb. zcela nahrazuje a ruší platnost GDPR na území ČR.",
+        "Zákon č. 110/2019 Sb. doplňuje GDPR v oblastech, kde nařízení dává členským státům prostor pro vlastní úpravu.",
+        "GDPR je pouze doporučující materiál a závazný je výhradně zákon č. 110/2019 Sb."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g3",
+      "text": "Kdo je podle GDPR považován za „správce“ osobních údajů?",
+      "options": [
+        "Fyzická nebo právnická osoba, která určuje účely a prostředky zpracování osobních údajů.",
+        "Každý zaměstnanec, který v rámci své práce přijde do styku s osobními údaji.",
+        "Externí dodavatel, který pro firmu provádí zpracování dat (např. cloudové úložiště)."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g4",
+      "text": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření souhlasu se zpracováním osobních údajů v souvislosti s nabídkou služeb informační společnosti (např. sociální sítě)?",
+      "options": [
+        "13 let",
+        "15 let",
+        "16 let"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g5",
+      "text": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“ (citlivé údaje) podle GDPR?",
+      "options": [
+        "E-mailová adresa a telefonní číslo.",
+        "Údaje o rasovém či etnickém původu a genetické údaje.",
+        "Číslo bankovního účtu a výše příjmu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g6",
+      "text": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy, kterou subjekt údajů uzavřel?",
+      "options": [
+        "Pouze na základě výslovného a písemného souhlasu subjektu údajů.",
+        "Zpracování je nezbytné pro splnění smlouvy podle čl. 6 odst. 1 písm. b) GDPR.",
+        "Na základě oprávněného zájmu třetí strany."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g7",
+      "text": "Co vyjadřuje zásada „minimalizace údajů“?",
+      "options": [
+        "Osobní údaje musí být uloženy v co nejmenší velikosti souborů (komprimovány).",
+        "Osobní údaje musí být přiměřené, relevantní a omezené na nezbytný rozsah ve vztahu k účelu, pro který jsou zpracovávány.",
+        "Správce musí osobní údaje smazat okamžitě po jejich prvním zobrazení."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g8",
+      "text": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat?",
+      "options": [
+        "Ano, souhlas lze odvolat kdykoliv a odvolání musí být stejně snadné jako jeho poskytnutí.",
+        "Ano, ale pouze se souhlasem správce a po zaplacení administrativního poplatku.",
+        "Ne, jednou udělený souhlas je trvalý a nelze jej vzít zpět až do uplynutí skartační lhůty."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g9",
+      "text": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje?",
+      "options": [
+        "Právo na výmaz (právo být zapomenut).",
+        "Právo na opravu podle čl. 16 GDPR.",
+        "Právo na přenositelnost údajů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g10",
+      "text": "Co je to „právo na přenositelnost údajů“ (data portability)?",
+      "options": [
+        "Právo získat své osobní údaje ve strukturovaném, běžně používaném a strojově čitelném formátu a předat je jinému správci.",
+        "Právo požadovat, aby správce fyzicky poslal data poštou na CD nebo flash disku.",
+        "Právo na změnu trvalého bydliště v registru obyvatel."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g11",
+      "text": "Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice?",
+      "options": [
+        "Ministerstvo vnitra ČR",
+        "Úřad pro ochranu osobních údajů (ÚOOÚ)",
+        "Česká obchodní inspekce (ČOI)"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g12",
+      "text": "Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu osobních údajů (DPO)?",
+      "options": [
+        "Každý orgán veřejné moci nebo veřejný subjekt (s výjimkou soudů jednajících v rámci svých soudních pravomocí).",
+        "Pouze společnosti, které mají více než 250 zaměstnanců.",
+        "Všechny živnostenské subjekty (OSVČ) bez výjimky."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g13",
+      "text": "V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení osobních údajů, které představuje riziko pro práva jednotlivců?",
+      "options": [
+        "Do 30 dnů od zjištění incidentu.",
+        "Bez zbytečného odkladu a nejpozději do 72 hodin od okamžiku, kdy se o něm dozvěděl.",
+        "Do konce příslušného kalendářního měsíce."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g14",
+      "text": "Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému subjektu údajů (občanovi)?",
+      "options": [
+        "Při jakémkoliv, i sebemenším narušení systému, bez ohledu na závažnost.",
+        "Pokud je pravděpodobné, že toto porušení bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+        "Pouze v případě, že si to subjekt údajů předem písemně vyžádal ve smlouvě."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g15",
+      "text": "Co je to „Záznam o činnostech zpracování“?",
+      "options": [
+        "Dokumentace, kterou si správce nebo zpracovatel povinně vede o tom, jaká data, proč a jak zpracovává.",
+        "Výpis z registru trestů všech zaměstnanců, kteří pracují s databázemi.",
+        "Kniha příchodů a odchodů na pracoviště uložená v papírové formě."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g16",
+      "text": "Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější porušení GDPR?",
+      "options": [
+        "Do 20 000 000 EUR nebo do 4 % celkového ročního obratu celosvětově (podle toho, co je vyšší).",
+        "Fixní částka 10 000 000 Kč bez ohledu na velikost firmy.",
+        "Maximálně 500 000 EUR pro jakékoliv porušení."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g17",
+      "text": "Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité subjekty?",
+      "options": [
+        "Ne, pokuty se udělují všem subjektům stejně podle evropského sazebníku.",
+        "Ano, zákon omezuje možnost ukládat pokuty obcím, které nezřizují pověřence, a některým orgánům veřejné moci.",
+        "Ano, pokuty se podle českého zákona nesmí dávat žádným soukromým firmám, pouze státu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g18",
+      "text": "Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by design and by default)?",
+      "options": [
+        "Ochrana dat musí být integrována již od počátku návrhu technologií a systémy musí být přednastaveny na nejvyšší možnou míru soukromí.",
+        "Znamená to, že všechny dokumenty musí být uzamčeny v trezoru se standardním zámkem.",
+        "Že ochrana osobních údajů se řeší až ve chvíli, kdy dojde k soudnímu sporu."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g19",
+      "text": "Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)?",
+      "options": [
+        "Při každém nákupu nového kancelářského papíru.",
+        "Pokud je pravděpodobné, že určitý typ zpracování (zejména při použití nových technologií) bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+        "Pouze pokud firmu k tomuto kroku písemně vyzve Policie ČR."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g20",
+      "text": "Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů?",
+      "options": [
+        "Musí mít uzavřenou písemnou smlouvu o zpracování osobních údajů (tzv. zpracovatelskou smlouvu) splňující náležitosti čl. 28 GDPR.",
+        "Postačí ústní dohoda uzavřená před svědky.",
+        "Žádný právní vztah se nevyžaduje, pokud jsou obě firmy registrované v EU."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g21",
+      "text": "Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv. podzpracovatele)?",
+      "options": [
+        "Ano, zcela libovolně a bez vědomí původního správce.",
+        "Pouze s předchozím konkrétním nebo obecným písemným povolením správce.",
+        "Ne, zapojení dalších subjektů je striktně zakázáno za všech okolností."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g22",
+      "text": "Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský hospodářský prostor), pokud neexistuje rozhodnutí Evropské komise o odpovídající ochraně?",
+      "options": [
+        "Na základě vhodných záruk, jako jsou standardní smluvní doložky (SCC) schválené EK nebo závazná podniková pravidla (BCR).",
+        "Data lze předat kamkoliv, stačí, když s tím ústně souhlasí ředitel společnosti.",
+        "Do třetích zemí je předávání dat absolutně zakázáno bez výjimek."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g23",
+      "text": "Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv. informační povinnost)?",
+      "options": [
+        "Pouze telefonní číslo na technickou podporu.",
+        "Identitu správce, účely zpracování, právní základ, dobu uchování dat a informaci o právech subjektu údajů.",
+        "Interní obchodní tajemství a zdrojové kódy databáze."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g24",
+      "text": "Co znamená „právo na omezení zpracování“?",
+      "options": [
+        "Právo požadovat, aby správce osobní údaje označil a dočasně pozastavil jejich zpracování (data se nesmažou, ale ani aktivně nevyužívají).",
+        "Právo zakázat správci přístup na internet.",
+        "Právo vynutit si slevu z ceny poskytované služby."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g25",
+      "text": "Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných povinností z důvodu novinářské licence nebo pro účely akademického, uměleckého či literárního projevu?",
+      "options": [
+        "Zpracování prováděné bankami za účelem prověřování bonity klientů.",
+        "Zpracování nezbytné pro legitimní činnost tisku, rozhlasu, televize a literární/umělecké tvorby za účelem ochrany svobody projevu.",
+        "Zpracování kamerových záznamů na soukromých parkovištích."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g26",
+      "text": "Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se zpracováním osobních údajů pro účely marketingu?",
+      "options": [
+        "Ano, je to běžná obchodní praktika schválená legislativou.",
+        "Ne, souhlas musí být svobodný a nesmí být podmínkou pro plnění smlouvy, pokud dané zpracování není pro toto plnění nezbytné.",
+        "Ano, ale pouze v případě, že marketingové zprávy posílá třikrát měsíčně."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g27",
+      "text": "Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo zpracuje osobní údaje podle přestupkové části zákona č. 110/2019 Sb.?",
+      "options": [
+        "Žádná, zákon upravuje pouze pokuty pro firmy.",
+        "Za vybrané přestupky (např. porušení zákazu zveřejnění osobních údajů v médiích) lze uložit pokutu do výše 1 000 000 Kč až 5 000 000 Kč.",
+        "Pouze veřejně prospěšné práce v rozsahu 20 hodin."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g28",
+      "text": "Co vyjadřuje zásada „omezení uložení“ (storage limitation)?",
+      "options": [
+        "Osobní údaje nesmí být uchovávány ve formě, která umožňuje identifikaci subjektů údajů, po dobu delší, než je nezbytné pro účely, pro které jsou zpracovávány.",
+        "Data se smí ukládat pouze na pevné disky s omezenou kapacitou do 1 TB.",
+        "Správce nesmí ukládat záložní kopie dat na cloudová úložiště."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-g29",
+      "text": "Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace?",
+      "options": [
+        "Ano, externí výkon funkce DPO na základě smlouvy o poskytování služeb je nelegální.",
+        "Ne, pověřenec může plnit své úkoly na základě pracovní smlouvy (interní), nebo na základě smlouvy o poskytování služeb (externí).",
+        "Musí to být výhradně osoba delegovaná přímo Úřadem pro ochranu osobních údajů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-g30",
+      "text": "Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti GDPR?",
+      "options": [
+        "Mezi těmito pojmy není žádný rozdíl, oba znamenají totéž.",
+        "Pseudonymizované údaje stále spadají pod GDPR (identifikaci lze obnovit pomocí dodatečných informací), zatímco plná anonymizace staví data mimo režim GDPR.",
+        "Pseudonymizace automaticky ruší veškeré povinnosti správce vůči ÚOOÚ."
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

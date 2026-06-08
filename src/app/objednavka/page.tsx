@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
+import { BulkDiscountBanner } from "@/components/BulkDiscountBanner";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CheckoutForm } from "@/components/CheckoutForm";
 import { isGoPayConfigured } from "@/lib/gopay";
 
@@ -21,6 +23,12 @@ export default function ObjednavkaPage() {
       />
 
       <Section>
+        <SubstituteFulfillmentBanner variant="full" />
+      </Section>
+
+      <Section>
+        <BulkDiscountBanner />
+
         {!gopayReady && (
           <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
             <p className="font-semibold">GoPay není nakonfigurován</p>

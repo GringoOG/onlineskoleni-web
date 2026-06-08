@@ -1,5 +1,8 @@
 {
   "trainer": "TechnikPO s.r.o.",
+  "trainerCredential": "číslo osvědčení ROVS/4785/PRE/2016",
+  "logoImage": "public/images/certificate/company-logo.png",
+  "stampImage": "public/images/certificate/trainer-stamp-signature.png",
   "validityLabel": "Platnost certifikátu 1 rok.",
   "successText": "Jmenovaný absolvoval/a úspěšně kurz a online složil/a úspěšně test.",
   "instructionsTitle": "Poučení:",
@@ -17,6 +20,11 @@
       "codePrefix": "PO",
       "trainingTitle": "Školení o požární ochraně",
       "legalBasis": "O školení zaměstnanců v požární ochraně dle § 23 vyhlášky 246/2001 Sb. v platném znění."
+    },
+    "bremena": {
+      "codePrefix": "BRE",
+      "trainingTitle": "Školení manipulace s břemeny",
+      "legalBasis": "O školení zaměstnanců v bezpečné manipulaci s břemeny dle vyhlášky č. 361/2007 Sb. o dalších požadavcích bezpečnosti a ochrany zdraví při práci v pracovněprávních vztazích."
     },
     "ridici": {
       "codePrefix": "RID",

@@ -4,12 +4,13 @@ import { CourseCard } from "@/components/CourseCard";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { courses } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Školení",
   description:
-    "Online kurzy BOZP, požární ochrany, referenčního školení řidičů, ergonomie a GDPR s certifikátem.",
+    "Online kurzy BOZP, požární ochrany, manipulace s břemeny, referenčního školení řidičů, ergonomie a GDPR s certifikátem.",
 };
 
 export default function SkoleniPage() {
@@ -19,6 +20,10 @@ export default function SkoleniPage() {
         title="Školení"
         subtitle="Zákonné e-learning kurzy pro zaměstnance i vedoucí pracovníky. Po úspěšném testu obdržíte certifikát."
       />
+
+      <Section>
+        <SubstituteFulfillmentBanner variant="compact" />
+      </Section>
 
       <Section>
         <div className="grid gap-6 sm:grid-cols-2">

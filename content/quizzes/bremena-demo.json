@@ -1,0 +1,108 @@
+{
+  "courseSlug": "bremena",
+  "variant": "demo",
+  "title": "Demo test manipulace s břemeny",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
+  "questions": [
+    {
+      "id": "demo-b1",
+      "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR za běžných podmínek?",
+      "options": [
+        "Maximálně 30 kg.",
+        "Maximálně 50 kg.",
+        "Maximálně 75 kg."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b2",
+      "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v ČR za běžných podmínek?",
+      "options": [
+        "Maximálně 15 kg.",
+        "Maximálně 30 kg.",
+        "Maximálně 45 kg."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b3",
+      "text": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země?",
+      "options": [
+        "V maximálním předklonu se zakulacenými zády, aby se zapojily mezilopatkové svaly.",
+        "V mírném bočním úklonu pro lepší stabilitu.",
+        "V přirozeném, rovném (napřímeném) stavu se zapojením svalů nohou a hýždí."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo-b4",
+      "text": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země?",
+      "options": [
+        "Chodidla těsně u sebe, paty zvednuté ze země.",
+        "Mírný rozkrok (zhruba na šíři ramen) pro stabilní základnu, chodidla celou plochou na zemi.",
+        "Nohy překřížené v kotnících."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b5",
+      "text": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení?",
+      "options": [
+        "Co nejdále od těla v natažených pažích, aby se nezašpinil oděv.",
+        "Co nejblíže k tělu (u těžiště těla), aby se minimalizoval pákový efekt na páteř.",
+        "Položené na jednom rameni s vyosením trupu do strany."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b6",
+      "text": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze?",
+      "options": [
+        "Otočení celého těla současným pohybem chodidel.",
+        "Rotace (zkroucení) samotného trupu při pevných chodidlech na zemi.",
+        "Krátké zastavení a postupné přešlapování."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b7",
+      "text": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo polodřepu?",
+      "options": [
+        "Dlouhé svaly zad a krční svalstvo.",
+        "Svaly dolních končetin (stehna) a hýžďové svaly.",
+        "Výhradně svaly předloktí a prstů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b8",
+      "text": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky uchopí a zvedne?",
+      "options": [
+        "Rychle břemeno trhnout nahoru a vyzkoušet jeho váhu za pohybu.",
+        "Posoudit hmotnost, tvar, stabilitu břemene a zkontrolovat, zda je trasa přepravy volná.",
+        "Nasadit si sluchátka s hudbou pro zvýšení výkonu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b9",
+      "text": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem?",
+      "options": [
+        "Dočasné snížení krevního tlaku v pažích.",
+        "Akutní poškození svalů, šlach nebo výhřez meziobratlové ploténky v důsledku rázového přetížení.",
+        "Zrychlení opotřebení pracovní obuvi."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-b10",
+      "text": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější břemena ručně přenášet?",
+      "options": [
+        "Nad úroveň ramen (ve vzpažení).",
+        "V úrovni kotníků (v neustálém předklonu).",
+        "Mezi úrovní pasu a poloviny hrudníku."
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

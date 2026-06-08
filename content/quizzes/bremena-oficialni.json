@@ -1,0 +1,308 @@
+{
+  "courseSlug": "bremena",
+  "variant": "oficialni",
+  "title": "Závěrečný test manipulace s břemeny",
+  "subtitle": "Oficiální test s vydáním certifikátu",
+  "questions": [
+    {
+      "id": "off-b1",
+      "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR za běžných podmínek?",
+      "options": [
+        "Maximálně 30 kg.",
+        "Maximálně 50 kg.",
+        "Maximálně 75 kg."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b2",
+      "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v ČR za běžných podmínek?",
+      "options": [
+        "Maximálně 15 kg.",
+        "Maximálně 30 kg.",
+        "Maximálně 45 kg."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b3",
+      "text": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země?",
+      "options": [
+        "V maximálním předklonu se zakulacenými zády, aby se zapojily mezilopatkové svaly.",
+        "V mírném bočním úklonu pro lepší stabilitu.",
+        "V přirozeném, rovném (napřímeném) stavu se zapojením svalů nohou a hýždí."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-b4",
+      "text": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země?",
+      "options": [
+        "Chodidla těsně u sebe, paty zvednuté ze země.",
+        "Mírný rozkrok (zhruba na šíři ramen) pro stabilní základnu, chodidla celou plochou na zemi.",
+        "Nohy překřížené v kotnících."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b5",
+      "text": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení?",
+      "options": [
+        "Co nejdále od těla v natažených pažích, aby se nezašpinil oděv.",
+        "Co nejblíže k tělu (u těžiště těla), aby se minimalizoval pákový efekt na páteř.",
+        "Položené na jednom rameni s vyosením trupu do strany."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b6",
+      "text": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze?",
+      "options": [
+        "Otočení celého těla současným pohybem chodidel.",
+        "Rotace (zkroucení) samotného trupu při pevných chodidlech na zemi.",
+        "Krátké zastavení a postupné přešlapování."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b7",
+      "text": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo polodřepu?",
+      "options": [
+        "Dlouhé svaly zad a krční svalstvo.",
+        "Svaly dolních končetin (stehna) a hýžďové svaly.",
+        "Výhradně svaly předloktí a prstů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b8",
+      "text": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky uchopí a zvedne?",
+      "options": [
+        "Rychle břemeno trhnout nahoru a vyzkoušet jeho váhu za pohybu.",
+        "Posoudit hmotnost, tvar, stabilitu břemene a zkontrolovat, zda je trasa přepravy volná.",
+        "Nasadit si sluchátka s hudbou pro zvýšení výkonu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b9",
+      "text": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem?",
+      "options": [
+        "Dočasné snížení krevního tlaku v pažích.",
+        "Akutní poškození svalů, šlach nebo výhřez meziobratlové ploténky v důsledku rázového přetížení.",
+        "Zrychlení opotřebení pracovní obuvi."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b10",
+      "text": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější břemena ručně přenášet?",
+      "options": [
+        "Nad úroveň ramen (ve vzpažení).",
+        "V úrovni kotníků (v neustálém předklonu).",
+        "Mezi úrovní pasu a poloviny hrudníku."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-b11",
+      "text": "Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě?",
+      "options": [
+        "Nosnost se zvyšuje o 50 %, protože nohy odpočívají.",
+        "Nosnost se výrazně snižuje (pro muže obvykle na max. 5 kg při běžné práci).",
+        "Nosnost zůstává naprosto stejná jako vestoje."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b12",
+      "text": "Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky, jeřáby, kladkostroje) pro manipulaci?",
+      "options": [
+        "Pouze v případě, že o to zaměstnanci písemně požádají odbory.",
+        "Vždy, když ruční manipulace překračuje stanovené hygienické limity nebo představuje vysoké riziko úrazu.",
+        "Pouze tehdy, pokud je hmotnost břemene vyšší než 100 kg pro jednoho muže."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b13",
+      "text": "Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo kluzký povrch?",
+      "options": [
+        "Riziko nadměrného znečištění ovzduší v halách.",
+        "Riziko vyklouznutí břemene, pořezání rukou nebo poranění dolních končetin při pádu předmětu.",
+        "Ztráta záruky na manipulovaný materiál."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b14",
+      "text": "Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho dlouhého břemene (např. trámu)?",
+      "options": [
+        "Každý by měl jít jiným tempem a nedívat se na druhého.",
+        "Měli by být přibližně stejně vysocí, pohybovat se koordinovaně a pokyny by měl vydávat pouze jeden z nich.",
+        "Vyšší pracovník by měl nést 90 % váhy břemene."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b15",
+      "text": "Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny?",
+      "options": [
+        "Hmotnost největšího břemene, které se v daném skladu nachází.",
+        "Celkový součet hmotností všech břemen, která pracovník zvedne a přenese za celou pracovní směnu.",
+        "Hmotnost břemene přepočítaná na jeden metr čtvereční plochy."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b16",
+      "text": "Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v ČR při běžné práci?",
+      "options": [
+        "1 000 kg",
+        "5 000 kg",
+        "10 000 kg"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-b17",
+      "text": "Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější?",
+      "options": [
+        "Úchop pouze konečky prstů (tzv. špetkový úchop).",
+        "Úchop celou dlaní s pokrčenými prsty obepínajícími břemeno nebo jeho držadla.",
+        "Držet břemeno přitlačením loktů k bokům bez zapojení dlaní."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b18",
+      "text": "Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu?",
+      "options": [
+        "Dochází k rychlejšímu vyblednutí barvy na podlaze.",
+        "Hrozí vysoké riziko uklouznutí, zakopnutí a následného pádu pracovníka i s těžkým předmětem.",
+        "Zvyšuje se statická elektřina v okolí břemene."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b19",
+      "text": "Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční manipulaci s těžkými předměty?",
+      "options": [
+        "Reflexní vesta a ochranné brýle proti slunci.",
+        "Pracovní rukavice s protiskluzovou úpravou a bezpečnostní obuv s vyztuženou špičkou (ocelová/kompozitní špice).",
+        "Celoobličejová maska a antistatická kombinéza."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b20",
+      "text": "Jak by mělo být břemeno správně ukládáno na regál nebo stůl?",
+      "options": [
+        "Odhozením z bezpečné vzdálenosti, aby se ušetřil čas.",
+        "Plynulým pohybem, nejprve položit hranu břemene na podložku a následně jej bezpečně dotlačit na místo bez přivření prstů.",
+        "Pouze s pomocí spolupracovníka, i kdyby vážilo méně než 1 kg."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b21",
+      "text": "Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)?",
+      "options": [
+        "Přesné chemické složení kapaliny z hlediska pH.",
+        "Přelévání těžiště během pohybu, které může způsobit nečekanou ztrátu stability pracovníka.",
+        "Zda barva obalu odpovídá estetickým standardům firmy."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b22",
+      "text": "Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v nepříznivých mikroklimatických podmínkách (např. extrémní chlad nebo horko)?",
+      "options": [
+        "Limity se zvyšují, aby pracovníci dokončili úkol rychleji.",
+        "Limity zůstávají beze změny, délka směn se však prodlužuje.",
+        "Limity se musí snížit, případně je nutné zavést častější bezpečnostní přestávky na regeneraci."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-b23",
+      "text": "Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např. paletových vozíků)?",
+      "options": [
+        "Obecně je bezpečnější a ergonomičtější vozík před sebou tlačit silou celého těla než jej táhnout za sebou jednou rukou.",
+        "Vozík se musí vždy táhnout za sebou v hlubokém předklonu.",
+        "Technika nemá žádný vliv, rozhodující je pouze rychlost jízdy."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "off-b24",
+      "text": "Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů nábřeží, výkopů nebo ramp?",
+      "options": [
+        "Prach z břemene by mohl znečistit dno výkopu.",
+        "Při ztrátě stability nebo sklouznutí břemene hrozí pád pracovníka do hloubky s fatálními následky.",
+        "Dochází k porušení akustických norem na pracovišti."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b25",
+      "text": "Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR?",
+      "options": [
+        "Nemá žádný vliv, pokud se žena cítí dobře.",
+        "Těhotným ženám je ruční manipulace s břemeny nad stanovené velmi nízké limity (např. max 5–10 kg občasně dle fáze) legislativně zakázána.",
+        "Těhotné ženy mohou zvedat břemena pouze s nasazeným bederním pásem."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b26",
+      "text": "Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene?",
+      "options": [
+        "Prostor, kde si pracovník může během směny lehnout a odpočívat.",
+        "Oblast těsně před tělem pracovníka ve výšce mezi pasem a rameny, kde je zvedání nejméně namáhavé.",
+        "Maximální délka natažené paže směrem nahoru."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b27",
+      "text": "Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a vysoko nad úroveň očí řidiče?",
+      "options": [
+        "Snížení aerodynamiky vozíku během jízdy.",
+        "Ztráta výhledu řidiče na trasu a riziko převrácení celého nákladu při zatáčení.",
+        "Okamžité vybití baterie elektrického vozíku."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b28",
+      "text": "Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení směny?",
+      "options": [
+        "Zvednutí předmětu maximálně jednou za celý kalendářní rok.",
+        "Přerušované zvedání, které v souhrnu nepřesahuje 30 minut za celou pracovní směnu.",
+        "Nepřetržité zvedání bez jakékoliv pauzy po dobu 4 hodin."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b29",
+      "text": "Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci s tabulemi skla či plechu?",
+      "options": [
+        "Ušetřit náklady na nákup běžných pracovních oděvů.",
+        "Zajistit pevný a bezpečný úchop materiálu, který nelze standardně uchopit rukou, a snížit riziko pořezání.",
+        "Zvýšit hmotnost břemene, aby se pracovník více namáhal."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-b30",
+      "text": "Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech při manipulaci s břemeny?",
+      "options": [
+        "Výhradně externí dodavatel manipulační techniky.",
+        "Státní úřad inspekce práce (SÚIP) prostřednictvím televizního vysílání.",
+        "Zaměstnavatel, a to v rámci pravidelného školení o bezpečnosti a ochraně zdraví při práci (BOZP)."
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

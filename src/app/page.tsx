@@ -4,6 +4,8 @@ import { CourseCard } from "@/components/CourseCard";
 import { Section } from "@/components/Section";
 import { USPGrid } from "@/components/USPGrid";
 import { Pillars } from "@/components/Pillars";
+import { BulkDiscountBanner } from "@/components/BulkDiscountBanner";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CTABanner } from "@/components/CTABanner";
 import { courses, pages } from "@/lib/content";
 
@@ -29,6 +31,12 @@ export default function HomePage() {
                 {pages.hero.title}
               </h1>
               <p className="mt-6 text-lg text-white/80 md:text-xl">{pages.hero.subtitle}</p>
+              <p className="mt-4 inline-flex max-w-xl items-start gap-2 rounded-xl border border-amber-400/50 bg-amber-500/15 px-4 py-3 text-sm text-amber-50">
+                <span className="mt-0.5 shrink-0 rounded bg-amber-500 px-1.5 py-0.5 text-xs font-bold text-white">
+                  OZP
+                </span>
+                {pages.substituteFulfillment.strip}
+              </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link href="/objednavka" className="btn-primary-lg text-center">
                   Objednat online
@@ -48,13 +56,17 @@ export default function HomePage() {
                 width={200}
                 height={220}
                 priority
-                className="drop-shadow-[0_0_40px_rgba(245,166,35,0.35)]"
+                className="h-auto w-36 drop-shadow-[0_0_40px_rgba(245,166,35,0.35)] sm:w-44 md:w-[200px]"
                 aria-hidden
               />
             </div>
           </div>
         </div>
       </section>
+
+      <Section>
+        <SubstituteFulfillmentBanner variant="full" />
+      </Section>
 
       <Section id="skoleni" title="Naše školení" subtitle="Zákonné online kurzy s certifikátem po úspěšném testu">
         <div className="grid gap-6 sm:grid-cols-2">
@@ -67,6 +79,9 @@ export default function HomePage() {
             Přehled všech školení →
           </Link>
         </p>
+        <div className="mt-10">
+          <BulkDiscountBanner variant="compact" />
+        </div>
       </Section>
 
       <Section alt title={pages.onlineBenefits.title}>

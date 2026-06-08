@@ -1,0 +1,108 @@
+{
+  "courseSlug": "ergonomie",
+  "variant": "demo",
+  "title": "Demo test ergonomie práce",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
+  "questions": [
+    {
+      "id": "demo-e1",
+      "text": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské židli?",
+      "options": [
+        "Přibližně 45° až 60° (akutní úhel).",
+        "Přibližně 90° až 110° (pravý nebo mírně tupý úhel).",
+        "Přesně 150° (nohy téměř natažené)."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e2",
+      "text": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu?",
+      "options": [
+        "Přibližně 20 cm nad úrovní očí, aby se natahoval krk.",
+        "V úrovni očí nebo mírně pod ní, aby pohled směřoval lehce dolů.",
+        "V úrovni brady, aby byl monitor co nejblíže stolu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e3",
+      "text": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele?",
+      "options": [
+        "Maximálně 30 cm (na délku předloktí).",
+        "Přibližně 50 až 70 cm (zhruba na délku natažené paže).",
+        "Minimálně 120 cm bez ohledu na velikost obrazovky."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e4",
+      "text": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem?",
+      "options": [
+        "Rychlá Synchronizace Informací (technický protokol monitoru).",
+        "Repetitive Strain Injury – poškození z opakovaného namáhání.",
+        "Radiant Screen Intensity – intenzita záření monitoru."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e5",
+      "text": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši?",
+      "options": [
+        "Má vyšší citlivost senzoru při hraní her.",
+        "Zrychluje pohyb kurzoru po obrazovce bez nutnosti instalovat ovladače.",
+        "Udržuje předloktí a zápěstí v přirozené anatomické poloze (tzv. pozice podání ruky) a snižuje tlak na karpální tunel."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo-e6",
+      "text": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům?",
+      "options": [
+        "Stůl musí být výrazně výše než lokty, aby ramena byla zvednutá.",
+        "Výška by měla umožnit, aby ramena byla uvolněná a lokty svíraly úhel kolem 90° až 100° při položení rukou na klávesnici.",
+        "Ruce by měly viset dolů pod úhlem 130°, bez jakékoliv opory."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e7",
+      "text": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím?",
+      "options": [
+        "Každých 20 minut se napít 20 ml vody po dobu 20 sekund.",
+        "Každých 20 minut se podívat na předmět vzdálený nejméně 20 stop (cca 6 metrů) po dobu 20 sekund.",
+        "Každých 20 hodin práce si dát 20 minut pauzu a 20krát zamrkat."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-e8",
+      "text": "Kam by měly směřovat plosky nohou při správném sedu u počítače?",
+      "options": [
+        "Měly by volně viset ve vzduchu bez kontaktu s podlahou.",
+        "Měly by být zkřížené pod židlí nebo přehozené jedna přes druhou.",
+        "Měly by celou plochou spočívat na podlaze nebo na ergonomické podložce pod nohy."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo-e9",
+      "text": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti?",
+      "options": [
+        "Přímo zády k oknu (světlo svítí uživateli do očí).",
+        "Přímo proti oknu (světlo dopadá na monitor a vytváří odlesky).",
+        "Kolmo k oknu, aby světlo přicházelo ze strany a nevznikaly odlesky ani protisvětlo."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "demo-e10",
+      "text": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější?",
+      "options": [
+        "Zápěstí jsou ohnutá ostře nahoru a opírají se o hranu stolu.",
+        "Zápěstí jsou v jedné rovině s předloktím, bez zalomení do stran nebo nahoru/dolů.",
+        "Zápěstí jsou ohnutá dolů pod úroveň klávesnice."
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

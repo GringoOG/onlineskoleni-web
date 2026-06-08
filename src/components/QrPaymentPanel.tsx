@@ -70,7 +70,7 @@ export function QrPaymentPanel({ orderNumber }: QrPaymentPanelProps) {
           alt={`QR platba ${data.amountFormatted}`}
           width={280}
           height={280}
-          className="rounded-xl border border-border bg-white p-2"
+          className="h-auto max-w-full rounded-xl border border-border bg-white p-2"
         />
 
         <dl className="grid w-full gap-3 text-sm sm:flex-1">

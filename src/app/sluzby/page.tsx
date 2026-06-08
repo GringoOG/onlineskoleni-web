@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { pages } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -16,6 +17,10 @@ export default function SluzbyPage() {
   return (
     <>
       <PageHero title={services.title} subtitle={services.legalNote} />
+
+      <Section>
+        <SubstituteFulfillmentBanner variant="compact" />
+      </Section>
 
       <Section>
         <div className="grid gap-8 lg:grid-cols-2">
@@ -35,7 +40,7 @@ export default function SluzbyPage() {
       </Section>
 
       <Section alt title="Související weby">
-        <ul className="grid gap-4 sm:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {pages.relatedLinks.map((link) => (
             <li key={link.url}>
               <a

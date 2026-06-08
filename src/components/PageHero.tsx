@@ -6,7 +6,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, subtitle, children }: PageHeroProps) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-surface-dark via-[#2a1810] to-surface-dark py-14 text-white">
+    <div className="relative overflow-hidden bg-gradient-to-br from-surface-dark via-[#2a1810] to-surface-dark py-10 text-white sm:py-14">
       <div
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
@@ -15,8 +15,10 @@ export function PageHero({ title, subtitle, children }: PageHeroProps) {
         }}
       />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold">{title}</h1>
-        {subtitle && <p className="mt-3 max-w-2xl text-brand-light/90">{subtitle}</p>}
+        <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{title}</h1>
+        {subtitle && (
+          <p className="mt-3 max-w-2xl text-sm text-brand-light/90 sm:text-base">{subtitle}</p>
+        )}
         {children}
       </div>
     </div>

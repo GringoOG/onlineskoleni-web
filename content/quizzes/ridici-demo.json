@@ -5,104 +5,104 @@
   "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
   "questions": [
     {
-      "id": "demo45",
-      "text": "Při účasti na provozu na pozemních komunikacích je každý povinen:",
+      "id": "demo-r1",
+      "text": "Čemu se musí řidič během jízdy věnovat?",
       "options": [
-        "chovat se ohleduplně vůči ostatním řidičům motocyklů",
-        "chovat se ohleduplně a ukázněně",
-        "jezdit na zelenou"
+        "Může telefonovat, pokud jede pomalu.",
+        "Musí se plně věnovat řízení a sledovat situaci v provozu.",
+        "Může číst navigaci v mobilním telefonu."
       ],
       "correctIndex": 1
     },
     {
-      "id": "demo49",
-      "text": "Smí řidič požívat alkoholické nápoje během jízdy:",
+      "id": "demo-r2",
+      "text": "Kde se zpravidla předjíždí?",
       "options": [
-        "ano",
-        "ne",
-        "o tom rozhodne spolucestující"
-      ],
-      "correctIndex": 1
-    },
-    {
-      "id": "demo50",
-      "text": "Přepravovaná osoba je povinna:",
-      "options": [
-        "nebýt za jízdy připoutána na sedadle bezpečnostním pásem",
-        "ohrožovat svým chováním bezpečnost provozu na pozemních komunikacích, zejména omezovat řidiče v bezpečném ovládání vozidla",
-        "dbát pokynů řidiče"
+        "Vpravo.",
+        "Libovolně podle situace.",
+        "Vlevo."
       ],
       "correctIndex": 2
     },
     {
-      "id": "demo51",
-      "text": "Přejíždět z jednoho jízdního pruhu do druhého smí řidič jen tehdy:",
+      "id": "demo-r3",
+      "text": "Jaká je povinnost řidiče při dopravní nehodě?",
       "options": [
-        "neohrozí-li a neomezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom nemusí dávat znamení o změně směru jízdy",
-        "neohrozí-li a neomezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom musí dávat znamení o změně směru jízdy",
-        "omezí-li řidiče jedoucího v jízdním pruhu, do kterého přejíždí; přitom musí dávat znamení o změně směru jízdy"
+        "Pokračovat v jízdě, pokud vozidlo není poškozeno.",
+        "Neprodleně zastavit vozidlo.",
+        "Zavolat pojišťovnu a odjet."
       ],
       "correctIndex": 1
     },
     {
-      "id": "demo52",
-      "text": "Při vjíždění na tramvajový pás nesmí řidič:",
+      "id": "demo-r4",
+      "text": "Musí být řidič za jízdy připoután bezpečnostním pásem?",
       "options": [
-        "omezit v jízdě tramvaj, avšak ohrozit tramvaj může",
-        "hrozit v jízdě tramvaj, avšak omezit tramvaj může",
-        "ohrozit ani omezit v jízdě tramvaj"
+        "Ano, pokud je vozidlo pásem vybaveno.",
+        "Pouze mimo obec.",
+        "Pouze na dálnici."
       ],
-      "correctIndex": 2
+      "correctIndex": 0
     },
     {
-      "id": "demo57",
-      "text": "Řidiči protijedoucích vozidel se vyhýbají:",
+      "id": "demo-r5",
+      "text": "Co platí při předjíždění?",
       "options": [
-        "vlevo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vpravo, vyhýbá se jí vlevo",
-        "vpravo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vlevo, vyhýbá se jí vpravo",
-        "vpravo, včas a v dostatečné míře. Není-li možno se vyhnout protijedoucí tramvaji vpravo, vyhýbá se jí vlevo"
+        "Předjížděné vozidlo může zvýšit rychlost.",
+        "Předjížděné vozidlo nesmí bránit předjíždění.",
+        "Předjíždění je dovoleno vždy."
       ],
       "correctIndex": 1
     },
     {
-      "id": "demo58",
-      "text": "Při odbočování na křižovatce nebo na místo ležící mimo pozemní komunikaci musí řidič:",
+      "id": "demo-r6",
+      "text": "Která úprava provozu má nejvyšší prioritu?",
       "options": [
-        "dávat znamení o změně směru jízdy; při odbočování smí ohrozit řidiče jedoucí za ním a musí dbát zvýšené opatrnosti",
-        "dávat znamení o změně směru jízdy; při odbočování nesmí ohrozit řidiče jedoucí za ním a nemusí dbát zvýšené opatrnosti",
-        "dávat znamení o změně směru jízdy; při odbočování nesmí ohrozit řidiče jedoucí za ním a musí dbát zvýšené opatrnosti"
+        "Vodorovné dopravní značení.",
+        "Svislé dopravní značky.",
+        "Pokyny policisty řídícího provoz."
       ],
       "correctIndex": 2
     },
     {
-      "id": "demo59",
-      "text": "Před odbočováním vpravo se musí řidič zařadit co nejblíže:",
+      "id": "demo-r7",
+      "text": "Kde je zakázáno předjíždět?",
       "options": [
-        "k pravému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vpravo",
-        "k levému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vpravo",
-        "k pravému okraji vozovky; musí-li přitom s ohledem na rozměry vozidla nebo nákladu vybočit ze směru své jízdy vlevo, dává vždy jen znamení o změně směru jízdy vlevo"
+        "Na přechodu pro chodce a bezprostředně před ním.",
+        "Na dálnici.",
+        "Na silnici I. třídy."
       ],
       "correctIndex": 0
     },
     {
-      "id": "demo61",
-      "text": "Řidič nesmí vjet do křižovatky:",
+      "id": "demo-r8",
+      "text": "Jak má řidič používat vozidlo?",
       "options": [
-        "nedovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou, takže by byl nucen zastavit vozidlo v křižovatce",
-        "dovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou, takže by byl nucen zastavit vozidlo v křižovatce",
-        "dovoluje-li mu situace pokračovat v jízdě v křižovatce a za křižovatkou"
+        "Pouze vozidlo splňující technické podmínky.",
+        "Jakékoliv vozidlo s platným pojištěním.",
+        "Vozidlo bez technické kontroly, pokud jede jen krátkou vzdálenost."
       ],
       "correctIndex": 0
     },
     {
-      "id": "demo62",
-      "text": "Při vjíždění z místa ležícího mimo pozemní komunikaci na pozemní komunikaci musí řidič:",
+      "id": "demo-r9",
+      "text": "Jaký je základní princip bezpečné jízdy?",
       "options": [
-        "dát přednost v jízdě vozidlům nebo jezdcům na zvířatech jedoucím po pozemní komunikaci nebo organizovanému útvaru chodců nebo průvodcům hnaných zvířat se zvířaty jdoucím po pozemní komunikaci",
-        "dát výstražný zvukový signál",
-        "dát přednost v jízdě vozidlům nebo jezdcům na zvířatech jedoucím po pozemní komunikaci, ale má přednost před organizovaným útvarem chodců nebo průvodcům hnaných zvířat se zvířaty jdoucím po pozemní komunikaci"
+        "Přizpůsobit jízdu stavu vozovky, vozidla a situaci v provozu.",
+        "Dodržovat rychlost pouze za dobrého počasí.",
+        "Řídit podle ostatních vozidel."
       ],
       "correctIndex": 0
+    },
+    {
+      "id": "demo-r10",
+      "text": "Kde má chodec přednostně chodit?",
+      "options": [
+        "Po vozovce.",
+        "Po chodníku nebo stezce pro chodce.",
+        "Kdekoliv na krajnici."
+      ],
+      "correctIndex": 1
     }
   ]
 }

@@ -1,0 +1,308 @@
+{
+  "courseSlug": "ergonomie",
+  "variant": "oficialni",
+  "title": "Závěrečný test ergonomie práce",
+  "subtitle": "Oficiální test s vydáním certifikátu",
+  "questions": [
+    {
+      "id": "off-e1",
+      "text": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské židli?",
+      "options": [
+        "Přibližně 45° až 60° (akutní úhel).",
+        "Přibližně 90° až 110° (pravý nebo mírně tupý úhel).",
+        "Přesně 150° (nohy téměř natažené)."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e2",
+      "text": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu?",
+      "options": [
+        "Přibližně 20 cm nad úrovní očí, aby se natahoval krk.",
+        "V úrovni očí nebo mírně pod ní, aby pohled směřoval lehce dolů.",
+        "V úrovni brady, aby byl monitor co nejblíže stolu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e3",
+      "text": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele?",
+      "options": [
+        "Maximálně 30 cm (na délku předloktí).",
+        "Přibližně 50 až 70 cm (zhruba na délku natažené paže).",
+        "Minimálně 120 cm bez ohledu na velikost obrazovky."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e4",
+      "text": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem?",
+      "options": [
+        "Rychlá Synchronizace Informací (technický protokol monitoru).",
+        "Repetitive Strain Injury – poškození z opakovaného namáhání.",
+        "Radiant Screen Intensity – intenzita záření monitoru."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e5",
+      "text": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši?",
+      "options": [
+        "Má vyšší citlivost senzoru při hraní her.",
+        "Zrychluje pohyb kurzoru po obrazovce bez nutnosti instalovat ovladače.",
+        "Udržuje předloktí a zápěstí v přirozené anatomické poloze (tzv. pozice podání ruky) a snižuje tlak na karpální tunel."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e6",
+      "text": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům?",
+      "options": [
+        "Stůl musí být výrazně výše než lokty, aby ramena byla zvednutá.",
+        "Výška by měla umožnit, aby ramena byla uvolněná a lokty svíraly úhel kolem 90° až 100° při položení rukou na klávesnici.",
+        "Ruce by měly viset dolů pod úhlem 130°, bez jakékoliv opory."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e7",
+      "text": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím?",
+      "options": [
+        "Každých 20 minut se napít 20 ml vody po dobu 20 sekund.",
+        "Každých 20 minut se podívat na předmět vzdálený nejméně 20 stop (cca 6 metrů) po dobu 20 sekund.",
+        "Každých 20 hodin práce si dát 20 minut pauzu a 20krát zamrkat."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e8",
+      "text": "Kam by měly směřovat plosky nohou při správném sedu u počítače?",
+      "options": [
+        "Měly by volně viset ve vzduchu bez kontaktu s podlahou.",
+        "Měly by být zkřížené pod židlí nebo přehozené jedna přes druhou.",
+        "Měly by celou plochou spočívat na podlaze nebo na ergonomické podložce pod nohy."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e9",
+      "text": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti?",
+      "options": [
+        "Přímo zády k oknu (světlo svítí uživateli do očí).",
+        "Přímo proti oknu (světlo dopadá na monitor a vytváří odlesky).",
+        "Kolmo k oknu, aby světlo přicházelo ze strany a nevznikaly odlesky ani protisvětlo."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e10",
+      "text": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější?",
+      "options": [
+        "Zápěstí jsou ohnutá ostře nahoru a opírají se o hranu stolu.",
+        "Zápěstí jsou v jedné rovině s předloktím, bez zalomení do stran nebo nahoru/dolů.",
+        "Zápěstí jsou ohnutá dolů pod úroveň klávesnice."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e11",
+      "text": "K čemu primárně slouží bederní opěrka na ergonomické židli?",
+      "options": [
+        "K vyhřívání spodní části zad během zimních měsíců.",
+        "K podpoře přirozeného lordotického zakřivení bederní páteře a prevenci hrbení.",
+        "K masírování zádových svalů při otáčení židle."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e12",
+      "text": "Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem?",
+      "options": [
+        "Ostrou bolestí v oblasti krční páteře a motáním hlavy.",
+        "Zhoršením zraku a neschopností zaostřit na blízko.",
+        "Brněním, mravenčením nebo bolestí v palci, ukazováčku a prostředníčku ruky."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e13",
+      "text": "Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na nízkém stole?",
+      "options": [
+        "Způsobuje to nadměrné opotřebení baterie notebooku.",
+        "Nutí to uživatele k výraznému předklonu hlavy, což extrémně přetěžuje krční páteř (tzv. text neck).",
+        "Dochází tím k okamžitému rušení Wi-Fi signálu tělem."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e14",
+      "text": "Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě?",
+      "options": [
+        "Častějším zvyšováním jasu displeje na maximum.",
+        "Použitím podstavce pod notebook (pro zvednutí displeje) v kombinaci s externí klávesnicí a myší.",
+        "Podložením rukou měkkým polštářem přímo na klávesnici notebooku."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e15",
+      "text": "Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo?",
+      "options": [
+        "Zrychluje metabolismus a spalování kalorií.",
+        "Způsobuje městnání krve v dolních končetinách, snižuje elasticitu meziobratlových plotének a oslabuje svaly.",
+        "Zvyšuje celkovou kapacitu plic a koncentraci kyslíku v krvi."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e16",
+      "text": "Co je to „dynamické sezení“?",
+      "options": [
+        "Sezení na židli, která se neustále točí dokola velkou rychlostí.",
+        "Způsob sezení na židli s mechanikou, která reaguje na pohyby těla a neustále mění sklon opěráku a sedáku.",
+        "Pravidelné střídání tří různých židlí během jedné pracovní směny."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e17",
+      "text": "Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně unavující pro oči?",
+      "options": [
+        "Jeden silný bodový reflektor namířený přímo na monitor.",
+        "Úplná tma v místnosti kombinovaná s maximálním jasem monitoru.",
+        "Rovnoměrné, difúzní (rozptýlené) osvětlení kombinující přirozené denní světlo a nepřímé umělé osvětlení."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e18",
+      "text": "Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na počítači?",
+      "options": [
+        "Jedna pauza na 30 minut po každých 6 hodinách práce.",
+        "Krátká pauza (cca 2–5 minut) každých 45 až 60 minut práce spojená s protažením nebo změnou polohy.",
+        "Přestávky nejsou nutné, pokud má uživatel drahou ergonomickou židli."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e19",
+      "text": "Jaký význam má správné nastavení hloubky sedáku na židli?",
+      "options": [
+        "Zajišťuje, aby uživatel mohl na židli pohodlně klečet.",
+        "Zamezuje tlaku přední hrany sedáku na podkolenní jamku, čímž chrání cévní a lymfatický systém nohou.",
+        "Určuje, jak daleko může židle odjet od pracovního stolu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e20",
+      "text": "Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu?",
+      "options": [
+        "Žlutý text na jasně červeném pozadí.",
+        "Vysoký kontrast, například tmavé písmo na světlém (ne oslňujícím) pozadí, nebo softwarový filtr potlačující modré světlo večer.",
+        "Blikající neonové barvy s nízkým rozlišením."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e21",
+      "text": "Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón dosahu?",
+      "options": [
+        "Aby stůl vypadal esteticky čistě pro návštěvy.",
+        "Aby nejčastěji používané věci (myš, klávesnice, telefon) byly v dosahu paží bez nutnosti rotace trupu nebo natahování se.",
+        "Aby se pod klávesnici vešlo co nejvíce papírových dokumentů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e22",
+      "text": "Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní oběh?",
+      "options": [
+        "Zvyšuje prokrvení prstů na nohou a urychluje chůzi.",
+        "Nemá žádný vliv, protože krev proudí pouze v horní polovině těla.",
+        "Přední hrana sedáku stlačuje stehna ze spodu, což omezuje návrat krve z dolních končetin a může vést k otokům."
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "off-e23",
+      "text": "Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a prevenci suchých očí?",
+      "options": [
+        "Teplota 15 °C a vlhkost pod 10 %.",
+        "Teplota 20–24 °C a relativní vlhkost vzduchu v rozmezí 40–60 %.",
+        "Teplota nad 30 °C a vlhkost blízká 100 %."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e24",
+      "text": "Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou (sit-stand stoly)?",
+      "options": [
+        "Umožňují schovat kabely pod desku stolu efektivněji.",
+        "Umožňují střídat práci vsedě a vestoje, což aktivuje svalový aparát a ulevuje páteři.",
+        "Jsou lehčí na stěhování do jiných kanceláří."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e25",
+      "text": "Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu?",
+      "options": [
+        "Přímo na hraně stolu, aby ruce visely dolů do klína.",
+        "Přibližně 10 až 15 cm od hrany stolu, aby vznikl prostor pro oporu zápěstí nebo předloktí.",
+        "Uprostřed stolu za monitorem, aby uživatel musel paže natahovat."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e26",
+      "text": "Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)?",
+      "options": [
+        "Způsobuje zrychlení růstu vlasů v zátylku.",
+        "Extrémní statické přetížení šíjových svalů, které může vést k chronickým bolestem hlavy a migrénám.",
+        "Trvalé poškození sluchových kůstek v uchu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e27",
+      "text": "Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání klasické klávesnice?",
+      "options": [
+        "Drátěný stojan na tužky umístěný vedle myši.",
+        "Ergonomická gelová nebo pěnová podložka před klávesnici podepírající dlaňovou část.",
+        "Plastový kryt na monitor proti prachu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e28",
+      "text": "Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku?",
+      "options": [
+        "Pouze na samém okraji (přední třetině) sedáku, bez opření zad.",
+        "Plně sedět vzadu na sedáku tak, aby záda byla po celé délce podepřena opěradlem židle.",
+        "Sklouznutý dolů, kdy se opírají pouze lopatky a pánev je vysunutá vpřed."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e29",
+      "text": "Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je jeden z nich dominantní?",
+      "options": [
+        "Nutí uživatele neustále cvičit ramena, což je zdravé.",
+        "Může vést k jednostrannému přetěžování krčních svalů, pokud uživatel dlouhodobě otáčí hlavu pouze na jednu stranu.",
+        "Nemá žádný vliv, protože oči se pohybují nezávisle na krku."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "off-e30",
+      "text": "Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu?",
+      "options": [
+        "Stačí jednou za měsíc na celý den.",
+        "Každých 5 minut, aby se tělo neustále hýbalo.",
+        "Optimálně střídat polohy po cca 30 až 60 minutách, přičemž stání by nemělo trvat nepřetržitě několik hodin."
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

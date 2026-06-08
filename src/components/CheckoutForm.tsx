@@ -50,7 +50,7 @@ export function CheckoutForm() {
   function setQty(slug: string, qty: number) {
     setQuantities((prev) => ({
       ...prev,
-      [slug]: Math.max(0, Math.min(500, qty)),
+      [slug]: Math.max(0, Math.min(99, qty)),
     }));
   }
 
@@ -130,7 +130,8 @@ export function CheckoutForm() {
       <fieldset>
         <legend className="text-lg font-bold text-slate-900">Kurzy a počet zaměstnanců</legend>
         <p className="mt-1 text-sm text-slate-600">
-          Zadejte počet osob pro každý kurz (0 = neobjednávat).
+          Zadejte počet osob pro každý kurz nebo balíček (0 = neobjednávat). Ceny jsou bez DPH.
+          Při 10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
         </p>
         <ul className="mt-4 space-y-3">
           {orderCatalog.map((item) => (
@@ -141,7 +142,12 @@ export function CheckoutForm() {
               <div>
                 <p className="font-medium text-slate-900">{item.name}</p>
                 <p className="text-sm text-slate-500">
-                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba
+                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
+                  {item.bundleCourses?.length ? (
+                    <span className="block text-xs text-slate-400">
+                      Balíček: {item.bundleCourses.length} školení
+                    </span>
+                  ) : null}
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -160,7 +166,7 @@ export function CheckoutForm() {
                   id={`qty-${item.courseSlug}`}
                   type="number"
                   min={0}
-                  max={500}
+                  max={99}
                   value={quantities[item.courseSlug] ?? 0}
                   onChange={(e) => setQty(item.courseSlug, parseInt(e.target.value, 10) || 0)}
                   className="w-16 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm"
@@ -182,12 +188,13 @@ export function CheckoutForm() {
       {cart && (
         <div className="rounded-xl bg-brand-tint px-4 py-3 text-sm text-brand-darker">
           <p className="font-semibold">
-            Celkem k úhradě: {formatPriceFromHalere(cart.totalAmountHalere)}
+            Celkem bez DPH: {formatPriceFromHalere(cart.totalAmountHalere)}
           </p>
           <ul className="mt-2 space-y-1 text-brand-dark">
             {cart.items.map((item) => (
               <li key={item.courseSlug}>
                 {item.name} × {item.quantity} — {formatPriceFromHalere(item.lineTotalHalere)}
+                {item.discountPercent > 0 ? ` (sleva ${item.discountPercent} %)` : ""}
               </li>
             ))}
           </ul>

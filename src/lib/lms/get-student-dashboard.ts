@@ -8,6 +8,7 @@ import {
   users,
 } from "@/db";
 import { getCourse } from "@/lib/content";
+import type { CourseColor } from "@/types/content";
 import { getCertificateDownloadPath } from "@/lib/lms/certificate-config";
 import { getLmsEntryPath } from "@/lib/lms/course-paths";
 import {
@@ -22,7 +23,7 @@ export interface DashboardCourse {
   title: string;
   description: string | null;
   shortTitle: string;
-  color: "blue" | "red" | "amber" | "green" | "violet";
+  color: CourseColor;
   progress: CourseProgressStatus;
   theoryStartedAt: Date | null;
   completedAt: Date | null;

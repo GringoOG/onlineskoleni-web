@@ -34,4 +34,10 @@ export const courseColorClasses: Record<
     border: "border-violet-200",
     badge: "bg-violet-600 text-white",
   },
+  teal: {
+    bg: "bg-teal-50",
+    text: "text-teal-900",
+    border: "border-teal-200",
+    badge: "bg-gradient-to-br from-teal-500 to-teal-700 text-white",
+  },
 };

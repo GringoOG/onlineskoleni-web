@@ -9,6 +9,15 @@ export function getLmsEntryPath(courseSlug: string): string {
   if (courseSlug === "ridici") {
     return "/lms/ridici/zaverecny";
   }
+  if (courseSlug === "bremena") {
+    return "/lms/bremena/zaverecny";
+  }
+  if (courseSlug === "gdpr") {
+    return "/lms/gdpr/zaverecny";
+  }
+  if (courseSlug === "ergonomie") {
+    return "/lms/ergonomie/zaverecny";
+  }
   return `/skoleni/${courseSlug}`;
 }
 
@@ -21,6 +30,15 @@ export function getDemoTestPath(courseSlug: string): string | null {
   }
   if (courseSlug === "ridici") {
     return "/lms/ridici/test";
+  }
+  if (courseSlug === "bremena") {
+    return "/lms/bremena/test";
+  }
+  if (courseSlug === "gdpr") {
+    return "/lms/gdpr/test";
+  }
+  if (courseSlug === "ergonomie") {
+    return "/lms/ergonomie/test";
   }
   return null;
 }
@@ -39,6 +57,15 @@ export function getOfficialTestHubPath(courseSlug: string): string | null {
   }
   if (courseSlug === "ridici") {
     return "/lms/ridici/zaverecny";
+  }
+  if (courseSlug === "bremena") {
+    return "/lms/bremena/zaverecny";
+  }
+  if (courseSlug === "gdpr") {
+    return "/lms/gdpr/zaverecny";
+  }
+  if (courseSlug === "ergonomie") {
+    return "/lms/ergonomie/zaverecny";
   }
   return null;
 }

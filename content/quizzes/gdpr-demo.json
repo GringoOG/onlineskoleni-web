@@ -1,0 +1,108 @@
+{
+  "courseSlug": "gdpr",
+  "variant": "demo",
+  "title": "Demo test GDPR",
+  "subtitle": "Vyzkoušejte si formát testu – zkrácená ukázka",
+  "questions": [
+    {
+      "id": "demo-g1",
+      "text": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května 2018?",
+      "options": [
+        "Směrnice Evropského parlamentu a Rady 95/46/ES",
+        "Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR)",
+        "Zákon č. 101/2000 Sb., o ochraně osobních údajů"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g2",
+      "text": "Jaký je vztah mezi evropským nařízením GDPR a českým zákonem č. 110/2019 Sb.?",
+      "options": [
+        "Zákon č. 110/2019 Sb. zcela nahrazuje a ruší platnost GDPR na území ČR.",
+        "Zákon č. 110/2019 Sb. doplňuje GDPR v oblastech, kde nařízení dává členským státům prostor pro vlastní úpravu.",
+        "GDPR je pouze doporučující materiál a závazný je výhradně zákon č. 110/2019 Sb."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g3",
+      "text": "Kdo je podle GDPR považován za „správce“ osobních údajů?",
+      "options": [
+        "Fyzická nebo právnická osoba, která určuje účely a prostředky zpracování osobních údajů.",
+        "Každý zaměstnanec, který v rámci své práce přijde do styku s osobními údaji.",
+        "Externí dodavatel, který pro firmu provádí zpracování dat (např. cloudové úložiště)."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo-g4",
+      "text": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření souhlasu se zpracováním osobních údajů v souvislosti s nabídkou služeb informační společnosti (např. sociální sítě)?",
+      "options": [
+        "13 let",
+        "15 let",
+        "16 let"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g5",
+      "text": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“ (citlivé údaje) podle GDPR?",
+      "options": [
+        "E-mailová adresa a telefonní číslo.",
+        "Údaje o rasovém či etnickém původu a genetické údaje.",
+        "Číslo bankovního účtu a výše příjmu."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g6",
+      "text": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy, kterou subjekt údajů uzavřel?",
+      "options": [
+        "Pouze na základě výslovného a písemného souhlasu subjektu údajů.",
+        "Zpracování je nezbytné pro splnění smlouvy podle čl. 6 odst. 1 písm. b) GDPR.",
+        "Na základě oprávněného zájmu třetí strany."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g7",
+      "text": "Co vyjadřuje zásada „minimalizace údajů“?",
+      "options": [
+        "Osobní údaje musí být uloženy v co nejmenší velikosti souborů (komprimovány).",
+        "Osobní údaje musí být přiměřené, relevantní a omezené na nezbytný rozsah ve vztahu k účelu, pro který jsou zpracovávány.",
+        "Správce musí osobní údaje smazat okamžitě po jejich prvním zobrazení."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g8",
+      "text": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat?",
+      "options": [
+        "Ano, souhlas lze odvolat kdykoliv a odvolání musí být stejně snadné jako jeho poskytnutí.",
+        "Ano, ale pouze se souhlasem správce a po zaplacení administrativního poplatku.",
+        "Ne, jednou udělený souhlas je trvalý a nelze jej vzít zpět až do uplynutí skartační lhůty."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "demo-g9",
+      "text": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje?",
+      "options": [
+        "Právo na výmaz (právo být zapomenut).",
+        "Právo na opravu podle čl. 16 GDPR.",
+        "Právo na přenositelnost údajů."
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "demo-g10",
+      "text": "Co je to „právo na přenositelnost údajů“ (data portability)?",
+      "options": [
+        "Právo získat své osobní údaje ve strukturovaném, běžně používaném a strojově čitelném formátu a předat je jinému správci.",
+        "Právo požadovat, aby správce fyzicky poslal data poštou na CD nebo flash disku.",
+        "Právo na změnu trvalého bydliště v registru obyvatel."
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

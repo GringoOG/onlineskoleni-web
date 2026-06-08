@@ -4,6 +4,7 @@ import { markTheoryStartedForUserCourse } from "@/lib/lms/mark-theory-started";
 import { pages } from "@/lib/content";
 import { authenticateStudentByEmail } from "@/lib/lms/authenticate-student";
 import { ensureDemoEnrollment } from "@/lib/lms/demo-enrollment";
+import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
 import {
   completeQuizTest,
   type CompleteQuizInput,
@@ -221,9 +222,10 @@ export async function submitOfficialQuiz(
   }
 
   try {
+    const course = await ensureLmsCourse(courseSlug);
     return await completeQuizTest({
       userId: session.userId,
-      courseId: session.courseId,
+      courseId: course.id,
       correctAnswers,
       totalQuestions: config.totalQuestions,
       minCorrectAnswers: config.minCorrectAnswers,
