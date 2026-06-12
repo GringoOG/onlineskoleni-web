@@ -8,9 +8,10 @@ import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
 import {
   getOfficialQuizConfig,
+  getOfficialTestSize,
   getQuizQuestionsPublic,
+  prepareOfficialQuizQuestions,
 } from "@/lib/lms/quiz-data";
-import { shuffleQuizQuestions } from "@/lib/lms/shuffle-quiz-questions";
 import { getLmsSession } from "@/lib/lms/session";
 
 const COURSE_SLUG = "bozp" as const;
@@ -22,7 +23,11 @@ export const metadata: Metadata = {
 
 export default async function BozpOfficialEmployeeTestPage() {
   const config = getOfficialQuizConfig(COURSE_SLUG, "zamestnanec");
-  const shuffledQuestions = shuffleQuizQuestions(config.questions);
+  const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
+    COURSE_SLUG,
+    "zamestnanec"
+  );
+  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, "zamestnanec");
   const session = await getLmsSession();
 
   if (!session) {
@@ -41,7 +46,7 @@ export default async function BozpOfficialEmployeeTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${config.totalQuestions} otázek · úspěch od ${config.minCorrectAnswers} správných (80 %) · otázky v náhodném pořadí`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
       >
         <Link
           href="/lms/bozp/zaverecny"
@@ -56,8 +61,8 @@ export default async function BozpOfficialEmployeeTestPage() {
           courseSlug={COURSE_SLUG}
           questions={getQuizQuestionsPublic(shuffledQuestions)}
           userName={userName}
-          totalQuestions={config.totalQuestions}
-          minCorrectAnswers={config.minCorrectAnswers}
+          totalQuestions={totalQuestions}
+          minCorrectAnswers={minCorrectAnswers}
           variant="oficialni"
           audience="zamestnanec"
         />

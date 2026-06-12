@@ -6,8 +6,12 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
-import { getOfficialQuizConfig, getQuizQuestionsPublic } from "@/lib/lms/quiz-data";
-import { shuffleQuizQuestions } from "@/lib/lms/shuffle-quiz-questions";
+import {
+  getOfficialQuizConfig,
+  getOfficialTestSize,
+  getQuizQuestionsPublic,
+  prepareOfficialQuizQuestions,
+} from "@/lib/lms/quiz-data";
 import { getLmsSession } from "@/lib/lms/session";
 
 const COURSE_SLUG = "pozarni" as const;
@@ -19,7 +23,11 @@ export const metadata: Metadata = {
 
 export default async function PozarniOfficialEmployeeTestPage() {
   const config = getOfficialQuizConfig(COURSE_SLUG, "zamestnanec");
-  const shuffledQuestions = shuffleQuizQuestions(config.questions);
+  const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
+    COURSE_SLUG,
+    "zamestnanec"
+  );
+  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, "zamestnanec");
   const session = await getLmsSession();
 
   if (!session) {
@@ -38,7 +46,7 @@ export default async function PozarniOfficialEmployeeTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${config.totalQuestions} otázek · úspěch od ${config.minCorrectAnswers} správných (80 %) · otázky v náhodném pořadí`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
       >
         <Link
           href="/lms/pozarni/zaverecny"
@@ -53,8 +61,8 @@ export default async function PozarniOfficialEmployeeTestPage() {
           courseSlug={COURSE_SLUG}
           questions={getQuizQuestionsPublic(shuffledQuestions)}
           userName={userName}
-          totalQuestions={config.totalQuestions}
-          minCorrectAnswers={config.minCorrectAnswers}
+          totalQuestions={totalQuestions}
+          minCorrectAnswers={minCorrectAnswers}
           variant="oficialni"
           audience="zamestnanec"
         />

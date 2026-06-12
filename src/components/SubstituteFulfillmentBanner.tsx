@@ -97,7 +97,10 @@ export function SubstituteFulfillmentBanner({
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-slate-600">{content.cta}</p>
-        <Link href="/kontakt" className="btn-primary shrink-0 px-5 py-2.5 text-sm">
+        <Link
+          href="/kontakt#kontaktni-formular"
+          className="btn-primary shrink-0 px-5 py-2.5 text-sm"
+        >
           {content.ctaButton}
         </Link>
       </div>

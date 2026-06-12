@@ -12,7 +12,11 @@ import gdprDemo from "../../../content/quizzes/gdpr-demo.json";
 import gdprOficialni from "../../../content/quizzes/gdpr-oficialni.json";
 import ridiciDemo from "../../../content/quizzes/ridici-demo.json";
 import ridiciOficialni from "../../../content/quizzes/ridici-oficialni.json";
-import { getMinCorrectAnswers } from "@/lib/lms/quiz-config";
+import {
+  getMinCorrectAnswers,
+  getOfficialQuestionCount,
+} from "@/lib/lms/quiz-config";
+import { pickOfficialQuizQuestions } from "@/lib/lms/shuffle-quiz-questions";
 
 export type LmsQuizCourseSlug =
   | "bozp"
@@ -158,6 +162,31 @@ export function getOfficialQuizConfig(
   return toRuntimeConfig(courseSlug, getOfficialQuizDefinition(courseSlug, audience));
 }
 
+/** Počet otázek a práh úspěchu pro ostrý test (15, u břemen 10). */
+export function getOfficialTestSize(
+  courseSlug: LmsQuizCourseSlug,
+  audience?: QuizAudience
+): { totalQuestions: number; minCorrectAnswers: number } {
+  const pool = getOfficialQuizDefinition(courseSlug, audience).questions;
+  const totalQuestions = Math.min(
+    getOfficialQuestionCount(courseSlug),
+    pool.length
+  );
+  return {
+    totalQuestions,
+    minCorrectAnswers: getMinCorrectAnswers(totalQuestions),
+  };
+}
+
+/** Náhodný výběr otázek ze zásobníku pro zobrazení ostrého testu. */
+export function prepareOfficialQuizQuestions(
+  courseSlug: LmsQuizCourseSlug,
+  audience?: QuizAudience
+): QuizQuestion[] {
+  const pool = getOfficialQuizDefinition(courseSlug, audience).questions;
+  return pickOfficialQuizQuestions(pool, getOfficialQuestionCount(courseSlug));
+}
+
 /** @deprecated Use getDemoQuizConfig("bozp") */
 export function getBozpDemoQuizConfig(): QuizRuntimeConfig {
   return getDemoQuizConfig("bozp");
@@ -245,10 +274,16 @@ export function scoreOfficialAnswers(
   answers: QuizAnswerSubmission[],
   audience?: QuizAudience
 ): number {
-  return scoreQuizAnswersById(
-    getOfficialQuizDefinition(courseSlug, audience).questions,
-    answers
-  );
+  const pool = getOfficialQuizDefinition(courseSlug, audience).questions;
+  const byId = new Map(pool.map((question) => [question.id, question]));
+  const questionsForAnswers = answers.map((answer) => {
+    const question = byId.get(answer.questionId);
+    if (!question) {
+      throw new Error(`Neplatná otázka: ${answer.questionId}.`);
+    }
+    return question;
+  });
+  return scoreQuizAnswersById(questionsForAnswers, answers);
 }
 
 /** @deprecated Use scoreDemoAnswers("bozp", selectedIndices) */

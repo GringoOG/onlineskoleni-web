@@ -12,7 +12,7 @@ import {
 } from "@/lib/lms/complete-quiz";
 import {
   getDemoQuizConfig,
-  getOfficialQuizConfig,
+  getOfficialTestSize,
   scoreDemoAnswers,
   scoreOfficialAnswers,
   type LmsQuizCourseSlug,
@@ -208,8 +208,11 @@ export async function submitOfficialQuiz(
     return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
   }
 
-  const config = getOfficialQuizConfig(courseSlug, audience);
-  const validationError = validateOfficialAnswers(answers, config.totalQuestions);
+  const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
+    courseSlug,
+    audience
+  );
+  const validationError = validateOfficialAnswers(answers, totalQuestions);
   if (validationError) {
     return { ok: false, message: validationError };
   }
@@ -227,8 +230,8 @@ export async function submitOfficialQuiz(
       userId: session.userId,
       courseId: course.id,
       correctAnswers,
-      totalQuestions: config.totalQuestions,
-      minCorrectAnswers: config.minCorrectAnswers,
+      totalQuestions,
+      minCorrectAnswers,
     });
   } catch (error) {
     console.error("[submitOfficialQuiz]", error);

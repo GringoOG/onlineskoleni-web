@@ -31,12 +31,6 @@ export default function HomePage() {
                 {pages.hero.title}
               </h1>
               <p className="mt-6 text-lg text-white/80 md:text-xl">{pages.hero.subtitle}</p>
-              <p className="mt-4 inline-flex max-w-xl items-start gap-2 rounded-xl border border-amber-400/50 bg-amber-500/15 px-4 py-3 text-sm text-amber-50">
-                <span className="mt-0.5 shrink-0 rounded bg-amber-500 px-1.5 py-0.5 text-xs font-bold text-white">
-                  OZP
-                </span>
-                {pages.substituteFulfillment.strip}
-              </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link href="/objednavka" className="btn-primary-lg text-center">
                   Objednat online
@@ -98,15 +92,17 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      <Section id="o-nas" title={pages.about.title}>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div className="space-y-4 text-muted">
-            <p className="text-lg font-medium text-foreground">{pages.about.intro}</p>
-            <p>{pages.about.body}</p>
-          </div>
+      <Section id="o-nas" title={pages.about.title} subtitle={pages.about.intro}>
+        <div className="space-y-12">
+          <p className="max-w-3xl text-lg leading-relaxed text-muted">{pages.about.body}</p>
+
           <div>
-            <h3 className="text-lg font-bold text-foreground">{pages.whyUs.title}</h3>
-            <USPGrid items={pages.whyUs.items} />
+            <h3 className="text-xl font-bold text-foreground sm:text-2xl">
+              {pages.whyUs.title}
+            </h3>
+            <div className="mt-6">
+              <USPGrid items={pages.whyUs.items} />
+            </div>
           </div>
         </div>
       </Section>

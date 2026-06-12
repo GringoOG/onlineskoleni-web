@@ -9,3 +9,11 @@ export function shuffleQuizQuestions(questions: QuizQuestion[]): QuizQuestion[] 
   }
   return shuffled;
 }
+
+/** Náhodný výběr N otázek ze zásobníku pro ostrý test. */
+export function pickOfficialQuizQuestions(
+  questions: QuizQuestion[],
+  count: number
+): QuizQuestion[] {
+  return shuffleQuizQuestions(questions).slice(0, Math.min(count, questions.length));
+}

@@ -22,7 +22,7 @@ export default function KontaktPage() {
         <SubstituteFulfillmentBanner variant="full" />
       </Section>
 
-      <Section>
+      <Section id="kontaktni-formular" className="scroll-mt-24">
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <h2 className="text-lg font-bold text-slate-900">{site.company}</h2>
