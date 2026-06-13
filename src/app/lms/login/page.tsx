@@ -5,6 +5,7 @@ import { LmsLoginForm } from "@/components/lms/LmsLoginForm";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { sanitizeLmsRedirect } from "@/lib/lms/mark-theory-started";
+import { getHrbekLearningPath } from "@/lib/lms/hrbek-learning-paths";
 import { getLmsSession } from "@/lib/lms/session";
 
 export const metadata: Metadata = {
@@ -43,14 +44,21 @@ export default async function LmsLoginPage({ searchParams }: PageProps) {
         <div className="mx-auto max-w-md">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
             <LmsLoginForm redirectTo={redirectTo} />
-            <p className="mt-4 text-center text-sm text-muted">
-              <Link
-                href="/lms/bozp/test"
-                className="font-semibold text-brand-dark hover:underline"
-              >
-                Rychlý vstup do demo testu BOZP →
-              </Link>
-            </p>
+            <div className="mt-4 space-y-2 text-center text-sm text-muted">
+              <p>
+                <Link href="/lms" className="font-semibold text-brand-dark hover:underline">
+                  Po přihlášení demo účtem → Moje školení (všechny kurzy)
+                </Link>
+              </p>
+              <p>
+                <Link
+                  href={getHrbekLearningPath(undefined, { demo: true })}
+                  className="font-semibold text-brand-dark hover:underline"
+                >
+                  Microlearning – všechny učební materiály (demo) →
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </Section>

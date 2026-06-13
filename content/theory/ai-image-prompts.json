@@ -1,0 +1,383 @@
+{
+  "title": "AI image prompts – microlearning ilustrace",
+  "subtitle": "OnlineŠkolení.cz · 47 témat · 131 lekcí · Ideogram / Midjourney",
+  "styleSuffix": "A premium, modern 2D vector illustration for a corporate microlearning app. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image.",
+  "tips": [
+    "Ke všem promptům použijte poměr stran --ar 4:3.",
+    "Pro konzistenci v rámci kurzu použijte stejný --sref nebo seed po vygenerování prvního referenčního obrázku (doporučeno začít kurzem BOZP).",
+    "V obrázku nesmí být žádný text – význam jen ikony a kompozice."
+  ],
+  "courses": [
+    {
+      "id": "bozp",
+      "title": "BOZP — Bezpečnost a ochrana zdraví při práci",
+      "lessonCount": 15,
+      "themes": [
+        {
+          "id": "1.1",
+          "titleCs": "Společná odpovědnost za bezpečnost",
+          "titleEn": "Shared workplace safety responsibility",
+          "lessons": "q184, q185",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Two professional workers in blue-gray uniforms standing side by side on a factory floor: one represents management (subtle tie or clipboard), one a frontline employee (hard hat). Between them a large green safety shield with a subtle checkmark badge. Soft layered shadows, subtle gradients on helmets and shield. A small orange warning triangle in the background, balanced composition, symbolizing joint duty. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.2",
+          "titleCs": "Školení BOZP a ověření znalostí",
+          "titleEn": "Mandatory OSH training",
+          "lessons": "q94",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A modern training room scene: presenter at a screen showing abstract safety icons (helmet, shield, first-aid cross), three attentive employees seated at a table with notebooks. Green checkmark badge in corner indicating completed knowledge verification. Soft blue walls, warm orange accent on presentation screen edge. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.3",
+          "titleCs": "Pracovní postupy a OOPP",
+          "titleEn": "Work procedures and personal protective equipment",
+          "lessons": "q95, q177",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A warehouse worker in correct PPE: hard hat, safety gloves, safety boots, high-visibility vest. Beside them a detailed checklist clipboard with abstract check icons, a toolbox, and neatly hung gloves. Green badge with checkmark on the glove icon; small red X badge on a crossed-out damaged glove. Layered flat vectors with soft drop shadows. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.4",
+          "titleCs": "Alkohol a návykové látky",
+          "titleEn": "Alcohol and substance-free workplace",
+          "lessons": "q96, q96b",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A stylized glass bottle and wine glass behind a bold red prohibition circle with diagonal line. Next to it a professional breathalyzer device held by a supervisor's hand (no face detail). Green checkmark badge on a sober worker silhouette; orange warning badge near the bottle. Corporate office-factory hybrid background, minimal and symbolic. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.5",
+          "titleCs": "Lékařské prohlídky a pracovnělékařské služby",
+          "titleEn": "Occupational medical examinations",
+          "lessons": "q149, q150, q175",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A medical examination scene: doctor with stethoscope, patient on examination table, abstract medical chart floating nearby. A subtle coin or payment symbol with arrow from a corporate building icon to the clinic, representing employer-covered entry exams. Green cross badge, soft blue medical tones, orange accent on clipboard. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.6",
+          "titleCs": "Úrazy a hlášení závad",
+          "titleEn": "Injury reporting and hazard notification",
+          "lessons": "q170, q171",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. An employee with a bandaged arm reporting to a supervisor in a hard hat; speech bubble replaced by abstract alert icons. In background a visible workplace hazard: spilled liquid, loose cable, orange warning triangle. Green checkmark on the reporting gesture; red X on ignored hazard. Dynamic but professional composition. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.7",
+          "titleCs": "Elektrické spotřebiče",
+          "titleEn": "Electrical appliance safety",
+          "lessons": "q182, q183",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Split composition: left side a detailed office kettle or power tool unplugged from socket with green checkmark (safe cleaning); right side the same device with orange sparks, heat waves, and red warning badge (faulty). Visible power plug, cable, and switch details. Subtle gradients on metal surfaces. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "1.8",
+          "titleCs": "Odpovědnost za škodu",
+          "titleEn": "Employee liability for damages",
+          "lessons": "q181",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A professional worker handing over symbolic compensation: stylized coins or banknotes flowing toward a corporate building icon. Broken tool or dented equipment on a desk as cause of damage. Balanced scales of responsibility subtly in background. Green and orange accent badges, no readable numbers or text. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    },
+    {
+      "id": "pozarni",
+      "title": "Požární ochrana — PO",
+      "lessonCount": 16,
+      "themes": [
+        {
+          "id": "2.1",
+          "titleCs": "Základní povinnosti a přístup k rozvodům",
+          "titleEn": "Fire safety duties and utility access",
+          "lessons": "q21, q31",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Industrial corridor with clearly accessible utility shutoffs: red valve wheel, electrical panel with open clearance zone marked by green floor markings, fire hose cabinet. Worker keeping path unobstructed. Green checkmark badges on clear access; red X on blocked valve. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.2",
+          "titleCs": "Únikové cesty a značení",
+          "titleEn": "Escape routes and safety signage",
+          "lessons": "q23",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A wide, unobstructed emergency exit corridor with illuminated green running-man exit sign above door, directional arrow signs, and photoluminescent floor strips. Open fire door, no stored boxes in path. Green checkmark badge on exit route. Soft blue-gray architecture, orange accent on door frame. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.3",
+          "titleCs": "Umístění a údržba hasicích přístrojů",
+          "titleEn": "Fire extinguisher placement and inspection",
+          "lessons": "q20, q26, q33, q35",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A highly detailed red fire extinguisher mounted on wall at eye level, visible pressure gauge, hose, nozzle, and pictogram label area left blank (no text). Calendar icon with green checkmark for annual inspection. Second extinguisher on floor stand with anti-tip base. Soft shadows, metallic gradients. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.4",
+          "titleCs": "Typy hasicích přístrojů",
+          "titleEn": "Fire extinguisher types and correct use",
+          "lessons": "q27, q28, q30",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Three distinct extinguishers in a row: water (blue label area), CO2 with black horn nozzle, powder with wide nozzle. Small symbolic fire types beside each: wood flames for water with green check, electrical spark for CO2 with green check, loose powder cloud with red X for wrong use on dust explosion risk. Educational comparison layout. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.5",
+          "titleCs": "Školení PO a poplachové směrnice",
+          "titleEn": "Fire safety training",
+          "lessons": "q24, q36",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Instructor pointing at wall map with fire equipment locations (abstract icons only), employees listening. Visible fire alarm pull station and extinguisher icons on diagram. Orange accent on alarm button shape, green checkmark on training group. Modern office interior, flat 2.5D depth. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.6",
+          "titleCs": "Chování při požáru a evakuace",
+          "titleEn": "Fire emergency and evacuation",
+          "lessons": "q32, q39, q41",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Split scene: small controllable fire with employee using extinguisher (green badge), larger fire scenario with people calmly evacuating through marked exit (orange glow in distance, no panic faces). Assembly point icon with grouped silhouettes outside building. Dynamic arrows showing evacuation flow. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "2.7",
+          "titleCs": "Tísňové volání 150",
+          "titleEn": "Emergency number 150 (firefighters)",
+          "lessons": "q150",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. A modern smartphone displaying large abstract numeric keypad pattern suggesting emergency call (no readable digits except stylized 150 as three circular icon shapes, not text). Background: stylized fire truck silhouette and headset. Green call button icon, orange alert ring. Minimal, iconic composition. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    },
+    {
+      "id": "ridici",
+      "title": "Referenti řidičů",
+      "lessonCount": 10,
+      "themes": [
+        {
+          "id": "3.1",
+          "titleCs": "Pozornost při řízení",
+          "titleEn": "Full attention while driving",
+          "lessons": "q-r1",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Driver in car interior, both hands on steering wheel, eyes on road. Red X badges on floating smartphone and GPS screen to show distraction; green checkmark on focused driver. Dashboard, mirrors, and road ahead visible through windshield. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "3.2",
+          "titleCs": "Předjíždění",
+          "titleEn": "Overtaking rules",
+          "lessons": "q-r2, q-r5, q-r7",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Top-down highway view: car overtaking on left lane with green arrow; red X on overtaking near pedestrian crossing (zebra stripes visible). Second car not accelerating to block overtake. Clear lane markings, soft shadows on vehicles. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "3.3",
+          "titleCs": "Priorita policisty",
+          "titleEn": "Police officer traffic priority",
+          "lessons": "q-r6",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Police officer in reflective vest directing traffic with hand signals, standing on road. Cars stopped obeying gesture, traffic light and road signs in background shown secondary (faded). Green crown or priority badge above officer silhouette. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "3.4",
+          "titleCs": "Pásy a technický stav vozidla",
+          "titleEn": "Seat belts and roadworthy vehicle",
+          "lessons": "q-r4, q-r8",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Cross-section of car with driver and passenger wearing seat belts (detailed buckle and strap geometry). Beside it a vehicle inspection scene: tires, lights, windshield check with green checkmark badge. Red X on broken headlight icon. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "3.5",
+          "titleCs": "Nehoda a bezpečná jízda",
+          "titleEn": "Accident procedure and adaptive driving",
+          "lessons": "q-r3, q-r9",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Split panel: stopped car after minor collision with hazard lights on, driver stepping out responsibly; second panel same car on wet and dry road surfaces with speed adjustment arrows. Orange warning triangle behind vehicle. Green check on stopped car, red X on fleeing car silhouette. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "3.6",
+          "titleCs": "Chodci a chodníky",
+          "titleEn": "Pedestrians on sidewalks",
+          "lessons": "q-r10",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Urban sidewalk with pedestrians walking on paved path, separate bike lane, cars on road. Green checkmark on sidewalk usage; red X on walking on road. Trees, street lamps, zebra crossing in distance. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    },
+    {
+      "id": "bremena",
+      "title": "Manipulace s břemeny",
+      "lessonCount": 30,
+      "themes": [
+        {
+          "id": "4.1",
+          "titleCs": "Hmotnostní limity a zvláštní skupiny",
+          "titleEn": "Weight limits and vulnerable workers",
+          "lessons": "off-b1, b2, b11, b25, b28",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Infographic-style scene without text: stylized male and female worker figures beside differently sized box icons (medium vs smaller), pregnant worker icon with red limit badge, seated worker with tiny box. Weight scale symbol, green check on safe loads, orange warning on oversized crate. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.2",
+          "titleCs": "Technika zvedání a držení břemene",
+          "titleEn": "Safe lifting technique",
+          "lessons": "off-b3–b7, b9, b10, b26",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Side-by-side comparison: correct lifter with straight spine, bent knees, load close to body (green check); incorrect lifter with rounded back and twisted torso (red X). Detailed leg muscles suggestion, work boots, cardboard box. Ergonomic zone arc around knees and waist. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.3",
+          "titleCs": "Příprava před zvednutím a kluzké povrchy",
+          "titleEn": "Pre-lift assessment and slippery surfaces",
+          "lessons": "off-b8, b18, b21",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Worker pausing before lifting, hand on chin in assessment pose, checklist icons floating (weight, route, stability). Wet floor with caution sheen and red slip hazard badge; half-full drum with shifting liquid center-of-gravity arrow. Green check on assessment step. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.4",
+          "titleCs": "OOPP, úchop a ostré předměty",
+          "titleEn": "Gloves, grip, and sharp loads",
+          "lessons": "off-b13, b17, b19",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Close-up of hands in anti-cut work gloves with full palm grip on crate (green check) versus fingertip pinch grip (red X). Sharp metal sheet with edge hazard icon, safety boots visible below. Detailed glove texture, layered shadows. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.5",
+          "titleCs": "Týmová práce a kumulativní hmotnost",
+          "titleEn": "Team lifting and cumulative load",
+          "lessons": "off-b14, b15, b16",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Two workers of similar height carrying long beam in sync, one coordinator gesture. Abstract cumulative weight symbol: stacked boxes with sigma icon (no numbers). Clock icon suggesting shift duration. Green check on teamwork; red X on mismatched heights struggling. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.6",
+          "titleCs": "Mechanické pomůcky a vozíky",
+          "titleEn": "Mechanical aids and pallet trucks",
+          "lessons": "off-b12, b23, b27, b29",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Warehouse scene with pallet jack pushed forward (green arrow, correct posture), crane hook lifting pallet in background, suction cup tool lifting glass sheet. Worker not overloading tall unstable stack on cart (red wobble lines vs green stable stack). Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.7",
+          "titleCs": "Skladování a nebezpečná místa",
+          "titleEn": "Safe storage and edges",
+          "lessons": "off-b20, b24",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Worker placing box onto shelf using edge-first technique (green check). Separate vignette: dock edge or excavation with barrier and red prohibition icon for manual handling near drop-off. Detailed shelving, hand pallet, safety barrier. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "4.8",
+          "titleCs": "Školení a mikroklima",
+          "titleEn": "Training and extreme climate",
+          "lessons": "off-b22, b30",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Instructor training workers on lifting near warehouse dock; thermometer icons showing hot and cold zones with reduced capacity symbol (smaller box icon). Corporate building with training badge. Orange climate warning, green check on trained group. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    },
+    {
+      "id": "gdpr",
+      "title": "GDPR",
+      "lessonCount": 30,
+      "themes": [
+        {
+          "id": "5.1",
+          "titleCs": "Legislativa EU a ČR",
+          "titleEn": "EU GDPR and Czech law",
+          "lessons": "off-g1, g2",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. EU flag-inspired circle of stars (abstract, no text) connected by line to Czech map silhouette. Legal document stack with seal icons, gavel subtle in background. Blue institutional tones, green compliance checkmark. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.2",
+          "titleCs": "Správce, zpracovatel, DPO",
+          "titleEn": "Data controller, processor, and DPO",
+          "lessons": "off-g3, g12, g20, g21, g29",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Organizational diagram as icons: central office building (controller), external cloud server (processor), linked smaller server (sub-processor), person with shield badge (DPO). Contract document icons between nodes. Green check on signed connections. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.3",
+          "titleCs": "Zásady zpracování",
+          "titleEn": "Data protection principles",
+          "lessons": "off-g7, g18, g28",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Funnel icon minimizing data blocks from large to small (data minimization), shield embedded in software window (privacy by design), hourglass with data blocks fading (storage limitation). Abstract UI wireframes, green locks. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.4",
+          "titleCs": "Citlivé údaje a právní základy",
+          "titleEn": "Sensitive data and legal bases",
+          "lessons": "off-g4, g5, g6",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. User profile card with highlighted sensitive fields (heart, fingerprint, DNA helix icons—not text). Separate contract document with handshake icon for contract-based processing. Child silhouette with age badge shape (no number). Red border on sensitive section, green on contract path. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.5",
+          "titleCs": "Práva subjektu údajů",
+          "titleEn": "Data subject rights",
+          "lessons": "off-g8–g10, g24, g26",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Person reclaiming personal data folder from corporate server, arrows showing export to USB and correction pencil icon on profile. Consent toggle switched off with green check (withdrawal). Rights illustrated as icon set around user silhouette. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.6",
+          "titleCs": "Incidenty a ÚOOÚ",
+          "titleEn": "Data breaches and supervisory authority",
+          "lessons": "off-g11, g13, g14",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Cracked database cylinder with leak droplets, 72-hour clock icon (abstract, no digits), notification arrows to government building icon and user smartphone. Orange alert badge, green check on timely report action. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.7",
+          "titleCs": "Dokumentace a DPIA",
+          "titleEn": "Records of processing and DPIA",
+          "lessons": "off-g15, g19, g23",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Filing cabinet and digital ledger with organized data flow diagram, magnifying glass over risk matrix (colored cells without text). Impact assessment document with warning and mitigation icons. Professional compliance desk scene. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.8",
+          "titleCs": "Pokuty a české výjimky",
+          "titleEn": "Fines and Czech-specific rules",
+          "lessons": "off-g16, g17, g25, g27",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Euro symbol and percentage pie chart abstract (no labels), municipal building icon with softer penalty symbol, individual person icon with separate fine warning. Balanced scales, orange caution, green compliance path. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "5.9",
+          "titleCs": "Přenos dat a anonymizace",
+          "titleEn": "International transfers and anonymization",
+          "lessons": "off-g22, g30",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Globe with EU zone highlighted, arrow through shield tunnel to third-country server (contract clause icon as scroll). Split data icon: masked ID pseudonym vs fully scrambled anonymous blocks. Green check on protected transfer, red X on open unprotected arrow. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    },
+    {
+      "id": "ergonomie",
+      "title": "Ergonomie práce",
+      "lessonCount": 30,
+      "themes": [
+        {
+          "id": "6.1",
+          "titleCs": "Sezení a židle",
+          "titleEn": "Ergonomic chair and sitting posture",
+          "lessons": "off-e1, e8, e11, e16, e19, e22, e28",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Detailed office worker side view on ergonomic chair: lumbar support visible, feet flat on floor, knees at 90 degrees, full seat contact (green check). Inset red X on feet dangling and empty lumbar gap. Angle guides as subtle arcs without numbers. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.2",
+          "titleCs": "Monitor a vzdálenost",
+          "titleEn": "Monitor height, distance, and placement",
+          "lessons": "off-e2, e3, e9, e20, e29",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Desk setup with monitor top at eye level, arm-length distance indicator as dashed arc, monitor perpendicular to window reducing glare. Dual monitor setup with head-turn warning icon on bad angle. Soft screen glow, green check on primary setup. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.3",
+          "titleCs": "Klávesnice, myš a zápěstí",
+          "titleEn": "Keyboard, mouse, and neutral wrists",
+          "lessons": "off-e5, e6, e10, e25, e27",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Hands typing on keyboard with straight wrists, ergonomic vertical mouse beside, gel wrist rest pad. Elbow angle 90 degrees at desk edge inset. Red X on bent wrists and keyboard too close to edge. Detailed keys and mouse buttons, layered shadows. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.4",
+          "titleCs": "Notebook",
+          "titleEn": "Laptop ergonomics",
+          "lessons": "off-e13, e14",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Split: incorrect laptop on lap with hunched neck (red X); correct setup with laptop stand raising screen, external keyboard and mouse (green check). Detailed laptop hinge, stand, cable management. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.5",
+          "titleCs": "Zdravotní rizika (RSI, karpál, krk)",
+          "titleEn": "RSI, carpal tunnel, and neck strain",
+          "lessons": "off-e4, e12, e15, e26",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Medical-educational flat diagram of hand with highlighted median nerve path (thumb to middle finger tingling stars), forearm muscle strain lines, forward head posture turtle-neck silhouette with red tension dots. Orange warning badges, anatomical but stylized and corporate-friendly. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.6",
+          "titleCs": "Pauzy a pravidlo 20-20-20",
+          "titleEn": "Breaks and the 20-20-20 eye rule",
+          "lessons": "off-e7, e18",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Office worker stretching arms during micro-break, wall clock showing break interval (abstract hands), eye looking at distant mountain icon through window representing far focus. Three circular icons suggesting 20-20-20 rhythm without text. Green wellness badge. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.7",
+          "titleCs": "Osvětlení a klima kanceláře",
+          "titleEn": "Office lighting and climate",
+          "lessons": "off-e17, e23",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Office with diffuse ceiling lights and natural side daylight, no harsh glare on monitor. Thermometer and water droplet humidity icon in comfortable zone (green). Desk lamp off to avoid spot glare. Plants optional for softness. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.8",
+          "titleCs": "Sit-stand stoly a pohyb",
+          "titleEn": "Sit-stand desk and posture alternation",
+          "lessons": "off-e24, e30",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Height-adjustable desk in two positions: sitting and standing worker silhouettes connected by circular arrow. Control panel on desk leg, monitor and keyboard at same ergonomic heights in both modes. Green check on alternating postures, orange on prolonged static stand. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        },
+        {
+          "id": "6.9",
+          "titleCs": "Uspořádání pracovního stolu",
+          "titleEn": "Desk zones and reach area",
+          "lessons": "off-e21",
+          "prompt": "A premium, modern 2D vector illustration for a corporate microlearning app. Top-down desk layout with concentric reach zones: mouse and keyboard in primary arc (green), phone and notepad in secondary, reference materials in tertiary. No twisting torso arrow shown wrong in red X inset. Detailed desk items, coffee mug, monitor base. Clean flat design, corporate color palette (soft blues, grays, accents of green and orange), isolated on a solid light gray background. Extremely professional, high detail, no text inside the image."
+        }
+      ]
+    }
+  ]
+}

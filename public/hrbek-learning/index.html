@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnlineŠkolení.cz – výuka a testování</title>
+    <meta
+      name="description"
+      content="Microlearning platforma pro online školení BOZP, PO, řidiči, břemena, GDPR a ergonomii."
+    />
+    <base href="/hrbek-learning/" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                DEFAULT: "#d05f2b",
+                dark: "#b84f1f",
+                tint: "#fff4ee",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "Segoe UI", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .card-flip {
+        perspective: 1200px;
+      }
+      .card-inner {
+        display: grid;
+        transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      .card-inner.is-flipped {
+        transform: rotateY(180deg);
+      }
+      .card-face {
+        grid-area: 1 / 1;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      .card-face-back {
+        transform: rotateY(180deg);
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-in {
+        animation: fade-in 0.35s ease-out;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased">
+    <div
+      class="hidden bg-blue-50 border-blue-100 ring-blue-100 text-blue-600 bg-red-50 border-red-100 ring-red-100 text-red-600 bg-amber-50 border-amber-100 ring-amber-100 text-amber-600 bg-teal-50 border-teal-100 ring-teal-100 text-teal-600 bg-violet-50 border-violet-100 ring-violet-100 text-violet-600 bg-green-50 border-green-100 ring-green-100 text-green-600 border-emerald-200 bg-emerald-100 text-emerald-800 border-red-200 bg-red-100 text-red-800 border-amber-200 bg-amber-100 text-amber-800 bg-white/50 bg-white/30 bg-white/90"
+      aria-hidden="true"
+    ></div>
+    <div id="app" class="min-h-screen">
+      <div class="flex min-h-screen items-center justify-center p-6">
+        <p class="text-slate-500">Načítám školení…</p>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

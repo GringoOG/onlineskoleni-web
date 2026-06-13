@@ -13,7 +13,9 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:lms:push": "drizzle-kit push",
     "db:lms:studio": "drizzle-kit studio",
-    "preview": "npm run build && (lsof -ti :3000 | xargs kill -9 2>/dev/null || true) && next start -H 127.0.0.1 -p 3000"
+    "preview": "npm run build && (lsof -ti :3000 | xargs kill -9 2>/dev/null || true) && next start -H 127.0.0.1 -p 3000",
+    "build:hrbek-learning": "node scripts/build-hrbek-learning-data.mjs",
+    "verify:theme-widgets": "node scripts/verify-theme-widgets.mjs"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",

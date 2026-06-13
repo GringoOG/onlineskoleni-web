@@ -1,0 +1,304 @@
+{
+  "source": "onlineskoleni",
+  "title": "Učební texty pro online školení",
+  "chapters": [
+    {
+      "chapter": 1,
+      "courseSlug": "bozp",
+      "title": "Bezpečnost a ochrana zdraví při práci (BOZP)",
+      "sections": [
+        {
+          "heading": "Odpovědnost",
+          "svg_placeholder": "bozp-shield",
+          "paragraphs": [
+            "Za bezpečnost a ochranu zdraví na pracovišti odpovídá vždy zaměstnavatel, ale ruku v ruce s ním musí povinnosti dodržovat i sám zaměstnanec."
+          ]
+        },
+        {
+          "heading": "Povinnosti zaměstnance",
+          "svg_placeholder": "bozp-shield",
+          "paragraphs": [
+            "Každý zaměstnanec je povinen účastnit se školení BOZP včetně ověření znalostí, dodržovat pracovní postupy, používat přidělené osobní ochranné pracovní prostředky (OOPP) a svévolně je neměnit. Před prvním nástupem do práce musí být zaměstnanec seznámen s předpisy BOZP."
+          ]
+        },
+        {
+          "heading": "Alkohol a návykové látky",
+          "svg_placeholder": "bozp-warning",
+          "paragraphs": [
+            "Platí přísný zákaz požívání alkoholu a jiných návykových látek na pracovištích i v pracovní době. Zaměstnanec je povinen podrobit se testu na alkohol na pokyn oprávněného vedoucího."
+          ]
+        },
+        {
+          "heading": "Lékařské prohlídky",
+          "svg_placeholder": "bozp-first-aid",
+          "paragraphs": [
+            "Vstupní prohlídku hradí zaměstnavatel, pokud s uchazečem uzavře pracovní vztah. Zaměstnanec je povinen sdělit poskytovateli lékařských služeb jméno a adresu svého registrujícího lékaře."
+          ]
+        },
+        {
+          "heading": "Pracovní úraz a závady",
+          "svg_placeholder": "bozp-first-aid",
+          "paragraphs": [
+            "Jakýkoliv úraz (svůj i cizí) musí zaměstnanec neprodleně nahlásit nadřízenému. Stejně tak je povinen hlásit všechny zjištěné závady a nebezpečné situace. Při poskytování první pomoci je absolutní prioritou zajistit vlastní bezpečí zachránce."
+          ]
+        },
+        {
+          "heading": "Pořádek a elektrické spotřebiče",
+          "svg_placeholder": "bozp-warning",
+          "paragraphs": [
+            "Udržování pořádku snižuje riziko úrazů. Čištění spotřebičů se provádí jen ve vypnutém stavu. Pokud spotřebič jiskří, hřeje se nebo zapáchá, je nutné ho ihned odpojit ze sítě a zajistit opravu."
+          ]
+        },
+        {
+          "heading": "Evakuace a práva vedoucích",
+          "svg_placeholder": "pozarni-exit",
+          "paragraphs": [
+            "Bezpečnostní značky na pracovišti musí být umístěny a zaměstnanci s nimi seznámeni. Cílem evakuace při požáru je bezpečně opustit budovu a shromáždit se na určeném místě. Zaměstnavatel může převést zaměstnance na jinou práci za určitých podmínek (např. těhotné ženy pracující v noci)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "courseSlug": "pozarni",
+      "title": "Požární ochrana (PO)",
+      "sections": [
+        {
+          "heading": "Základní povinnosti",
+          "svg_placeholder": "pozarni-extinguisher",
+          "paragraphs": [
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
+          ]
+        },
+        {
+          "heading": "Únikové cesty a značení",
+          "svg_placeholder": "pozarni-exit",
+          "paragraphs": [
+            "Únikové cesty musí být trvale průchodné (bez dalších opatření) a vybavené bezpečnostními značkami, tabulkami a texty. Požární řád musí být dobře viditelný a trvale přístupný všem."
+          ]
+        },
+        {
+          "heading": "Hasicí přístroje (umístění a kontrola)",
+          "svg_placeholder": "pozarni-extinguisher",
+          "paragraphs": [
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
+          ]
+        },
+        {
+          "heading": "Typy hasicích přístrojů",
+          "svg_placeholder": "pozarni-extinguisher",
+          "paragraphs": [
+            "Vodní: Vhodný na tuhé organické látky (např. dřevo, papír); nesmí se použít na elektrická zařízení pod napětím a lehké kovy.",
+            "Sněhový (CO2): Vhodný na elektrická zařízení pod napětím; nevhodný na lehké kovy.",
+            "Práškový: Univerzální, ale nevhodný na sypké hořlavé hmoty (hrozí rozfoukání a výbuch)."
+          ]
+        },
+        {
+          "heading": "Chování při požáru",
+          "svg_placeholder": "pozarni-exit",
+          "paragraphs": [
+            "Pokud je požár v počáteční fázi, pokusíme se ho uhasit přístrojem. Při větším požáru provedeme opatření pro záchranu osob a opouštíme budovu podle evakuačního řádu."
+          ]
+        },
+        {
+          "heading": "Důležitá čísla a termíny",
+          "svg_placeholder": "pozarni-exit",
+          "paragraphs": [
+            "Tísňové číslo hasičů je 150. Školení zaměstnanců o PO se provádí nejméně jednou za rok (stejně jako odborná příprava preventivních požárních hlídek)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "courseSlug": "ridici",
+      "title": "Referenti řidičů",
+      "sections": [
+        {
+          "heading": "Věnování se řízení",
+          "svg_placeholder": "ridici-driving",
+          "paragraphs": [
+            "Řidič se musí během jízdy plně věnovat řízení a sledovat situaci v provozu (žádné telefonování bez handsfree nebo čtení navigace za jízdy)."
+          ]
+        },
+        {
+          "heading": "Základní pravidla",
+          "svg_placeholder": "ridici-driving",
+          "paragraphs": [
+            "Předjíždí se zásadně vlevo. Předjížděné vozidlo nesmí bránit předjíždění (nesmí zvyšovat rychlost). Předjíždění je přísně zakázáno na přechodu pro chodce a bezprostředně před ním."
+          ]
+        },
+        {
+          "heading": "Priorita v provozu",
+          "svg_placeholder": "ridici-driving",
+          "paragraphs": [
+            "Nejvyšší prioritu nad všemi značkami mají vždy pokyny policisty řídícího provoz."
+          ]
+        },
+        {
+          "heading": "Bezpečnost a technický stav",
+          "svg_placeholder": "ridici-driving",
+          "paragraphs": [
+            "Řidič i spolujezdci musí být za jízdy připoutáni bezpečnostním pásem, pokud je jím vozidlo vybaveno. K jízdě lze použít pouze vozidlo, které plně splňuje technické podmínky."
+          ]
+        },
+        {
+          "heading": "Dopravní nehoda",
+          "svg_placeholder": "ridici-driving",
+          "paragraphs": [
+            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo. Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce. Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a situaci."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "courseSlug": "bremena",
+      "title": "Manipulace s břemeny",
+      "sections": [
+        {
+          "heading": "Hmotnostní limity v ČR (pro občasné zvedání)",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Muži: maximálně 50 kg.",
+            "Ženy: maximálně 30 kg.",
+            "Pozor: Při práci vsedě se nosnost výrazně snižuje (u mužů na max. 5 kg). Těhotným ženám je ruční manipulace nad velmi nízké limity (5–10 kg občasně) legislativně zakázána."
+          ]
+        },
+        {
+          "heading": "Technika správného zvedání",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
+          ]
+        },
+        {
+          "heading": "Nebezpečné zlozvyky",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Zvedání trhavým pohybem (hrozí výhřez ploténky) a rotace (zkroucení) samotného trupu při pevných chodidlech na zemi při změně směru. Správně se otáčí celé tělo současným pohybem chodidel."
+          ]
+        },
+        {
+          "heading": "Příprava a ochranné pomůcky",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
+          ]
+        },
+        {
+          "heading": "Tlačení vs. tahání",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Obecně je bezpečnější a ergonomičtější vozík (paletovák) před sebou tlačit silou celého těla, než ho tahat za sebou jednou rukou."
+          ]
+        },
+        {
+          "heading": "Týmová práce a kumulativní hmotnost",
+          "svg_placeholder": "bremena-lifting",
+          "paragraphs": [
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "courseSlug": "gdpr",
+      "title": "GDPR (Ochrana osobních údajů)",
+      "sections": [
+        {
+          "heading": "Legislativa",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Hlavním evropským předpisem je nařízení GDPR (účinné od května 2018). Český zákon č. 110/2019 Sb. ho pouze doplňuje v oblastech, kde dává EU prostor."
+          ]
+        },
+        {
+          "heading": "Pojmy",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Správce je ten, kdo určuje účely a prostředky zpracování dat. Mezi správcem a externím zpracovatelem musí být uzavřena písemná zpracovatelská smlouva. Dalšího podzpracovatele může zpracovatel zapojit jen s písemným povolením správce."
+          ]
+        },
+        {
+          "heading": "Zásady a citlivé údaje",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
+          ]
+        },
+        {
+          "heading": "Práva subjektu údajů",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
+          ]
+        },
+        {
+          "heading": "Incidenty a pokuty",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Porušení zabezpečení (únik dat) musí správce nahlásit Úřadu pro ochranu osobních údajů (ÚOOÚ) do 72 hodin. Občanovi se hlásí jen při vysokém riziku pro jeho práva. Maximální pokuta pro firmy je do 20 000 000 EUR nebo 4 % celosvětového ročního obratu. Český zákon omezuje udělování pokut obcím."
+          ]
+        },
+        {
+          "heading": "Pověřenec (DPO) a dokumentace",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Orgány veřejné moci mají obecnou povinnost jmenovat pověřence (DPO), který může fungovat interně i externě na smlouvu. Správce má povinnost vést Záznam o činnostech zpracování."
+          ]
+        },
+        {
+          "heading": "Anonymizace vs. pseudonymizace",
+          "svg_placeholder": "gdpr-lock",
+          "paragraphs": [
+            "Pseudonymizovaná data stále spadají pod GDPR (identifikaci lze obnovit), plná anonymizace staví data mimo režim GDPR."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "courseSlug": "ergonomie",
+      "title": "Ergonomie práce",
+      "sections": [
+        {
+          "heading": "Správné sezení",
+          "svg_placeholder": "ergonomie-desk",
+          "paragraphs": [
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
+          ]
+        },
+        {
+          "heading": "Uspořádání monitoru",
+          "svg_placeholder": "ergonomie-desk",
+          "paragraphs": [
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
+          ]
+        },
+        {
+          "heading": "Klávesnice a myš",
+          "svg_placeholder": "ergonomie-desk",
+          "paragraphs": [
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
+          ]
+        },
+        {
+          "heading": "Režim práce a odpočinek",
+          "svg_placeholder": "ergonomie-desk",
+          "paragraphs": [
+            "Pravidlo 20-20-20 říká: každých 20 minut se podívat na předmět vzdálený 20 stop (6 metrů) na dobu 20 sekund. Doporučují se krátké pauzy (2–5 minut) každých 45–60 minut spojené s protažením."
+          ]
+        },
+        {
+          "heading": "Prostředí a stoly",
+          "svg_placeholder": "ergonomie-desk",
+          "paragraphs": [
+            "U výškově stavitelných stolů (sit-stand) se doporučuje střídat polohy po 30–60 minutách. Nejlepší osvětlení je rovnoměrné, rozptýlené. Optimální teplota v kanceláři je 20–24 °C a vlhkost 40–60 %."
+          ]
+        }
+      ]
+    }
+  ]
+}

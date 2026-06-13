@@ -1,0 +1,4046 @@
+{
+  "appTitle": "Učební texty pro online školení",
+  "generatedAt": "2026-06-13T01:30:05.195Z",
+  "categories": [
+    {
+      "slug": "bozp",
+      "title": "Bezpečnost a ochrana zdraví při práci (BOZP)",
+      "shortTitle": "BOZP",
+      "color": "blue",
+      "priceCzk": 149,
+      "slides": [
+        {
+          "id": "bozp-slide-1",
+          "heading": "Školení BOZP a ověření znalostí",
+          "paragraphs": [
+            "Zaměstnanec musí absolvovat školení BOZP od zaměstnavatele včetně ověření znalostí."
+          ],
+          "svg_placeholder": "bozp:q94",
+          "checkQuestions": [
+            {
+              "id": "q94",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "účastnit se školení bezpečnosti a ochrany zdraví při práci, ale nemusí se podrobit ověření svých znalostí",
+                "účastnit se večírků a slavností vyhlášených firmou",
+                "účastnit se školení zajišťovaných zaměstnavatelem zaměřených na bezpečnost a ochranu zdraví při práci včetně ověření svých znalostí"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-2",
+          "heading": "Pracovní postupy a OOPP",
+          "paragraphs": [
+            "Při práci je nutné dodržovat předepsané postupy, používat přidělené prostředky a OOPP a nesmí je bez povolení měnit ani vyřazovat."
+          ],
+          "svg_placeholder": "bozp:q95",
+          "checkQuestions": [
+            {
+              "id": "q95",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "nedodržovat při práci stanovené pracovní postupy",
+                "dodržovat při práci stanovené pracovní postupy, ale používat stanovené pracovní prostředky není povinností zaměstnance",
+                "dodržovat při práci stanovené pracovní postupy, používat stanovené pracovní prostředky, dopravní prostředky, osobní ochranné pracovní prostředky a ochranná zařízení a svévolně je neměnit a nevyřazovat z provozu"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-3",
+          "heading": "Alkohol a návykové látky",
+          "paragraphs": [
+            "Na pracovištích i v pracovní době platí zákaz alkoholu a zneužívání návykových látek."
+          ],
+          "svg_placeholder": "bozp:q96",
+          "checkQuestions": [
+            {
+              "id": "q96",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele, ale v pracovní době i mimo tato pracoviště alkoholické nápoje může požívat",
+                "požívat alkoholické nápoje a zneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště",
+                "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-4",
+          "heading": "Je zaměstnanec povinen podrobit se na pokyn oprávněného vedoucího zaměstnance…",
+          "paragraphs": [
+            "Na pokyn vedoucího se zaměstnanec podrobí orientačnímu šetření na alkohol či jiné látky."
+          ],
+          "svg_placeholder": "bozp:q96b",
+          "checkQuestions": [
+            {
+              "id": "q96b",
+              "text": "Je zaměstnanec povinen podrobit se na pokyn oprávněného vedoucího zaměstnance písemně určeného zaměstnavatelem zjištění, zda není pod vlivem alkoholu nebo jiných návykových látek?",
+              "options": [
+                "ne",
+                "ano, ale jen pokud je zaměstnaný na hlavní pracovní poměr",
+                "ano"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-5",
+          "heading": "Vstupní lékařskou prohlídku hradí",
+          "paragraphs": [
+            "Vstupní prohlídku platí uchazeč; po přijetí do pracovního poměru ji hradí zaměstnavatel."
+          ],
+          "svg_placeholder": "bozp:q149",
+          "checkQuestions": [
+            {
+              "id": "q149",
+              "text": "Vstupní lékařskou prohlídku hradí:",
+              "options": [
+                "vždy osoba ucházející se o zaměstnání",
+                "osoba ucházející se o zaměstnání. Zaměstnavatel hradí vstupní lékařskou prohlídku, pokud uzavře s uchazečem o zaměstnání pracovněprávní nebo obdobný vztah",
+                "vždy a bez výhrad zaměstnavatel"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-6",
+          "heading": "Pracovnělékařské služby",
+          "paragraphs": [
+            "Zaměstnanec se podrobí pracovnělékařským službám u oprávněného poskytovatele."
+          ],
+          "svg_placeholder": "bozp:q150",
+          "checkQuestions": [
+            {
+              "id": "q150",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "pouze poskytovateli pracovně lékařských sdělit adresu",
+                "sdělit poskytovateli pracovně lékařských služeb jméno, ale adresu registrujícího poskytovatele sdělit nemusí",
+                "sdělit poskytovateli pracovně lékařských služeb jméno a adresu registrujícího poskytovatele a dalších poskytovatelů, kteří ho přijali do péče"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-7",
+          "heading": "Hlášení úrazů a spolupráce",
+          "paragraphs": [
+            "Úraz je třeba neprodleně oznámit nadřízenému – vlastní, kolegův i úraz svědka. Zaměstnanec spolupracuje při šetření příčin."
+          ],
+          "svg_placeholder": "bozp:q170",
+          "checkQuestions": [
+            {
+              "id": "q170",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "bezodkladně oznamovat svůj pracovní úraz, ale pracovní úraz jiného zaměstnance neohlašuje",
+                "oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, ale spolupracovat při objasňování jeho příčin nemusí",
+                "bezodkladně oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, a pracovní úraz jiného zaměstnance, popřípadě úraz jiné fyzické osoby, jehož byl svědkem, a spolupracovat při objasňování jeho příčin"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-8",
+          "heading": "Závady na pracovišti",
+          "paragraphs": [
+            "Závady a nedostatky ohrožující bezpečnost je nutné hlásit nadřízenému."
+          ],
+          "svg_placeholder": "bozp:q171",
+          "checkQuestions": [
+            {
+              "id": "q171",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "oznamovat svému nadřízenému nedostatky může, ale nemusí. Nedostatky na pracovišti vyhledává pouze vedoucí",
+                "oznamovat svému nadřízenému vedoucímu zaměstnanci nedostatky a závady na pracovišti, které ohrožují nebo by bezprostředně a závažným způsobem mohly ohrozit bezpečnost nebo zdraví zaměstnanců při práci",
+                "vést požární knihu a tam zapisovat nedostatky na pracovišti"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-9",
+          "heading": "Pracovnělékařské služby",
+          "paragraphs": [
+            "Zaměstnanec se podrobí pracovnělékařským službám u oprávněného poskytovatele."
+          ],
+          "svg_placeholder": "bozp:q175",
+          "checkQuestions": [
+            {
+              "id": "q175",
+              "text": "Zaměstnanec je povinen:",
+              "options": [
+                "navštívit lékaře a požádat ho o vyšetření zraku",
+                "navštívit lékaře",
+                "podrobit se pracovně lékařským službám u poskytovatele pracovně lékařských služeb"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-10",
+          "heading": "Pro ochranu rukou a paží použijeme",
+          "paragraphs": [
+            "Ruce a paže chráníte rukavicemi proti mechanickému poškození – řez, propíchnutí, vibrace."
+          ],
+          "svg_placeholder": "bozp:q177",
+          "checkQuestions": [
+            {
+              "id": "q177",
+              "text": "Pro ochranu rukou a paží použijeme:",
+              "options": [
+                "snímatelné chrániče nártu",
+                "rukavice proti plynům a proti radioaktivnímu prachu s vhodnou lícnicovou částí",
+                "rukavice před mechanickým poškozením (proti bodnutí, proříznutí, vibracím apod.)"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-11",
+          "heading": "Je zaměstnanec povinen nahradit zaměstnavateli škodu, kterou mu způsobil zaviněným…",
+          "paragraphs": [
+            "Při zaviněném porušení povinností může zaměstnanec nést odpovědnost za způsobenou škodu."
+          ],
+          "svg_placeholder": "bozp:q181",
+          "checkQuestions": [
+            {
+              "id": "q181",
+              "text": "Je zaměstnanec povinen nahradit zaměstnavateli škodu, kterou mu způsobil zaviněným porušením povinností při plnění pracovních úkolů nebo v přímé souvislosti s ním?",
+              "options": [
+                "ne",
+                "ano",
+                "ano, ale nevztahuje se na zaměstnance, který je ve zkušební době"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-12",
+          "heading": "Čištění elektrických spotřebičů je možné provádět",
+          "paragraphs": [
+            "Čistit lze jen vypnutý spotřebič, nikdy za chodu."
+          ],
+          "svg_placeholder": "bozp:q182",
+          "checkQuestions": [
+            {
+              "id": "q182",
+              "text": "Čištění elektrických spotřebičů je možné provádět:",
+              "options": [
+                "jen při zapnutém stavu",
+                "jen při vypnutém stavu",
+                "pouze vlhkým hadrem"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-13",
+          "heading": "Jestliže se elektrické spotřebiče nadměrně hřejí, silně jiskří, zapáchají po spálenině",
+          "paragraphs": [
+            "Při závadě spotřebič okamžitě odpojte a zajistěte opravu odborníkem."
+          ],
+          "svg_placeholder": "bozp:q183",
+          "checkQuestions": [
+            {
+              "id": "q183",
+              "text": "Jestliže se elektrické spotřebiče nadměrně hřejí, silně jiskří, zapáchají po spálenině:",
+              "options": [
+                "oznámíme závadu na spotřebiči vedoucímu",
+                "připravíme si hasicí přístroj a čekáme na případný požár",
+                "okamžitě je odpojíme od elektrické sítě a zajistíme odbornou opravu"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-14",
+          "heading": "Kdo odpovídá za bezpečnost práce na pracovišti",
+          "paragraphs": [
+            "Bezpečnost práce je společnou odpovědností zaměstnavatele i zaměstnance."
+          ],
+          "svg_placeholder": "bozp:q184",
+          "checkQuestions": [
+            {
+              "id": "q184",
+              "text": "Kdo odpovídá za bezpečnost práce na pracovišti?",
+              "options": [
+                "Pouze zaměstavatel",
+                "Pouze zaměstnanec",
+                "Zaměstnavatel i zaměstnanec"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bozp-slide-15",
+          "heading": "Co musí zaměstnanec udělat při zjištění nebezpečné situace",
+          "paragraphs": [
+            "Nebezpečnou situaci je nutné bez odkladu nahlásit nadřízenému."
+          ],
+          "svg_placeholder": "bozp:q185",
+          "checkQuestions": [
+            {
+              "id": "q185",
+              "text": "Co musí zaměstnanec udělat při zjištění nebezpečné situace?",
+              "options": [
+                "Nahlásit nadřízenému",
+                "Vyfotit ji a pak se rozmyslet, jak dál",
+                "Ignorovat ji, protože to není jeho věc"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test BOZP – zaměstnanec",
+        "subtitle": "Oficiální test pro řadové zaměstnance",
+        "questionCount": 15,
+        "passPercent": 80,
+        "minCorrect": 12,
+        "pool": [
+          {
+            "id": "q94",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "účastnit se školení bezpečnosti a ochrany zdraví při práci, ale nemusí se podrobit ověření svých znalostí",
+              "účastnit se večírků a slavností vyhlášených firmou",
+              "účastnit se školení zajišťovaných zaměstnavatelem zaměřených na bezpečnost a ochranu zdraví při práci včetně ověření svých znalostí"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q95",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "nedodržovat při práci stanovené pracovní postupy",
+              "dodržovat při práci stanovené pracovní postupy, ale používat stanovené pracovní prostředky není povinností zaměstnance",
+              "dodržovat při práci stanovené pracovní postupy, používat stanovené pracovní prostředky, dopravní prostředky, osobní ochranné pracovní prostředky a ochranná zařízení a svévolně je neměnit a nevyřazovat z provozu"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q96",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele, ale v pracovní době i mimo tato pracoviště alkoholické nápoje může požívat",
+              "požívat alkoholické nápoje a zneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště",
+              "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q96b",
+            "text": "Je zaměstnanec povinen podrobit se na pokyn oprávněného vedoucího zaměstnance písemně určeného zaměstnavatelem zjištění, zda není pod vlivem alkoholu nebo jiných návykových látek?",
+            "options": [
+              "ne",
+              "ano, ale jen pokud je zaměstnaný na hlavní pracovní poměr",
+              "ano"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q149",
+            "text": "Vstupní lékařskou prohlídku hradí:",
+            "options": [
+              "vždy osoba ucházející se o zaměstnání",
+              "osoba ucházející se o zaměstnání. Zaměstnavatel hradí vstupní lékařskou prohlídku, pokud uzavře s uchazečem o zaměstnání pracovněprávní nebo obdobný vztah",
+              "vždy a bez výhrad zaměstnavatel"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q150",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "pouze poskytovateli pracovně lékařských sdělit adresu",
+              "sdělit poskytovateli pracovně lékařských služeb jméno, ale adresu registrujícího poskytovatele sdělit nemusí",
+              "sdělit poskytovateli pracovně lékařských služeb jméno a adresu registrujícího poskytovatele a dalších poskytovatelů, kteří ho přijali do péče"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q170",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "bezodkladně oznamovat svůj pracovní úraz, ale pracovní úraz jiného zaměstnance neohlašuje",
+              "oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, ale spolupracovat při objasňování jeho příčin nemusí",
+              "bezodkladně oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, a pracovní úraz jiného zaměstnance, popřípadě úraz jiné fyzické osoby, jehož byl svědkem, a spolupracovat při objasňování jeho příčin"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q171",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "oznamovat svému nadřízenému nedostatky může, ale nemusí. Nedostatky na pracovišti vyhledává pouze vedoucí",
+              "oznamovat svému nadřízenému vedoucímu zaměstnanci nedostatky a závady na pracovišti, které ohrožují nebo by bezprostředně a závažným způsobem mohly ohrozit bezpečnost nebo zdraví zaměstnanců při práci",
+              "vést požární knihu a tam zapisovat nedostatky na pracovišti"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q175",
+            "text": "Zaměstnanec je povinen:",
+            "options": [
+              "navštívit lékaře a požádat ho o vyšetření zraku",
+              "navštívit lékaře",
+              "podrobit se pracovně lékařským službám u poskytovatele pracovně lékařských služeb"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q177",
+            "text": "Pro ochranu rukou a paží použijeme:",
+            "options": [
+              "snímatelné chrániče nártu",
+              "rukavice proti plynům a proti radioaktivnímu prachu s vhodnou lícnicovou částí",
+              "rukavice před mechanickým poškozením (proti bodnutí, proříznutí, vibracím apod.)"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q181",
+            "text": "Je zaměstnanec povinen nahradit zaměstnavateli škodu, kterou mu způsobil zaviněným porušením povinností při plnění pracovních úkolů nebo v přímé souvislosti s ním?",
+            "options": [
+              "ne",
+              "ano",
+              "ano, ale nevztahuje se na zaměstnance, který je ve zkušební době"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q182",
+            "text": "Čištění elektrických spotřebičů je možné provádět:",
+            "options": [
+              "jen při zapnutém stavu",
+              "jen při vypnutém stavu",
+              "pouze vlhkým hadrem"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q183",
+            "text": "Jestliže se elektrické spotřebiče nadměrně hřejí, silně jiskří, zapáchají po spálenině:",
+            "options": [
+              "oznámíme závadu na spotřebiči vedoucímu",
+              "připravíme si hasicí přístroj a čekáme na případný požár",
+              "okamžitě je odpojíme od elektrické sítě a zajistíme odbornou opravu"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q184",
+            "text": "Kdo odpovídá za bezpečnost práce na pracovišti?",
+            "options": [
+              "Pouze zaměstavatel",
+              "Pouze zaměstnanec",
+              "Zaměstnavatel i zaměstnanec"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q185",
+            "text": "Co musí zaměstnanec udělat při zjištění nebezpečné situace?",
+            "options": [
+              "Nahlásit nadřízenému",
+              "Vyfotit ji a pak se rozmyslet, jak dál",
+              "Ignorovat ji, protože to není jeho věc"
+            ],
+            "correctIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "slug": "pozarni",
+      "title": "Požární ochrana (PO)",
+      "shortTitle": "PO",
+      "color": "red",
+      "priceCzk": 149,
+      "slides": [
+        {
+          "id": "pozarni-slide-1",
+          "heading": "Hasicí přístroje se umísťují tak, aby byly",
+          "paragraphs": [
+            "Lekce „Hasicí přístroje se umísťují tak, aby byly“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q20",
+          "checkQuestions": [
+            {
+              "id": "q20",
+              "text": "Hasicí přístroje se umísťují tak, aby byly:",
+              "options": [
+                "snadno viditelné",
+                "snadno viditelné a dosažitelné",
+                "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-2",
+          "heading": "Základní povinnosti fyzických osob",
+          "paragraphs": [
+            "Lekce „Základní povinnosti fyzických osob“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q21",
+          "checkQuestions": [
+            {
+              "id": "q21",
+              "text": "Základní povinnosti fyzických osob:",
+              "options": [
+                "nevytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+                "vytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+                "ohlásit požár, ale pouze v případě založení"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-3",
+          "heading": "Úniková cesta musí být vybavena",
+          "paragraphs": [
+            "Lekce „Úniková cesta musí být vybavena“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q23",
+          "checkQuestions": [
+            {
+              "id": "q23",
+              "text": "Úniková cesta musí být vybavena:",
+              "options": [
+                "hasicími prostředky",
+                "hydranty",
+                "bezpečnostními značkami, tabulkami a texty s bezpečnostním sdělením"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-4",
+          "heading": "Školení zaměstnanců o požární ochraně obsahuje seznámení",
+          "paragraphs": [
+            "Lekce „Školení zaměstnanců o požární ochraně obsahuje seznámení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q24",
+          "checkQuestions": [
+            {
+              "id": "q24",
+              "text": "Školení zaměstnanců o požární ochraně obsahuje seznámení:",
+              "options": [
+                "s rozmístěním a se způsobem použití věcných prostředků požární ochrany na pracovišti",
+                "s požárním pořádkem",
+                "s rozmístěním elektrického zařízení na pracovišti"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-5",
+          "heading": "Hasicí přístroje se umísťují tak, aby byly",
+          "paragraphs": [
+            "Lekce „Hasicí přístroje se umísťují tak, aby byly“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q26",
+          "checkQuestions": [
+            {
+              "id": "q26",
+              "text": "Hasicí přístroje se umísťují tak, aby byly:",
+              "options": [
+                "snadno viditelné a volně nepřístupné",
+                "snadno viditelné a dosažitelné",
+                "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-6",
+          "heading": "Práškový hasicí přístroj je nevhodný k hašení",
+          "paragraphs": [
+            "Lekce „Práškový hasicí přístroj je nevhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q27",
+          "checkQuestions": [
+            {
+              "id": "q27",
+              "text": "Práškový hasicí přístroj je nevhodný k hašení:",
+              "options": [
+                "sypkých hořlavých hmot, kde hrozí nebezpečí rozfoukání a vytvoření místně výbušné koncentrace",
+                "elektrického zařízení pod napětím",
+                "látek kde vzniká teplota větší než 1800 stupňů celsia"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-7",
+          "heading": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení",
+          "paragraphs": [
+            "Lekce „Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q28",
+          "checkQuestions": [
+            {
+              "id": "q28",
+              "text": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení:",
+              "options": [
+                "elektrického zařízení pod napětím",
+                "plošných požárů",
+                "požárů lehkých kovů"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-8",
+          "heading": "Vodní hasicí přístroj je vhodný k hašení",
+          "paragraphs": [
+            "Lekce „Vodní hasicí přístroj je vhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q30",
+          "checkQuestions": [
+            {
+              "id": "q30",
+              "text": "Vodní hasicí přístroj je vhodný k hašení:",
+              "options": [
+                "tuhých organických látek hořících plamenem nebo žhnutím",
+                "lehkých a alkalických kovů",
+                "elektrického zařízení pod napětím"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-9",
+          "heading": "Fyzická osoba je povinna",
+          "paragraphs": [
+            "Lekce „Fyzická osoba je povinna“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q31",
+          "checkQuestions": [
+            {
+              "id": "q31",
+              "text": "Fyzická osoba je povinna:",
+              "options": [
+                "být přítomna při požáru",
+                "zajistit přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení",
+                "v případě nebezpečí požáru kontaktovat osobu odborně způsobilou"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-10",
+          "heading": "Každý je povinen s souvislosti se zdolávání požáru",
+          "paragraphs": [
+            "Lekce „Každý je povinen s souvislosti se zdolávání požáru“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q32",
+          "checkQuestions": [
+            {
+              "id": "q32",
+              "text": "Každý je povinen s souvislosti se zdolávání požáru:",
+              "options": [
+                "v každém případě uhasit požár",
+                "provést nutná opatření pro záchranu ohrožených osob",
+                "zavolat vedoucího na linku 112"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-11",
+          "heading": "Jak často se musí kontrolovat hasicí přístroj",
+          "paragraphs": [
+            "Lekce „Jak často se musí kontrolovat hasicí přístroj“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q33",
+          "checkQuestions": [
+            {
+              "id": "q33",
+              "text": "Jak často se musí kontrolovat hasicí přístroj:",
+              "options": [
+                "nejméně jednou za 5 let",
+                "nejméně jednou za 2 roky",
+                "nejméně jednou za rok"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-12",
+          "heading": "Použití hasicího přístroje je graficky znázorněno",
+          "paragraphs": [
+            "Lekce „Použití hasicího přístroje je graficky znázorněno“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q35",
+          "checkQuestions": [
+            {
+              "id": "q35",
+              "text": "Použití hasicího přístroje je graficky znázorněno:",
+              "options": [
+                "v požárně bezpečnostním řešení stavby",
+                "v požárním řádu",
+                "na hasicím přístroji"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-13",
+          "heading": "Školení zaměstnanců o požární ochraně obsahuje",
+          "paragraphs": [
+            "Lekce „Školení zaměstnanců o požární ochraně obsahuje“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q36",
+          "checkQuestions": [
+            {
+              "id": "q36",
+              "text": "Školení zaměstnanců o požární ochraně obsahuje:",
+              "options": [
+                "seznámení s požárními poplachovými směrnicemi",
+                "seznámení s dokumentací BOZP",
+                "seznámení se spolupracovníky"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-14",
+          "heading": "Při vzniku požáru",
+          "paragraphs": [
+            "Lekce „Při vzniku požáru“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q39",
+          "checkQuestions": [
+            {
+              "id": "q39",
+              "text": "Při vzniku požáru:",
+              "options": [
+                "vyčkáme na hasiče uvnitř budovy a řídíme se jejich pokyny",
+                "opouštíme budovu v souladu s jejím evakuačním řádem",
+                "opouštíme budovu pouze na výzvu velitele zásahu"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-15",
+          "heading": "Vyberte správnou odpověď",
+          "paragraphs": [
+            "Lekce „Vyberte správnou odpověď“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q41",
+          "checkQuestions": [
+            {
+              "id": "q41",
+              "text": "Vyberte správnou odpověď:",
+              "options": [
+                "pokud je požár v počáteční fázi, pokusíme se jej uhasit použitím přenosných hasicích přístrojů",
+                "požár nikdy nehasíme sami",
+                "při požáru vždy nejprve voláme tísňovou linku a následně ihned opustíme prostory zasažené požárem, bez ohledu na rozsah požáru"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "pozarni-slide-16",
+          "heading": "Tísňové telefonní číslo pro přivolání hasičů je",
+          "paragraphs": [
+            "Lekce „Tísňové telefonní číslo pro přivolání hasičů je“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "pozarni:q150",
+          "checkQuestions": [
+            {
+              "id": "q150",
+              "text": "Tísňové telefonní číslo pro přivolání hasičů je:",
+              "options": [
+                "158",
+                "155",
+                "150",
+                "144"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test PO – zaměstnanec",
+        "subtitle": "Oficiální test pro řadové zaměstnance",
+        "questionCount": 15,
+        "passPercent": 80,
+        "minCorrect": 12,
+        "pool": [
+          {
+            "id": "q20",
+            "text": "Hasicí přístroje se umísťují tak, aby byly:",
+            "options": [
+              "snadno viditelné",
+              "snadno viditelné a dosažitelné",
+              "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q21",
+            "text": "Základní povinnosti fyzických osob:",
+            "options": [
+              "nevytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+              "vytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+              "ohlásit požár, ale pouze v případě založení"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q23",
+            "text": "Úniková cesta musí být vybavena:",
+            "options": [
+              "hasicími prostředky",
+              "hydranty",
+              "bezpečnostními značkami, tabulkami a texty s bezpečnostním sdělením"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q24",
+            "text": "Školení zaměstnanců o požární ochraně obsahuje seznámení:",
+            "options": [
+              "s rozmístěním a se způsobem použití věcných prostředků požární ochrany na pracovišti",
+              "s požárním pořádkem",
+              "s rozmístěním elektrického zařízení na pracovišti"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q26",
+            "text": "Hasicí přístroje se umísťují tak, aby byly:",
+            "options": [
+              "snadno viditelné a volně nepřístupné",
+              "snadno viditelné a dosažitelné",
+              "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q27",
+            "text": "Práškový hasicí přístroj je nevhodný k hašení:",
+            "options": [
+              "sypkých hořlavých hmot, kde hrozí nebezpečí rozfoukání a vytvoření místně výbušné koncentrace",
+              "elektrického zařízení pod napětím",
+              "látek kde vzniká teplota větší než 1800 stupňů celsia"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q28",
+            "text": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení:",
+            "options": [
+              "elektrického zařízení pod napětím",
+              "plošných požárů",
+              "požárů lehkých kovů"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q30",
+            "text": "Vodní hasicí přístroj je vhodný k hašení:",
+            "options": [
+              "tuhých organických látek hořících plamenem nebo žhnutím",
+              "lehkých a alkalických kovů",
+              "elektrického zařízení pod napětím"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q31",
+            "text": "Fyzická osoba je povinna:",
+            "options": [
+              "být přítomna při požáru",
+              "zajistit přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení",
+              "v případě nebezpečí požáru kontaktovat osobu odborně způsobilou"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q32",
+            "text": "Každý je povinen s souvislosti se zdolávání požáru:",
+            "options": [
+              "v každém případě uhasit požár",
+              "provést nutná opatření pro záchranu ohrožených osob",
+              "zavolat vedoucího na linku 112"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q33",
+            "text": "Jak často se musí kontrolovat hasicí přístroj:",
+            "options": [
+              "nejméně jednou za 5 let",
+              "nejméně jednou za 2 roky",
+              "nejméně jednou za rok"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q35",
+            "text": "Použití hasicího přístroje je graficky znázorněno:",
+            "options": [
+              "v požárně bezpečnostním řešení stavby",
+              "v požárním řádu",
+              "na hasicím přístroji"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q36",
+            "text": "Školení zaměstnanců o požární ochraně obsahuje:",
+            "options": [
+              "seznámení s požárními poplachovými směrnicemi",
+              "seznámení s dokumentací BOZP",
+              "seznámení se spolupracovníky"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q39",
+            "text": "Při vzniku požáru:",
+            "options": [
+              "vyčkáme na hasiče uvnitř budovy a řídíme se jejich pokyny",
+              "opouštíme budovu v souladu s jejím evakuačním řádem",
+              "opouštíme budovu pouze na výzvu velitele zásahu"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q41",
+            "text": "Vyberte správnou odpověď:",
+            "options": [
+              "pokud je požár v počáteční fázi, pokusíme se jej uhasit použitím přenosných hasicích přístrojů",
+              "požár nikdy nehasíme sami",
+              "při požáru vždy nejprve voláme tísňovou linku a následně ihned opustíme prostory zasažené požárem, bez ohledu na rozsah požáru"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q150",
+            "text": "Tísňové telefonní číslo pro přivolání hasičů je:",
+            "options": [
+              "158",
+              "155",
+              "150",
+              "144"
+            ],
+            "correctIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ridici",
+      "title": "Referenti řidičů",
+      "shortTitle": "Řidiči",
+      "color": "amber",
+      "priceCzk": 149,
+      "slides": [
+        {
+          "id": "ridici-slide-1",
+          "heading": "Čemu se musí řidič během jízdy věnovat",
+          "paragraphs": [
+            "Lekce „Čemu se musí řidič během jízdy věnovat“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r1",
+          "checkQuestions": [
+            {
+              "id": "q-r1",
+              "text": "Čemu se musí řidič během jízdy věnovat?",
+              "options": [
+                "Může telefonovat, pokud jede pomalu.",
+                "Musí se plně věnovat řízení a sledovat situaci v provozu.",
+                "Může číst navigaci v mobilním telefonu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-2",
+          "heading": "Kde se zpravidla předjíždí",
+          "paragraphs": [
+            "Lekce „Kde se zpravidla předjíždí“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r2",
+          "checkQuestions": [
+            {
+              "id": "q-r2",
+              "text": "Kde se zpravidla předjíždí?",
+              "options": [
+                "Vpravo.",
+                "Libovolně podle situace.",
+                "Vlevo."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-3",
+          "heading": "Jaká je povinnost řidiče při dopravní nehodě",
+          "paragraphs": [
+            "Lekce „Jaká je povinnost řidiče při dopravní nehodě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r3",
+          "checkQuestions": [
+            {
+              "id": "q-r3",
+              "text": "Jaká je povinnost řidiče při dopravní nehodě?",
+              "options": [
+                "Pokračovat v jízdě, pokud vozidlo není poškozeno.",
+                "Neprodleně zastavit vozidlo.",
+                "Zavolat pojišťovnu a odjet."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-4",
+          "heading": "Musí být řidič za jízdy připoután bezpečnostním pásem",
+          "paragraphs": [
+            "Lekce „Musí být řidič za jízdy připoután bezpečnostním pásem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r4",
+          "checkQuestions": [
+            {
+              "id": "q-r4",
+              "text": "Musí být řidič za jízdy připoután bezpečnostním pásem?",
+              "options": [
+                "Ano, pokud je vozidlo pásem vybaveno.",
+                "Pouze mimo obec.",
+                "Pouze na dálnici."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-5",
+          "heading": "Co platí při předjíždění",
+          "paragraphs": [
+            "Lekce „Co platí při předjíždění“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r5",
+          "checkQuestions": [
+            {
+              "id": "q-r5",
+              "text": "Co platí při předjíždění?",
+              "options": [
+                "Předjížděné vozidlo může zvýšit rychlost.",
+                "Předjížděné vozidlo nesmí bránit předjíždění.",
+                "Předjíždění je dovoleno vždy."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-6",
+          "heading": "Která úprava provozu má nejvyšší prioritu",
+          "paragraphs": [
+            "Lekce „Která úprava provozu má nejvyšší prioritu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r6",
+          "checkQuestions": [
+            {
+              "id": "q-r6",
+              "text": "Která úprava provozu má nejvyšší prioritu?",
+              "options": [
+                "Vodorovné dopravní značení.",
+                "Svislé dopravní značky.",
+                "Pokyny policisty řídícího provoz."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-7",
+          "heading": "Kde je zakázáno předjíždět",
+          "paragraphs": [
+            "Lekce „Kde je zakázáno předjíždět“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r7",
+          "checkQuestions": [
+            {
+              "id": "q-r7",
+              "text": "Kde je zakázáno předjíždět?",
+              "options": [
+                "Na přechodu pro chodce a bezprostředně před ním.",
+                "Na dálnici.",
+                "Na silnici I. třídy."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-8",
+          "heading": "Jak má řidič používat vozidlo",
+          "paragraphs": [
+            "Lekce „Jak má řidič používat vozidlo“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r8",
+          "checkQuestions": [
+            {
+              "id": "q-r8",
+              "text": "Jak má řidič používat vozidlo?",
+              "options": [
+                "Pouze vozidlo splňující technické podmínky.",
+                "Jakékoliv vozidlo s platným pojištěním.",
+                "Vozidlo bez technické kontroly, pokud jede jen krátkou vzdálenost."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-9",
+          "heading": "Jaký je základní princip bezpečné jízdy",
+          "paragraphs": [
+            "Lekce „Jaký je základní princip bezpečné jízdy“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r9",
+          "checkQuestions": [
+            {
+              "id": "q-r9",
+              "text": "Jaký je základní princip bezpečné jízdy?",
+              "options": [
+                "Přizpůsobit jízdu stavu vozovky, vozidla a situaci v provozu.",
+                "Dodržovat rychlost pouze za dobrého počasí.",
+                "Řídit podle ostatních vozidel."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "ridici-slide-10",
+          "heading": "Kde má chodec přednostně chodit",
+          "paragraphs": [
+            "Lekce „Kde má chodec přednostně chodit“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ridici:q-r10",
+          "checkQuestions": [
+            {
+              "id": "q-r10",
+              "text": "Kde má chodec přednostně chodit?",
+              "options": [
+                "Po vozovce.",
+                "Po chodníku nebo stezce pro chodce.",
+                "Kdekoliv na krajnici."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test referentů řidičů",
+        "subtitle": "Oficiální závěrečný test",
+        "questionCount": 10,
+        "passPercent": 80,
+        "minCorrect": 8,
+        "pool": [
+          {
+            "id": "q-r1",
+            "text": "Čemu se musí řidič během jízdy věnovat?",
+            "options": [
+              "Může telefonovat, pokud jede pomalu.",
+              "Musí se plně věnovat řízení a sledovat situaci v provozu.",
+              "Může číst navigaci v mobilním telefonu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q-r2",
+            "text": "Kde se zpravidla předjíždí?",
+            "options": [
+              "Vpravo.",
+              "Libovolně podle situace.",
+              "Vlevo."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q-r3",
+            "text": "Jaká je povinnost řidiče při dopravní nehodě?",
+            "options": [
+              "Pokračovat v jízdě, pokud vozidlo není poškozeno.",
+              "Neprodleně zastavit vozidlo.",
+              "Zavolat pojišťovnu a odjet."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q-r4",
+            "text": "Musí být řidič za jízdy připoután bezpečnostním pásem?",
+            "options": [
+              "Ano, pokud je vozidlo pásem vybaveno.",
+              "Pouze mimo obec.",
+              "Pouze na dálnici."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q-r5",
+            "text": "Co platí při předjíždění?",
+            "options": [
+              "Předjížděné vozidlo může zvýšit rychlost.",
+              "Předjížděné vozidlo nesmí bránit předjíždění.",
+              "Předjíždění je dovoleno vždy."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "q-r6",
+            "text": "Která úprava provozu má nejvyšší prioritu?",
+            "options": [
+              "Vodorovné dopravní značení.",
+              "Svislé dopravní značky.",
+              "Pokyny policisty řídícího provoz."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "q-r7",
+            "text": "Kde je zakázáno předjíždět?",
+            "options": [
+              "Na přechodu pro chodce a bezprostředně před ním.",
+              "Na dálnici.",
+              "Na silnici I. třídy."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q-r8",
+            "text": "Jak má řidič používat vozidlo?",
+            "options": [
+              "Pouze vozidlo splňující technické podmínky.",
+              "Jakékoliv vozidlo s platným pojištěním.",
+              "Vozidlo bez technické kontroly, pokud jede jen krátkou vzdálenost."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q-r9",
+            "text": "Jaký je základní princip bezpečné jízdy?",
+            "options": [
+              "Přizpůsobit jízdu stavu vozovky, vozidla a situaci v provozu.",
+              "Dodržovat rychlost pouze za dobrého počasí.",
+              "Řídit podle ostatních vozidel."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "q-r10",
+            "text": "Kde má chodec přednostně chodit?",
+            "options": [
+              "Po vozovce.",
+              "Po chodníku nebo stezce pro chodce.",
+              "Kdekoliv na krajnici."
+            ],
+            "correctIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "slug": "bremena",
+      "title": "Manipulace s břemeny",
+      "shortTitle": "Břemena",
+      "color": "teal",
+      "priceCzk": 99,
+      "slides": [
+        {
+          "id": "bremena-slide-1",
+          "heading": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR…",
+          "paragraphs": [
+            "Lekce „Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b1",
+          "checkQuestions": [
+            {
+              "id": "off-b1",
+              "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR za běžných podmínek?",
+              "options": [
+                "Maximálně 30 kg.",
+                "Maximálně 50 kg.",
+                "Maximálně 75 kg."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-2",
+          "heading": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v…",
+          "paragraphs": [
+            "Lekce „Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b2",
+          "checkQuestions": [
+            {
+              "id": "off-b2",
+              "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v ČR za běžných podmínek?",
+              "options": [
+                "Maximálně 15 kg.",
+                "Maximálně 30 kg.",
+                "Maximálně 45 kg."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-3",
+          "heading": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země",
+          "paragraphs": [
+            "Lekce „V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b3",
+          "checkQuestions": [
+            {
+              "id": "off-b3",
+              "text": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země?",
+              "options": [
+                "V maximálním předklonu se zakulacenými zády, aby se zapojily mezilopatkové svaly.",
+                "V mírném bočním úklonu pro lepší stabilitu.",
+                "V přirozeném, rovném (napřímeném) stavu se zapojením svalů nohou a hýždí."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-4",
+          "heading": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země",
+          "paragraphs": [
+            "Lekce „Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b4",
+          "checkQuestions": [
+            {
+              "id": "off-b4",
+              "text": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země?",
+              "options": [
+                "Chodidla těsně u sebe, paty zvednuté ze země.",
+                "Mírný rozkrok (zhruba na šíři ramen) pro stabilní základnu, chodidla celou plochou na zemi.",
+                "Nohy překřížené v kotnících."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-5",
+          "heading": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení",
+          "paragraphs": [
+            "Lekce „Jak daleko od těla by mělo být břemeno drženo během jeho přenášení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b5",
+          "checkQuestions": [
+            {
+              "id": "off-b5",
+              "text": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení?",
+              "options": [
+                "Co nejdále od těla v natažených pažích, aby se nezašpinil oděv.",
+                "Co nejblíže k tělu (u těžiště těla), aby se minimalizoval pákový efekt na páteř.",
+                "Položené na jednom rameni s vyosením trupu do strany."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-6",
+          "heading": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze",
+          "paragraphs": [
+            "Lekce „Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b6",
+          "checkQuestions": [
+            {
+              "id": "off-b6",
+              "text": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze?",
+              "options": [
+                "Otočení celého těla současným pohybem chodidel.",
+                "Rotace (zkroucení) samotného trupu při pevných chodidlech na zemi.",
+                "Krátké zastavení a postupné přešlapování."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-7",
+          "heading": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo…",
+          "paragraphs": [
+            "Lekce „Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b7",
+          "checkQuestions": [
+            {
+              "id": "off-b7",
+              "text": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo polodřepu?",
+              "options": [
+                "Dlouhé svaly zad a krční svalstvo.",
+                "Svaly dolních končetin (stehna) a hýžďové svaly.",
+                "Výhradně svaly předloktí a prstů."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-8",
+          "heading": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky…",
+          "paragraphs": [
+            "Lekce „Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b8",
+          "checkQuestions": [
+            {
+              "id": "off-b8",
+              "text": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky uchopí a zvedne?",
+              "options": [
+                "Rychle břemeno trhnout nahoru a vyzkoušet jeho váhu za pohybu.",
+                "Posoudit hmotnost, tvar, stabilitu břemene a zkontrolovat, zda je trasa přepravy volná.",
+                "Nasadit si sluchátka s hudbou pro zvýšení výkonu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-9",
+          "heading": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem",
+          "paragraphs": [
+            "Lekce „Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b9",
+          "checkQuestions": [
+            {
+              "id": "off-b9",
+              "text": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem?",
+              "options": [
+                "Dočasné snížení krevního tlaku v pažích.",
+                "Akutní poškození svalů, šlach nebo výhřez meziobratlové ploténky v důsledku rázového přetížení.",
+                "Zrychlení opotřebení pracovní obuvi."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-10",
+          "heading": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější…",
+          "paragraphs": [
+            "Lekce „Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b10",
+          "checkQuestions": [
+            {
+              "id": "off-b10",
+              "text": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější břemena ručně přenášet?",
+              "options": [
+                "Nad úroveň ramen (ve vzpažení).",
+                "V úrovni kotníků (v neustálém předklonu).",
+                "Mezi úrovní pasu a poloviny hrudníku."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-11",
+          "heading": "Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě",
+          "paragraphs": [
+            "Lekce „Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b11",
+          "checkQuestions": [
+            {
+              "id": "off-b11",
+              "text": "Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě?",
+              "options": [
+                "Nosnost se zvyšuje o 50 %, protože nohy odpočívají.",
+                "Nosnost se výrazně snižuje (pro muže obvykle na max. 5 kg při běžné práci).",
+                "Nosnost zůstává naprosto stejná jako vestoje."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-12",
+          "heading": "Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky,…",
+          "paragraphs": [
+            "Lekce „Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky,…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b12",
+          "checkQuestions": [
+            {
+              "id": "off-b12",
+              "text": "Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky, jeřáby, kladkostroje) pro manipulaci?",
+              "options": [
+                "Pouze v případě, že o to zaměstnanci písemně požádají odbory.",
+                "Vždy, když ruční manipulace překračuje stanovené hygienické limity nebo představuje vysoké riziko úrazu.",
+                "Pouze tehdy, pokud je hmotnost břemene vyšší než 100 kg pro jednoho muže."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-13",
+          "heading": "Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo…",
+          "paragraphs": [
+            "Lekce „Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b13",
+          "checkQuestions": [
+            {
+              "id": "off-b13",
+              "text": "Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo kluzký povrch?",
+              "options": [
+                "Riziko nadměrného znečištění ovzduší v halách.",
+                "Riziko vyklouznutí břemene, pořezání rukou nebo poranění dolních končetin při pádu předmětu.",
+                "Ztráta záruky na manipulovaný materiál."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-14",
+          "heading": "Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho…",
+          "paragraphs": [
+            "Lekce „Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b14",
+          "checkQuestions": [
+            {
+              "id": "off-b14",
+              "text": "Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho dlouhého břemene (např. trámu)?",
+              "options": [
+                "Každý by měl jít jiným tempem a nedívat se na druhého.",
+                "Měli by být přibližně stejně vysocí, pohybovat se koordinovaně a pokyny by měl vydávat pouze jeden z nich.",
+                "Vyšší pracovník by měl nést 90 % váhy břemene."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-15",
+          "heading": "Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny",
+          "paragraphs": [
+            "Lekce „Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b15",
+          "checkQuestions": [
+            {
+              "id": "off-b15",
+              "text": "Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny?",
+              "options": [
+                "Hmotnost největšího břemene, které se v daném skladu nachází.",
+                "Celkový součet hmotností všech břemen, která pracovník zvedne a přenese za celou pracovní směnu.",
+                "Hmotnost břemene přepočítaná na jeden metr čtvereční plochy."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-16",
+          "heading": "Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v…",
+          "paragraphs": [
+            "Lekce „Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b16",
+          "checkQuestions": [
+            {
+              "id": "off-b16",
+              "text": "Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v ČR při běžné práci?",
+              "options": [
+                "1 000 kg",
+                "5 000 kg",
+                "10 000 kg"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-17",
+          "heading": "Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější",
+          "paragraphs": [
+            "Lekce „Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b17",
+          "checkQuestions": [
+            {
+              "id": "off-b17",
+              "text": "Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější?",
+              "options": [
+                "Úchop pouze konečky prstů (tzv. špetkový úchop).",
+                "Úchop celou dlaní s pokrčenými prsty obepínajícími břemeno nebo jeho držadla.",
+                "Držet břemeno přitlačením loktů k bokům bez zapojení dlaní."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-18",
+          "heading": "Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu",
+          "paragraphs": [
+            "Lekce „Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b18",
+          "checkQuestions": [
+            {
+              "id": "off-b18",
+              "text": "Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu?",
+              "options": [
+                "Dochází k rychlejšímu vyblednutí barvy na podlaze.",
+                "Hrozí vysoké riziko uklouznutí, zakopnutí a následného pádu pracovníka i s těžkým předmětem.",
+                "Zvyšuje se statická elektřina v okolí břemene."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-19",
+          "heading": "Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční…",
+          "paragraphs": [
+            "Lekce „Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b19",
+          "checkQuestions": [
+            {
+              "id": "off-b19",
+              "text": "Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční manipulaci s těžkými předměty?",
+              "options": [
+                "Reflexní vesta a ochranné brýle proti slunci.",
+                "Pracovní rukavice s protiskluzovou úpravou a bezpečnostní obuv s vyztuženou špičkou (ocelová/kompozitní špice).",
+                "Celoobličejová maska a antistatická kombinéza."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-20",
+          "heading": "Jak by mělo být břemeno správně ukládáno na regál nebo stůl",
+          "paragraphs": [
+            "Lekce „Jak by mělo být břemeno správně ukládáno na regál nebo stůl“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b20",
+          "checkQuestions": [
+            {
+              "id": "off-b20",
+              "text": "Jak by mělo být břemeno správně ukládáno na regál nebo stůl?",
+              "options": [
+                "Odhozením z bezpečné vzdálenosti, aby se ušetřil čas.",
+                "Plynulým pohybem, nejprve položit hranu břemene na podložku a následně jej bezpečně dotlačit na místo bez přivření prstů.",
+                "Pouze s pomocí spolupracovníka, i kdyby vážilo méně než 1 kg."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-21",
+          "heading": "Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)",
+          "paragraphs": [
+            "Lekce „Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b21",
+          "checkQuestions": [
+            {
+              "id": "off-b21",
+              "text": "Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)?",
+              "options": [
+                "Přesné chemické složení kapaliny z hlediska pH.",
+                "Přelévání těžiště během pohybu, které může způsobit nečekanou ztrátu stability pracovníka.",
+                "Zda barva obalu odpovídá estetickým standardům firmy."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-22",
+          "heading": "Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v…",
+          "paragraphs": [
+            "Lekce „Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b22",
+          "checkQuestions": [
+            {
+              "id": "off-b22",
+              "text": "Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v nepříznivých mikroklimatických podmínkách (např. extrémní chlad nebo horko)?",
+              "options": [
+                "Limity se zvyšují, aby pracovníci dokončili úkol rychleji.",
+                "Limity zůstávají beze změny, délka směn se však prodlužuje.",
+                "Limity se musí snížit, případně je nutné zavést častější bezpečnostní přestávky na regeneraci."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-23",
+          "heading": "Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např.…",
+          "paragraphs": [
+            "Lekce „Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b23",
+          "checkQuestions": [
+            {
+              "id": "off-b23",
+              "text": "Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např. paletových vozíků)?",
+              "options": [
+                "Obecně je bezpečnější a ergonomičtější vozík před sebou tlačit silou celého těla než jej táhnout za sebou jednou rukou.",
+                "Vozík se musí vždy táhnout za sebou v hlubokém předklonu.",
+                "Technika nemá žádný vliv, rozhodující je pouze rychlost jízdy."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-24",
+          "heading": "Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů…",
+          "paragraphs": [
+            "Lekce „Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b24",
+          "checkQuestions": [
+            {
+              "id": "off-b24",
+              "text": "Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů nábřeží, výkopů nebo ramp?",
+              "options": [
+                "Prach z břemene by mohl znečistit dno výkopu.",
+                "Při ztrátě stability nebo sklouznutí břemene hrozí pád pracovníka do hloubky s fatálními následky.",
+                "Dochází k porušení akustických norem na pracovišti."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-25",
+          "heading": "Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR",
+          "paragraphs": [
+            "Lekce „Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b25",
+          "checkQuestions": [
+            {
+              "id": "off-b25",
+              "text": "Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR?",
+              "options": [
+                "Nemá žádný vliv, pokud se žena cítí dobře.",
+                "Těhotným ženám je ruční manipulace s břemeny nad stanovené velmi nízké limity (např. max 5–10 kg občasně dle fáze) legislativně zakázána.",
+                "Těhotné ženy mohou zvedat břemena pouze s nasazeným bederním pásem."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-26",
+          "heading": "Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene",
+          "paragraphs": [
+            "Lekce „Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b26",
+          "checkQuestions": [
+            {
+              "id": "off-b26",
+              "text": "Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene?",
+              "options": [
+                "Prostor, kde si pracovník může během směny lehnout a odpočívat.",
+                "Oblast těsně před tělem pracovníka ve výšce mezi pasem a rameny, kde je zvedání nejméně namáhavé.",
+                "Maximální délka natažené paže směrem nahoru."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-27",
+          "heading": "Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a…",
+          "paragraphs": [
+            "Lekce „Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b27",
+          "checkQuestions": [
+            {
+              "id": "off-b27",
+              "text": "Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a vysoko nad úroveň očí řidiče?",
+              "options": [
+                "Snížení aerodynamiky vozíku během jízdy.",
+                "Ztráta výhledu řidiče na trasu a riziko převrácení celého nákladu při zatáčení.",
+                "Okamžité vybití baterie elektrického vozíku."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-28",
+          "heading": "Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení…",
+          "paragraphs": [
+            "Lekce „Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b28",
+          "checkQuestions": [
+            {
+              "id": "off-b28",
+              "text": "Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení směny?",
+              "options": [
+                "Zvednutí předmětu maximálně jednou za celý kalendářní rok.",
+                "Přerušované zvedání, které v souhrnu nepřesahuje 30 minut za celou pracovní směnu.",
+                "Nepřetržité zvedání bez jakékoliv pauzy po dobu 4 hodin."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-29",
+          "heading": "Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci…",
+          "paragraphs": [
+            "Lekce „Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b29",
+          "checkQuestions": [
+            {
+              "id": "off-b29",
+              "text": "Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci s tabulemi skla či plechu?",
+              "options": [
+                "Ušetřit náklady na nákup běžných pracovních oděvů.",
+                "Zajistit pevný a bezpečný úchop materiálu, který nelze standardně uchopit rukou, a snížit riziko pořezání.",
+                "Zvýšit hmotnost břemene, aby se pracovník více namáhal."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "bremena-slide-30",
+          "heading": "Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech…",
+          "paragraphs": [
+            "Lekce „Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "bremena:off-b30",
+          "checkQuestions": [
+            {
+              "id": "off-b30",
+              "text": "Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech při manipulaci s břemeny?",
+              "options": [
+                "Výhradně externí dodavatel manipulační techniky.",
+                "Státní úřad inspekce práce (SÚIP) prostřednictvím televizního vysílání.",
+                "Zaměstnavatel, a to v rámci pravidelného školení o bezpečnosti a ochraně zdraví při práci (BOZP)."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test manipulace s břemeny",
+        "subtitle": "Oficiální test s vydáním certifikátu",
+        "questionCount": 10,
+        "passPercent": 80,
+        "minCorrect": 8,
+        "pool": [
+          {
+            "id": "off-b1",
+            "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR za běžných podmínek?",
+            "options": [
+              "Maximálně 30 kg.",
+              "Maximálně 50 kg.",
+              "Maximálně 75 kg."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b2",
+            "text": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v ČR za běžných podmínek?",
+            "options": [
+              "Maximálně 15 kg.",
+              "Maximálně 30 kg.",
+              "Maximálně 45 kg."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b3",
+            "text": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země?",
+            "options": [
+              "V maximálním předklonu se zakulacenými zády, aby se zapojily mezilopatkové svaly.",
+              "V mírném bočním úklonu pro lepší stabilitu.",
+              "V přirozeném, rovném (napřímeném) stavu se zapojením svalů nohou a hýždí."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-b4",
+            "text": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země?",
+            "options": [
+              "Chodidla těsně u sebe, paty zvednuté ze země.",
+              "Mírný rozkrok (zhruba na šíři ramen) pro stabilní základnu, chodidla celou plochou na zemi.",
+              "Nohy překřížené v kotnících."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b5",
+            "text": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení?",
+            "options": [
+              "Co nejdále od těla v natažených pažích, aby se nezašpinil oděv.",
+              "Co nejblíže k tělu (u těžiště těla), aby se minimalizoval pákový efekt na páteř.",
+              "Položené na jednom rameni s vyosením trupu do strany."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b6",
+            "text": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze?",
+            "options": [
+              "Otočení celého těla současným pohybem chodidel.",
+              "Rotace (zkroucení) samotného trupu při pevných chodidlech na zemi.",
+              "Krátké zastavení a postupné přešlapování."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b7",
+            "text": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo polodřepu?",
+            "options": [
+              "Dlouhé svaly zad a krční svalstvo.",
+              "Svaly dolních končetin (stehna) a hýžďové svaly.",
+              "Výhradně svaly předloktí a prstů."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b8",
+            "text": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky uchopí a zvedne?",
+            "options": [
+              "Rychle břemeno trhnout nahoru a vyzkoušet jeho váhu za pohybu.",
+              "Posoudit hmotnost, tvar, stabilitu břemene a zkontrolovat, zda je trasa přepravy volná.",
+              "Nasadit si sluchátka s hudbou pro zvýšení výkonu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b9",
+            "text": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem?",
+            "options": [
+              "Dočasné snížení krevního tlaku v pažích.",
+              "Akutní poškození svalů, šlach nebo výhřez meziobratlové ploténky v důsledku rázového přetížení.",
+              "Zrychlení opotřebení pracovní obuvi."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b10",
+            "text": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější břemena ručně přenášet?",
+            "options": [
+              "Nad úroveň ramen (ve vzpažení).",
+              "V úrovni kotníků (v neustálém předklonu).",
+              "Mezi úrovní pasu a poloviny hrudníku."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-b11",
+            "text": "Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě?",
+            "options": [
+              "Nosnost se zvyšuje o 50 %, protože nohy odpočívají.",
+              "Nosnost se výrazně snižuje (pro muže obvykle na max. 5 kg při běžné práci).",
+              "Nosnost zůstává naprosto stejná jako vestoje."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b12",
+            "text": "Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky, jeřáby, kladkostroje) pro manipulaci?",
+            "options": [
+              "Pouze v případě, že o to zaměstnanci písemně požádají odbory.",
+              "Vždy, když ruční manipulace překračuje stanovené hygienické limity nebo představuje vysoké riziko úrazu.",
+              "Pouze tehdy, pokud je hmotnost břemene vyšší než 100 kg pro jednoho muže."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b13",
+            "text": "Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo kluzký povrch?",
+            "options": [
+              "Riziko nadměrného znečištění ovzduší v halách.",
+              "Riziko vyklouznutí břemene, pořezání rukou nebo poranění dolních končetin při pádu předmětu.",
+              "Ztráta záruky na manipulovaný materiál."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b14",
+            "text": "Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho dlouhého břemene (např. trámu)?",
+            "options": [
+              "Každý by měl jít jiným tempem a nedívat se na druhého.",
+              "Měli by být přibližně stejně vysocí, pohybovat se koordinovaně a pokyny by měl vydávat pouze jeden z nich.",
+              "Vyšší pracovník by měl nést 90 % váhy břemene."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b15",
+            "text": "Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny?",
+            "options": [
+              "Hmotnost největšího břemene, které se v daném skladu nachází.",
+              "Celkový součet hmotností všech břemen, která pracovník zvedne a přenese za celou pracovní směnu.",
+              "Hmotnost břemene přepočítaná na jeden metr čtvereční plochy."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b16",
+            "text": "Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v ČR při běžné práci?",
+            "options": [
+              "1 000 kg",
+              "5 000 kg",
+              "10 000 kg"
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-b17",
+            "text": "Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější?",
+            "options": [
+              "Úchop pouze konečky prstů (tzv. špetkový úchop).",
+              "Úchop celou dlaní s pokrčenými prsty obepínajícími břemeno nebo jeho držadla.",
+              "Držet břemeno přitlačením loktů k bokům bez zapojení dlaní."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b18",
+            "text": "Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu?",
+            "options": [
+              "Dochází k rychlejšímu vyblednutí barvy na podlaze.",
+              "Hrozí vysoké riziko uklouznutí, zakopnutí a následného pádu pracovníka i s těžkým předmětem.",
+              "Zvyšuje se statická elektřina v okolí břemene."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b19",
+            "text": "Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční manipulaci s těžkými předměty?",
+            "options": [
+              "Reflexní vesta a ochranné brýle proti slunci.",
+              "Pracovní rukavice s protiskluzovou úpravou a bezpečnostní obuv s vyztuženou špičkou (ocelová/kompozitní špice).",
+              "Celoobličejová maska a antistatická kombinéza."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b20",
+            "text": "Jak by mělo být břemeno správně ukládáno na regál nebo stůl?",
+            "options": [
+              "Odhozením z bezpečné vzdálenosti, aby se ušetřil čas.",
+              "Plynulým pohybem, nejprve položit hranu břemene na podložku a následně jej bezpečně dotlačit na místo bez přivření prstů.",
+              "Pouze s pomocí spolupracovníka, i kdyby vážilo méně než 1 kg."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b21",
+            "text": "Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)?",
+            "options": [
+              "Přesné chemické složení kapaliny z hlediska pH.",
+              "Přelévání těžiště během pohybu, které může způsobit nečekanou ztrátu stability pracovníka.",
+              "Zda barva obalu odpovídá estetickým standardům firmy."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b22",
+            "text": "Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v nepříznivých mikroklimatických podmínkách (např. extrémní chlad nebo horko)?",
+            "options": [
+              "Limity se zvyšují, aby pracovníci dokončili úkol rychleji.",
+              "Limity zůstávají beze změny, délka směn se však prodlužuje.",
+              "Limity se musí snížit, případně je nutné zavést častější bezpečnostní přestávky na regeneraci."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-b23",
+            "text": "Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např. paletových vozíků)?",
+            "options": [
+              "Obecně je bezpečnější a ergonomičtější vozík před sebou tlačit silou celého těla než jej táhnout za sebou jednou rukou.",
+              "Vozík se musí vždy táhnout za sebou v hlubokém předklonu.",
+              "Technika nemá žádný vliv, rozhodující je pouze rychlost jízdy."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-b24",
+            "text": "Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů nábřeží, výkopů nebo ramp?",
+            "options": [
+              "Prach z břemene by mohl znečistit dno výkopu.",
+              "Při ztrátě stability nebo sklouznutí břemene hrozí pád pracovníka do hloubky s fatálními následky.",
+              "Dochází k porušení akustických norem na pracovišti."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b25",
+            "text": "Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR?",
+            "options": [
+              "Nemá žádný vliv, pokud se žena cítí dobře.",
+              "Těhotným ženám je ruční manipulace s břemeny nad stanovené velmi nízké limity (např. max 5–10 kg občasně dle fáze) legislativně zakázána.",
+              "Těhotné ženy mohou zvedat břemena pouze s nasazeným bederním pásem."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b26",
+            "text": "Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene?",
+            "options": [
+              "Prostor, kde si pracovník může během směny lehnout a odpočívat.",
+              "Oblast těsně před tělem pracovníka ve výšce mezi pasem a rameny, kde je zvedání nejméně namáhavé.",
+              "Maximální délka natažené paže směrem nahoru."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b27",
+            "text": "Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a vysoko nad úroveň očí řidiče?",
+            "options": [
+              "Snížení aerodynamiky vozíku během jízdy.",
+              "Ztráta výhledu řidiče na trasu a riziko převrácení celého nákladu při zatáčení.",
+              "Okamžité vybití baterie elektrického vozíku."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b28",
+            "text": "Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení směny?",
+            "options": [
+              "Zvednutí předmětu maximálně jednou za celý kalendářní rok.",
+              "Přerušované zvedání, které v souhrnu nepřesahuje 30 minut za celou pracovní směnu.",
+              "Nepřetržité zvedání bez jakékoliv pauzy po dobu 4 hodin."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b29",
+            "text": "Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci s tabulemi skla či plechu?",
+            "options": [
+              "Ušetřit náklady na nákup běžných pracovních oděvů.",
+              "Zajistit pevný a bezpečný úchop materiálu, který nelze standardně uchopit rukou, a snížit riziko pořezání.",
+              "Zvýšit hmotnost břemene, aby se pracovník více namáhal."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-b30",
+            "text": "Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech při manipulaci s břemeny?",
+            "options": [
+              "Výhradně externí dodavatel manipulační techniky.",
+              "Státní úřad inspekce práce (SÚIP) prostřednictvím televizního vysílání.",
+              "Zaměstnavatel, a to v rámci pravidelného školení o bezpečnosti a ochraně zdraví při práci (BOZP)."
+            ],
+            "correctIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gdpr",
+      "title": "GDPR (Ochrana osobních údajů)",
+      "shortTitle": "GDPR",
+      "color": "violet",
+      "priceCzk": 249,
+      "slides": [
+        {
+          "id": "gdpr-slide-1",
+          "heading": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května…",
+          "paragraphs": [
+            "Lekce „Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g1",
+          "checkQuestions": [
+            {
+              "id": "off-g1",
+              "text": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května 2018?",
+              "options": [
+                "Směrnice Evropského parlamentu a Rady 95/46/ES",
+                "Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR)",
+                "Zákon č. 101/2000 Sb., o ochraně osobních údajů"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-2",
+          "heading": "Jaký je vztah mezi evropským nařízením GDPR a českým zákonem č. 110/2019 Sb.",
+          "paragraphs": [
+            "Zákon č. 110/2019 Sb."
+          ],
+          "svg_placeholder": "gdpr:off-g2",
+          "checkQuestions": [
+            {
+              "id": "off-g2",
+              "text": "Jaký je vztah mezi evropským nařízením GDPR a českým zákonem č. 110/2019 Sb.?",
+              "options": [
+                "Zákon č. 110/2019 Sb. zcela nahrazuje a ruší platnost GDPR na území ČR.",
+                "Zákon č. 110/2019 Sb. doplňuje GDPR v oblastech, kde nařízení dává členským státům prostor pro vlastní úpravu.",
+                "GDPR je pouze doporučující materiál a závazný je výhradně zákon č. 110/2019 Sb."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-3",
+          "heading": "Kdo je podle GDPR považován za „správce“ osobních údajů",
+          "paragraphs": [
+            "Lekce „Kdo je podle GDPR považován za „správce“ osobních údajů“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g3",
+          "checkQuestions": [
+            {
+              "id": "off-g3",
+              "text": "Kdo je podle GDPR považován za „správce“ osobních údajů?",
+              "options": [
+                "Fyzická nebo právnická osoba, která určuje účely a prostředky zpracování osobních údajů.",
+                "Každý zaměstnanec, který v rámci své práce přijde do styku s osobními údaji.",
+                "Externí dodavatel, který pro firmu provádí zpracování dat (např. cloudové úložiště)."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-4",
+          "heading": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření…",
+          "paragraphs": [
+            "Lekce „Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g4",
+          "checkQuestions": [
+            {
+              "id": "off-g4",
+              "text": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření souhlasu se zpracováním osobních údajů v souvislosti s nabídkou služeb informační společnosti (např. sociální sítě)?",
+              "options": [
+                "13 let",
+                "15 let",
+                "16 let"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-5",
+          "heading": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“…",
+          "paragraphs": [
+            "Lekce „Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g5",
+          "checkQuestions": [
+            {
+              "id": "off-g5",
+              "text": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“ (citlivé údaje) podle GDPR?",
+              "options": [
+                "E-mailová adresa a telefonní číslo.",
+                "Údaje o rasovém či etnickém původu a genetické údaje.",
+                "Číslo bankovního účtu a výše příjmu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-6",
+          "heading": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy,…",
+          "paragraphs": [
+            "Lekce „Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy,…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g6",
+          "checkQuestions": [
+            {
+              "id": "off-g6",
+              "text": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy, kterou subjekt údajů uzavřel?",
+              "options": [
+                "Pouze na základě výslovného a písemného souhlasu subjektu údajů.",
+                "Zpracování je nezbytné pro splnění smlouvy podle čl. 6 odst. 1 písm. b) GDPR.",
+                "Na základě oprávněného zájmu třetí strany."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-7",
+          "heading": "Co vyjadřuje zásada „minimalizace údajů“",
+          "paragraphs": [
+            "Lekce „Co vyjadřuje zásada „minimalizace údajů““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g7",
+          "checkQuestions": [
+            {
+              "id": "off-g7",
+              "text": "Co vyjadřuje zásada „minimalizace údajů“?",
+              "options": [
+                "Osobní údaje musí být uloženy v co nejmenší velikosti souborů (komprimovány).",
+                "Osobní údaje musí být přiměřené, relevantní a omezené na nezbytný rozsah ve vztahu k účelu, pro který jsou zpracovávány.",
+                "Správce musí osobní údaje smazat okamžitě po jejich prvním zobrazení."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-8",
+          "heading": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat",
+          "paragraphs": [
+            "Lekce „Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g8",
+          "checkQuestions": [
+            {
+              "id": "off-g8",
+              "text": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat?",
+              "options": [
+                "Ano, souhlas lze odvolat kdykoliv a odvolání musí být stejně snadné jako jeho poskytnutí.",
+                "Ano, ale pouze se souhlasem správce a po zaplacení administrativního poplatku.",
+                "Ne, jednou udělený souhlas je trvalý a nelze jej vzít zpět až do uplynutí skartační lhůty."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-9",
+          "heading": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje",
+          "paragraphs": [
+            "Lekce „Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g9",
+          "checkQuestions": [
+            {
+              "id": "off-g9",
+              "text": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje?",
+              "options": [
+                "Právo na výmaz (právo být zapomenut).",
+                "Právo na opravu podle čl. 16 GDPR.",
+                "Právo na přenositelnost údajů."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-10",
+          "heading": "Co je to „právo na přenositelnost údajů“ (data portability)",
+          "paragraphs": [
+            "Lekce „Co je to „právo na přenositelnost údajů“ (data portability)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g10",
+          "checkQuestions": [
+            {
+              "id": "off-g10",
+              "text": "Co je to „právo na přenositelnost údajů“ (data portability)?",
+              "options": [
+                "Právo získat své osobní údaje ve strukturovaném, běžně používaném a strojově čitelném formátu a předat je jinému správci.",
+                "Právo požadovat, aby správce fyzicky poslal data poštou na CD nebo flash disku.",
+                "Právo na změnu trvalého bydliště v registru obyvatel."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-11",
+          "heading": "Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice",
+          "paragraphs": [
+            "Lekce „Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g11",
+          "checkQuestions": [
+            {
+              "id": "off-g11",
+              "text": "Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice?",
+              "options": [
+                "Ministerstvo vnitra ČR",
+                "Úřad pro ochranu osobních údajů (ÚOOÚ)",
+                "Česká obchodní inspekce (ČOI)"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-12",
+          "heading": "Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu…",
+          "paragraphs": [
+            "Lekce „Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g12",
+          "checkQuestions": [
+            {
+              "id": "off-g12",
+              "text": "Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu osobních údajů (DPO)?",
+              "options": [
+                "Každý orgán veřejné moci nebo veřejný subjekt (s výjimkou soudů jednajících v rámci svých soudních pravomocí).",
+                "Pouze společnosti, které mají více než 250 zaměstnanců.",
+                "Všechny živnostenské subjekty (OSVČ) bez výjimky."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-13",
+          "heading": "V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení…",
+          "paragraphs": [
+            "Lekce „V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g13",
+          "checkQuestions": [
+            {
+              "id": "off-g13",
+              "text": "V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení osobních údajů, které představuje riziko pro práva jednotlivců?",
+              "options": [
+                "Do 30 dnů od zjištění incidentu.",
+                "Bez zbytečného odkladu a nejpozději do 72 hodin od okamžiku, kdy se o něm dozvěděl.",
+                "Do konce příslušného kalendářního měsíce."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-14",
+          "heading": "Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému…",
+          "paragraphs": [
+            "Lekce „Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g14",
+          "checkQuestions": [
+            {
+              "id": "off-g14",
+              "text": "Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému subjektu údajů (občanovi)?",
+              "options": [
+                "Při jakémkoliv, i sebemenším narušení systému, bez ohledu na závažnost.",
+                "Pokud je pravděpodobné, že toto porušení bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+                "Pouze v případě, že si to subjekt údajů předem písemně vyžádal ve smlouvě."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-15",
+          "heading": "Co je to „Záznam o činnostech zpracování“",
+          "paragraphs": [
+            "Lekce „Co je to „Záznam o činnostech zpracování““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g15",
+          "checkQuestions": [
+            {
+              "id": "off-g15",
+              "text": "Co je to „Záznam o činnostech zpracování“?",
+              "options": [
+                "Dokumentace, kterou si správce nebo zpracovatel povinně vede o tom, jaká data, proč a jak zpracovává.",
+                "Výpis z registru trestů všech zaměstnanců, kteří pracují s databázemi.",
+                "Kniha příchodů a odchodů na pracoviště uložená v papírové formě."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-16",
+          "heading": "Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější…",
+          "paragraphs": [
+            "Lekce „Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g16",
+          "checkQuestions": [
+            {
+              "id": "off-g16",
+              "text": "Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější porušení GDPR?",
+              "options": [
+                "Do 20 000 000 EUR nebo do 4 % celkového ročního obratu celosvětově (podle toho, co je vyšší).",
+                "Fixní částka 10 000 000 Kč bez ohledu na velikost firmy.",
+                "Maximálně 500 000 EUR pro jakékoliv porušení."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-17",
+          "heading": "Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité…",
+          "paragraphs": [
+            "Lekce „Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g17",
+          "checkQuestions": [
+            {
+              "id": "off-g17",
+              "text": "Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité subjekty?",
+              "options": [
+                "Ne, pokuty se udělují všem subjektům stejně podle evropského sazebníku.",
+                "Ano, zákon omezuje možnost ukládat pokuty obcím, které nezřizují pověřence, a některým orgánům veřejné moci.",
+                "Ano, pokuty se podle českého zákona nesmí dávat žádným soukromým firmám, pouze státu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-18",
+          "heading": "Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by…",
+          "paragraphs": [
+            "Lekce „Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g18",
+          "checkQuestions": [
+            {
+              "id": "off-g18",
+              "text": "Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by design and by default)?",
+              "options": [
+                "Ochrana dat musí být integrována již od počátku návrhu technologií a systémy musí být přednastaveny na nejvyšší možnou míru soukromí.",
+                "Znamená to, že všechny dokumenty musí být uzamčeny v trezoru se standardním zámkem.",
+                "Že ochrana osobních údajů se řeší až ve chvíli, kdy dojde k soudnímu sporu."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-19",
+          "heading": "Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)",
+          "paragraphs": [
+            "Lekce „Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g19",
+          "checkQuestions": [
+            {
+              "id": "off-g19",
+              "text": "Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)?",
+              "options": [
+                "Při každém nákupu nového kancelářského papíru.",
+                "Pokud je pravděpodobné, že určitý typ zpracování (zejména při použití nových technologií) bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+                "Pouze pokud firmu k tomuto kroku písemně vyzve Policie ČR."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-20",
+          "heading": "Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů",
+          "paragraphs": [
+            "Lekce „Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g20",
+          "checkQuestions": [
+            {
+              "id": "off-g20",
+              "text": "Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů?",
+              "options": [
+                "Musí mít uzavřenou písemnou smlouvu o zpracování osobních údajů (tzv. zpracovatelskou smlouvu) splňující náležitosti čl. 28 GDPR.",
+                "Postačí ústní dohoda uzavřená před svědky.",
+                "Žádný právní vztah se nevyžaduje, pokud jsou obě firmy registrované v EU."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-21",
+          "heading": "Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv.…",
+          "paragraphs": [
+            "Lekce „Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g21",
+          "checkQuestions": [
+            {
+              "id": "off-g21",
+              "text": "Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv. podzpracovatele)?",
+              "options": [
+                "Ano, zcela libovolně a bez vědomí původního správce.",
+                "Pouze s předchozím konkrétním nebo obecným písemným povolením správce.",
+                "Ne, zapojení dalších subjektů je striktně zakázáno za všech okolností."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-22",
+          "heading": "Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský…",
+          "paragraphs": [
+            "Lekce „Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g22",
+          "checkQuestions": [
+            {
+              "id": "off-g22",
+              "text": "Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský hospodářský prostor), pokud neexistuje rozhodnutí Evropské komise o odpovídající ochraně?",
+              "options": [
+                "Na základě vhodných záruk, jako jsou standardní smluvní doložky (SCC) schválené EK nebo závazná podniková pravidla (BCR).",
+                "Data lze předat kamkoliv, stačí, když s tím ústně souhlasí ředitel společnosti.",
+                "Do třetích zemí je předávání dat absolutně zakázáno bez výjimek."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-23",
+          "heading": "Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv.…",
+          "paragraphs": [
+            "Lekce „Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g23",
+          "checkQuestions": [
+            {
+              "id": "off-g23",
+              "text": "Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv. informační povinnost)?",
+              "options": [
+                "Pouze telefonní číslo na technickou podporu.",
+                "Identitu správce, účely zpracování, právní základ, dobu uchování dat a informaci o právech subjektu údajů.",
+                "Interní obchodní tajemství a zdrojové kódy databáze."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-24",
+          "heading": "Co znamená „právo na omezení zpracování“",
+          "paragraphs": [
+            "Lekce „Co znamená „právo na omezení zpracování““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g24",
+          "checkQuestions": [
+            {
+              "id": "off-g24",
+              "text": "Co znamená „právo na omezení zpracování“?",
+              "options": [
+                "Právo požadovat, aby správce osobní údaje označil a dočasně pozastavil jejich zpracování (data se nesmažou, ale ani aktivně nevyužívají).",
+                "Právo zakázat správci přístup na internet.",
+                "Právo vynutit si slevu z ceny poskytované služby."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-25",
+          "heading": "Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných…",
+          "paragraphs": [
+            "Lekce „Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g25",
+          "checkQuestions": [
+            {
+              "id": "off-g25",
+              "text": "Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných povinností z důvodu novinářské licence nebo pro účely akademického, uměleckého či literárního projevu?",
+              "options": [
+                "Zpracování prováděné bankami za účelem prověřování bonity klientů.",
+                "Zpracování nezbytné pro legitimní činnost tisku, rozhlasu, televize a literární/umělecké tvorby za účelem ochrany svobody projevu.",
+                "Zpracování kamerových záznamů na soukromých parkovištích."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-26",
+          "heading": "Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se…",
+          "paragraphs": [
+            "Lekce „Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g26",
+          "checkQuestions": [
+            {
+              "id": "off-g26",
+              "text": "Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se zpracováním osobních údajů pro účely marketingu?",
+              "options": [
+                "Ano, je to běžná obchodní praktika schválená legislativou.",
+                "Ne, souhlas musí být svobodný a nesmí být podmínkou pro plnění smlouvy, pokud dané zpracování není pro toto plnění nezbytné.",
+                "Ano, ale pouze v případě, že marketingové zprávy posílá třikrát měsíčně."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-27",
+          "heading": "Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo…",
+          "paragraphs": [
+            "Lekce „Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g27",
+          "checkQuestions": [
+            {
+              "id": "off-g27",
+              "text": "Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo zpracuje osobní údaje podle přestupkové části zákona č. 110/2019 Sb.?",
+              "options": [
+                "Žádná, zákon upravuje pouze pokuty pro firmy.",
+                "Za vybrané přestupky (např. porušení zákazu zveřejnění osobních údajů v médiích) lze uložit pokutu do výše 1 000 000 Kč až 5 000 000 Kč.",
+                "Pouze veřejně prospěšné práce v rozsahu 20 hodin."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-28",
+          "heading": "Co vyjadřuje zásada „omezení uložení“ (storage limitation)",
+          "paragraphs": [
+            "Lekce „Co vyjadřuje zásada „omezení uložení“ (storage limitation)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g28",
+          "checkQuestions": [
+            {
+              "id": "off-g28",
+              "text": "Co vyjadřuje zásada „omezení uložení“ (storage limitation)?",
+              "options": [
+                "Osobní údaje nesmí být uchovávány ve formě, která umožňuje identifikaci subjektů údajů, po dobu delší, než je nezbytné pro účely, pro které jsou zpracovávány.",
+                "Data se smí ukládat pouze na pevné disky s omezenou kapacitou do 1 TB.",
+                "Správce nesmí ukládat záložní kopie dat na cloudová úložiště."
+              ],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-29",
+          "heading": "Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace",
+          "paragraphs": [
+            "Lekce „Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g29",
+          "checkQuestions": [
+            {
+              "id": "off-g29",
+              "text": "Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace?",
+              "options": [
+                "Ano, externí výkon funkce DPO na základě smlouvy o poskytování služeb je nelegální.",
+                "Ne, pověřenec může plnit své úkoly na základě pracovní smlouvy (interní), nebo na základě smlouvy o poskytování služeb (externí).",
+                "Musí to být výhradně osoba delegovaná přímo Úřadem pro ochranu osobních údajů."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "gdpr-slide-30",
+          "heading": "Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti…",
+          "paragraphs": [
+            "Lekce „Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "gdpr:off-g30",
+          "checkQuestions": [
+            {
+              "id": "off-g30",
+              "text": "Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti GDPR?",
+              "options": [
+                "Mezi těmito pojmy není žádný rozdíl, oba znamenají totéž.",
+                "Pseudonymizované údaje stále spadají pod GDPR (identifikaci lze obnovit pomocí dodatečných informací), zatímco plná anonymizace staví data mimo režim GDPR.",
+                "Pseudonymizace automaticky ruší veškeré povinnosti správce vůči ÚOOÚ."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test GDPR",
+        "subtitle": "Oficiální test s vydáním certifikátu",
+        "questionCount": 15,
+        "passPercent": 80,
+        "minCorrect": 12,
+        "pool": [
+          {
+            "id": "off-g1",
+            "text": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května 2018?",
+            "options": [
+              "Směrnice Evropského parlamentu a Rady 95/46/ES",
+              "Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR)",
+              "Zákon č. 101/2000 Sb., o ochraně osobních údajů"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g2",
+            "text": "Jaký je vztah mezi evropským nařízením GDPR a českým zákonem č. 110/2019 Sb.?",
+            "options": [
+              "Zákon č. 110/2019 Sb. zcela nahrazuje a ruší platnost GDPR na území ČR.",
+              "Zákon č. 110/2019 Sb. doplňuje GDPR v oblastech, kde nařízení dává členským státům prostor pro vlastní úpravu.",
+              "GDPR je pouze doporučující materiál a závazný je výhradně zákon č. 110/2019 Sb."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g3",
+            "text": "Kdo je podle GDPR považován za „správce“ osobních údajů?",
+            "options": [
+              "Fyzická nebo právnická osoba, která určuje účely a prostředky zpracování osobních údajů.",
+              "Každý zaměstnanec, který v rámci své práce přijde do styku s osobními údaji.",
+              "Externí dodavatel, který pro firmu provádí zpracování dat (např. cloudové úložiště)."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g4",
+            "text": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření souhlasu se zpracováním osobních údajů v souvislosti s nabídkou služeb informační společnosti (např. sociální sítě)?",
+            "options": [
+              "13 let",
+              "15 let",
+              "16 let"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g5",
+            "text": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“ (citlivé údaje) podle GDPR?",
+            "options": [
+              "E-mailová adresa a telefonní číslo.",
+              "Údaje o rasovém či etnickém původu a genetické údaje.",
+              "Číslo bankovního účtu a výše příjmu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g6",
+            "text": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy, kterou subjekt údajů uzavřel?",
+            "options": [
+              "Pouze na základě výslovného a písemného souhlasu subjektu údajů.",
+              "Zpracování je nezbytné pro splnění smlouvy podle čl. 6 odst. 1 písm. b) GDPR.",
+              "Na základě oprávněného zájmu třetí strany."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g7",
+            "text": "Co vyjadřuje zásada „minimalizace údajů“?",
+            "options": [
+              "Osobní údaje musí být uloženy v co nejmenší velikosti souborů (komprimovány).",
+              "Osobní údaje musí být přiměřené, relevantní a omezené na nezbytný rozsah ve vztahu k účelu, pro který jsou zpracovávány.",
+              "Správce musí osobní údaje smazat okamžitě po jejich prvním zobrazení."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g8",
+            "text": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat?",
+            "options": [
+              "Ano, souhlas lze odvolat kdykoliv a odvolání musí být stejně snadné jako jeho poskytnutí.",
+              "Ano, ale pouze se souhlasem správce a po zaplacení administrativního poplatku.",
+              "Ne, jednou udělený souhlas je trvalý a nelze jej vzít zpět až do uplynutí skartační lhůty."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g9",
+            "text": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje?",
+            "options": [
+              "Právo na výmaz (právo být zapomenut).",
+              "Právo na opravu podle čl. 16 GDPR.",
+              "Právo na přenositelnost údajů."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g10",
+            "text": "Co je to „právo na přenositelnost údajů“ (data portability)?",
+            "options": [
+              "Právo získat své osobní údaje ve strukturovaném, běžně používaném a strojově čitelném formátu a předat je jinému správci.",
+              "Právo požadovat, aby správce fyzicky poslal data poštou na CD nebo flash disku.",
+              "Právo na změnu trvalého bydliště v registru obyvatel."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g11",
+            "text": "Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice?",
+            "options": [
+              "Ministerstvo vnitra ČR",
+              "Úřad pro ochranu osobních údajů (ÚOOÚ)",
+              "Česká obchodní inspekce (ČOI)"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g12",
+            "text": "Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu osobních údajů (DPO)?",
+            "options": [
+              "Každý orgán veřejné moci nebo veřejný subjekt (s výjimkou soudů jednajících v rámci svých soudních pravomocí).",
+              "Pouze společnosti, které mají více než 250 zaměstnanců.",
+              "Všechny živnostenské subjekty (OSVČ) bez výjimky."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g13",
+            "text": "V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení osobních údajů, které představuje riziko pro práva jednotlivců?",
+            "options": [
+              "Do 30 dnů od zjištění incidentu.",
+              "Bez zbytečného odkladu a nejpozději do 72 hodin od okamžiku, kdy se o něm dozvěděl.",
+              "Do konce příslušného kalendářního měsíce."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g14",
+            "text": "Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému subjektu údajů (občanovi)?",
+            "options": [
+              "Při jakémkoliv, i sebemenším narušení systému, bez ohledu na závažnost.",
+              "Pokud je pravděpodobné, že toto porušení bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+              "Pouze v případě, že si to subjekt údajů předem písemně vyžádal ve smlouvě."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g15",
+            "text": "Co je to „Záznam o činnostech zpracování“?",
+            "options": [
+              "Dokumentace, kterou si správce nebo zpracovatel povinně vede o tom, jaká data, proč a jak zpracovává.",
+              "Výpis z registru trestů všech zaměstnanců, kteří pracují s databázemi.",
+              "Kniha příchodů a odchodů na pracoviště uložená v papírové formě."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g16",
+            "text": "Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější porušení GDPR?",
+            "options": [
+              "Do 20 000 000 EUR nebo do 4 % celkového ročního obratu celosvětově (podle toho, co je vyšší).",
+              "Fixní částka 10 000 000 Kč bez ohledu na velikost firmy.",
+              "Maximálně 500 000 EUR pro jakékoliv porušení."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g17",
+            "text": "Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité subjekty?",
+            "options": [
+              "Ne, pokuty se udělují všem subjektům stejně podle evropského sazebníku.",
+              "Ano, zákon omezuje možnost ukládat pokuty obcím, které nezřizují pověřence, a některým orgánům veřejné moci.",
+              "Ano, pokuty se podle českého zákona nesmí dávat žádným soukromým firmám, pouze státu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g18",
+            "text": "Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by design and by default)?",
+            "options": [
+              "Ochrana dat musí být integrována již od počátku návrhu technologií a systémy musí být přednastaveny na nejvyšší možnou míru soukromí.",
+              "Znamená to, že všechny dokumenty musí být uzamčeny v trezoru se standardním zámkem.",
+              "Že ochrana osobních údajů se řeší až ve chvíli, kdy dojde k soudnímu sporu."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g19",
+            "text": "Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)?",
+            "options": [
+              "Při každém nákupu nového kancelářského papíru.",
+              "Pokud je pravděpodobné, že určitý typ zpracování (zejména při použití nových technologií) bude mít za následek vysoké riziko pro práva a svobody fyzických osob.",
+              "Pouze pokud firmu k tomuto kroku písemně vyzve Policie ČR."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g20",
+            "text": "Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů?",
+            "options": [
+              "Musí mít uzavřenou písemnou smlouvu o zpracování osobních údajů (tzv. zpracovatelskou smlouvu) splňující náležitosti čl. 28 GDPR.",
+              "Postačí ústní dohoda uzavřená před svědky.",
+              "Žádný právní vztah se nevyžaduje, pokud jsou obě firmy registrované v EU."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g21",
+            "text": "Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv. podzpracovatele)?",
+            "options": [
+              "Ano, zcela libovolně a bez vědomí původního správce.",
+              "Pouze s předchozím konkrétním nebo obecným písemným povolením správce.",
+              "Ne, zapojení dalších subjektů je striktně zakázáno za všech okolností."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g22",
+            "text": "Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský hospodářský prostor), pokud neexistuje rozhodnutí Evropské komise o odpovídající ochraně?",
+            "options": [
+              "Na základě vhodných záruk, jako jsou standardní smluvní doložky (SCC) schválené EK nebo závazná podniková pravidla (BCR).",
+              "Data lze předat kamkoliv, stačí, když s tím ústně souhlasí ředitel společnosti.",
+              "Do třetích zemí je předávání dat absolutně zakázáno bez výjimek."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g23",
+            "text": "Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv. informační povinnost)?",
+            "options": [
+              "Pouze telefonní číslo na technickou podporu.",
+              "Identitu správce, účely zpracování, právní základ, dobu uchování dat a informaci o právech subjektu údajů.",
+              "Interní obchodní tajemství a zdrojové kódy databáze."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g24",
+            "text": "Co znamená „právo na omezení zpracování“?",
+            "options": [
+              "Právo požadovat, aby správce osobní údaje označil a dočasně pozastavil jejich zpracování (data se nesmažou, ale ani aktivně nevyužívají).",
+              "Právo zakázat správci přístup na internet.",
+              "Právo vynutit si slevu z ceny poskytované služby."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g25",
+            "text": "Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných povinností z důvodu novinářské licence nebo pro účely akademického, uměleckého či literárního projevu?",
+            "options": [
+              "Zpracování prováděné bankami za účelem prověřování bonity klientů.",
+              "Zpracování nezbytné pro legitimní činnost tisku, rozhlasu, televize a literární/umělecké tvorby za účelem ochrany svobody projevu.",
+              "Zpracování kamerových záznamů na soukromých parkovištích."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g26",
+            "text": "Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se zpracováním osobních údajů pro účely marketingu?",
+            "options": [
+              "Ano, je to běžná obchodní praktika schválená legislativou.",
+              "Ne, souhlas musí být svobodný a nesmí být podmínkou pro plnění smlouvy, pokud dané zpracování není pro toto plnění nezbytné.",
+              "Ano, ale pouze v případě, že marketingové zprávy posílá třikrát měsíčně."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g27",
+            "text": "Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo zpracuje osobní údaje podle přestupkové části zákona č. 110/2019 Sb.?",
+            "options": [
+              "Žádná, zákon upravuje pouze pokuty pro firmy.",
+              "Za vybrané přestupky (např. porušení zákazu zveřejnění osobních údajů v médiích) lze uložit pokutu do výše 1 000 000 Kč až 5 000 000 Kč.",
+              "Pouze veřejně prospěšné práce v rozsahu 20 hodin."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g28",
+            "text": "Co vyjadřuje zásada „omezení uložení“ (storage limitation)?",
+            "options": [
+              "Osobní údaje nesmí být uchovávány ve formě, která umožňuje identifikaci subjektů údajů, po dobu delší, než je nezbytné pro účely, pro které jsou zpracovávány.",
+              "Data se smí ukládat pouze na pevné disky s omezenou kapacitou do 1 TB.",
+              "Správce nesmí ukládat záložní kopie dat na cloudová úložiště."
+            ],
+            "correctIndex": 0
+          },
+          {
+            "id": "off-g29",
+            "text": "Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace?",
+            "options": [
+              "Ano, externí výkon funkce DPO na základě smlouvy o poskytování služeb je nelegální.",
+              "Ne, pověřenec může plnit své úkoly na základě pracovní smlouvy (interní), nebo na základě smlouvy o poskytování služeb (externí).",
+              "Musí to být výhradně osoba delegovaná přímo Úřadem pro ochranu osobních údajů."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-g30",
+            "text": "Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti GDPR?",
+            "options": [
+              "Mezi těmito pojmy není žádný rozdíl, oba znamenají totéž.",
+              "Pseudonymizované údaje stále spadají pod GDPR (identifikaci lze obnovit pomocí dodatečných informací), zatímco plná anonymizace staví data mimo režim GDPR.",
+              "Pseudonymizace automaticky ruší veškeré povinnosti správce vůči ÚOOÚ."
+            ],
+            "correctIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ergonomie",
+      "title": "Ergonomie práce",
+      "shortTitle": "Ergonomie",
+      "color": "green",
+      "priceCzk": 149,
+      "slides": [
+        {
+          "id": "ergonomie-slide-1",
+          "heading": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské…",
+          "paragraphs": [
+            "Lekce „Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e1",
+          "checkQuestions": [
+            {
+              "id": "off-e1",
+              "text": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské židli?",
+              "options": [
+                "Přibližně 45° až 60° (akutní úhel).",
+                "Přibližně 90° až 110° (pravý nebo mírně tupý úhel).",
+                "Přesně 150° (nohy téměř natažené)."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-2",
+          "heading": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu",
+          "paragraphs": [
+            "Lekce „V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e2",
+          "checkQuestions": [
+            {
+              "id": "off-e2",
+              "text": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu?",
+              "options": [
+                "Přibližně 20 cm nad úrovní očí, aby se natahoval krk.",
+                "V úrovni očí nebo mírně pod ní, aby pohled směřoval lehce dolů.",
+                "V úrovni brady, aby byl monitor co nejblíže stolu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-3",
+          "heading": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele",
+          "paragraphs": [
+            "Lekce „Jaká je doporučená optimální vzdálenost monitoru od očí uživatele“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e3",
+          "checkQuestions": [
+            {
+              "id": "off-e3",
+              "text": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele?",
+              "options": [
+                "Maximálně 30 cm (na délku předloktí).",
+                "Přibližně 50 až 70 cm (zhruba na délku natažené paže).",
+                "Minimálně 120 cm bez ohledu na velikost obrazovky."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-4",
+          "heading": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem",
+          "paragraphs": [
+            "Lekce „Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e4",
+          "checkQuestions": [
+            {
+              "id": "off-e4",
+              "text": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem?",
+              "options": [
+                "Rychlá Synchronizace Informací (technický protokol monitoru).",
+                "Repetitive Strain Injury – poškození z opakovaného namáhání.",
+                "Radiant Screen Intensity – intenzita záření monitoru."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-5",
+          "heading": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši",
+          "paragraphs": [
+            "Lekce „Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e5",
+          "checkQuestions": [
+            {
+              "id": "off-e5",
+              "text": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši?",
+              "options": [
+                "Má vyšší citlivost senzoru při hraní her.",
+                "Zrychluje pohyb kurzoru po obrazovce bez nutnosti instalovat ovladače.",
+                "Udržuje předloktí a zápěstí v přirozené anatomické poloze (tzv. pozice podání ruky) a snižuje tlak na karpální tunel."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-6",
+          "heading": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům",
+          "paragraphs": [
+            "Lekce „Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e6",
+          "checkQuestions": [
+            {
+              "id": "off-e6",
+              "text": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům?",
+              "options": [
+                "Stůl musí být výrazně výše než lokty, aby ramena byla zvednutá.",
+                "Výška by měla umožnit, aby ramena byla uvolněná a lokty svíraly úhel kolem 90° až 100° při položení rukou na klávesnici.",
+                "Ruce by měly viset dolů pod úhlem 130°, bez jakékoliv opory."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-7",
+          "heading": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím",
+          "paragraphs": [
+            "Lekce „Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e7",
+          "checkQuestions": [
+            {
+              "id": "off-e7",
+              "text": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím?",
+              "options": [
+                "Každých 20 minut se napít 20 ml vody po dobu 20 sekund.",
+                "Každých 20 minut se podívat na předmět vzdálený nejméně 20 stop (cca 6 metrů) po dobu 20 sekund.",
+                "Každých 20 hodin práce si dát 20 minut pauzu a 20krát zamrkat."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-8",
+          "heading": "Kam by měly směřovat plosky nohou při správném sedu u počítače",
+          "paragraphs": [
+            "Lekce „Kam by měly směřovat plosky nohou při správném sedu u počítače“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e8",
+          "checkQuestions": [
+            {
+              "id": "off-e8",
+              "text": "Kam by měly směřovat plosky nohou při správném sedu u počítače?",
+              "options": [
+                "Měly by volně viset ve vzduchu bez kontaktu s podlahou.",
+                "Měly by být zkřížené pod židlí nebo přehozené jedna přes druhou.",
+                "Měly by celou plochou spočívat na podlaze nebo na ergonomické podložce pod nohy."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-9",
+          "heading": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti",
+          "paragraphs": [
+            "Lekce „Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e9",
+          "checkQuestions": [
+            {
+              "id": "off-e9",
+              "text": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti?",
+              "options": [
+                "Přímo zády k oknu (světlo svítí uživateli do očí).",
+                "Přímo proti oknu (světlo dopadá na monitor a vytváří odlesky).",
+                "Kolmo k oknu, aby světlo přicházelo ze strany a nevznikaly odlesky ani protisvětlo."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-10",
+          "heading": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější",
+          "paragraphs": [
+            "Lekce „Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e10",
+          "checkQuestions": [
+            {
+              "id": "off-e10",
+              "text": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější?",
+              "options": [
+                "Zápěstí jsou ohnutá ostře nahoru a opírají se o hranu stolu.",
+                "Zápěstí jsou v jedné rovině s předloktím, bez zalomení do stran nebo nahoru/dolů.",
+                "Zápěstí jsou ohnutá dolů pod úroveň klávesnice."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-11",
+          "heading": "K čemu primárně slouží bederní opěrka na ergonomické židli",
+          "paragraphs": [
+            "Lekce „K čemu primárně slouží bederní opěrka na ergonomické židli“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e11",
+          "checkQuestions": [
+            {
+              "id": "off-e11",
+              "text": "K čemu primárně slouží bederní opěrka na ergonomické židli?",
+              "options": [
+                "K vyhřívání spodní části zad během zimních měsíců.",
+                "K podpoře přirozeného lordotického zakřivení bederní páteře a prevenci hrbení.",
+                "K masírování zádových svalů při otáčení židle."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-12",
+          "heading": "Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem",
+          "paragraphs": [
+            "Lekce „Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e12",
+          "checkQuestions": [
+            {
+              "id": "off-e12",
+              "text": "Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem?",
+              "options": [
+                "Ostrou bolestí v oblasti krční páteře a motáním hlavy.",
+                "Zhoršením zraku a neschopností zaostřit na blízko.",
+                "Brněním, mravenčením nebo bolestí v palci, ukazováčku a prostředníčku ruky."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-13",
+          "heading": "Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na…",
+          "paragraphs": [
+            "Lekce „Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e13",
+          "checkQuestions": [
+            {
+              "id": "off-e13",
+              "text": "Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na nízkém stole?",
+              "options": [
+                "Způsobuje to nadměrné opotřebení baterie notebooku.",
+                "Nutí to uživatele k výraznému předklonu hlavy, což extrémně přetěžuje krční páteř (tzv. text neck).",
+                "Dochází tím k okamžitému rušení Wi-Fi signálu tělem."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-14",
+          "heading": "Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě",
+          "paragraphs": [
+            "Lekce „Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e14",
+          "checkQuestions": [
+            {
+              "id": "off-e14",
+              "text": "Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě?",
+              "options": [
+                "Častějším zvyšováním jasu displeje na maximum.",
+                "Použitím podstavce pod notebook (pro zvednutí displeje) v kombinaci s externí klávesnicí a myší.",
+                "Podložením rukou měkkým polštářem přímo na klávesnici notebooku."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-15",
+          "heading": "Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo",
+          "paragraphs": [
+            "Lekce „Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e15",
+          "checkQuestions": [
+            {
+              "id": "off-e15",
+              "text": "Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo?",
+              "options": [
+                "Zrychluje metabolismus a spalování kalorií.",
+                "Způsobuje městnání krve v dolních končetinách, snižuje elasticitu meziobratlových plotének a oslabuje svaly.",
+                "Zvyšuje celkovou kapacitu plic a koncentraci kyslíku v krvi."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-16",
+          "heading": "Co je to „dynamické sezení“",
+          "paragraphs": [
+            "Lekce „Co je to „dynamické sezení““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e16",
+          "checkQuestions": [
+            {
+              "id": "off-e16",
+              "text": "Co je to „dynamické sezení“?",
+              "options": [
+                "Sezení na židli, která se neustále točí dokola velkou rychlostí.",
+                "Způsob sezení na židli s mechanikou, která reaguje na pohyby těla a neustále mění sklon opěráku a sedáku.",
+                "Pravidelné střídání tří různých židlí během jedné pracovní směny."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-17",
+          "heading": "Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně…",
+          "paragraphs": [
+            "Lekce „Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e17",
+          "checkQuestions": [
+            {
+              "id": "off-e17",
+              "text": "Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně unavující pro oči?",
+              "options": [
+                "Jeden silný bodový reflektor namířený přímo na monitor.",
+                "Úplná tma v místnosti kombinovaná s maximálním jasem monitoru.",
+                "Rovnoměrné, difúzní (rozptýlené) osvětlení kombinující přirozené denní světlo a nepřímé umělé osvětlení."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-18",
+          "heading": "Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na…",
+          "paragraphs": [
+            "Lekce „Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e18",
+          "checkQuestions": [
+            {
+              "id": "off-e18",
+              "text": "Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na počítači?",
+              "options": [
+                "Jedna pauza na 30 minut po každých 6 hodinách práce.",
+                "Krátká pauza (cca 2–5 minut) každých 45 až 60 minut práce spojená s protažením nebo změnou polohy.",
+                "Přestávky nejsou nutné, pokud má uživatel drahou ergonomickou židli."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-19",
+          "heading": "Jaký význam má správné nastavení hloubky sedáku na židli",
+          "paragraphs": [
+            "Lekce „Jaký význam má správné nastavení hloubky sedáku na židli“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e19",
+          "checkQuestions": [
+            {
+              "id": "off-e19",
+              "text": "Jaký význam má správné nastavení hloubky sedáku na židli?",
+              "options": [
+                "Zajišťuje, aby uživatel mohl na židli pohodlně klečet.",
+                "Zamezuje tlaku přední hrany sedáku na podkolenní jamku, čímž chrání cévní a lymfatický systém nohou.",
+                "Určuje, jak daleko může židle odjet od pracovního stolu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-20",
+          "heading": "Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu",
+          "paragraphs": [
+            "Lekce „Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e20",
+          "checkQuestions": [
+            {
+              "id": "off-e20",
+              "text": "Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu?",
+              "options": [
+                "Žlutý text na jasně červeném pozadí.",
+                "Vysoký kontrast, například tmavé písmo na světlém (ne oslňujícím) pozadí, nebo softwarový filtr potlačující modré světlo večer.",
+                "Blikající neonové barvy s nízkým rozlišením."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-21",
+          "heading": "Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón…",
+          "paragraphs": [
+            "Lekce „Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e21",
+          "checkQuestions": [
+            {
+              "id": "off-e21",
+              "text": "Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón dosahu?",
+              "options": [
+                "Aby stůl vypadal esteticky čistě pro návštěvy.",
+                "Aby nejčastěji používané věci (myš, klávesnice, telefon) byly v dosahu paží bez nutnosti rotace trupu nebo natahování se.",
+                "Aby se pod klávesnici vešlo co nejvíce papírových dokumentů."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-22",
+          "heading": "Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní…",
+          "paragraphs": [
+            "Lekce „Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e22",
+          "checkQuestions": [
+            {
+              "id": "off-e22",
+              "text": "Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní oběh?",
+              "options": [
+                "Zvyšuje prokrvení prstů na nohou a urychluje chůzi.",
+                "Nemá žádný vliv, protože krev proudí pouze v horní polovině těla.",
+                "Přední hrana sedáku stlačuje stehna ze spodu, což omezuje návrat krve z dolních končetin a může vést k otokům."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-23",
+          "heading": "Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a…",
+          "paragraphs": [
+            "Lekce „Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e23",
+          "checkQuestions": [
+            {
+              "id": "off-e23",
+              "text": "Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a prevenci suchých očí?",
+              "options": [
+                "Teplota 15 °C a vlhkost pod 10 %.",
+                "Teplota 20–24 °C a relativní vlhkost vzduchu v rozmezí 40–60 %.",
+                "Teplota nad 30 °C a vlhkost blízká 100 %."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-24",
+          "heading": "Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou…",
+          "paragraphs": [
+            "Lekce „Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e24",
+          "checkQuestions": [
+            {
+              "id": "off-e24",
+              "text": "Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou (sit-stand stoly)?",
+              "options": [
+                "Umožňují schovat kabely pod desku stolu efektivněji.",
+                "Umožňují střídat práci vsedě a vestoje, což aktivuje svalový aparát a ulevuje páteři.",
+                "Jsou lehčí na stěhování do jiných kanceláří."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-25",
+          "heading": "Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu",
+          "paragraphs": [
+            "Lekce „Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e25",
+          "checkQuestions": [
+            {
+              "id": "off-e25",
+              "text": "Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu?",
+              "options": [
+                "Přímo na hraně stolu, aby ruce visely dolů do klína.",
+                "Přibližně 10 až 15 cm od hrany stolu, aby vznikl prostor pro oporu zápěstí nebo předloktí.",
+                "Uprostřed stolu za monitorem, aby uživatel musel paže natahovat."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-26",
+          "heading": "Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)",
+          "paragraphs": [
+            "Lekce „Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e26",
+          "checkQuestions": [
+            {
+              "id": "off-e26",
+              "text": "Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)?",
+              "options": [
+                "Způsobuje zrychlení růstu vlasů v zátylku.",
+                "Extrémní statické přetížení šíjových svalů, které může vést k chronickým bolestem hlavy a migrénám.",
+                "Trvalé poškození sluchových kůstek v uchu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-27",
+          "heading": "Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání…",
+          "paragraphs": [
+            "Lekce „Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e27",
+          "checkQuestions": [
+            {
+              "id": "off-e27",
+              "text": "Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání klasické klávesnice?",
+              "options": [
+                "Drátěný stojan na tužky umístěný vedle myši.",
+                "Ergonomická gelová nebo pěnová podložka před klávesnici podepírající dlaňovou část.",
+                "Plastový kryt na monitor proti prachu."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-28",
+          "heading": "Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku",
+          "paragraphs": [
+            "Lekce „Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e28",
+          "checkQuestions": [
+            {
+              "id": "off-e28",
+              "text": "Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku?",
+              "options": [
+                "Pouze na samém okraji (přední třetině) sedáku, bez opření zad.",
+                "Plně sedět vzadu na sedáku tak, aby záda byla po celé délce podepřena opěradlem židle.",
+                "Sklouznutý dolů, kdy se opírají pouze lopatky a pánev je vysunutá vpřed."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-29",
+          "heading": "Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je…",
+          "paragraphs": [
+            "Lekce „Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e29",
+          "checkQuestions": [
+            {
+              "id": "off-e29",
+              "text": "Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je jeden z nich dominantní?",
+              "options": [
+                "Nutí uživatele neustále cvičit ramena, což je zdravé.",
+                "Může vést k jednostrannému přetěžování krčních svalů, pokud uživatel dlouhodobě otáčí hlavu pouze na jednu stranu.",
+                "Nemá žádný vliv, protože oči se pohybují nezávisle na krku."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "ergonomie-slide-30",
+          "heading": "Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu",
+          "paragraphs": [
+            "Lekce „Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+          ],
+          "svg_placeholder": "ergonomie:off-e30",
+          "checkQuestions": [
+            {
+              "id": "off-e30",
+              "text": "Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu?",
+              "options": [
+                "Stačí jednou za měsíc na celý den.",
+                "Každých 5 minut, aby se tělo neustále hýbalo.",
+                "Optimálně střídat polohy po cca 30 až 60 minutách, přičemž stání by nemělo trvat nepřetržitě několik hodin."
+              ],
+              "correctIndex": 2
+            }
+          ]
+        }
+      ],
+      "finalTest": {
+        "title": "Závěrečný test ergonomie práce",
+        "subtitle": "Oficiální test s vydáním certifikátu",
+        "questionCount": 15,
+        "passPercent": 80,
+        "minCorrect": 12,
+        "pool": [
+          {
+            "id": "off-e1",
+            "text": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské židli?",
+            "options": [
+              "Přibližně 45° až 60° (akutní úhel).",
+              "Přibližně 90° až 110° (pravý nebo mírně tupý úhel).",
+              "Přesně 150° (nohy téměř natažené)."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e2",
+            "text": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu?",
+            "options": [
+              "Přibližně 20 cm nad úrovní očí, aby se natahoval krk.",
+              "V úrovni očí nebo mírně pod ní, aby pohled směřoval lehce dolů.",
+              "V úrovni brady, aby byl monitor co nejblíže stolu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e3",
+            "text": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele?",
+            "options": [
+              "Maximálně 30 cm (na délku předloktí).",
+              "Přibližně 50 až 70 cm (zhruba na délku natažené paže).",
+              "Minimálně 120 cm bez ohledu na velikost obrazovky."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e4",
+            "text": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem?",
+            "options": [
+              "Rychlá Synchronizace Informací (technický protokol monitoru).",
+              "Repetitive Strain Injury – poškození z opakovaného namáhání.",
+              "Radiant Screen Intensity – intenzita záření monitoru."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e5",
+            "text": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši?",
+            "options": [
+              "Má vyšší citlivost senzoru při hraní her.",
+              "Zrychluje pohyb kurzoru po obrazovce bez nutnosti instalovat ovladače.",
+              "Udržuje předloktí a zápěstí v přirozené anatomické poloze (tzv. pozice podání ruky) a snižuje tlak na karpální tunel."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e6",
+            "text": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům?",
+            "options": [
+              "Stůl musí být výrazně výše než lokty, aby ramena byla zvednutá.",
+              "Výška by měla umožnit, aby ramena byla uvolněná a lokty svíraly úhel kolem 90° až 100° při položení rukou na klávesnici.",
+              "Ruce by měly viset dolů pod úhlem 130°, bez jakékoliv opory."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e7",
+            "text": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím?",
+            "options": [
+              "Každých 20 minut se napít 20 ml vody po dobu 20 sekund.",
+              "Každých 20 minut se podívat na předmět vzdálený nejméně 20 stop (cca 6 metrů) po dobu 20 sekund.",
+              "Každých 20 hodin práce si dát 20 minut pauzu a 20krát zamrkat."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e8",
+            "text": "Kam by měly směřovat plosky nohou při správném sedu u počítače?",
+            "options": [
+              "Měly by volně viset ve vzduchu bez kontaktu s podlahou.",
+              "Měly by být zkřížené pod židlí nebo přehozené jedna přes druhou.",
+              "Měly by celou plochou spočívat na podlaze nebo na ergonomické podložce pod nohy."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e9",
+            "text": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti?",
+            "options": [
+              "Přímo zády k oknu (světlo svítí uživateli do očí).",
+              "Přímo proti oknu (světlo dopadá na monitor a vytváří odlesky).",
+              "Kolmo k oknu, aby světlo přicházelo ze strany a nevznikaly odlesky ani protisvětlo."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e10",
+            "text": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější?",
+            "options": [
+              "Zápěstí jsou ohnutá ostře nahoru a opírají se o hranu stolu.",
+              "Zápěstí jsou v jedné rovině s předloktím, bez zalomení do stran nebo nahoru/dolů.",
+              "Zápěstí jsou ohnutá dolů pod úroveň klávesnice."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e11",
+            "text": "K čemu primárně slouží bederní opěrka na ergonomické židli?",
+            "options": [
+              "K vyhřívání spodní části zad během zimních měsíců.",
+              "K podpoře přirozeného lordotického zakřivení bederní páteře a prevenci hrbení.",
+              "K masírování zádových svalů při otáčení židle."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e12",
+            "text": "Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem?",
+            "options": [
+              "Ostrou bolestí v oblasti krční páteře a motáním hlavy.",
+              "Zhoršením zraku a neschopností zaostřit na blízko.",
+              "Brněním, mravenčením nebo bolestí v palci, ukazováčku a prostředníčku ruky."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e13",
+            "text": "Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na nízkém stole?",
+            "options": [
+              "Způsobuje to nadměrné opotřebení baterie notebooku.",
+              "Nutí to uživatele k výraznému předklonu hlavy, což extrémně přetěžuje krční páteř (tzv. text neck).",
+              "Dochází tím k okamžitému rušení Wi-Fi signálu tělem."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e14",
+            "text": "Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě?",
+            "options": [
+              "Častějším zvyšováním jasu displeje na maximum.",
+              "Použitím podstavce pod notebook (pro zvednutí displeje) v kombinaci s externí klávesnicí a myší.",
+              "Podložením rukou měkkým polštářem přímo na klávesnici notebooku."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e15",
+            "text": "Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo?",
+            "options": [
+              "Zrychluje metabolismus a spalování kalorií.",
+              "Způsobuje městnání krve v dolních končetinách, snižuje elasticitu meziobratlových plotének a oslabuje svaly.",
+              "Zvyšuje celkovou kapacitu plic a koncentraci kyslíku v krvi."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e16",
+            "text": "Co je to „dynamické sezení“?",
+            "options": [
+              "Sezení na židli, která se neustále točí dokola velkou rychlostí.",
+              "Způsob sezení na židli s mechanikou, která reaguje na pohyby těla a neustále mění sklon opěráku a sedáku.",
+              "Pravidelné střídání tří různých židlí během jedné pracovní směny."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e17",
+            "text": "Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně unavující pro oči?",
+            "options": [
+              "Jeden silný bodový reflektor namířený přímo na monitor.",
+              "Úplná tma v místnosti kombinovaná s maximálním jasem monitoru.",
+              "Rovnoměrné, difúzní (rozptýlené) osvětlení kombinující přirozené denní světlo a nepřímé umělé osvětlení."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e18",
+            "text": "Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na počítači?",
+            "options": [
+              "Jedna pauza na 30 minut po každých 6 hodinách práce.",
+              "Krátká pauza (cca 2–5 minut) každých 45 až 60 minut práce spojená s protažením nebo změnou polohy.",
+              "Přestávky nejsou nutné, pokud má uživatel drahou ergonomickou židli."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e19",
+            "text": "Jaký význam má správné nastavení hloubky sedáku na židli?",
+            "options": [
+              "Zajišťuje, aby uživatel mohl na židli pohodlně klečet.",
+              "Zamezuje tlaku přední hrany sedáku na podkolenní jamku, čímž chrání cévní a lymfatický systém nohou.",
+              "Určuje, jak daleko může židle odjet od pracovního stolu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e20",
+            "text": "Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu?",
+            "options": [
+              "Žlutý text na jasně červeném pozadí.",
+              "Vysoký kontrast, například tmavé písmo na světlém (ne oslňujícím) pozadí, nebo softwarový filtr potlačující modré světlo večer.",
+              "Blikající neonové barvy s nízkým rozlišením."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e21",
+            "text": "Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón dosahu?",
+            "options": [
+              "Aby stůl vypadal esteticky čistě pro návštěvy.",
+              "Aby nejčastěji používané věci (myš, klávesnice, telefon) byly v dosahu paží bez nutnosti rotace trupu nebo natahování se.",
+              "Aby se pod klávesnici vešlo co nejvíce papírových dokumentů."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e22",
+            "text": "Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní oběh?",
+            "options": [
+              "Zvyšuje prokrvení prstů na nohou a urychluje chůzi.",
+              "Nemá žádný vliv, protože krev proudí pouze v horní polovině těla.",
+              "Přední hrana sedáku stlačuje stehna ze spodu, což omezuje návrat krve z dolních končetin a může vést k otokům."
+            ],
+            "correctIndex": 2
+          },
+          {
+            "id": "off-e23",
+            "text": "Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a prevenci suchých očí?",
+            "options": [
+              "Teplota 15 °C a vlhkost pod 10 %.",
+              "Teplota 20–24 °C a relativní vlhkost vzduchu v rozmezí 40–60 %.",
+              "Teplota nad 30 °C a vlhkost blízká 100 %."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e24",
+            "text": "Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou (sit-stand stoly)?",
+            "options": [
+              "Umožňují schovat kabely pod desku stolu efektivněji.",
+              "Umožňují střídat práci vsedě a vestoje, což aktivuje svalový aparát a ulevuje páteři.",
+              "Jsou lehčí na stěhování do jiných kanceláří."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e25",
+            "text": "Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu?",
+            "options": [
+              "Přímo na hraně stolu, aby ruce visely dolů do klína.",
+              "Přibližně 10 až 15 cm od hrany stolu, aby vznikl prostor pro oporu zápěstí nebo předloktí.",
+              "Uprostřed stolu za monitorem, aby uživatel musel paže natahovat."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e26",
+            "text": "Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)?",
+            "options": [
+              "Způsobuje zrychlení růstu vlasů v zátylku.",
+              "Extrémní statické přetížení šíjových svalů, které může vést k chronickým bolestem hlavy a migrénám.",
+              "Trvalé poškození sluchových kůstek v uchu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e27",
+            "text": "Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání klasické klávesnice?",
+            "options": [
+              "Drátěný stojan na tužky umístěný vedle myši.",
+              "Ergonomická gelová nebo pěnová podložka před klávesnici podepírající dlaňovou část.",
+              "Plastový kryt na monitor proti prachu."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e28",
+            "text": "Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku?",
+            "options": [
+              "Pouze na samém okraji (přední třetině) sedáku, bez opření zad.",
+              "Plně sedět vzadu na sedáku tak, aby záda byla po celé délce podepřena opěradlem židle.",
+              "Sklouznutý dolů, kdy se opírají pouze lopatky a pánev je vysunutá vpřed."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e29",
+            "text": "Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je jeden z nich dominantní?",
+            "options": [
+              "Nutí uživatele neustále cvičit ramena, což je zdravé.",
+              "Může vést k jednostrannému přetěžování krčních svalů, pokud uživatel dlouhodobě otáčí hlavu pouze na jednu stranu.",
+              "Nemá žádný vliv, protože oči se pohybují nezávisle na krku."
+            ],
+            "correctIndex": 1
+          },
+          {
+            "id": "off-e30",
+            "text": "Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu?",
+            "options": [
+              "Stačí jednou za měsíc na celý den.",
+              "Každých 5 minut, aby se tělo neustále hýbalo.",
+              "Optimálně střídat polohy po cca 30 až 60 minutách, přičemž stání by nemělo trvat nepřetržitě několik hodin."
+            ],
+            "correctIndex": 2
+          }
+        ]
+      }
+    }
+  ]
+}

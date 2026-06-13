@@ -1,13 +1,17 @@
 import Link from "next/link";
 import type { StudentDashboardData } from "@/lib/lms/get-student-dashboard";
 import { CourseProgressCard } from "@/components/lms/CourseProgressCard";
+import { HrbekLearningGrid } from "@/components/lms/HrbekLearningGrid";
 import { LmsLogoutButton } from "@/components/lms/LmsLogoutButton";
+import { isDemoUserEmail } from "@/lib/lms/demo-user";
 
 interface LmsDashboardProps {
   data: StudentDashboardData;
 }
 
 export function LmsDashboard({ data }: LmsDashboardProps) {
+  const isDemoUser = isDemoUserEmail(data.user.email);
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
@@ -21,6 +25,8 @@ export function LmsDashboard({ data }: LmsDashboardProps) {
         </div>
         <LmsLogoutButton />
       </div>
+
+      <HrbekLearningGrid isDemoUser={isDemoUser} />
 
       <div>
         <h2 className="text-lg font-bold text-foreground">Moje kurzy</h2>
