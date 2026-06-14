@@ -17,11 +17,15 @@ const SESSION_VERSION = "admin-session-v2";
 
 function getSessionSecret(): string {
   const secret =
-    process.env.ADMIN_SESSION_SECRET ??
-    process.env.CRON_SECRET ??
-    process.env.ADMIN_PASSWORD;
+    process.env.ADMIN_SESSION_SECRET?.trim() ??
+    process.env.CRON_SECRET?.trim() ??
+    process.env.ADMIN_PASSWORD?.trim() ??
+    process.env.ADMIN_IMAGE_PASSWORD?.trim() ??
+    process.env.ADMIN_ORDERS_PASSWORD?.trim();
   if (!secret) {
-    throw new Error("ADMIN_PASSWORD nebo ADMIN_SESSION_SECRET není nastaveno.");
+    throw new Error(
+      "Není nastaven ADMIN_SESSION_SECRET ani heslo některého admin účtu (ADMIN_PASSWORD, ADMIN_IMAGE_PASSWORD, …)."
+    );
   }
   return secret;
 }
@@ -75,18 +79,53 @@ function decodeSession(raw: string): AdminSessionPayload | null {
   }
 }
 
-function verifyLegacyEnvAdminPassword(username: string, password: string): boolean {
-  const expectedUser = process.env.ADMIN_USERNAME?.trim() || "admin";
-  const expectedPassword = process.env.ADMIN_PASSWORD?.trim();
-  if (!expectedPassword) {
-    return false;
+function verifyEnvAdminAccount(
+  username: string,
+  password: string
+): AdminSessionPayload | null {
+  const accounts: Array<{ username?: string; password?: string; role: AdminRole; id: string }> =
+    [
+      {
+        username: process.env.ADMIN_USERNAME?.trim() || "admin",
+        password: process.env.ADMIN_PASSWORD?.trim(),
+        role: "ADMIN",
+        id: "env-admin",
+      },
+      {
+        username: process.env.ADMIN_ORDERS_USERNAME?.trim(),
+        password: process.env.ADMIN_ORDERS_PASSWORD?.trim(),
+        role: "ORDERS_MANAGER",
+        id: "env-orders",
+      },
+      {
+        username: process.env.ADMIN_IMAGE_USERNAME?.trim(),
+        password: process.env.ADMIN_IMAGE_PASSWORD?.trim(),
+        role: "IMAGE_CREATOR",
+        id: "env-image",
+      },
+    ];
+
+  for (const account of accounts) {
+    if (
+      account.username &&
+      account.password &&
+      username === account.username &&
+      password === account.password
+    ) {
+      return {
+        userId: account.id,
+        username: account.username,
+        role: account.role,
+      };
+    }
   }
-  return username.trim() === expectedUser && password === expectedPassword;
+
+  return null;
 }
 
 /** @deprecated Použijte authenticateAdminUser. */
 export function verifyAdminPassword(username: string, password: string): boolean {
-  return verifyLegacyEnvAdminPassword(username, password);
+  return verifyEnvAdminAccount(username.trim(), password) !== null;
 }
 
 export async function authenticateAdminUser(
@@ -98,9 +137,14 @@ export async function authenticateAdminUser(
     return null;
   }
 
-  const dbUser = await prisma.adminUser.findUnique({
-    where: { username: normalizedUsername },
-  });
+  let dbUser = null;
+  try {
+    dbUser = await prisma.adminUser.findUnique({
+      where: { username: normalizedUsername },
+    });
+  } catch (error) {
+    console.error("[authenticateAdminUser] DB lookup failed:", error);
+  }
 
   if (dbUser && (await verifyAdminPasswordHash(password, dbUser.passwordHash))) {
     if (!isAdminRole(dbUser.role)) {
@@ -114,15 +158,7 @@ export async function authenticateAdminUser(
     };
   }
 
-  if (verifyLegacyEnvAdminPassword(normalizedUsername, password)) {
-    return {
-      userId: "legacy-env-admin",
-      username: normalizedUsername,
-      role: "ADMIN",
-    };
-  }
-
-  return null;
+  return verifyEnvAdminAccount(normalizedUsername, password);
 }
 
 export async function getAdminSession(): Promise<AdminSessionPayload | null> {
