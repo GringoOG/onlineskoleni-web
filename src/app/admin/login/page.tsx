@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { AdminLoginForm } from "@/components/admin/AdminLoginForm";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
+import { getAdminSession } from "@/lib/admin/auth";
+import { getDefaultAdminRedirect } from "@/lib/admin/roles";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
@@ -12,15 +13,16 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLoginPage() {
-  if (await isAdminAuthenticated()) {
-    redirect("/admin/objednavky/nova");
+  const session = await getAdminSession();
+  if (session) {
+    redirect(getDefaultAdminRedirect(session.role));
   }
 
   return (
     <>
       <PageHero
         title="Administrace TechnikPO"
-        subtitle="Přihlaste se pro založení manuálních objednávek (faktura, hotově) a odeslání přístupů ke školení."
+        subtitle="Přihlaste se do administrace TechnikPO – manuální objednávky nebo generátor ilustrací."
       >
         <Link href="/" className="mt-4 inline-block text-sm text-white/80 hover:text-white">
           ← Zpět na web

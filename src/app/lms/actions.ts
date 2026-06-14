@@ -21,7 +21,8 @@ import {
 } from "@/lib/lms/quiz-data";
 import { QUIZ_PASS_THRESHOLD_PERCENT } from "@/lib/lms/quiz-config";
 import { getLmsSession, setLmsSession, clearLmsSession } from "@/lib/lms/session";
-import { setAdminSession, verifyAdminPassword, clearAdminSession } from "@/lib/admin/auth";
+import { setAdminSession, authenticateAdminUser, clearAdminSession } from "@/lib/admin/auth";
+import { getDefaultAdminRedirect } from "@/lib/admin/roles";
 
 export type SubmitQuizResult = CompleteQuizResult;
 
@@ -36,11 +37,12 @@ export async function loginDemoUser(
   username: string,
   password: string
 ): Promise<LoginDemoResult> {
-  if (verifyAdminPassword(username, password)) {
+  const adminSession = await authenticateAdminUser(username, password);
+  if (adminSession) {
     try {
       await clearLmsSession();
-      await setAdminSession();
-      return { ok: true, redirectTo: "/admin/objednavky/nova" };
+      await setAdminSession(adminSession);
+      return { ok: true, redirectTo: getDefaultAdminRedirect(adminSession.role) };
     } catch (error) {
       console.error("[loginDemoUser admin]", error);
       return {

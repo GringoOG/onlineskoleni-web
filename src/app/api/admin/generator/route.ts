@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
+import { requireGeneratorApiAccess } from "@/lib/admin/api-access";
 import { parsePromptLines } from "@/lib/admin/image-generator/parse-prompt-lines";
 import { triggerImageQueueProcessing } from "@/lib/admin/image-generator/process-queue";
 import type { GeneratedImageRecord } from "@/lib/admin/image-generator/types";
@@ -27,9 +27,8 @@ function serializeImage(image: {
 
 export async function GET() {
   try {
-    if (!(await isAdminAuthenticated())) {
-      return NextResponse.json({ error: "Nejste přihlášeni do administrace." }, { status: 401 });
-    }
+    const authError = await requireGeneratorApiAccess();
+    if (authError) return authError;
 
     const images = await prisma.generatedImage.findMany({
       orderBy: { createdAt: "desc" },
@@ -50,9 +49,8 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    if (!(await isAdminAuthenticated())) {
-      return NextResponse.json({ error: "Nejste přihlášeni do administrace." }, { status: 401 });
-    }
+    const authError = await requireGeneratorApiAccess();
+    if (authError) return authError;
 
     const body = await request.json();
     const rawInput = String(body.rawInput ?? body.promptsText ?? "").trim();

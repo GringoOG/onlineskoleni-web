@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
+import { AdminNav } from "@/components/admin/AdminNav";
 import { ManualOrderForm } from "@/components/admin/ManualOrderForm";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
-import { logoutAdmin } from "@/app/admin/login/actions";
+import { requireOrdersAccess } from "@/lib/admin/auth";
+import { canAccessGenerator } from "@/lib/admin/roles";
 
 export const metadata: Metadata = {
   title: "Nová manuální objednávka",
@@ -13,9 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminManualOrderPage() {
-  if (!(await isAdminAuthenticated())) {
-    redirect("/admin/login");
-  }
+  const session = await requireOrdersAccess();
 
   return (
     <>
@@ -23,19 +21,11 @@ export default async function AdminManualOrderPage() {
         title="Nová manuální objednávka"
         subtitle="Založte přístup ke školení po faktuře nebo hotovosti. Systém vytvoří účty, přiřadí kurz a odešle uvítací e-maily."
       >
-        <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/80">
-          <Link href="/admin/generator" className="hover:text-white">
-            Generátor ilustrací
-          </Link>
-          <Link href="/" className="hover:text-white">
-            ← Web
-          </Link>
-          <form action={logoutAdmin}>
-            <button type="submit" className="hover:text-white">
-              Odhlásit se
-            </button>
-          </form>
-        </div>
+        <AdminNav
+          current="orders"
+          canOrders
+          canGenerator={canAccessGenerator(session.role)}
+        />
       </PageHero>
 
       <Section>

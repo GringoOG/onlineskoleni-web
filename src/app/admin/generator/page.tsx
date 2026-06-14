@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { redirect } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
+import { AdminNav } from "@/components/admin/AdminNav";
 import { ImageGeneratorPanel } from "@/components/admin/ImageGeneratorPanel";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
-import { logoutAdmin } from "@/app/admin/login/actions";
+import { requireGeneratorAccess } from "@/lib/admin/auth";
+import { canAccessOrders } from "@/lib/admin/roles";
 
 export const metadata: Metadata = {
   title: "Generátor ilustrací",
@@ -13,9 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminGeneratorPage() {
-  if (!(await isAdminAuthenticated())) {
-    redirect("/admin/login");
-  }
+  const session = await requireGeneratorAccess();
 
   return (
     <>
@@ -23,19 +20,11 @@ export default async function AdminGeneratorPage() {
         title="Hromadný generátor ilustrací"
         subtitle="Vložte prompty ve formátu KÓD | PROMPT a nechte Flux.1-dev vygenerovat obrázky pro microlearning. Výsledky se zpracovávají postupně ve frontě."
       >
-        <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/80">
-          <Link href="/admin/objednavky/nova" className="hover:text-white">
-            ← Manuální objednávky
-          </Link>
-          <Link href="/" className="hover:text-white">
-            Web
-          </Link>
-          <form action={logoutAdmin}>
-            <button type="submit" className="hover:text-white">
-              Odhlásit se
-            </button>
-          </form>
-        </div>
+        <AdminNav
+          current="generator"
+          canOrders={canAccessOrders(session.role)}
+          canGenerator
+        />
       </PageHero>
 
       <Section>

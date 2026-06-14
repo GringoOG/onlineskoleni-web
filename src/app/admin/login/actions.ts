@@ -2,10 +2,11 @@
 
 import { redirect } from "next/navigation";
 import {
+  authenticateAdminUser,
   clearAdminSession,
   setAdminSession,
-  verifyAdminPassword,
 } from "@/lib/admin/auth";
+import { getDefaultAdminRedirect } from "@/lib/admin/roles";
 
 export type AdminLoginState = {
   ok: boolean;
@@ -19,12 +20,13 @@ export async function loginAdmin(
   const username = String(formData.get("username") ?? "");
   const password = String(formData.get("password") ?? "");
 
-  if (!verifyAdminPassword(username, password)) {
+  const session = await authenticateAdminUser(username, password);
+  if (!session) {
     return { ok: false, message: "Neplatné přihlašovací údaje." };
   }
 
-  await setAdminSession();
-  redirect("/admin/objednavky/nova");
+  await setAdminSession(session);
+  redirect(getDefaultAdminRedirect(session.role));
 }
 
 export async function logoutAdmin(): Promise<void> {

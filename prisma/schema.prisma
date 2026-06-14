@@ -57,3 +57,12 @@ model GeneratedImage {
   status    String   @default("PENDING")
   createdAt DateTime @default(now())
 }
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

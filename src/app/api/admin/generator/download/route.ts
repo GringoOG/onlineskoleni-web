@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
+import { requireGeneratorApiAccess } from "@/lib/admin/api-access";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   try {
-    if (!(await isAdminAuthenticated())) {
-      return NextResponse.json({ error: "Nejste přihlášeni do administrace." }, { status: 401 });
-    }
+    const authError = await requireGeneratorApiAccess();
+    if (authError) return authError;
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id")?.trim();

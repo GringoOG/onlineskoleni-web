@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "@/lib/admin/auth";
+import { requireOrdersApiAccess } from "@/lib/admin/api-access";
 import {
   processManualOrder,
   type DiscountMode,
@@ -31,9 +31,8 @@ function parseCourseSlugs(body: Record<string, unknown>): string[] {
 
 export async function POST(request: Request) {
   try {
-    if (!(await isAdminAuthenticated())) {
-      return NextResponse.json({ error: "Nejste přihlášeni do administrace." }, { status: 401 });
-    }
+    const authError = await requireOrdersApiAccess();
+    if (authError) return authError;
 
     const body = await request.json();
     const companyName = String(body.companyName ?? "").trim();
