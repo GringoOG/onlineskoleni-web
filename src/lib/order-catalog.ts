@@ -47,7 +47,15 @@ export interface ComputedCartLine {
   vatRate: number;
 }
 
-export function computeCart(lines: CartLineInput[]): {
+export interface ComputeCartOptions {
+  /** Přepíše automatickou množstevní slevu (0, 10, 15). */
+  discountPercentOverride?: number;
+}
+
+export function computeCart(
+  lines: CartLineInput[],
+  options?: ComputeCartOptions
+): {
   items: ComputedCartLine[];
   totalAmountHalere: number;
 } | { error: string } {
@@ -63,12 +71,18 @@ export function computeCart(lines: CartLineInput[]): {
       return { error: "Neplatný počet zaměstnanců (1–99). Pro 100+ osob nás kontaktujte." };
     }
 
-    const discount = getBulkDiscountPercent(line.quantity);
-    if (discount === "contact") {
-      return {
-        error:
-          "Pro 100 a více osob u jednoho kurzu nebo balíčku nás prosím kontaktujte pro individuální nabídku.",
-      };
+    let discountPercent: number;
+    if (options?.discountPercentOverride !== undefined) {
+      discountPercent = options.discountPercentOverride;
+    } else {
+      const discount = getBulkDiscountPercent(line.quantity);
+      if (discount === "contact") {
+        return {
+          error:
+            "Pro 100 a více osob u jednoho kurzu nebo balíčku nás prosím kontaktujte pro individuální nabídku.",
+        };
+      }
+      discountPercent = discount;
     }
 
     const catalog = getCatalogItem(line.courseSlug);
@@ -77,7 +91,7 @@ export function computeCart(lines: CartLineInput[]): {
     }
 
     const unitPriceHalere = Math.round(
-      (catalog.pricePerPersonHalere * (100 - discount)) / 100
+      (catalog.pricePerPersonHalere * (100 - discountPercent)) / 100
     );
     const lineTotalHalere = unitPriceHalere * line.quantity;
 
@@ -86,7 +100,7 @@ export function computeCart(lines: CartLineInput[]): {
       name: catalog.name,
       quantity: line.quantity,
       unitPriceHalere,
-      discountPercent: discount,
+      discountPercent,
       lineTotalHalere,
       vatRate: catalog.vatRate,
     });

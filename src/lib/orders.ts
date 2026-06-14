@@ -105,11 +105,14 @@ export type ManualPaymentMethod = "INVOICE" | "CASH";
 export interface CreateManualPaidOrderInput extends CreateOrderInput {
   paymentMethod: ManualPaymentMethod;
   adminNote?: string;
+  discountPercentOverride?: number;
 }
 
 /** Manuální objednávka (faktura / hotově) – ihned PAID, bez GoPay. */
 export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
-  const cart = computeCart(input.lines);
+  const cart = computeCart(input.lines, {
+    discountPercentOverride: input.discountPercentOverride,
+  });
   if ("error" in cart) {
     throw new Error(cart.error);
   }
