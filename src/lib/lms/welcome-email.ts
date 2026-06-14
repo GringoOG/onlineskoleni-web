@@ -7,9 +7,12 @@ interface WelcomeEmailInput {
   orderNumber: string;
   companyName: string;
   enrollments: EnrollmentResult[];
+  /** Manuální aktivace provozovatelem (faktura / hotově). */
+  manualActivation?: boolean;
+  paymentMethodLabel?: string;
 }
 
-/** Uvítací e-mail kontaktní osobě po zaplacení objednávky a enrollmentu do LMS. */
+/** Uvítací e-mail studentovi po aktivaci kurzu. */
 export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> {
   const first = input.enrollments[0];
   if (!first) {
@@ -24,7 +27,7 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> 
     const link = getLmsEntryUrl(e.courseSlug);
     const seats =
       e.seatsPurchased > 1
-        ? ` (zakoupeno ${e.seatsPurchased} míst – kontaktní osoba má přístup hned, další zaměstnance doplníte později)`
+        ? ` (zakoupeno ${e.seatsPurchased} míst)`
         : "";
     return `  • ${e.courseName}${seats}\n    Odkaz: ${link}`;
   });
@@ -45,17 +48,23 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> 
         "  Heslo: použijte heslo, které jste již obdrželi dříve.",
       ].join("\n");
 
+  const activationLine = input.manualActivation
+    ? `Váš přístup ke školení byl aktivován (${input.paymentMethodLabel ?? "mimo online platbu"}).`
+    : `Vaše platba byla přijata a kurzy jsou připraveny v online systému školení.`;
+
   const text = [
     `Dobrý den, ${first.studentName},`,
     "",
-    `děkujeme za objednávku ${input.orderNumber} (${input.companyName}).`,
-    "Vaše platba byla přijata a kurzy jsou připraveny v online systému školení.",
+    input.manualActivation
+      ? `děkujeme za objednávku ${input.orderNumber} (${input.companyName}).`
+      : `děkujeme za objednávku ${input.orderNumber} (${input.companyName}).`,
+    activationLine,
     "",
     "Přiřazené kurzy:",
     ...courseLines,
     credentialsBlock,
     "",
-    `Úvodní stránka: ${appUrl}`,
+    `Přihlášení: ${appUrl}/lms/login`,
     "",
     "S pozdravem",
     site.name,
@@ -65,7 +74,9 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> 
 
   await sendEmail({
     to: first.studentEmail,
-    subject: `Přístup ke školení – objednávka ${input.orderNumber}`,
+    subject: input.manualActivation
+      ? `Přístup ke školení – objednávka ${input.orderNumber}`
+      : `Přístup ke školení – objednávka ${input.orderNumber}`,
     text,
   });
 }

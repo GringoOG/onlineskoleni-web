@@ -99,3 +99,52 @@ export async function getOrderByGoPayId(gopayPaymentId: string) {
     include: { order: { include: { items: true } } },
   });
 }
+
+export type ManualPaymentMethod = "INVOICE" | "CASH";
+
+export interface CreateManualPaidOrderInput extends CreateOrderInput {
+  paymentMethod: ManualPaymentMethod;
+  adminNote?: string;
+}
+
+/** Manuální objednávka (faktura / hotově) – ihned PAID, bez GoPay. */
+export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
+  const cart = computeCart(input.lines);
+  if ("error" in cart) {
+    throw new Error(cart.error);
+  }
+
+  const orderNumber = generateOrderNumber();
+
+  const order = await prisma.order.create({
+    data: {
+      orderNumber,
+      status: OrderStatus.PAID,
+      paymentMethod: input.paymentMethod,
+      adminNote: input.adminNote?.trim() || null,
+      companyName: input.companyName.trim(),
+      ico: input.ico?.trim() || null,
+      contactName: input.contactName.trim(),
+      email: input.email.trim().toLowerCase(),
+      phone: input.phone?.trim() || null,
+      totalAmountHalere: cart.totalAmountHalere,
+      items: {
+        create: cart.items.map((item) => ({
+          courseSlug: item.courseSlug,
+          name: item.name,
+          quantity: item.quantity,
+          unitPriceHalere: item.unitPriceHalere,
+          lineTotalHalere: item.lineTotalHalere,
+        })),
+      },
+      payment: {
+        create: {
+          state: "MANUAL",
+        },
+      },
+    },
+    include: { items: true, payment: true },
+  });
+
+  return { order, cart };
+}

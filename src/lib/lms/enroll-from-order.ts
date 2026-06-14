@@ -1,7 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { db, userCourses } from "@/db";
 import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
-import { findOrCreateStudent } from "@/lib/lms/find-or-create-student";
+import type { StudentRecord } from "@/lib/lms/find-or-create-student";
 import {
   expandOrderItemsForEnrollment,
   type OrderItemForEnrollment,
@@ -23,23 +23,12 @@ export interface EnrollmentResult {
   studentName: string;
 }
 
-export async function enrollContactForOrderItems(input: {
-  email: string;
-  name: string;
-  companyName: string;
+/** Přiřadí kurzy existujícímu nebo nově vytvořenému studentovi. */
+export async function enrollStudentForOrderItems(input: {
+  student: StudentRecord;
   orderNumber: string;
   items: OrderItemForEnrollment[];
 }): Promise<EnrollmentResult[]> {
-  if (input.items.length === 0) {
-    return [];
-  }
-
-  const student = await findOrCreateStudent({
-    email: input.email,
-    name: input.name,
-    companyName: input.companyName,
-  });
-
   const results: EnrollmentResult[] = [];
   const items = expandOrderItemsForEnrollment(input.items);
 
@@ -51,7 +40,7 @@ export async function enrollContactForOrderItems(input: {
       .from(userCourses)
       .where(
         and(
-          eq(userCourses.userId, student.id),
+          eq(userCourses.userId, input.student.id),
           eq(userCourses.courseId, course.id)
         )
       )
@@ -61,7 +50,7 @@ export async function enrollContactForOrderItems(input: {
 
     if (!existingEnrollment) {
       await db.insert(userCourses).values({
-        userId: student.id,
+        userId: input.student.id,
         courseId: course.id,
         isCompleted: false,
         orderNumber: input.orderNumber,
@@ -79,19 +68,40 @@ export async function enrollContactForOrderItems(input: {
     }
 
     results.push({
-      userId: student.id,
+      userId: input.student.id,
       courseId: course.id,
       courseSlug: course.slug,
       courseTitle: course.title,
       courseName: item.name,
       seatsPurchased: item.quantity,
       isNewEnrollment,
-      isNewUser: student.isNew,
-      temporaryPassword: student.temporaryPassword,
-      studentEmail: student.email,
-      studentName: student.name,
+      isNewUser: input.student.isNew,
+      temporaryPassword: input.student.temporaryPassword,
+      studentEmail: input.student.email,
+      studentName: input.student.name,
     });
   }
 
   return results;
+}
+
+export async function enrollContactForOrderItems(input: {
+  email: string;
+  name: string;
+  companyName: string;
+  orderNumber: string;
+  items: OrderItemForEnrollment[];
+}): Promise<EnrollmentResult[]> {
+  const { findOrCreateStudent } = await import("@/lib/lms/find-or-create-student");
+  const student = await findOrCreateStudent({
+    email: input.email,
+    name: input.name,
+    companyName: input.companyName,
+  });
+
+  return enrollStudentForOrderItems({
+    student,
+    orderNumber: input.orderNumber,
+    items: input.items,
+  });
 }
