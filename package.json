@@ -15,6 +15,7 @@
     "db:lms:studio": "drizzle-kit studio",
     "preview": "npm run build && (lsof -ti :3000 | xargs kill -9 2>/dev/null || true) && next start -H 127.0.0.1 -p 3000",
     "build:hrbek-learning": "node scripts/build-hrbek-learning-data.mjs",
+    "generate:ai-prompts": "node scripts/generate-question-image-prompts.mjs && node scripts/generate-ai-image-prompts-pdf.mjs",
     "verify:theme-widgets": "node scripts/verify-theme-widgets.mjs"
   },
   "dependencies": {
@@ -28,7 +29,8 @@
     "postgres": "^3.4.9",
     "qrcode": "^1.5.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "replicate": "^1.4.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

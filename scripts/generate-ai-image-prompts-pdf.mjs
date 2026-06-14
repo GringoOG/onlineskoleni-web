@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Generuje PDF s AI prompty pro ilustrace microlearningu.
+ * Generuje PDF s AI prompty pro ilustrace učebních otázek.
  * Usage: node scripts/generate-ai-image-prompts-pdf.mjs
  */
 
@@ -50,9 +50,6 @@ function wrapText(text, font, size, maxWidth) {
 }
 
 class PdfWriter {
-  /** @param {import('pdf-lib').PDFDocument} pdfDoc */
-  /** @param {import('pdf-lib').PDFFont} fontRegular */
-  /** @param {import('pdf-lib').PDFFont} fontBold */
   constructor(pdfDoc, fontRegular, fontBold) {
     this.pdfDoc = pdfDoc;
     this.fontRegular = fontRegular;
@@ -123,38 +120,30 @@ class PdfWriter {
     this.y -= 12;
   }
 
-  themeHeading(id, titleCs, titleEn) {
-    const size = 11;
+  questionHeading(id, heading) {
+    const size = 10.5;
     this.y -= 6;
-    this.ensureSpace(size * 3);
-    this.page.drawText(`${id}  ${titleCs}`, {
+    this.ensureSpace(size * 2.5);
+    this.page.drawText(`${id}  ${heading}`, {
       x: MARGIN,
       y: this.y - size,
       size,
       font: this.fontBold,
       color: COLOR.accent,
     });
-    this.y -= size * 1.3;
-    this.page.drawText(titleEn, {
-      x: MARGIN,
-      y: this.y - size,
-      size: size - 1,
-      font: this.fontRegular,
-      color: COLOR.muted,
-    });
-    this.y -= size * 1.2;
+    this.y -= size * 1.35;
   }
 
   meta(label, value) {
-    const size = 9;
+    const size = 8.5;
     const text = `${label}: ${value}`;
     const lines = wrapText(text, this.fontRegular, size, CONTENT_WIDTH);
     this.drawTextBlock(lines, { font: this.fontRegular, size, color: COLOR.muted });
-    this.y -= 4;
+    this.y -= 3;
   }
 
   promptBox(text) {
-    const size = 8.5;
+    const size = 8;
     const padding = 10;
     const lines = wrapText(text, this.fontRegular, size, CONTENT_WIDTH - padding * 2);
     const boxHeight = lines.length * (size * 1.35) + padding * 2;
@@ -185,7 +174,7 @@ class PdfWriter {
       textY -= size * 1.35;
     }
 
-    this.y = boxBottom - 14;
+    this.y = boxBottom - 10;
   }
 
   bulletList(items) {
@@ -233,7 +222,9 @@ async function main() {
 
   writer.title(data.title);
   writer.subtitle(data.subtitle);
-  writer.subtitle(`Vygenerováno: ${new Date().toLocaleDateString("cs-CZ")}`);
+  writer.subtitle(
+    `Vygenerováno: ${new Date(data.generatedAt ?? Date.now()).toLocaleDateString("cs-CZ")}`
+  );
 
   writer.sectionHeading("Společný styl (suffix každého promptu)");
   writer.promptBox(data.styleSuffix);
@@ -241,27 +232,31 @@ async function main() {
   writer.sectionHeading("Tipy pro generování");
   writer.bulletList(data.tips);
 
-  let themeCount = 0;
+  let questionCount = 0;
   for (const course of data.courses) {
-    writer.sectionHeading(`${course.title} (${course.lessonCount} lekcí, ${course.themes.length} témat)`);
+    writer.sectionHeading(`${course.title} (${course.questionCount} otázek)`);
 
-    for (const theme of course.themes) {
-      themeCount += 1;
-      writer.themeHeading(theme.id, theme.titleCs, theme.titleEn);
-      writer.meta("Lekce", theme.lessons);
-      writer.meta("Prompt", "");
-      writer.promptBox(theme.prompt);
+    for (const question of course.questions) {
+      questionCount += 1;
+      writer.questionHeading(question.id, question.heading);
+      if (question.theory) {
+        writer.meta("Učební text", question.theory);
+      }
+      writer.meta("Otázka", question.questionText);
+      writer.promptBox(question.prompt);
     }
   }
 
   writer.sectionHeading("Shrnutí");
-  writer.subtitle(`${data.courses.length} kurzů · ${themeCount} vizuálních témat · 131 lekcí celkem`);
+  writer.subtitle(
+    `${data.courses.length} kurzů · ${questionCount} otázek · každý prompt končí ${"--ar 4:3"}`
+  );
 
   const pdfBytes = await pdfDoc.save();
   await writeFile(OUTPUT, pdfBytes);
 
   console.log(`PDF uloženo: ${OUTPUT}`);
-  console.log(`Počet témat: ${themeCount}`);
+  console.log(`Počet otázek: ${questionCount}`);
 }
 
 main().catch((err) => {
