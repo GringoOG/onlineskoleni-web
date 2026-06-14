@@ -26,7 +26,7 @@ export function LoginPlaceholder({ open, onClose }: LoginPlaceholderProps) {
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id="login-title" className="text-xl font-bold text-slate-900">
-            Přihlášení do systému školení
+            Přihlášení
           </h2>
           <button
             type="button"
@@ -40,7 +40,13 @@ export function LoginPlaceholder({ open, onClose }: LoginPlaceholderProps) {
           </button>
         </div>
 
-        <p className="mt-4 text-sm text-slate-600">{pages.demoTest.description}</p>
+        <p className="mt-4 text-sm text-slate-600">
+          <strong>Student:</strong> e-mail a heslo z uvítacího e-mailu, nebo demo{" "}
+          <strong>{pages.demoTest.username}</strong> / <strong>{pages.demoTest.password}</strong>.
+          <br />
+          <strong>TechnikPO (admin):</strong> uživatel <strong>admin</strong> a heslo z nastavení
+          administrace.
+        </p>
 
         <div className="mt-4">
           <LmsLoginForm

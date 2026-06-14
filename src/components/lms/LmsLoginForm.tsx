@@ -17,8 +17,8 @@ export function LmsLoginForm({
   compact = false,
 }: LmsLoginFormProps) {
   const router = useRouter();
-  const [username, setUsername] = useState(pages.demoTest.username);
-  const [password, setPassword] = useState(pages.demoTest.password);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -34,7 +34,7 @@ export function LmsLoginForm({
       }
 
       onSuccess?.();
-      router.push(redirectTo);
+      router.push(result.redirectTo ?? redirectTo);
       router.refresh();
     });
   }
@@ -75,10 +75,10 @@ export function LmsLoginForm({
 
       {!compact && (
         <p className="text-sm text-muted">
-          Demo účet: <strong>{pages.demoTest.username}</strong> /{" "}
+          Demo student: <strong>{pages.demoTest.username}</strong> /{" "}
           <strong>{pages.demoTest.password}</strong>
           <br />
-          Po objednávce použijte e-mail a heslo z uvítacího e-mailu.
+          Admin TechnikPO: <strong>admin</strong> + vaše admin heslo.
         </p>
       )}
 

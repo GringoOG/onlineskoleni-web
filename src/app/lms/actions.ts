@@ -21,26 +21,43 @@ import {
 } from "@/lib/lms/quiz-data";
 import { QUIZ_PASS_THRESHOLD_PERCENT } from "@/lib/lms/quiz-config";
 import { getLmsSession, setLmsSession, clearLmsSession } from "@/lib/lms/session";
+import { setAdminSession, verifyAdminPassword, clearAdminSession } from "@/lib/admin/auth";
 
 export type SubmitQuizResult = CompleteQuizResult;
 
 export type LoginDemoResult =
-  | { ok: true }
+  | { ok: true; redirectTo?: string }
   | { ok: false; message: string };
 
 export type SubmitBozpQuizResult = CompleteQuizResult;
 
-/** Přihlášení – demo účet (testik) nebo e-mail + heslo z objednávky. */
+/** Přihlášení – admin TechnikPO, demo účet (testik) nebo e-mail + heslo z objednávky. */
 export async function loginDemoUser(
   username: string,
   password: string
 ): Promise<LoginDemoResult> {
+  if (verifyAdminPassword(username, password)) {
+    try {
+      await clearLmsSession();
+      await setAdminSession();
+      return { ok: true, redirectTo: "/admin/objednavky/nova" };
+    } catch (error) {
+      console.error("[loginDemoUser admin]", error);
+      return {
+        ok: false,
+        message:
+          "Administrace není nakonfigurována (chybí ADMIN_PASSWORD) nebo došlo k chybě serveru.",
+      };
+    }
+  }
+
   const expectedUser = pages.demoTest.username;
   const expectedPass = pages.demoTest.password;
 
   if (username.trim() === expectedUser && password === expectedPass) {
     try {
       const enrollment = await ensureDemoEnrollment();
+      await clearAdminSession();
       await setLmsSession(enrollment);
       return { ok: true };
     } catch (error) {
@@ -66,6 +83,7 @@ export async function loginDemoUser(
       userId: student.userId,
       courseId: student.courseId,
     });
+    await clearAdminSession();
     return { ok: true };
   } catch (error) {
     console.error("[loginDemoUser student]", error);

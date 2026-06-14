@@ -30,7 +30,7 @@ export default async function LmsLoginPage({ searchParams }: PageProps) {
     <>
       <PageHero
         title="Přihlášení studenta"
-        subtitle="Použijte e-mail a heslo z uvítacího e-mailu po objednávce, nebo demo účet pro vyzkoušení."
+        subtitle="Přihlaste se jako student (e-mail z objednávky), demo účet testik, nebo admin TechnikPO (uživatel admin)."
       >
         <Link
           href="/lms"
