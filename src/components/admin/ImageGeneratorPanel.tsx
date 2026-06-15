@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GeneratedImageRecord, GeneratedImageStatus } from "@/lib/admin/image-generator/types";
 
 const inputClassName =
@@ -63,11 +63,19 @@ export function ImageGeneratorPanel() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const workerRef = useRef(false);
 
-  const activeCount = useMemo(
-    () => images.filter((image) => image.status === "PENDING" || image.status === "PROCESSING").length,
+  const pendingCount = useMemo(
+    () => images.filter((image) => image.status === "PENDING").length,
     [images]
   );
+
+  const processingCount = useMemo(
+    () => images.filter((image) => image.status === "PROCESSING").length,
+    [images]
+  );
+
+  const activeCount = pendingCount + processingCount;
 
   const loadImages = useCallback(async () => {
     setRefreshing(true);
@@ -85,6 +93,18 @@ export function ImageGeneratorPanel() {
     }
   }, []);
 
+  const nudgeQueueProcessing = useCallback(async () => {
+    const response = await fetch("/api/admin/generator/process", {
+      method: "POST",
+      credentials: "same-origin",
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.error ?? "Generování se nepodařilo spustit.");
+    }
+    return data;
+  }, []);
+
   useEffect(() => {
     void loadImages();
   }, [loadImages]);
@@ -96,10 +116,43 @@ export function ImageGeneratorPanel() {
 
     const interval = window.setInterval(() => {
       void loadImages();
-    }, 4000);
+    }, 5000);
 
     return () => window.clearInterval(interval);
   }, [activeCount, loadImages]);
+
+  useEffect(() => {
+    if (pendingCount === 0 || processingCount > 0) {
+      return;
+    }
+
+    async function runWorker() {
+      if (workerRef.current) {
+        return;
+      }
+
+      workerRef.current = true;
+      try {
+        await nudgeQueueProcessing();
+        await loadImages();
+      } catch (queueError) {
+        setError(
+          queueError instanceof Error
+            ? queueError.message
+            : "Fronta generování se nespustila."
+        );
+      } finally {
+        workerRef.current = false;
+      }
+    }
+
+    void runWorker();
+    const interval = window.setInterval(() => {
+      void runWorker();
+    }, 15000);
+
+    return () => window.clearInterval(interval);
+  }, [pendingCount, processingCount, loadImages, nudgeQueueProcessing]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -123,6 +176,18 @@ export function ImageGeneratorPanel() {
       setSuccess(`Do fronty bylo zařazeno ${data.queued} promptů.`);
       setRawInput("");
       await loadImages();
+      if (data.queued > 0) {
+        try {
+          await nudgeQueueProcessing();
+          await loadImages();
+        } catch (queueError) {
+          setError(
+            queueError instanceof Error
+              ? queueError.message
+              : "Prompty jsou ve frontě, ale generování se nepodařilo spustit."
+          );
+        }
+      }
     } catch {
       setError("Chyba spojení. Zkuste to prosím znovu.");
     } finally {
@@ -178,7 +243,9 @@ export function ImageGeneratorPanel() {
           </button>
           {activeCount > 0 ? (
             <span className="text-sm text-amber-800">
-              Probíhá generování ({activeCount} ve frontě / zpracovává se)
+              {processingCount > 0
+                ? `Generuje se ${processingCount} obrázek${processingCount > 1 ? "ů" : ""}, ve frontě ${pendingCount}`
+                : `Ve frontě ${pendingCount} – spouštím generování…`}
             </span>
           ) : null}
         </div>

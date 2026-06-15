@@ -6,13 +6,20 @@ function verifyInternalBearer(request: Request): boolean {
     return true;
   }
 
-  const adminSecret = process.env.ADMIN_SESSION_SECRET?.trim();
-  if (!adminSecret) {
+  const auth = request.headers.get("authorization");
+  if (!auth?.startsWith("Bearer ")) {
     return false;
   }
 
-  const auth = request.headers.get("authorization");
-  return auth === `Bearer ${adminSecret}`;
+  const token = auth.slice("Bearer ".length);
+  const secrets = [
+    process.env.ADMIN_SESSION_SECRET?.trim(),
+    process.env.ADMIN_PASSWORD?.trim(),
+    process.env.ADMIN_IMAGE_PASSWORD?.trim(),
+    process.env.ADMIN_ORDERS_PASSWORD?.trim(),
+  ].filter(Boolean);
+
+  return secrets.some((secret) => secret === token);
 }
 
 /** Admin cookie nebo interní Bearer token pro background joby. */

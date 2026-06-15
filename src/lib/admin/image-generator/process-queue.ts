@@ -10,6 +10,9 @@ function getInternalJobSecret(): string | null {
   return (
     process.env.CRON_SECRET?.trim() ??
     process.env.ADMIN_SESSION_SECRET?.trim() ??
+    process.env.ADMIN_PASSWORD?.trim() ??
+    process.env.ADMIN_IMAGE_PASSWORD?.trim() ??
+    process.env.ADMIN_ORDERS_PASSWORD?.trim() ??
     null
   );
 }
@@ -34,25 +37,40 @@ export async function triggerImageQueueProcessing(): Promise<void> {
 export async function processNextGeneratedImage(): Promise<{
   processed: boolean;
   remaining: number;
+  waiting?: boolean;
   fileName?: string;
   status?: GeneratedImageStatus;
 }> {
-  const next = await prisma.generatedImage.findFirst({
-    where: { status: "PENDING" },
-    orderBy: { createdAt: "asc" },
+  const processingCount = await prisma.generatedImage.count({
+    where: { status: "PROCESSING" },
+  });
+
+  if (processingCount > 0) {
+    const remaining = await prisma.generatedImage.count({
+      where: { status: "PENDING" },
+    });
+    return { processed: false, remaining, waiting: true };
+  }
+
+  const next = await prisma.$transaction(async (tx) => {
+    const item = await tx.generatedImage.findFirst({
+      where: { status: "PENDING" },
+      orderBy: { createdAt: "asc" },
+    });
+
+    if (!item) {
+      return null;
+    }
+
+    return tx.generatedImage.update({
+      where: { id: item.id },
+      data: { status: "PROCESSING" },
+    });
   });
 
   if (!next) {
-    const remaining = await prisma.generatedImage.count({
-      where: { status: { in: ["PENDING", "PROCESSING"] } },
-    });
-    return { processed: false, remaining };
+    return { processed: false, remaining: 0 };
   }
-
-  await prisma.generatedImage.update({
-    where: { id: next.id },
-    data: { status: "PROCESSING" },
-  });
 
   try {
     const imageUrl = await generateFluxImage(next.prompt);
@@ -99,15 +117,17 @@ export async function processNextGeneratedImage(): Promise<{
 export async function runImageQueueWorker(): Promise<{
   processedCount: number;
   remaining: number;
+  waiting?: boolean;
 }> {
   const result = await processNextGeneratedImage();
 
-  if (result.remaining > 0) {
+  if (result.remaining > 0 && result.processed) {
     await triggerImageQueueProcessing();
   }
 
   return {
     processedCount: result.processed ? 1 : 0,
     remaining: result.remaining,
+    waiting: result.waiting,
   };
 }
