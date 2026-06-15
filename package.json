@@ -25,6 +25,7 @@
     "dejavu-fonts-ttf": "^2.37.3",
     "drizzle-orm": "^0.45.2",
     "gopay-sdk": "^2.0.0",
+    "jszip": "^3.10.1",
     "next": "16.2.6",
     "pdf-lib": "^1.17.1",
     "postgres": "^3.4.9",

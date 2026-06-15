@@ -50,13 +50,14 @@ model Payment {
 }
 
 model GeneratedImage {
-  id        String   @id @default(uuid())
-  fileName  String
-  prompt    String
-  imageUrl  String?
-  status    String   @default("PENDING")
-  errorMessage String?
-  createdAt DateTime @default(now())
+  id                  String    @id @default(uuid())
+  fileName            String
+  prompt              String
+  imageUrl            String?
+  status              String    @default("PENDING")
+  errorMessage        String?
+  processingStartedAt DateTime?
+  createdAt           DateTime  @default(now())
 }
 
 model AdminUser {

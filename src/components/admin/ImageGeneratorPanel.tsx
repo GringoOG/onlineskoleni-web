@@ -1,5 +1,6 @@
 "use client";
 
+import JSZip from "jszip";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GeneratedImageRecord, GeneratedImageStatus } from "@/lib/admin/image-generator/types";
 
@@ -56,6 +57,17 @@ async function downloadImage(imageId: string, fileName: string) {
   URL.revokeObjectURL(objectUrl);
 }
 
+function triggerBlobDownload(blob: Blob, fileName: string) {
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = objectUrl;
+  anchor.download = fileName;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(objectUrl);
+}
+
 export function ImageGeneratorPanel() {
   const [rawInput, setRawInput] = useState("");
   const [images, setImages] = useState<GeneratedImageRecord[]>([]);
@@ -65,6 +77,7 @@ export function ImageGeneratorPanel() {
   const [refreshing, setRefreshing] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [deletingFailed, setDeletingFailed] = useState(false);
+  const [downloadingAll, setDownloadingAll] = useState(false);
   const workerRef = useRef(false);
 
   const pendingCount = useMemo(
@@ -81,6 +94,13 @@ export function ImageGeneratorPanel() {
     () => images.filter((image) => image.status === "FAILED").length,
     [images]
   );
+
+  const completedImages = useMemo(
+    () => images.filter((image) => image.status === "COMPLETED" && image.imageUrl),
+    [images]
+  );
+
+  const completedCount = completedImages.length;
 
   const activeCount = pendingCount + processingCount;
 
@@ -270,6 +290,40 @@ export function ImageGeneratorPanel() {
     }
   }
 
+  async function downloadAllCompleted() {
+    if (completedCount === 0) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDownloadingAll(true);
+
+    try {
+      const zip = new JSZip();
+
+      for (const image of completedImages) {
+        const response = await fetch(`/api/admin/generator/download?id=${encodeURIComponent(image.id)}`);
+        if (!response.ok) {
+          throw new Error(`Nepodařilo se stáhnout ${image.fileName}.png.`);
+        }
+        const blob = await response.blob();
+        zip.file(`${image.fileName}.png`, blob);
+      }
+
+      const archive = await zip.generateAsync({ type: "blob" });
+      const stamp = new Date().toISOString().slice(0, 10);
+      triggerBlobDownload(archive, `ilustrace-hotovo-${stamp}.zip`);
+      setSuccess(`Stažen archiv se ${completedCount} obrázky.`);
+    } catch (downloadError) {
+      setError(
+        downloadError instanceof Error ? downloadError.message : "Hromadné stažení se nezdařilo."
+      );
+    } finally {
+      setDownloadingAll(false);
+    }
+  }
+
   return (
     <div className="space-y-10">
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -348,7 +402,21 @@ export function ImageGeneratorPanel() {
       <div className="space-y-4">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-lg font-bold text-slate-900">Vygenerované obrázky</h2>
-          <span className="text-sm text-slate-500">{images.length} záznamů</span>
+          <div className="flex flex-wrap items-center gap-3">
+            {completedCount > 0 ? (
+              <button
+                type="button"
+                onClick={() => void downloadAllCompleted()}
+                disabled={downloadingAll}
+                className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-100 disabled:opacity-60"
+              >
+                {downloadingAll
+                  ? `Připravuji ZIP (${completedCount})…`
+                  : `Stáhnout vše hotové (${completedCount})`}
+              </button>
+            ) : null}
+            <span className="text-sm text-slate-500">{images.length} záznamů</span>
+          </div>
         </div>
 
         {images.length === 0 ? (
