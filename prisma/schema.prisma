@@ -55,6 +55,7 @@ model GeneratedImage {
   prompt    String
   imageUrl  String?
   status    String   @default("PENDING")
+  errorMessage String?
   createdAt DateTime @default(now())
 }
 

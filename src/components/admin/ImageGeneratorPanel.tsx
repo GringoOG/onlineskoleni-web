@@ -75,6 +75,11 @@ export function ImageGeneratorPanel() {
     [images]
   );
 
+  const failedCount = useMemo(
+    () => images.filter((image) => image.status === "FAILED").length,
+    [images]
+  );
+
   const activeCount = pendingCount + processingCount;
 
   const loadImages = useCallback(async () => {
@@ -195,6 +200,22 @@ export function ImageGeneratorPanel() {
     }
   }
 
+  async function retryFailed() {
+    setError("");
+    setSuccess("");
+    try {
+      const response = await fetch("/api/admin/generator/retry", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Opakování se nezdařilo.");
+      }
+      setSuccess(`Znovu zařazeno ${data.retried} chybných položek.`);
+      await loadImages();
+    } catch (retryError) {
+      setError(retryError instanceof Error ? retryError.message : "Opakování se nezdařilo.");
+    }
+  }
+
   return (
     <div className="space-y-10">
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -241,6 +262,15 @@ export function ImageGeneratorPanel() {
           >
             {refreshing ? "Obnovuji…" : "Obnovit stav"}
           </button>
+          {failedCount > 0 ? (
+            <button
+              type="button"
+              onClick={() => void retryFailed()}
+              className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100"
+            >
+              Opakovat chybné ({failedCount})
+            </button>
+          ) : null}
           {activeCount > 0 ? (
             <span className="text-sm text-amber-800">
               {processingCount > 0
@@ -299,6 +329,9 @@ export function ImageGeneratorPanel() {
                       >
                         {statusLabel(image.status)}
                       </span>
+                      {image.status === "FAILED" && image.errorMessage ? (
+                        <p className="mt-1 max-w-xs text-xs text-red-700">{image.errorMessage}</p>
+                      ) : null}
                     </td>
                     <td className="max-w-md px-4 py-3 text-xs leading-relaxed text-slate-600">
                       <span className="line-clamp-3">{image.prompt}</span>

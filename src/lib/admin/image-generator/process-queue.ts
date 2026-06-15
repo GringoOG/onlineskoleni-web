@@ -94,11 +94,12 @@ export async function processNextGeneratedImage(): Promise<{
       status: "COMPLETED",
     };
   } catch (error) {
+    const message = error instanceof Error ? error.message : "Neznámá chyba generování.";
     console.error(`[image-generator] ${next.fileName}`, error);
 
     await prisma.generatedImage.update({
       where: { id: next.id },
-      data: { status: "FAILED" },
+      data: { status: "FAILED", errorMessage: message },
     });
 
     const remaining = await prisma.generatedImage.count({

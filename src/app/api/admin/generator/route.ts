@@ -13,6 +13,7 @@ function serializeImage(image: {
   prompt: string;
   imageUrl: string | null;
   status: string;
+  errorMessage: string | null;
   createdAt: Date;
 }): GeneratedImageRecord {
   return {
@@ -21,6 +22,7 @@ function serializeImage(image: {
     prompt: image.prompt,
     imageUrl: image.imageUrl,
     status: image.status as GeneratedImageRecord["status"],
+    errorMessage: image.errorMessage,
     createdAt: image.createdAt.toISOString(),
   };
 }

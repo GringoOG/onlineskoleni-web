@@ -18,5 +18,6 @@ export interface GeneratedImageRecord {
   prompt: string;
   imageUrl: string | null;
   status: GeneratedImageStatus;
+  errorMessage: string | null;
   createdAt: string;
 }
