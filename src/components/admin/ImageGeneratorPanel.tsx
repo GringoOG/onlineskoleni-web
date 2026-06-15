@@ -63,6 +63,8 @@ export function ImageGeneratorPanel() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deletingFailed, setDeletingFailed] = useState(false);
   const workerRef = useRef(false);
 
   const pendingCount = useMemo(
@@ -216,6 +218,58 @@ export function ImageGeneratorPanel() {
     }
   }
 
+  async function deleteFailed() {
+    if (!window.confirm(`Opravdu smazat všech ${failedCount} chybných položek?`)) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDeletingFailed(true);
+    try {
+      const response = await fetch("/api/admin/generator/delete-failed", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mazání se nezdařilo.");
+      }
+      setSuccess(`Smazáno ${data.deleted} chybných položek.`);
+      await loadImages();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
+    } finally {
+      setDeletingFailed(false);
+    }
+  }
+
+  async function deleteImage(image: GeneratedImageRecord) {
+    if (
+      !window.confirm(
+        `Opravdu smazat položku ${image.fileName}?${
+          image.status === "PENDING" ? " Bude odstraněna z fronty." : ""
+        }`
+      )
+    ) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDeletingId(image.id);
+    try {
+      const response = await fetch(`/api/admin/generator/${image.id}`, { method: "DELETE" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mazání se nezdařilo.");
+      }
+      setSuccess(`Položka ${image.fileName} byla smazána.`);
+      await loadImages();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
+    } finally {
+      setDeletingId(null);
+    }
+  }
+
   return (
     <div className="space-y-10">
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -263,13 +317,23 @@ export function ImageGeneratorPanel() {
             {refreshing ? "Obnovuji…" : "Obnovit stav"}
           </button>
           {failedCount > 0 ? (
-            <button
-              type="button"
-              onClick={() => void retryFailed()}
-              className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100"
-            >
-              Opakovat chybné ({failedCount})
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={() => void retryFailed()}
+                className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100"
+              >
+                Opakovat chybné ({failedCount})
+              </button>
+              <button
+                type="button"
+                onClick={() => void deleteFailed()}
+                disabled={deletingFailed}
+                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
+              >
+                {deletingFailed ? "Mažu…" : `Smazat chybné (${failedCount})`}
+              </button>
+            </>
           ) : null}
           {activeCount > 0 ? (
             <span className="text-sm text-amber-800">
@@ -337,21 +401,34 @@ export function ImageGeneratorPanel() {
                       <span className="line-clamp-3">{image.prompt}</span>
                     </td>
                     <td className="px-4 py-3">
-                      {image.status === "COMPLETED" && image.imageUrl ? (
-                        <button
-                          type="button"
-                          onClick={() =>
-                            downloadImage(image.id, image.fileName).catch(() =>
-                              setError("Stažení obrázku se nezdařilo.")
-                            )
-                          }
-                          className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
-                        >
-                          Stáhnout {image.fileName}.png
-                        </button>
-                      ) : (
-                        <span className="text-xs text-slate-400">—</span>
-                      )}
+                      <div className="flex flex-col gap-2">
+                        {image.status === "COMPLETED" && image.imageUrl ? (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              downloadImage(image.id, image.fileName).catch(() =>
+                                setError("Stažení obrázku se nezdařilo.")
+                              )
+                            }
+                            className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                          >
+                            Stáhnout {image.fileName}.png
+                          </button>
+                        ) : null}
+                        {image.status === "FAILED" || image.status === "PENDING" ? (
+                          <button
+                            type="button"
+                            onClick={() => void deleteImage(image)}
+                            disabled={deletingId === image.id}
+                            className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-800 hover:bg-red-50 disabled:opacity-60"
+                          >
+                            {deletingId === image.id ? "Mažu…" : "Smazat"}
+                          </button>
+                        ) : null}
+                        {image.status === "PROCESSING" ? (
+                          <span className="text-xs text-slate-400">Probíhá…</span>
+                        ) : null}
+                      </div>
                     </td>
                   </tr>
                 ))}
