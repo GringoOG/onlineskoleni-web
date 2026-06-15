@@ -1,7 +1,11 @@
 import Replicate from "replicate";
 
-const FLUX_MODEL = "black-forest-labs/flux-dev";
-const MAX_ATTEMPTS = 3;
+const FLUX_MODEL = process.env.REPLICATE_FLUX_MODEL?.trim() || "black-forest-labs/flux-dev";
+
+export type FluxPredictionState =
+  | { status: "running" }
+  | { status: "succeeded"; imageUrl: string }
+  | { status: "failed"; error: string };
 
 function getReplicateClient(): Replicate {
   const token = process.env.REPLICATE_API_TOKEN?.trim();
@@ -10,6 +14,17 @@ function getReplicateClient(): Replicate {
   }
 
   return new Replicate({ auth: token });
+}
+
+function getFluxInput(prompt: string) {
+  return {
+    prompt,
+    aspect_ratio: "4:3",
+    output_format: "png",
+    num_outputs: 1,
+    go_fast: true,
+    num_inference_steps: 20,
+  };
 }
 
 function normalizeImageUrl(value: unknown): string | null {
@@ -68,57 +83,57 @@ function extractImageUrl(output: unknown): string {
   throw new Error("Replicate nevrátilo platnou URL obrázku.");
 }
 
-function isRetriableError(error: unknown): boolean {
-  const message = (error instanceof Error ? error.message : String(error)).toLowerCase();
-  return (
-    message.includes("timeout") ||
-    message.includes("timed out") ||
-    message.includes("fetch failed") ||
-    message.includes("econnreset") ||
-    message.includes("network") ||
-    message.includes("502") ||
-    message.includes("503") ||
-    message.includes("429") ||
-    message.includes("rate limit")
-  );
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function runFluxOnce(prompt: string): Promise<string> {
-  const replicate = getReplicateClient();
-
-  const output = await replicate.run(FLUX_MODEL, {
-    input: {
-      prompt,
-      aspect_ratio: "4:3",
-      output_format: "png",
-      num_outputs: 1,
-      go_fast: true,
-      num_inference_steps: 24,
-    },
-  });
-
-  return extractImageUrl(output);
-}
-
-export async function generateFluxImage(prompt: string): Promise<string> {
-  let lastError: unknown;
-
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    try {
-      return await runFluxOnce(prompt);
-    } catch (error) {
-      lastError = error;
-      if (attempt < MAX_ATTEMPTS && isRetriableError(error)) {
-        await sleep(2000 * attempt);
-        continue;
-      }
-      throw error;
-    }
+function formatPredictionError(error: unknown): string {
+  if (typeof error === "string" && error.trim()) {
+    return error;
   }
 
-  throw lastError instanceof Error ? lastError : new Error("Generování selhalo.");
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (error) {
+    return JSON.stringify(error);
+  }
+
+  return "Replicate prediction selhalo.";
+}
+
+/** Spustí generování na Replicate bez čekání na výsledek. */
+export async function startFluxPrediction(prompt: string): Promise<string> {
+  const replicate = getReplicateClient();
+
+  const prediction = await replicate.predictions.create({
+    model: FLUX_MODEL,
+    input: getFluxInput(prompt),
+    wait: false,
+  });
+
+  if (!prediction.id) {
+    throw new Error("Replicate nevrátilo ID predikce.");
+  }
+
+  return prediction.id;
+}
+
+/** Zjistí stav běžící nebo dokončené predikce. */
+export async function getFluxPredictionState(predictionId: string): Promise<FluxPredictionState> {
+  const replicate = getReplicateClient();
+  const prediction = await replicate.predictions.get(predictionId);
+
+  if (prediction.status === "succeeded") {
+    return {
+      status: "succeeded",
+      imageUrl: extractImageUrl(prediction.output),
+    };
+  }
+
+  if (prediction.status === "failed" || prediction.status === "canceled" || prediction.status === "aborted") {
+    return {
+      status: "failed",
+      error: formatPredictionError(prediction.error),
+    };
+  }
+
+  return { status: "running" };
 }

@@ -13,7 +13,7 @@ export async function POST() {
 
     const result = await prisma.generatedImage.updateMany({
       where: { status: "FAILED" },
-      data: { status: "PENDING", errorMessage: null, processingStartedAt: null },
+      data: { status: "PENDING", errorMessage: null, processingStartedAt: null, replicatePredictionId: null },
     });
 
     if (result.count > 0) {

@@ -141,18 +141,6 @@ export function ImageGeneratorPanel() {
       return;
     }
 
-    const interval = window.setInterval(() => {
-      void loadImages();
-    }, 5000);
-
-    return () => window.clearInterval(interval);
-  }, [activeCount, loadImages]);
-
-  useEffect(() => {
-    if (pendingCount === 0 || processingCount > 0) {
-      return;
-    }
-
     async function runWorker() {
       if (workerRef.current) {
         return;
@@ -176,10 +164,10 @@ export function ImageGeneratorPanel() {
     void runWorker();
     const interval = window.setInterval(() => {
       void runWorker();
-    }, 15000);
+    }, 5000);
 
     return () => window.clearInterval(interval);
-  }, [pendingCount, processingCount, loadImages, nudgeQueueProcessing]);
+  }, [activeCount, loadImages, nudgeQueueProcessing]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -394,6 +382,8 @@ export function ImageGeneratorPanel() {
               {processingCount > 0
                 ? `Generuje se ${processingCount} obrázek${processingCount > 1 ? "ů" : ""}, ve frontě ${pendingCount}`
                 : `Ve frontě ${pendingCount} – spouštím generování…`}
+              {" · "}
+              Fronta běží i na pozadí (cron každou minutu).
             </span>
           ) : null}
         </div>

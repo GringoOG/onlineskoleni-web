@@ -57,6 +57,7 @@ model GeneratedImage {
   status              String    @default("PENDING")
   errorMessage        String?
   processingStartedAt DateTime?
+  replicatePredictionId String?
   createdAt           DateTime  @default(now())
 }
 
