@@ -68,6 +68,16 @@ function triggerBlobDownload(blob: Blob, fileName: string) {
   URL.revokeObjectURL(objectUrl);
 }
 
+function isCreatedToday(createdAt: string): boolean {
+  const created = new Date(createdAt);
+  const now = new Date();
+  return (
+    created.getFullYear() === now.getFullYear() &&
+    created.getMonth() === now.getMonth() &&
+    created.getDate() === now.getDate()
+  );
+}
+
 export function ImageGeneratorPanel() {
   const [rawInput, setRawInput] = useState("");
   const [images, setImages] = useState<GeneratedImageRecord[]>([]);
@@ -100,7 +110,13 @@ export function ImageGeneratorPanel() {
     [images]
   );
 
+  const completedTodayImages = useMemo(
+    () => completedImages.filter((image) => isCreatedToday(image.createdAt)),
+    [completedImages]
+  );
+
   const completedCount = completedImages.length;
+  const completedTodayCount = completedTodayImages.length;
 
   const activeCount = pendingCount + processingCount;
 
@@ -278,8 +294,13 @@ export function ImageGeneratorPanel() {
     }
   }
 
-  async function downloadAllCompleted() {
-    if (completedCount === 0) {
+  async function downloadCompletedZip(
+    imagesToDownload: GeneratedImageRecord[],
+    archiveName: string,
+    emptyMessage: string
+  ) {
+    if (imagesToDownload.length === 0) {
+      setError(emptyMessage);
       return;
     }
 
@@ -299,8 +320,8 @@ export function ImageGeneratorPanel() {
         return count === 0 ? `${fileName}.png` : `${fileName}-${count + 1}.png`;
       }
 
-      for (let index = 0; index < completedImages.length; index += batchSize) {
-        const batch = completedImages.slice(index, index + batchSize);
+      for (let index = 0; index < imagesToDownload.length; index += batchSize) {
+        const batch = imagesToDownload.slice(index, index + batchSize);
         await Promise.all(
           batch.map(async (image) => {
             try {
@@ -326,14 +347,13 @@ export function ImageGeneratorPanel() {
       }
 
       const archive = await zip.generateAsync({ type: "blob" });
-      const stamp = new Date().toISOString().slice(0, 10);
-      triggerBlobDownload(archive, `ilustrace-hotovo-${stamp}.zip`);
+      triggerBlobDownload(archive, archiveName);
 
       if (failed.length > 0) {
         const preview = failed.slice(0, 8).join(", ");
         const more = failed.length > 8 ? ` a dalších ${failed.length - 8}` : "";
         setSuccess(
-          `Stažen archiv se ${downloaded} obrázky. Nepodařilo se (${failed.length}): ${preview}${more}. U těchto položek vygenerujte obrázek znovu.`
+          `Stažen archiv se ${downloaded} obrázky. Nepodařilo se (${failed.length}): ${preview}${more}.`
         );
       } else {
         setSuccess(`Stažen archiv se ${downloaded} obrázky.`);
@@ -345,6 +365,24 @@ export function ImageGeneratorPanel() {
     } finally {
       setDownloadingAll(false);
     }
+  }
+
+  async function downloadTodayCompleted() {
+    const stamp = new Date().toISOString().slice(0, 10);
+    await downloadCompletedZip(
+      completedTodayImages,
+      `ilustrace-dnes-${stamp}.zip`,
+      "Dnes zatím není žádný hotový obrázek ke stažení."
+    );
+  }
+
+  async function downloadAllCompleted() {
+    const stamp = new Date().toISOString().slice(0, 10);
+    await downloadCompletedZip(
+      completedImages,
+      `ilustrace-hotovo-${stamp}.zip`,
+      "Zatím není žádný hotový obrázek ke stažení."
+    );
   }
 
   return (
@@ -428,16 +466,26 @@ export function ImageGeneratorPanel() {
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-lg font-bold text-slate-900">Vygenerované obrázky</h2>
           <div className="flex flex-wrap items-center gap-3">
-            {completedCount > 0 ? (
+            {completedTodayCount > 0 ? (
               <button
                 type="button"
-                onClick={() => void downloadAllCompleted()}
+                onClick={() => void downloadTodayCompleted()}
                 disabled={downloadingAll}
                 className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-100 disabled:opacity-60"
               >
                 {downloadingAll
-                  ? `Připravuji ZIP (${completedCount})…`
-                  : `Stáhnout vše hotové (${completedCount})`}
+                  ? `Připravuji ZIP (${completedTodayCount})…`
+                  : `Stáhnout dnešní hotové (${completedTodayCount})`}
+              </button>
+            ) : null}
+            {completedCount > completedTodayCount ? (
+              <button
+                type="button"
+                onClick={() => void downloadAllCompleted()}
+                disabled={downloadingAll}
+                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
+              >
+                Stáhnout vše hotové ({completedCount})
               </button>
             ) : null}
             <span className="text-sm text-slate-500">{images.length} záznamů</span>
