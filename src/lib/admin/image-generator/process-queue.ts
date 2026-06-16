@@ -105,7 +105,6 @@ async function pollProcessingItem(item: {
         status: "COMPLETED",
         imageUrl: state.imageUrl,
         processingStartedAt: null,
-        replicatePredictionId: null,
         errorMessage: null,
       },
     });

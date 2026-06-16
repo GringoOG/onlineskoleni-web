@@ -289,20 +289,55 @@ export function ImageGeneratorPanel() {
 
     try {
       const zip = new JSZip();
+      const failed: string[] = [];
+      const usedNames = new Map<string, number>();
+      const batchSize = 6;
 
-      for (const image of completedImages) {
-        const response = await fetch(`/api/admin/generator/download?id=${encodeURIComponent(image.id)}`);
-        if (!response.ok) {
-          throw new Error(`Nepodařilo se stáhnout ${image.fileName}.png.`);
-        }
-        const blob = await response.blob();
-        zip.file(`${image.fileName}.png`, blob);
+      function zipFileName(fileName: string): string {
+        const count = usedNames.get(fileName) ?? 0;
+        usedNames.set(fileName, count + 1);
+        return count === 0 ? `${fileName}.png` : `${fileName}-${count + 1}.png`;
+      }
+
+      for (let index = 0; index < completedImages.length; index += batchSize) {
+        const batch = completedImages.slice(index, index + batchSize);
+        await Promise.all(
+          batch.map(async (image) => {
+            try {
+              const response = await fetch(
+                `/api/admin/generator/download?id=${encodeURIComponent(image.id)}`
+              );
+              if (!response.ok) {
+                const data = await response.json().catch(() => ({}));
+                throw new Error(data.fileName ?? image.fileName);
+              }
+              const blob = await response.blob();
+              zip.file(zipFileName(image.fileName), blob);
+            } catch {
+              failed.push(image.fileName);
+            }
+          })
+        );
+      }
+
+      const downloaded = Object.keys(zip.files).length;
+      if (downloaded === 0) {
+        throw new Error("Žádný obrázek se nepodařilo stáhnout. Zkuste obnovit stav a stáhnout po jednom.");
       }
 
       const archive = await zip.generateAsync({ type: "blob" });
       const stamp = new Date().toISOString().slice(0, 10);
       triggerBlobDownload(archive, `ilustrace-hotovo-${stamp}.zip`);
-      setSuccess(`Stažen archiv se ${completedCount} obrázky.`);
+
+      if (failed.length > 0) {
+        const preview = failed.slice(0, 8).join(", ");
+        const more = failed.length > 8 ? ` a dalších ${failed.length - 8}` : "";
+        setSuccess(
+          `Stažen archiv se ${downloaded} obrázky. Nepodařilo se (${failed.length}): ${preview}${more}. U těchto položek vygenerujte obrázek znovu.`
+        );
+      } else {
+        setSuccess(`Stažen archiv se ${downloaded} obrázky.`);
+      }
     } catch (downloadError) {
       setError(
         downloadError instanceof Error ? downloadError.message : "Hromadné stažení se nezdařilo."
