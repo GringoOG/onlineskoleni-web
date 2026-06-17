@@ -88,6 +88,7 @@ export function ImageGeneratorPanel() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [deletingFailed, setDeletingFailed] = useState(false);
   const [downloadingAll, setDownloadingAll] = useState(false);
+  const [pruningUnavailable, setPruningUnavailable] = useState(false);
   const workerRef = useRef(false);
 
   const pendingCount = useMemo(
@@ -385,6 +386,42 @@ export function ImageGeneratorPanel() {
     );
   }
 
+  async function pruneUnavailableCompleted() {
+    if (
+      !window.confirm(
+        "Zkontrolovat všechny hotové obrázky a ty, které už nejdou stáhnout, přesunout do stavu Chyba?"
+      )
+    ) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setPruningUnavailable(true);
+    try {
+      const response = await fetch("/api/admin/generator/prune-unavailable", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Kontrola dostupnosti se nezdařila.");
+      }
+
+      const preview = (data.removedFileNames as string[] | undefined)?.slice(0, 10).join(", ");
+      const more =
+        data.removed > 10 ? ` a dalších ${data.removed - 10}` : "";
+
+      setSuccess(
+        `Zkontrolováno ${data.checked}. Ke stažení zůstává ${data.kept}, odstraněno z hotových ${data.removed}${
+          data.refreshed ? `, obnoveno URL u ${data.refreshed}` : ""
+        }${preview ? `: ${preview}${more}` : ""}.`
+      );
+      await loadImages();
+    } catch (pruneError) {
+      setError(pruneError instanceof Error ? pruneError.message : "Kontrola dostupnosti se nezdařila.");
+    } finally {
+      setPruningUnavailable(false);
+    }
+  }
+
   return (
     <div className="space-y-10">
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -482,10 +519,20 @@ export function ImageGeneratorPanel() {
               <button
                 type="button"
                 onClick={() => void downloadAllCompleted()}
-                disabled={downloadingAll}
+                disabled={downloadingAll || pruningUnavailable}
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
               >
                 Stáhnout vše hotové ({completedCount})
+              </button>
+            ) : null}
+            {completedCount > 0 ? (
+              <button
+                type="button"
+                onClick={() => void pruneUnavailableCompleted()}
+                disabled={downloadingAll || pruningUnavailable}
+                className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-900 hover:bg-amber-100 disabled:opacity-60"
+              >
+                {pruningUnavailable ? "Kontroluji dostupnost…" : "Vyčistit nestáhnutelné"}
               </button>
             ) : null}
             <span className="text-sm text-slate-500">{images.length} záznamů</span>

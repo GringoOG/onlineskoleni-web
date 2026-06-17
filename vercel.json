@@ -7,6 +7,9 @@
     },
     "src/app/api/admin/generator/download/route.ts": {
       "maxDuration": 60
+    },
+    "src/app/api/admin/generator/prune-unavailable/route.ts": {
+      "maxDuration": 300
     }
   },
   "crons": [
