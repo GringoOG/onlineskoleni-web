@@ -78,6 +78,10 @@ function isCreatedToday(createdAt: string): boolean {
   );
 }
 
+function isDeletableStatus(status: GeneratedImageStatus): boolean {
+  return status !== "PROCESSING";
+}
+
 export function ImageGeneratorPanel() {
   const [rawInput, setRawInput] = useState("");
   const [images, setImages] = useState<GeneratedImageRecord[]>([]);
@@ -89,6 +93,8 @@ export function ImageGeneratorPanel() {
   const [deletingFailed, setDeletingFailed] = useState(false);
   const [downloadingAll, setDownloadingAll] = useState(false);
   const [pruningUnavailable, setPruningUnavailable] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
+  const [deletingBulk, setDeletingBulk] = useState(false);
   const workerRef = useRef(false);
 
   const pendingCount = useMemo(
@@ -120,6 +126,48 @@ export function ImageGeneratorPanel() {
   const completedTodayCount = completedTodayImages.length;
 
   const activeCount = pendingCount + processingCount;
+
+  const selectableImages = useMemo(
+    () => images.filter((image) => isDeletableStatus(image.status)),
+    [images]
+  );
+
+  const selectedCount = useMemo(
+    () => selectableImages.filter((image) => selectedIds.has(image.id)).length,
+    [selectableImages, selectedIds]
+  );
+
+  const allSelectableSelected =
+    selectableImages.length > 0 && selectedCount === selectableImages.length;
+
+  useEffect(() => {
+    setSelectedIds((current) => {
+      const validIds = new Set(images.map((image) => image.id));
+      const next = new Set([...current].filter((id) => validIds.has(id)));
+      return next.size === current.size ? current : next;
+    });
+  }, [images]);
+
+  const toggleSelected = useCallback((id: string) => {
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  }, []);
+
+  const toggleSelectAll = useCallback(() => {
+    setSelectedIds((current) => {
+      if (allSelectableSelected) {
+        return new Set();
+      }
+      return new Set(selectableImages.map((image) => image.id));
+    });
+  }, [allSelectableSelected, selectableImages]);
 
   const loadImages = useCallback(async () => {
     setRefreshing(true);
@@ -267,6 +315,10 @@ export function ImageGeneratorPanel() {
   }
 
   async function deleteImage(image: GeneratedImageRecord) {
+    if (!isDeletableStatus(image.status)) {
+      return;
+    }
+
     if (
       !window.confirm(
         `Opravdu smazat položku ${image.fileName}?${
@@ -286,12 +338,88 @@ export function ImageGeneratorPanel() {
       if (!response.ok) {
         throw new Error(data.error ?? "Mazání se nezdařilo.");
       }
+      setSelectedIds((current) => {
+        const next = new Set(current);
+        next.delete(image.id);
+        return next;
+      });
       setSuccess(`Položka ${image.fileName} byla smazána.`);
       await loadImages();
     } catch (deleteError) {
       setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
     } finally {
       setDeletingId(null);
+    }
+  }
+
+  async function deleteSelectedImages() {
+    const ids = selectableImages.filter((image) => selectedIds.has(image.id)).map((image) => image.id);
+    if (ids.length === 0) {
+      setError("Označte položky, které chcete smazat.");
+      return;
+    }
+
+    if (!window.confirm(`Opravdu smazat ${ids.length} označených položek?`)) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDeletingBulk(true);
+    try {
+      const response = await fetch("/api/admin/generator/delete-batch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mazání se nezdařilo.");
+      }
+      setSelectedIds(new Set());
+      setSuccess(`Smazáno ${data.deleted} označených položek.`);
+      await loadImages();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
+    } finally {
+      setDeletingBulk(false);
+    }
+  }
+
+  async function deleteAllImages() {
+    if (images.length === 0) {
+      return;
+    }
+
+    if (processingCount > 0) {
+      setError("Nelze smazat celý seznam, dokud probíhá generování.");
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Opravdu smazat celý seznam (${images.length} záznamů)? Tuto akci nelze vrátit.`
+      )
+    ) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDeletingBulk(true);
+    try {
+      const response = await fetch("/api/admin/generator/delete-all", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mazání se nezdařilo.");
+      }
+      setSelectedIds(new Set());
+      setSuccess(`Smazán celý seznam (${data.deleted} záznamů).`);
+      await loadImages();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
+    } finally {
+      setDeletingBulk(false);
     }
   }
 
@@ -539,6 +667,44 @@ export function ImageGeneratorPanel() {
           </div>
         </div>
 
+        {images.length > 0 ? (
+          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-700">
+              <input
+                type="checkbox"
+                checked={allSelectableSelected}
+                onChange={toggleSelectAll}
+                disabled={selectableImages.length === 0 || deletingBulk}
+                className="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/25"
+              />
+              Označit vše ({selectableImages.length})
+            </label>
+            {selectedCount > 0 ? (
+              <button
+                type="button"
+                onClick={() => void deleteSelectedImages()}
+                disabled={deletingBulk || deletingId !== null}
+                className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100 disabled:opacity-60"
+              >
+                {deletingBulk ? "Mažu…" : `Smazat označené (${selectedCount})`}
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => void deleteAllImages()}
+              disabled={deletingBulk || processingCount > 0 || deletingId !== null}
+              className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
+            >
+              {deletingBulk ? "Mažu…" : `Smazat celý seznam (${images.length})`}
+            </button>
+            {processingCount > 0 ? (
+              <span className="text-xs text-amber-800">
+                Celý seznam lze smazat až po dokončení generování.
+              </span>
+            ) : null}
+          </div>
+        ) : null}
+
         {images.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
             Zatím nejsou žádné záznamy. Vložte prompty a spusťte generování.
@@ -548,6 +714,7 @@ export function ImageGeneratorPanel() {
             <table className="min-w-full divide-y divide-slate-200 text-sm">
               <thead className="bg-slate-50">
                 <tr>
+                  <th className="w-10 px-4 py-3" aria-label="Vybrat" />
                   <th className="px-4 py-3 text-left font-semibold text-slate-700">Náhled</th>
                   <th className="px-4 py-3 text-left font-semibold text-slate-700">Kód</th>
                   <th className="px-4 py-3 text-left font-semibold text-slate-700">Stav</th>
@@ -557,7 +724,24 @@ export function ImageGeneratorPanel() {
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
                 {images.map((image) => (
-                  <tr key={image.id} className="align-top">
+                  <tr
+                    key={image.id}
+                    className={`align-top ${selectedIds.has(image.id) ? "bg-brand/5" : ""}`}
+                  >
+                    <td className="px-4 py-3">
+                      {isDeletableStatus(image.status) ? (
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(image.id)}
+                          onChange={() => toggleSelected(image.id)}
+                          disabled={deletingBulk}
+                          aria-label={`Vybrat ${image.fileName}`}
+                          className="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/25"
+                        />
+                      ) : (
+                        <span className="text-xs text-slate-300">—</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3">
                       {image.imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -603,11 +787,11 @@ export function ImageGeneratorPanel() {
                             Stáhnout {image.fileName}.png
                           </button>
                         ) : null}
-                        {image.status === "FAILED" || image.status === "PENDING" ? (
+                        {isDeletableStatus(image.status) ? (
                           <button
                             type="button"
                             onClick={() => void deleteImage(image)}
-                            disabled={deletingId === image.id}
+                            disabled={deletingId === image.id || deletingBulk}
                             className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-800 hover:bg-red-50 disabled:opacity-60"
                           >
                             {deletingId === image.id ? "Mažu…" : "Smazat"}

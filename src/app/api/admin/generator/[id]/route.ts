@@ -4,9 +4,9 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-const DELETABLE_STATUSES = new Set(["FAILED", "PENDING"]);
+const DELETABLE_STATUSES = new Set(["FAILED", "PENDING", "COMPLETED"]);
 
-/** Smaže jednu položku (jen FAILED nebo PENDING). */
+/** Smaže jednu položku (kromě právě běžících). */
 export async function DELETE(
   _request: Request,
   context: { params: Promise<{ id: string }> }
@@ -22,16 +22,9 @@ export async function DELETE(
       return NextResponse.json({ error: "Položka nebyla nalezena." }, { status: 404 });
     }
 
-    if (item.status === "PROCESSING") {
-      return NextResponse.json(
-        { error: "Právě probíhající generování nelze smazat." },
-        { status: 400 }
-      );
-    }
-
     if (!DELETABLE_STATUSES.has(item.status)) {
       return NextResponse.json(
-        { error: "Hotové obrázky lze pouze stáhnout, ne smazat." },
+        { error: "Právě probíhající generování nelze smazat." },
         { status: 400 }
       );
     }
