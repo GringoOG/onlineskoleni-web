@@ -8,6 +8,9 @@
     "src/app/api/admin/generator/download/route.ts": {
       "maxDuration": 60
     },
+    "src/app/api/admin/generator/preview/route.ts": {
+      "maxDuration": 60
+    },
     "src/app/api/admin/generator/prune-unavailable/route.ts": {
       "maxDuration": 300
     }
@@ -16,10 +19,6 @@
     {
       "path": "/api/cron/certificate-expiry",
       "schedule": "0 6 * * *"
-    },
-    {
-      "path": "/api/cron/generator-queue",
-      "schedule": "* * * * *"
     }
   ]
 }

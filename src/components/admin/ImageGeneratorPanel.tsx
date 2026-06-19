@@ -82,6 +82,10 @@ function isDeletableStatus(status: GeneratedImageStatus): boolean {
   return status !== "PROCESSING";
 }
 
+function previewImageUrl(imageId: string): string {
+  return `/api/admin/generator/preview?id=${encodeURIComponent(imageId)}`;
+}
+
 export function ImageGeneratorPanel() {
   const [rawInput, setRawInput] = useState("");
   const [images, setImages] = useState<GeneratedImageRecord[]>([]);
@@ -116,7 +120,7 @@ export function ImageGeneratorPanel() {
   );
 
   const completedImages = useMemo(
-    () => images.filter((image) => image.status === "COMPLETED" && image.imageUrl),
+    () => images.filter((image) => image.status === "COMPLETED"),
     [images]
   );
 
@@ -705,7 +709,7 @@ export function ImageGeneratorPanel() {
                   ? `Generuje se ${processingCount} obrázek${processingCount > 1 ? "ů" : ""} (${processingImages.map((image) => image.fileName).join(", ")}), ve frontě ${pendingCount}`
                   : `Ve frontě ${pendingCount} – spouštím generování…`}
                 {" · "}
-                Fronta běží i na pozadí (cron každou minutu).
+                Nechte tuto stránku otevřenou, fronta běží z prohlížeče.
               </span>
             </>
           ) : null}
@@ -798,6 +802,46 @@ export function ImageGeneratorPanel() {
         </div>
 
         {images.length > 0 ? (
+          <div className="sticky top-2 z-10 flex flex-wrap items-center gap-2 rounded-xl border-2 border-red-200 bg-red-50 p-4 shadow-sm">
+            <span className="mr-1 text-sm font-semibold text-red-950">Mazání:</span>
+            <button
+              type="button"
+              onClick={() => void deleteNotTodayImages()}
+              disabled={deletingBulk || deletingId !== null || olderImagesCount === 0}
+              title={
+                olderImagesCount === 0
+                  ? "Všechny záznamy jsou z dneška – není co smazat."
+                  : undefined
+              }
+              className="rounded-lg border border-red-400 bg-white px-4 py-2 text-sm font-semibold text-red-900 hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {deletingBulk ? "Mažu…" : `Smazat starší než dnes (${olderImagesCount})`}
+            </button>
+            <button
+              type="button"
+              onClick={() => void deleteSelectedImages()}
+              disabled={deletingBulk || deletingId !== null || selectedCount === 0}
+              className="rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {deletingBulk ? "Mažu…" : `Smazat označené (${selectedCount})`}
+            </button>
+            <button
+              type="button"
+              onClick={() => void deleteAllImages()}
+              disabled={deletingBulk || processingCount > 0 || deletingId !== null}
+              className="rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100 disabled:opacity-60"
+            >
+              {deletingBulk ? "Mažu…" : `Smazat celý seznam (${images.length})`}
+            </button>
+            {processingCount > 0 ? (
+              <span className="text-xs text-amber-900">
+                Celý seznam lze smazat až po dokončení generování ({processingCount} běží).
+              </span>
+            ) : null}
+          </div>
+        ) : null}
+
+        {images.length > 0 ? (
           <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
             <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-700">
               <input
@@ -855,18 +899,28 @@ export function ImageGeneratorPanel() {
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      {image.imageUrl ? (
+                      {image.status === "COMPLETED" ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
-                          src={image.imageUrl}
+                          src={previewImageUrl(image.id)}
                           alt={image.fileName}
-                          className="h-16 w-24 rounded-lg border border-slate-200 object-cover"
+                          className="h-16 w-24 rounded-lg border border-slate-200 object-cover bg-slate-50"
+                          onError={(event) => {
+                            event.currentTarget.style.display = "none";
+                            const fallback = event.currentTarget.nextElementSibling;
+                            if (fallback instanceof HTMLElement) {
+                              fallback.style.display = "flex";
+                            }
+                          }}
                         />
-                      ) : (
-                        <div className="flex h-16 w-24 items-center justify-center rounded-lg border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-400">
-                          {image.status === "PROCESSING" ? "…" : "—"}
-                        </div>
-                      )}
+                      ) : null}
+                      <div
+                        className={`flex h-16 w-24 items-center justify-center rounded-lg border border-dashed border-slate-200 bg-slate-50 text-xs text-slate-400 ${
+                          image.status === "COMPLETED" ? "hidden" : ""
+                        }`}
+                      >
+                        {image.status === "PROCESSING" ? "…" : image.status === "COMPLETED" ? "?" : "—"}
+                      </div>
                     </td>
                     <td className="px-4 py-3 font-mono text-xs font-semibold text-slate-900">
                       {image.fileName}
@@ -886,7 +940,7 @@ export function ImageGeneratorPanel() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex flex-col gap-2">
-                        {image.status === "COMPLETED" && image.imageUrl ? (
+                        {image.status === "COMPLETED" ? (
                           <button
                             type="button"
                             onClick={() =>
