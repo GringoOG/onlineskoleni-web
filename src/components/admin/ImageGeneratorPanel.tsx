@@ -125,6 +125,11 @@ export function ImageGeneratorPanel() {
   const completedCount = completedImages.length;
   const completedTodayCount = completedTodayImages.length;
 
+  const olderImagesCount = useMemo(
+    () => images.filter((image) => !isCreatedToday(image.createdAt)).length,
+    [images]
+  );
+
   const activeCount = pendingCount + processingCount;
 
   const selectableImages = useMemo(
@@ -386,6 +391,41 @@ export function ImageGeneratorPanel() {
     }
   }
 
+  async function deleteNotTodayImages() {
+    if (olderImagesCount === 0) {
+      setError("V seznamu nejsou žádné starší záznamy ke smazání.");
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Smazat ${olderImagesCount} záznamů ze starších dnů? Dnešní záznamy (${images.length - olderImagesCount}) zůstanou.`
+      )
+    ) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+    setDeletingBulk(true);
+    try {
+      const response = await fetch("/api/admin/generator/delete-not-today", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mazání se nezdařilo.");
+      }
+      setSelectedIds(new Set());
+      setSuccess(
+        `Smazáno ${data.deleted} starších záznamů. Ponecháno dnešních: ${data.kept}.`
+      );
+      await loadImages();
+    } catch (deleteError) {
+      setError(deleteError instanceof Error ? deleteError.message : "Mazání se nezdařilo.");
+    } finally {
+      setDeletingBulk(false);
+    }
+  }
+
   async function deleteAllImages() {
     if (images.length === 0) {
       return;
@@ -628,14 +668,14 @@ export function ImageGeneratorPanel() {
       </form>
 
       <div className="space-y-4">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <h2 className="text-lg font-bold text-slate-900">Vygenerované obrázky</h2>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             {completedTodayCount > 0 ? (
               <button
                 type="button"
                 onClick={() => void downloadTodayCompleted()}
-                disabled={downloadingAll}
+                disabled={downloadingAll || deletingBulk}
                 className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-100 disabled:opacity-60"
               >
                 {downloadingAll
@@ -647,7 +687,7 @@ export function ImageGeneratorPanel() {
               <button
                 type="button"
                 onClick={() => void downloadAllCompleted()}
-                disabled={downloadingAll || pruningUnavailable}
+                disabled={downloadingAll || pruningUnavailable || deletingBulk}
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
               >
                 Stáhnout vše hotové ({completedCount})
@@ -657,11 +697,45 @@ export function ImageGeneratorPanel() {
               <button
                 type="button"
                 onClick={() => void pruneUnavailableCompleted()}
-                disabled={downloadingAll || pruningUnavailable}
+                disabled={downloadingAll || pruningUnavailable || deletingBulk}
                 className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-900 hover:bg-amber-100 disabled:opacity-60"
               >
                 {pruningUnavailable ? "Kontroluji dostupnost…" : "Vyčistit nestáhnutelné"}
               </button>
+            ) : null}
+            {images.length > 0 ? (
+              <>
+                {olderImagesCount > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => void deleteNotTodayImages()}
+                    disabled={deletingBulk || deletingId !== null}
+                    className="rounded-lg border border-red-300 bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 hover:bg-red-200 disabled:opacity-60"
+                  >
+                    {deletingBulk
+                      ? "Mažu…"
+                      : `Smazat starší než dnes (${olderImagesCount})`}
+                  </button>
+                ) : null}
+                {selectedCount > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => void deleteSelectedImages()}
+                    disabled={deletingBulk || deletingId !== null}
+                    className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100 disabled:opacity-60"
+                  >
+                    {deletingBulk ? "Mažu…" : `Smazat označené (${selectedCount})`}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => void deleteAllImages()}
+                  disabled={deletingBulk || processingCount > 0 || deletingId !== null}
+                  className="rounded-lg border border-red-200 bg-white px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-50 disabled:opacity-60"
+                >
+                  {deletingBulk ? "Mažu…" : `Smazat celý seznam (${images.length})`}
+                </button>
+              </>
             ) : null}
             <span className="text-sm text-slate-500">{images.length} záznamů</span>
           </div>
@@ -677,29 +751,11 @@ export function ImageGeneratorPanel() {
                 disabled={selectableImages.length === 0 || deletingBulk}
                 className="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/25"
               />
-              Označit vše ({selectableImages.length})
+              Označit vše ke smazání ({selectableImages.length})
             </label>
-            {selectedCount > 0 ? (
-              <button
-                type="button"
-                onClick={() => void deleteSelectedImages()}
-                disabled={deletingBulk || deletingId !== null}
-                className="rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-100 disabled:opacity-60"
-              >
-                {deletingBulk ? "Mažu…" : `Smazat označené (${selectedCount})`}
-              </button>
-            ) : null}
-            <button
-              type="button"
-              onClick={() => void deleteAllImages()}
-              disabled={deletingBulk || processingCount > 0 || deletingId !== null}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-60"
-            >
-              {deletingBulk ? "Mažu…" : `Smazat celý seznam (${images.length})`}
-            </button>
             {processingCount > 0 ? (
               <span className="text-xs text-amber-800">
-                Celý seznam lze smazat až po dokončení generování.
+                Hromadné mazání je pozastaveno, dokud probíhá generování ({processingCount}).
               </span>
             ) : null}
           </div>
