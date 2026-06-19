@@ -138,8 +138,9 @@ function questionVisualDetail(ctx) {
   const t = ctx.combined;
 
   const rules = [
+    [/hasicí|hasič|požár|evakuac|požární|požárník|hasičsk/, "Red extinguisher, exit sign, evacuation arrows, and calm fire-safety training group icons"],
     [/hmotnostní limit|15 kg|10 kg|nosnost/, "Weight limit icons with male and female worker silhouettes and differently sized box symbols"],
-    [/páteř|straight spine|kolen/, "Detailed spine alignment guide with bent knees versus rounded back comparison"],
+    [/páteř|straight spine|bent knees|ohnutých kolen/, "Detailed spine alignment guide with bent knees versus rounded back comparison"],
     [/chodidel|nohou|flat on floor/, "Foot placement diagram showing flat soles versus unstable stance"],
     [/blízko těla|close to body/, "Load held close to torso with green proximity arc"],
     [/trhavým|rychlým pohybem/, "Motion blur warning on jerky lift versus smooth controlled movement"],
@@ -156,7 +157,6 @@ function questionVisualDetail(ctx) {
     [/gdpr|úooú|správce|zpracovatel/, "Corporate data flow diagram with shield locks and role icons"],
     [/souhlas|právo subjektu|přenositelnost/, "User silhouette reclaiming personal data folder from server"],
     [/porušení zabezpečení|72 hodin/, "Database leak icon with urgent notification arrows"],
-    [/hasicí|hasič|požár|evakuac/, "Red extinguisher, exit sign, or calm evacuation flow arrows"],
     [/předjížd|řidič|pás|vozid/, "Car interior or top-down road scene with traffic symbols"],
     [/oopp|rukavic|přilb|vest/, "Worker in full PPE with checklist clipboard and toolbox"],
     [/alkohol|breathalyzer|návykov/, "Prohibited bottle icon with breathalyzer device"],
@@ -208,8 +208,9 @@ function uniqueAccent(ctx) {
   for (let i = 0; i < ctx.id.length; i += 1) {
     hash = (hash * 31 + ctx.id.charCodeAt(i) * (i + 1)) >>> 0;
   }
-  const a = accents[hash % accents.length];
-  const b = accents[(hash >> 4) % accents.length];
+  const mod = (value, length) => ((value % length) + length) % length;
+  const a = accents[mod(hash, accents.length)];
+  const b = accents[mod(hash >>> 4, accents.length)];
   if (a === b) {
     return `${a} Slight camera tilt variation for a distinct crop.`;
   }
@@ -219,6 +220,10 @@ function uniqueAccent(ctx) {
 function focalDetail(ctx) {
   const matched = questionVisualDetail(ctx);
   if (matched) return matched;
+
+  if (ctx.course === "pozarni") {
+    return "Fire protection training icons: alarm pull station, extinguisher, evacuation route arrows, and calm safe behavior during fire drill";
+  }
 
   const courseLabels = {
     bozp: "occupational health and safety",
