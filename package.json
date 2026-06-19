@@ -15,6 +15,7 @@
     "db:lms:studio": "drizzle-kit studio",
     "preview": "npm run build && (lsof -ti :3000 | xargs kill -9 2>/dev/null || true) && next start -H 127.0.0.1 -p 3000",
     "build:hrbek-learning": "node scripts/build-hrbek-learning-data.mjs",
+    "install:question-images": "node scripts/install-question-images.mjs",
     "generate:ai-prompts": "node scripts/generate-question-image-prompts.mjs && node scripts/generate-ai-image-prompts-pdf.mjs",
     "seed:admin-users": "node scripts/seed-admin-users.mjs",
     "verify:theme-widgets": "node scripts/verify-theme-widgets.mjs"

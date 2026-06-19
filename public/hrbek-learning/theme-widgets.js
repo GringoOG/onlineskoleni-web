@@ -1,7 +1,9 @@
 /**
- * Bento UI widgety pro studijní karty microlearningu.
- * Mapování tema-1-1 … tema-6-9 → Tailwind + Lucide ikony + badges.
+ * Vizuály studijních karet – per-otázka PNG ilustrace (priorita) nebo záložní tema widgety.
  */
+import { QUESTION_IMAGE_IDS } from "./question-images.js";
+
+const QUESTION_IMAGE_BASE = "images/questions";
 
 const ICONS = {
   shield:
@@ -296,6 +298,32 @@ export function resolveThemeId(placeholder, courseSlug) {
   return "tema-1-2";
 }
 
+function questionIdFromPlaceholder(placeholder) {
+  if (!placeholder || !placeholder.includes(":")) {
+    return null;
+  }
+  return placeholder.slice(placeholder.indexOf(":") + 1);
+}
+
+function renderQuestionImage(questionId) {
+  const src = `${QUESTION_IMAGE_BASE}/${encodeURIComponent(questionId)}.png`;
+  return `<div class="theme-widget flex h-full min-h-[220px] w-full max-w-md items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-3 shadow-sm" role="img" aria-label="Ilustrace k lekci">
+      <img src="${src}" alt="" class="h-full max-h-[280px] w-full object-contain" loading="lazy" decoding="async" />
+    </div>`;
+}
+
+/** Prázdný prostor pro otázky bez ilustrace (záměrně bez záložního widgetu). */
+function renderEmptyQuestionImage() {
+  return `<div class="flex h-full min-h-[220px] w-full max-w-md items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/40" aria-hidden="true"></div>`;
+}
+
 export function getThemeWidgetForSlide(placeholder, courseSlug) {
+  const questionId = questionIdFromPlaceholder(placeholder);
+  if (questionId && QUESTION_IMAGE_IDS.has(questionId)) {
+    return renderQuestionImage(questionId);
+  }
+  if (questionId) {
+    return renderEmptyQuestionImage();
+  }
   return renderThemeWidget(resolveThemeId(placeholder, courseSlug));
 }
