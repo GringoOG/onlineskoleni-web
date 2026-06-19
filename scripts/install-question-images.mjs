@@ -4,7 +4,7 @@
  * Výstup: public/hrbek-learning/images/questions/{id}.png
  *         public/hrbek-learning/question-images.js
  */
-import { cp, mkdir, readdir, readFile, writeFile, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const ROOT = process.cwd();
@@ -32,10 +32,15 @@ async function main() {
   const entries = await readdir(sourceDir);
   const pngFiles = entries.filter((name) => name.toLowerCase().endsWith(".png"));
 
-  await rm(OUT_DIR, { recursive: true, force: true });
   await mkdir(OUT_DIR, { recursive: true });
 
   const installed = new Map();
+  const existing = await readdir(OUT_DIR).catch(() => []);
+  for (const fileName of existing) {
+    if (fileName.endsWith(".png")) {
+      installed.set(fileName.replace(/\.png$/i, ""), fileName);
+    }
+  }
 
   for (const fileName of pngFiles) {
     const questionId = extractQuestionId(fileName);
