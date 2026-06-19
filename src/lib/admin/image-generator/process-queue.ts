@@ -3,6 +3,7 @@ import { getFluxPredictionState, startFluxPrediction } from "./replicate-flux";
 import type { GeneratedImageStatus } from "./types";
 
 const STALE_BLOCKING_PROCESSING_MS = 90 * 1000;
+const STALE_PREDICTION_MS = 12 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
 
 function sleep(ms: number): Promise<void> {
@@ -68,6 +69,189 @@ async function recoverStaleBlockingProcessingItems(): Promise<number> {
   }
 
   return result.count;
+}
+
+/** Uvolní frontu zaseknutou na dlouho běžící Replicate predikci. */
+async function recoverStalePredictionItems(): Promise<number> {
+  const staleBefore = new Date(Date.now() - STALE_PREDICTION_MS);
+
+  const staleItems = await prisma.generatedImage.findMany({
+    where: {
+      status: "PROCESSING",
+      replicatePredictionId: { not: null },
+      OR: [
+        { processingStartedAt: { lt: staleBefore } },
+        {
+          processingStartedAt: null,
+          createdAt: { lt: staleBefore },
+        },
+      ],
+    },
+    select: {
+      id: true,
+      fileName: true,
+      replicatePredictionId: true,
+    },
+  });
+
+  let recovered = 0;
+
+  for (const item of staleItems) {
+    if (!item.replicatePredictionId) {
+      continue;
+    }
+
+    try {
+      const state = await getFluxPredictionState(item.replicatePredictionId);
+
+      if (state.status === "succeeded") {
+        await prisma.generatedImage.update({
+          where: { id: item.id },
+          data: {
+            status: "COMPLETED",
+            imageUrl: state.imageUrl,
+            processingStartedAt: null,
+            errorMessage: null,
+          },
+        });
+        recovered += 1;
+        continue;
+      }
+
+      if (state.status === "failed") {
+        await prisma.generatedImage.update({
+          where: { id: item.id },
+          data: {
+            status: "FAILED",
+            errorMessage: state.error,
+            processingStartedAt: null,
+            replicatePredictionId: null,
+          },
+        });
+        recovered += 1;
+        continue;
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Replicate nedostupné.";
+      console.warn(`[image-generator] Stale poll ${item.fileName}:`, message);
+    }
+
+    await prisma.generatedImage.update({
+      where: { id: item.id },
+      data: {
+        status: "PENDING",
+        replicatePredictionId: null,
+        processingStartedAt: null,
+        errorMessage: null,
+      },
+    });
+    recovered += 1;
+    console.warn(`[image-generator] Znovu zařazeno ${item.fileName} po vypršení čekání na Replicate.`);
+  }
+
+  return recovered;
+}
+
+/** Ruční uvolnění fronty – okamžitě zkontroluje všechny PROCESSING položky. */
+export async function forceRecoverStuckQueueItems(): Promise<{
+  recoveredWithoutPrediction: number;
+  recoveredStalePrediction: number;
+}> {
+  const recoveredWithoutPrediction = await recoverStaleBlockingProcessingItems();
+  const forceRequeueBefore = new Date(Date.now() - 2 * 60 * 1000);
+
+  const stuckWithPrediction = await prisma.generatedImage.findMany({
+    where: {
+      status: "PROCESSING",
+      replicatePredictionId: { not: null },
+    },
+    select: {
+      id: true,
+      fileName: true,
+      replicatePredictionId: true,
+      processingStartedAt: true,
+      createdAt: true,
+    },
+    orderBy: { processingStartedAt: "asc" },
+  });
+
+  let recoveredStalePrediction = 0;
+
+  for (const item of stuckWithPrediction) {
+    if (!item.replicatePredictionId) {
+      continue;
+    }
+
+    const startedAt = item.processingStartedAt ?? item.createdAt;
+    const canForceRequeue = startedAt < forceRequeueBefore;
+
+    try {
+      const state = await getFluxPredictionState(item.replicatePredictionId);
+
+      if (state.status === "succeeded") {
+        await prisma.generatedImage.update({
+          where: { id: item.id },
+          data: {
+            status: "COMPLETED",
+            imageUrl: state.imageUrl,
+            processingStartedAt: null,
+            errorMessage: null,
+          },
+        });
+        recoveredStalePrediction += 1;
+        continue;
+      }
+
+      if (state.status === "failed") {
+        await prisma.generatedImage.update({
+          where: { id: item.id },
+          data: {
+            status: "FAILED",
+            errorMessage: state.error,
+            processingStartedAt: null,
+            replicatePredictionId: null,
+          },
+        });
+        recoveredStalePrediction += 1;
+        continue;
+      }
+
+      if (!canForceRequeue) {
+        continue;
+      }
+    } catch (error) {
+      console.warn(`[image-generator] Force unstick ${item.fileName}:`, error);
+      if (!canForceRequeue) {
+        continue;
+      }
+    }
+
+    await prisma.generatedImage.update({
+      where: { id: item.id },
+      data: {
+        status: "PENDING",
+        replicatePredictionId: null,
+        processingStartedAt: null,
+        errorMessage: null,
+      },
+    });
+    recoveredStalePrediction += 1;
+  }
+
+  return {
+    recoveredWithoutPrediction,
+    recoveredStalePrediction,
+  };
+}
+
+export async function recoverStuckQueueItems(): Promise<{
+  recoveredWithoutPrediction: number;
+  recoveredStalePrediction: number;
+}> {
+  const recoveredWithoutPrediction = await recoverStaleBlockingProcessingItems();
+  const recoveredStalePrediction = await recoverStalePredictionItems();
+
+  return { recoveredWithoutPrediction, recoveredStalePrediction };
 }
 
 async function countPending(): Promise<number> {
@@ -216,7 +400,7 @@ export async function processNextGeneratedImage(): Promise<{
   fileName?: string;
   status?: GeneratedImageStatus;
 }> {
-  await recoverStaleBlockingProcessingItems();
+  await recoverStuckQueueItems();
 
   const activePrediction = await prisma.generatedImage.findFirst({
     where: {
@@ -306,6 +490,10 @@ export async function runImageQueueBatch(maxSteps = 15): Promise<{
       await sleep(POLL_INTERVAL_MS);
       continue;
     }
+  }
+
+  if (lastRemaining > 0 || lastWaiting) {
+    await triggerImageQueueProcessing();
   }
 
   return {

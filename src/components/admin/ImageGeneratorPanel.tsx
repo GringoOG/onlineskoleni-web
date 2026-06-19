@@ -95,6 +95,7 @@ export function ImageGeneratorPanel() {
   const [pruningUnavailable, setPruningUnavailable] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
   const [deletingBulk, setDeletingBulk] = useState(false);
+  const [unstickingQueue, setUnstickingQueue] = useState(false);
   const workerRef = useRef(false);
 
   const pendingCount = useMemo(
@@ -102,10 +103,12 @@ export function ImageGeneratorPanel() {
     [images]
   );
 
-  const processingCount = useMemo(
-    () => images.filter((image) => image.status === "PROCESSING").length,
+  const processingImages = useMemo(
+    () => images.filter((image) => image.status === "PROCESSING"),
     [images]
   );
+
+  const processingCount = processingImages.length;
 
   const failedCount = useMemo(
     () => images.filter((image) => image.status === "FAILED").length,
@@ -391,6 +394,38 @@ export function ImageGeneratorPanel() {
     }
   }
 
+  async function unstickQueue() {
+    setError("");
+    setSuccess("");
+    setUnstickingQueue(true);
+    try {
+      const response = await fetch("/api/admin/generator/unstick", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error ?? "Frontu se nepodařilo uvolnit.");
+      }
+
+      const recoveredTotal =
+        (data.recovered?.recoveredWithoutPrediction ?? 0) +
+        (data.recovered?.recoveredStalePrediction ?? 0);
+
+      setSuccess(
+        recoveredTotal > 0
+          ? `Fronta uvolněna (${recoveredTotal} zaseknutých položek). Ve frontě zbývá ${data.remaining ?? 0}.`
+          : `Fronta zkontrolována. Ve frontě zbývá ${data.remaining ?? 0}.`
+      );
+      await loadImages();
+      if ((data.remaining ?? 0) > 0) {
+        await nudgeQueueProcessing();
+        await loadImages();
+      }
+    } catch (unstickError) {
+      setError(unstickError instanceof Error ? unstickError.message : "Frontu se nepodařilo uvolnit.");
+    } finally {
+      setUnstickingQueue(false);
+    }
+  }
+
   async function deleteNotTodayImages() {
     if (olderImagesCount === 0) {
       setError("V seznamu nejsou žádné starší záznamy ke smazání.");
@@ -656,20 +691,38 @@ export function ImageGeneratorPanel() {
             </>
           ) : null}
           {activeCount > 0 ? (
-            <span className="text-sm text-amber-800">
-              {processingCount > 0
-                ? `Generuje se ${processingCount} obrázek${processingCount > 1 ? "ů" : ""}, ve frontě ${pendingCount}`
-                : `Ve frontě ${pendingCount} – spouštím generování…`}
-              {" · "}
-              Fronta běží i na pozadí (cron každou minutu).
-            </span>
+            <>
+              <button
+                type="button"
+                onClick={() => void unstickQueue()}
+                disabled={unstickingQueue || loading}
+                className="rounded-lg border border-amber-300 bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-950 hover:bg-amber-200 disabled:opacity-60"
+              >
+                {unstickingQueue ? "Uvolňuji frontu…" : "Uvolnit zaseknutou frontu"}
+              </button>
+              <span className="text-sm text-amber-800">
+                {processingCount > 0
+                  ? `Generuje se ${processingCount} obrázek${processingCount > 1 ? "ů" : ""} (${processingImages.map((image) => image.fileName).join(", ")}), ve frontě ${pendingCount}`
+                  : `Ve frontě ${pendingCount} – spouštím generování…`}
+                {" · "}
+                Fronta běží i na pozadí (cron každou minutu).
+              </span>
+            </>
           ) : null}
         </div>
       </form>
 
       <div className="space-y-4">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <h2 className="text-lg font-bold text-slate-900">Vygenerované obrázky</h2>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">Vygenerované obrázky</h2>
+            {images.length > 0 ? (
+              <p className="mt-1 text-sm text-slate-500">
+                Mazání starších záznamů ponechá dnešní ({images.length - olderImagesCount}). Starších ke smazání:{" "}
+                {olderImagesCount}.
+              </p>
+            ) : null}
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             {completedTodayCount > 0 ? (
               <button
@@ -705,18 +758,21 @@ export function ImageGeneratorPanel() {
             ) : null}
             {images.length > 0 ? (
               <>
-                {olderImagesCount > 0 ? (
-                  <button
-                    type="button"
-                    onClick={() => void deleteNotTodayImages()}
-                    disabled={deletingBulk || deletingId !== null}
-                    className="rounded-lg border border-red-300 bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 hover:bg-red-200 disabled:opacity-60"
-                  >
-                    {deletingBulk
-                      ? "Mažu…"
-                      : `Smazat starší než dnes (${olderImagesCount})`}
-                  </button>
-                ) : null}
+                <button
+                  type="button"
+                  onClick={() => void deleteNotTodayImages()}
+                  disabled={deletingBulk || deletingId !== null || olderImagesCount === 0}
+                  title={
+                    olderImagesCount === 0
+                      ? "Všechny záznamy jsou z dneška – není co smazat."
+                      : undefined
+                  }
+                  className="rounded-lg border border-red-300 bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 hover:bg-red-200 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {deletingBulk
+                    ? "Mažu…"
+                    : `Smazat starší než dnes (${olderImagesCount})`}
+                </button>
                 {selectedCount > 0 ? (
                   <button
                     type="button"
