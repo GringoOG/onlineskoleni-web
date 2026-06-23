@@ -127,6 +127,12 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function formatSlideHeading(heading) {
+  const trimmed = String(heading).trim();
+  if (!trimmed) return trimmed;
+  return trimmed.endsWith(":") ? trimmed : `${trimmed}:`;
+}
+
 function formatPrice(priceCzk) {
   return new Intl.NumberFormat("cs-CZ", {
     style: "currency",
@@ -376,7 +382,7 @@ function renderLearning() {
       <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <p class="text-xs font-semibold uppercase tracking-wider text-brand">Microlearning</p>
-          <h2 class="text-2xl font-bold text-slate-900">${escapeHtml(slide.heading)}</h2>
+          <h2 class="text-2xl font-bold text-slate-900">${escapeHtml(formatSlideHeading(slide.heading))}</h2>
         </div>
         <div class="min-w-[180px]">
           <div class="mb-1 flex justify-between text-xs text-slate-500">
@@ -393,8 +399,7 @@ function renderLearning() {
           <div class="card-face rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
               <div>
-                <h3 class="text-xl font-bold text-slate-900">${escapeHtml(slide.heading)}</h3>
-                <div class="mt-4 space-y-3">${paragraphs}</div>
+                <div class="space-y-3">${paragraphs}</div>
               </div>
               <div class="flex min-h-[220px] items-center justify-center lg:justify-end">
                 ${getThemeWidgetForSlide(slide.svg_placeholder, category.slug)}
