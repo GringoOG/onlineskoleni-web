@@ -34,10 +34,13 @@ function stripQuestion(question) {
   };
 }
 
-function buildSlide(question, index, slug, overrides) {
+function buildSlide(question, index, slug, overrides, usedParagraphs) {
   const key = `${slug}:${question.id}`;
   const override = overrides[key] ?? overrides[question.id];
-  const copy = buildSlideCopy(slug, question);
+  const copy = buildSlideCopy(slug, question, { avoidParagraphs: usedParagraphs });
+
+  const paragraph = override?.paragraphs?.[0] ?? copy.paragraphs[0];
+  usedParagraphs.add(paragraph);
 
   return {
     id: `${slug}-slide-${index + 1}`,
@@ -87,9 +90,23 @@ async function main() {
     const meta = courseMeta[slug];
     const overrides = slideOverrides[slug] ?? {};
 
-    const slides = quiz.questions.map((question, index) =>
-      buildSlide(question, index, slug, overrides)
-    );
+    const slides = [];
+    const seenLessonTexts = new Set();
+    const usedParagraphs = new Set();
+
+    for (const [index, question] of quiz.questions.entries()) {
+      const lessonKey = [
+        question.text.trim().toLowerCase().replace(/\s+/g, " "),
+        question.options[question.correctIndex]?.trim().toLowerCase().replace(/\s+/g, " "),
+      ].join("::");
+
+      if (seenLessonTexts.has(lessonKey)) {
+        console.warn(`${slug}: přeskočena duplicitní lekce (${question.id}) – stejné znění otázky i správné odpovědi`);
+        continue;
+      }
+      seenLessonTexts.add(lessonKey);
+      slides.push(buildSlide(question, slides.length, slug, overrides, usedParagraphs));
+    }
 
     categories.push({
       slug,

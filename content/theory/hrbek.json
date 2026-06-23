@@ -43,6 +43,13 @@
           ]
         },
         {
+          "heading": "Ochrana rukou",
+          "svg_placeholder": "bozp-warning",
+          "paragraphs": [
+            "Ruce a paže chráníte rukavicemi proti mechanickému poškození – řez, propíchnutí, vibrace a kontaktu s nebezpečnými látkami."
+          ]
+        },
+        {
           "heading": "Pořádek a elektrické spotřebiče",
           "svg_placeholder": "bozp-warning",
           "paragraphs": [
@@ -67,14 +74,17 @@
           "heading": "Základní povinnosti",
           "svg_placeholder": "pozarni-extinguisher",
           "paragraphs": [
-            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
+            "Každý je povinen vytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce.",
+            "Je nutné zajišťovat volný přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení.",
+            "Vlastník nebo uživatel prostor musí zajistit přístup k požárně bezpečnostním zařízením a věcným prostředkům požární ochrany a udržovat je v provozuschopném stavu."
           ]
         },
         {
           "heading": "Únikové cesty a značení",
           "svg_placeholder": "pozarni-exit",
           "paragraphs": [
-            "Únikové cesty musí být trvale průchodné (bez dalších opatření) a vybavené bezpečnostními značkami, tabulkami a texty. Požární řád musí být dobře viditelný a trvale přístupný všem."
+            "Únikové cesty musí být trvale průchodné (bez dalších opatření) a vybavené bezpečnostními značkami, tabulkami a texty s bezpečnostním sdělením.",
+            "Požární řád musí být dobře viditelný a trvale přístupný pro všechny osoby v místě provozované činnosti."
           ]
         },
         {
@@ -97,21 +107,26 @@
           "heading": "Chování při požáru",
           "svg_placeholder": "pozarni-exit",
           "paragraphs": [
-            "Pokud je požár v počáteční fázi, pokusíme se ho uhasit přístrojem. Při větším požáru provedeme opatření pro záchranu osob a opouštíme budovu podle evakuačního řádu."
+            "Pokud je požár v počáteční fázi, pokusíme se ho uhasit vhodným přenosným hasicím přístrojem.",
+            "Každý je povinen v souvislosti se zdoláváním požáru provést nutná opatření pro záchranu ohrožených osob.",
+            "Při vzniku požáru opouštíme budovu v souladu s evakuačním řádem – nevyčkáváme na hasiče uvnitř budovy."
           ]
         },
         {
           "heading": "Školení a poplachové směrnice",
           "svg_placeholder": "pozarni-exit",
           "paragraphs": [
-            "Školení zaměstnanců o požární ochraně zahrnuje seznámení s rozmístěním a způsobem použití věcných prostředků požární ochrany na pracovišti, s požárními poplachovými směrnicemi a s postupem při evakuaci. Provádí se nejméně jednou za rok; odborná příprava zaměstnanců v preventivních požárních hlídkách má stejnou periodicitu."
+            "Školení zaměstnanců o požární ochraně zahrnuje seznámení s rozmístěním a způsobem použití věcných prostředků požární ochrany na pracovišti.",
+            "Součástí školení je také seznámení s požárními poplachovými směrnicemi a s postupem při evakuaci.",
+            "Školení zaměstnanců o požární ochraně se provádí nejméně jednou za rok.",
+            "Odborná příprava zaměstnanců zařazených do preventivních požárních hlídek se provádí nejméně jednou za 6 měsíců."
           ]
         },
         {
           "heading": "Důležitá čísla a termíny",
           "svg_placeholder": "pozarni-exit",
           "paragraphs": [
-            "Tísňové číslo hasičů je 150. Školení zaměstnanců o PO se provádí nejméně jednou za rok (stejně jako odborná příprava preventivních požárních hlídek)."
+            "Tísňové telefonní číslo pro přivolání hasičů je 150."
           ]
         }
       ]
@@ -153,7 +168,9 @@
           "heading": "Dopravní nehoda",
           "svg_placeholder": "ridici-driving",
           "paragraphs": [
-            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo. Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce. Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a situaci."
+            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo.",
+            "Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce.",
+            "Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a provozní situaci."
           ]
         }
       ]
@@ -176,7 +193,10 @@
           "heading": "Technika správného zvedání",
           "svg_placeholder": "bremena-lifting",
           "paragraphs": [
-            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi.",
+            "Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá.",
+            "Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě – zvedáme se z dřepu nebo polodřepu.",
+            "Břemeno držíme co nejblíže k tělu (u těžiště)."
           ]
         },
         {
@@ -204,7 +224,8 @@
           "heading": "Týmová práce a kumulativní hmotnost",
           "svg_placeholder": "bremena-lifting",
           "paragraphs": [
-            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy.",
+            "Legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže při běžné práci v ČR je 10 000 kg."
           ]
         }
       ]
@@ -218,7 +239,8 @@
           "heading": "Legislativa",
           "svg_placeholder": "gdpr-lock",
           "paragraphs": [
-            "Hlavním evropským předpisem je nařízení GDPR (účinné od května 2018). Český zákon č. 110/2019 Sb. ho pouze doplňuje v oblastech, kde dává EU prostor."
+            "Hlavním evropským předpisem je nařízení GDPR (účinné od května 2018). Český zákon č. 110/2019 Sb. ho pouze doplňuje v oblastech, kde dává EU prostor.",
+            "V ČR je věková hranice dítěte pro souhlas se zpracováním osobních údajů v souvislosti se službami informační společnosti (např. sociální sítě) 15 let."
           ]
         },
         {
@@ -239,7 +261,10 @@
           "heading": "Práva subjektu údajů",
           "svg_placeholder": "gdpr-lock",
           "paragraphs": [
-            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
+            "Souhlas se zpracováním osobních údajů lze kdykoliv odvolat – stejně snadno, jako byl udělen.",
+            "Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby.",
+            "Subjekt údajů má právo na opravu nepřesných údajů a na omezení zpracování.",
+            "Právo na přenositelnost údajů umožňuje získat osobní údaje ve strojově čitelném formátu."
           ]
         },
         {

@@ -202,7 +202,7 @@ function buildPlaceholderMap() {
     ["bozp", "tema-1-8", ["q181"]],
     ["pozarni", "tema-2-1", ["q21", "q31"]],
     ["pozarni", "tema-2-2", ["q23"]],
-    ["pozarni", "tema-2-3", ["q20", "q26", "q33", "q35"]],
+    ["pozarni", "tema-2-3", ["q20", "q33", "q35"]],
     ["pozarni", "tema-2-4", ["q27", "q28", "q30"]],
     ["pozarni", "tema-2-5", ["q24", "q36"]],
     ["pozarni", "tema-2-6", ["q32", "q39", "q41"]],

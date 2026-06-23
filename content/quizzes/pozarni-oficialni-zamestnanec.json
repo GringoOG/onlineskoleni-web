@@ -45,16 +45,6 @@
       "correctIndex": 0
     },
     {
-      "id": "q26",
-      "text": "Hasicí přístroje se umísťují tak, aby byly:",
-      "options": [
-        "snadno viditelné a volně nepřístupné",
-        "snadno viditelné a dosažitelné",
-        "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
-      ],
-      "correctIndex": 2
-    },
-    {
       "id": "q27",
       "text": "Práškový hasicí přístroj je nevhodný k hašení:",
       "options": [
@@ -168,7 +158,6 @@
     "21",
     "23",
     "24",
-    "26",
     "27",
     "28",
     "30",

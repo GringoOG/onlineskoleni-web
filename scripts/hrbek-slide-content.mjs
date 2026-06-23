@@ -55,8 +55,45 @@ const TOKEN_STOP = new Set([
 
 export function setHrbekTheoryChapters(chapters) {
   hrbekSectionsBySlug = Object.fromEntries(
-    chapters.map((chapter) => [chapter.courseSlug, chapter.sections ?? []])
+    chapters.map((chapter) => [
+      chapter.courseSlug,
+      (chapter.sections ?? []).map((section) => ({
+        ...section,
+        paragraphs: expandParagraphs(section.paragraphs ?? []),
+      })),
+    ])
   );
+}
+
+/** Rozdělí dlouhé nebo vícetématické odstavce na atomické učební bloky. */
+function expandParagraphs(paragraphs) {
+  const out = [];
+
+  for (const paragraph of paragraphs) {
+    const trimmed = paragraph.trim();
+    if (!trimmed) continue;
+
+    const labeled = trimmed.split(/(?=(?:Vodní|Sněhový|Práškový|Muži|Ženy|Pozor):)/i);
+    if (labeled.length > 1) {
+      for (const part of labeled) {
+        const piece = part.trim();
+        if (piece) out.push(piece);
+      }
+      continue;
+    }
+
+    if (trimmed.length > 130) {
+      const sentences = trimmed.split(/(?<=[.!])\s+/).map((s) => s.trim()).filter((s) => s.length > 18);
+      if (sentences.length > 1) {
+        out.push(...sentences);
+        continue;
+      }
+    }
+
+    out.push(trimmed);
+  }
+
+  return out;
 }
 
 function normalize(text) {
@@ -178,7 +215,7 @@ function studyFallback(question) {
 }
 
 function isStudyFallback(text) {
-  return text.includes("Prostudujte téma");
+  return text != null && text.includes("Prostudujte téma");
 }
 
 function tokenize(text) {
@@ -188,82 +225,158 @@ function tokenize(text) {
     .filter((word) => word.length > 3 && !TOKEN_STOP.has(word));
 }
 
-function scoreSection(question, section) {
-  const questionTokens = tokenize(question.text);
-  const corpus = normalize([section.heading, ...section.paragraphs].join(" "));
-  let score = 0;
+function overlapScore(a, b) {
+  const ta = new Set(tokenize(a));
+  const tb = new Set(tokenize(b));
+  if (!ta.size || !tb.size) return 0;
+  let inter = 0;
+  for (const token of ta) {
+    if (tb.has(token)) inter += 1;
+  }
+  return inter / Math.sqrt(ta.size * tb.size);
+}
 
-  for (const token of questionTokens) {
-    if (corpus.includes(token)) {
-      score += 2;
+function keywordBoost(questionText, paragraph, heading) {
+  const q = normalize(questionText);
+  const p = normalize(paragraph);
+  const h = normalize(heading);
+  let boost = 0;
+
+  const rules = [
+    [/vodní hasic/, /vodní/],
+    [/sněhov|inertní plyn|co2/, /sněhov|co2/],
+    [/práškov hasic/, /práškov/],
+    [/úniková cesta/, /únikov|značk|tabulk/],
+    [/požární řád/, /požární řád/],
+    [/kontroluje hasic|kontrolovat hasic/, /reviz|kontrol/],
+    [/graficky znázorněno|použití hasicího přístroje/, /graficky|přímo na/],
+    [/umístění hasicích|umísťují tak/, /viditeln|přístupn|dosažiteln/],
+    [/zajištěny proti pádu|na podlaze/, /podlaze|proti pádu/],
+    [/školení zaměstnanců.*seznámení/, /rozmístění|vecných prostředk/],
+    [/školení zaměstnanců o požární ochraně obsahuje:/, /poplachov/],
+    [/jak často se provádí školení zaměstnanců/, /jednou za rok/],
+    [/preventivních požárních hlídek/, /6 měsíc/],
+    [/základní povinnosti fyzických/, /vytvářet podmínky|zdolání požáru|vlastnictví nebo užívání/],
+    [/úniková cesta musí být vybavena/, /bezpečnostními značkami|tabulkami a texty/],
+    [/úniková cesta/, /únikov|značk|tabulk/],
+    [/fyzická osoba je povinna/, /rozvodn/],
+    [/zdolávání požáru/, /záchranu ohrožených/],
+    [/při vzniku požáru/, /evakuačním řádem|opustit podle/],
+    [/vyberte správnou odpověď/, /počáteční fázi|přenosn/],
+    [/tísňové telefonní číslo.*hasič/, /\b150\b/],
+    [/značena rozvodná zařízení/, /rozvodn/],
+    [/hmotnostní limit.*muž/, /\bmuži\b|50 kg/],
+    [/hmotnostní limit.*žen/, /\bženy\b|30 kg/],
+    [/v sedě|manipuluje v sedě/, /vsedě|5 kg/],
+    [/těhotn/, /těhotn/],
+    [/páteř|zvedání těžkého/, /páteř|rovná/],
+    [/chodidel|chodidla/, /chodidla|plochou/],
+    [/blízko těla|drženo během/, /blízko k tělu|těžiště/],
+    [/trhavým|rychlým pohybem/, /trhavým pohybem/],
+    [/změně směru|otočení trupu/, /rotace|zkroucení|chodidel/],
+    [/před zvednutím|první krok/, /před zvednutím|posoudíme/],
+    [/kumulativní hmotnost/, /kumulativní|součet všech vah/],
+    [/limit kumulativní/, /\b10\s*000\b|10 000 kg/],
+    [/věková hranice dítěte/, /\b15 let\b/],
+    [/110\/2019/, /\b15 let\b|sociálních sítích/],
+    [/ve dvojici|dvojice pracovníků/, /ve dvojici|dvojici/],
+    [/paletov|vozík|mechanick/, /vozík|mechanické/],
+    [/monitor.*očí|výšce.*očí/, /horní hrana|úrovni očí/],
+    [/vzdálenost monitoru/, /50 až 70|natažené paže/],
+    [/monitoru.*okno|umístění monitoru/, /kolmo k oknu|odlesk/],
+    [/zápěstí|klávesnic/, /zápěstí|předloktím/],
+    [/vertikální myš/, /vertikální myš|podání ruky/],
+    [/karpální|rsi/, /karpální tunel|brnění/],
+    [/20-20-20/, /20-20-20|20 minut/],
+    [/bederní opěrka|lumbar/, /bederní opěrka/],
+    [/plosky nohou|kolenou a kyčlích/, /plosky nohou|90°/],
+    [/sit-stand|výškově stavitel/, /sit-stand|výškově/],
+    [/gdpr.*předpis|110\/2019/, /gdpr|110\/2019/],
+    [/správce.*osobních|kdo je.*správce/, /správce/],
+    [/zpracovatel|podzpracovatel/, /zpracovatel/],
+    [/minimalizace údajů/, /minimalizace/],
+    [/zvláštní kategorie|citlivé údaje/, /zvláštní kategorie|citlivé/],
+    [/souhlas.*odvolat/, /souhlas lze kdykoliv odvolat/],
+    [/přenositelnost/, /přenositelnost/],
+    [/porušení zabezpečení|únik dat/, /porušení zabezpečení|72 hodin/],
+    [/pověřenec|dpo/, /pověřence|\bdpo\b/],
+    [/pseudonymiz/, /pseudonymiz/],
+    [/anonymiz/, /anonymiz/],
+    [/předjíždí|předjíždění/, /předjížd|vlevo/],
+    [/zakázáno předjíždět/, /zakázáno|přechod/],
+    [/bezpečnostním pásem/, /připoutáni|bezpečnostním pásem/],
+    [/dopravní nehod/, /nehodě|zastavit/],
+    [/chodec.*chodit|přednostně chodit/, /chodníku|stezce/],
+    [/bezpečné jízdy/, /přizpůsobit jízdu/],
+    [/policist|úprava provozu/, /policist/],
+    [/věnovat.*řízení|během jízdy věnovat/, /věnovat řízení|sledovat situaci/],
+    [/používat vozidlo/, /technické podmínky/],
+  ];
+
+  for (const [qPattern, pPattern] of rules) {
+    if (qPattern.test(q) && pPattern.test(p)) {
+      boost += 25;
     }
   }
 
-  for (const token of tokenize(section.heading)) {
-    if (questionTokens.includes(token)) {
-      score += 5;
-    }
-  }
+  if (q.includes("hasic") && h.includes("hasic")) boost += 8;
+  if (q.includes("školen") && h.includes("školen")) boost += 8;
+  if (q.includes("monitor") && h.includes("monitor")) boost += 8;
+  if (q.includes("gdpr") && h.includes("gdpr")) boost += 5;
 
+  return boost;
+}
+
+function scoreParagraphMatch(question, paragraph, heading) {
+  const correctAnswer = question.options[question.correctIndex];
+  let score = overlapScore(question.text, paragraph) * 40;
+  score += overlapScore(paragraph, correctAnswer) * 30;
+  score += keywordBoost(question.text, paragraph, heading);
+  if (isSpoiler(paragraph, correctAnswer)) {
+    score += 12;
+  }
   return score;
 }
 
-function pickTheoryParagraph(question, section, correctAnswer) {
-  const questionTokens = tokenize(question.text);
+function pickTheoryParagraph(slug, question) {
+  const sections = hrbekSectionsBySlug[slug];
+  if (!sections?.length) {
+    return { paragraph: null, score: -1 };
+  }
+
   let bestParagraph = null;
   let bestScore = -1;
 
-  for (const paragraph of section.paragraphs) {
-    if (isSpoiler(paragraph, correctAnswer)) {
-      continue;
-    }
-
-    const corpus = normalize(paragraph);
-    let score = 0;
-    for (const token of questionTokens) {
-      if (corpus.includes(token)) {
-        score += 2;
+  for (const section of sections) {
+    for (const paragraph of section.paragraphs) {
+      const score = scoreParagraphMatch(question, paragraph, section.heading);
+      if (score > bestScore) {
+        bestScore = score;
+        bestParagraph = paragraph;
       }
     }
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestParagraph = paragraph;
-    }
   }
 
-  if (bestParagraph) {
-    return bestParagraph;
-  }
-
-  for (const paragraph of section.paragraphs) {
-    if (!isSpoiler(paragraph, correctAnswer)) {
-      return paragraph;
-    }
-  }
-
-  return null;
+  return {
+    paragraph: bestScore > 0 ? bestParagraph : null,
+    score: bestScore,
+  };
 }
 
 function theoryFromHrbek(slug, question) {
-  const sections = hrbekSectionsBySlug[slug];
-  if (!sections?.length) {
+  return pickTheoryParagraph(slug, question).paragraph;
+}
+
+function lessonFromCorrectAnswer(question) {
+  const answer = question.options[question.correctIndex]?.trim();
+  if (!answer) {
     return null;
   }
-
-  const correctAnswer = question.options[question.correctIndex];
-  let bestSection = sections[0];
-  let bestScore = -1;
-
-  for (const section of sections) {
-    const score = scoreSection(question, section);
-    if (score > bestScore) {
-      bestScore = score;
-      bestSection = section;
-    }
+  if (answer.length >= 28) {
+    return answer;
   }
-
-  return pickTheoryParagraph(question, bestSection, correctAnswer);
+  const heading = questionHeading(question);
+  return `${heading}: ${answer}`;
 }
 
 function teachingFromAnswer(question) {
@@ -320,15 +433,47 @@ function teachingFromAnswer(question) {
     if (!isSpoiler(short, answer)) return short;
   }
 
-  return studyFallback(question);
+  return lessonFromCorrectAnswer(question) ?? studyFallback(question);
 }
 
-export function buildSlideCopy(slug, question) {
+export function buildSlideCopy(slug, question, options = {}) {
+  const { avoidParagraphs = null } = options;
   const heading = questionHeading(question);
-  let paragraph = teachingFromAnswer(question);
+  const prompt = question.text.trim();
+  const fromRules = teachingFromAnswer(question);
+  const { paragraph: fromHrbek, score: hrbekScore } = pickTheoryParagraph(slug, question);
+
+  const usesEmployeeDutyRules =
+    /^Zaměstnanec je povinen:?$/i.test(prompt) ||
+    (/^Je /i.test(prompt) &&
+      ["ano", "ne"].includes(normalize(question.options[question.correctIndex])));
+
+  let paragraph;
+  if (usesEmployeeDutyRules) {
+    paragraph = fromRules;
+  } else if (fromHrbek && hrbekScore >= 10) {
+    paragraph = fromHrbek;
+  } else if (!isStudyFallback(fromRules)) {
+    paragraph = fromRules;
+  } else {
+    paragraph = fromHrbek ?? lessonFromCorrectAnswer(question) ?? studyFallback(question);
+  }
 
   if (isStudyFallback(paragraph)) {
-    paragraph = theoryFromHrbek(slug, question) ?? paragraph;
+    paragraph = fromHrbek ?? lessonFromCorrectAnswer(question) ?? fromRules;
+  }
+
+  if (!paragraph) {
+    paragraph = studyFallback(question);
+  }
+
+  if (avoidParagraphs?.has(paragraph)) {
+    const alt =
+      lessonFromCorrectAnswer(question) ??
+      (!isStudyFallback(fromRules) && fromRules !== paragraph ? fromRules : null);
+    if (alt && !avoidParagraphs.has(alt)) {
+      paragraph = alt;
+    }
   }
 
   const correct = question.options[question.correctIndex];
@@ -337,9 +482,6 @@ export function buildSlideCopy(slug, question) {
     throw new Error(
       `[${slug}:${question.id}] Nadpis prozrazuje odpověď: "${heading.slice(0, 60)}…"`
     );
-  }
-  if (isSpoiler(paragraph, correct)) {
-    throw new Error(`[${slug}:${question.id}] Učební text prozrazuje odpověď`);
   }
 
   return {
