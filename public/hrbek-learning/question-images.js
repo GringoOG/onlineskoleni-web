@@ -140,6 +140,7 @@ export const QUESTION_IMAGE_IDS = new Set([
   "off-g7",
   "off-g8",
   "off-g9",
+  "pozarni-q150",
   "q-r1",
   "q-r10",
   "q-r2",

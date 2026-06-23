@@ -5,6 +5,20 @@ import { QUESTION_IMAGE_IDS } from "./question-images.js";
 
 const QUESTION_IMAGE_BASE = "images/questions";
 
+/** Stejné ID otázky v BOZP a PO – každý kurz má vlastní PNG. */
+const COLLISION_QUESTION_IDS = new Set(["q147", "q150"]);
+
+function pickQuestionImageId(courseSlug, questionId) {
+  if (!questionId) return null;
+  const composite = `${courseSlug}-${questionId}`;
+  if (COLLISION_QUESTION_IDS.has(questionId) && QUESTION_IMAGE_IDS.has(composite)) {
+    return composite;
+  }
+  if (QUESTION_IMAGE_IDS.has(questionId)) return questionId;
+  if (COLLISION_QUESTION_IDS.has(questionId)) return composite;
+  return questionId;
+}
+
 const ICONS = {
   shield:
     '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
@@ -319,8 +333,9 @@ function renderEmptyQuestionImage() {
 
 export function getThemeWidgetForSlide(placeholder, courseSlug) {
   const questionId = questionIdFromPlaceholder(placeholder);
-  if (questionId && QUESTION_IMAGE_IDS.has(questionId)) {
-    return renderQuestionImage(questionId);
+  const imageId = questionId ? pickQuestionImageId(courseSlug, questionId) : null;
+  if (imageId && QUESTION_IMAGE_IDS.has(imageId)) {
+    return renderQuestionImage(imageId);
   }
   if (questionId) {
     return renderEmptyQuestionImage();

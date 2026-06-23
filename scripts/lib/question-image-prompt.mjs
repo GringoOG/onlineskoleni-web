@@ -5,7 +5,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildSlideCopy } from "../hrbek-slide-content.mjs";
+import { COLLISION_QUESTION_IDS } from "./question-image-id.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "../..");
@@ -242,6 +242,9 @@ function buildSceneFromRules(ctx) {
   const course = ctx.course;
 
   if (course === "bozp") {
+    if (/registrujícího poskytovatele|pracovně lékařských služeb/.test(t)) {
+      return "Employee providing complete medical registration details to occupational health doctor at clinic desk, patient folder and address card icons, green check on full disclosure to healthcare provider";
+    }
     if (/kdo je podle zákona.*zajišťovat bezpečnost/.test(t)) {
       return "Employer and employee figures flanking a large shared safety shield on a factory floor, symbolizing joint legal responsibility for workplace health and safety";
     }
@@ -299,6 +302,9 @@ function buildSceneFromRules(ctx) {
   }
 
   if (course === "pozarni") {
+    if (/tísňové telefonní|přivolání hasič|hasičsk.*služb/.test(t)) {
+      return "Worker urgently calling emergency services on smartphone to summon firefighters, thin smoke wisps from building window in background, red fire truck silhouette approaching, classic red telephone handset icon, fire alarm pull station on wall, green check on calm professional emergency call posture";
+    }
     if (/rozvodná zařízení|vypínače/.test(t)) {
       return "Industrial corridor with labeled utility shutoffs, electrical main switch and gas valve kept accessible, green clearance markings";
     }
@@ -348,7 +354,8 @@ function sentenceJoin(...parts) {
 }
 
 export function buildPromptForQuestion(ctx) {
-  const legacy = loadLegacyPromptMap().get(ctx.id);
+  const legacy =
+    COLLISION_QUESTION_IDS.has(ctx.id) ? null : loadLegacyPromptMap().get(ctx.id);
   const scene = legacy ?? buildSceneFromRules(ctx);
 
   const body = sentenceJoin(
