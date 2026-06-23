@@ -1,6 +1,6 @@
 {
   "appTitle": "Učební texty pro online školení",
-  "generatedAt": "2026-06-23T22:12:05.903Z",
+  "generatedAt": "2026-06-23T22:46:06.439Z",
   "categories": [
     {
       "slug": "bozp",
@@ -481,7 +481,7 @@
           "id": "pozarni-slide-1",
           "heading": "Hasicí přístroje se umísťují tak, aby byly",
           "paragraphs": [
-            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné."
+            "Hasicí přístroje se umísťují tak, aby byly snadno viditelné a volně přístupné – je-li to nezbytné (například z provozních důvodů), lze je umístit i do skrytých prostor."
           ],
           "svg_placeholder": "pozarni:q20",
           "checkQuestions": [
@@ -681,7 +681,7 @@
           "id": "pozarni-slide-11",
           "heading": "Použití hasicího přístroje je graficky znázorněno",
           "paragraphs": [
-            "Použití přístroje je graficky znázorněno přímo na něm."
+            "Použití hasicího přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q35",
           "checkQuestions": [
