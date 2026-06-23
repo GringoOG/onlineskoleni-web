@@ -6,6 +6,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { COLLISION_QUESTION_IDS } from "./question-image-id.mjs";
+import { buildSlideCopy } from "../hrbek-slide-content.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "../..");
