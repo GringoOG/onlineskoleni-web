@@ -1,6 +1,6 @@
 {
   "appTitle": "Učební texty pro online školení",
-  "generatedAt": "2026-06-13T01:30:05.195Z",
+  "generatedAt": "2026-06-23T21:54:40.913Z",
   "categories": [
     {
       "slug": "bozp",
@@ -481,7 +481,7 @@
           "id": "pozarni-slide-1",
           "heading": "Hasicí přístroje se umísťují tak, aby byly",
           "paragraphs": [
-            "Lekce „Hasicí přístroje se umísťují tak, aby byly“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q20",
           "checkQuestions": [
@@ -501,7 +501,7 @@
           "id": "pozarni-slide-2",
           "heading": "Základní povinnosti fyzických osob",
           "paragraphs": [
-            "Lekce „Základní povinnosti fyzických osob“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q21",
           "checkQuestions": [
@@ -521,7 +521,7 @@
           "id": "pozarni-slide-3",
           "heading": "Úniková cesta musí být vybavena",
           "paragraphs": [
-            "Lekce „Úniková cesta musí být vybavena“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q23",
           "checkQuestions": [
@@ -541,7 +541,7 @@
           "id": "pozarni-slide-4",
           "heading": "Školení zaměstnanců o požární ochraně obsahuje seznámení",
           "paragraphs": [
-            "Lekce „Školení zaměstnanců o požární ochraně obsahuje seznámení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Školení zaměstnanců o požární ochraně zahrnuje seznámení s rozmístěním a způsobem použití věcných prostředků požární ochrany na pracovišti, s požárními poplachovými směrnicemi a s postupem při evakuaci. Provádí se nejméně jednou za rok; odborná příprava zaměstnanců v preventivních požárních hlídkách má stejnou periodicitu."
           ],
           "svg_placeholder": "pozarni:q24",
           "checkQuestions": [
@@ -561,7 +561,7 @@
           "id": "pozarni-slide-5",
           "heading": "Hasicí přístroje se umísťují tak, aby byly",
           "paragraphs": [
-            "Lekce „Hasicí přístroje se umísťují tak, aby byly“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q26",
           "checkQuestions": [
@@ -581,7 +581,7 @@
           "id": "pozarni-slide-6",
           "heading": "Práškový hasicí přístroj je nevhodný k hašení",
           "paragraphs": [
-            "Lekce „Práškový hasicí přístroj je nevhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q27",
           "checkQuestions": [
@@ -601,7 +601,7 @@
           "id": "pozarni-slide-7",
           "heading": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení",
           "paragraphs": [
-            "Lekce „Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q28",
           "checkQuestions": [
@@ -621,7 +621,7 @@
           "id": "pozarni-slide-8",
           "heading": "Vodní hasicí přístroj je vhodný k hašení",
           "paragraphs": [
-            "Lekce „Vodní hasicí přístroj je vhodný k hašení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q30",
           "checkQuestions": [
@@ -641,7 +641,7 @@
           "id": "pozarni-slide-9",
           "heading": "Fyzická osoba je povinna",
           "paragraphs": [
-            "Lekce „Fyzická osoba je povinna“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q31",
           "checkQuestions": [
@@ -661,7 +661,7 @@
           "id": "pozarni-slide-10",
           "heading": "Každý je povinen s souvislosti se zdolávání požáru",
           "paragraphs": [
-            "Lekce „Každý je povinen s souvislosti se zdolávání požáru“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q32",
           "checkQuestions": [
@@ -681,7 +681,7 @@
           "id": "pozarni-slide-11",
           "heading": "Jak často se musí kontrolovat hasicí přístroj",
           "paragraphs": [
-            "Lekce „Jak často se musí kontrolovat hasicí přístroj“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q33",
           "checkQuestions": [
@@ -701,7 +701,7 @@
           "id": "pozarni-slide-12",
           "heading": "Použití hasicího přístroje je graficky znázorněno",
           "paragraphs": [
-            "Lekce „Použití hasicího přístroje je graficky znázorněno“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hasicí přístroje musí být snadno viditelné, volně přístupné a dosažitelné. Pokud stojí na podlaze, musí být zajištěny proti pádu. Kontrolu (revizi) provádí revizní technik nejméně jednou za rok. Použití přístroje je graficky znázorněno přímo na něm."
           ],
           "svg_placeholder": "pozarni:q35",
           "checkQuestions": [
@@ -721,7 +721,7 @@
           "id": "pozarni-slide-13",
           "heading": "Školení zaměstnanců o požární ochraně obsahuje",
           "paragraphs": [
-            "Lekce „Školení zaměstnanců o požární ochraně obsahuje“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Školení zaměstnanců o požární ochraně zahrnuje seznámení s rozmístěním a způsobem použití věcných prostředků požární ochrany na pracovišti, s požárními poplachovými směrnicemi a s postupem při evakuaci. Provádí se nejméně jednou za rok; odborná příprava zaměstnanců v preventivních požárních hlídkách má stejnou periodicitu."
           ],
           "svg_placeholder": "pozarni:q36",
           "checkQuestions": [
@@ -741,7 +741,7 @@
           "id": "pozarni-slide-14",
           "heading": "Při vzniku požáru",
           "paragraphs": [
-            "Lekce „Při vzniku požáru“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q39",
           "checkQuestions": [
@@ -761,7 +761,7 @@
           "id": "pozarni-slide-15",
           "heading": "Vyberte správnou odpověď",
           "paragraphs": [
-            "Lekce „Vyberte správnou odpověď“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Každý je povinen vytvářet podmínky pro rychlé zdolání požáru. Je nutné zajišťovat volný přístup k rozvodným zařízením (elektřina, plyn, voda, topení) a k věcným prostředkům požární ochrany a udržovat je funkční."
           ],
           "svg_placeholder": "pozarni:q41",
           "checkQuestions": [
@@ -781,7 +781,7 @@
           "id": "pozarni-slide-16",
           "heading": "Tísňové telefonní číslo pro přivolání hasičů je",
           "paragraphs": [
-            "Lekce „Tísňové telefonní číslo pro přivolání hasičů je“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Tísňové číslo hasičů je 150. Školení zaměstnanců o PO se provádí nejméně jednou za rok (stejně jako odborná příprava preventivních požárních hlídek)."
           ],
           "svg_placeholder": "pozarni:q150",
           "checkQuestions": [
@@ -981,7 +981,7 @@
           "id": "ridici-slide-1",
           "heading": "Čemu se musí řidič během jízdy věnovat",
           "paragraphs": [
-            "Lekce „Čemu se musí řidič během jízdy věnovat“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Řidič se musí během jízdy plně věnovat řízení a sledovat situaci v provozu (žádné telefonování bez handsfree nebo čtení navigace za jízdy)."
           ],
           "svg_placeholder": "ridici:q-r1",
           "checkQuestions": [
@@ -1001,7 +1001,7 @@
           "id": "ridici-slide-2",
           "heading": "Kde se zpravidla předjíždí",
           "paragraphs": [
-            "Lekce „Kde se zpravidla předjíždí“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Předjíždí se zásadně vlevo. Předjížděné vozidlo nesmí bránit předjíždění (nesmí zvyšovat rychlost). Předjíždění je přísně zakázáno na přechodu pro chodce a bezprostředně před ním."
           ],
           "svg_placeholder": "ridici:q-r2",
           "checkQuestions": [
@@ -1021,7 +1021,7 @@
           "id": "ridici-slide-3",
           "heading": "Jaká je povinnost řidiče při dopravní nehodě",
           "paragraphs": [
-            "Lekce „Jaká je povinnost řidiče při dopravní nehodě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo. Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce. Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a situaci."
           ],
           "svg_placeholder": "ridici:q-r3",
           "checkQuestions": [
@@ -1041,7 +1041,7 @@
           "id": "ridici-slide-4",
           "heading": "Musí být řidič za jízdy připoután bezpečnostním pásem",
           "paragraphs": [
-            "Lekce „Musí být řidič za jízdy připoután bezpečnostním pásem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Řidič i spolujezdci musí být za jízdy připoutáni bezpečnostním pásem, pokud je jím vozidlo vybaveno. K jízdě lze použít pouze vozidlo, které plně splňuje technické podmínky."
           ],
           "svg_placeholder": "ridici:q-r4",
           "checkQuestions": [
@@ -1061,7 +1061,7 @@
           "id": "ridici-slide-5",
           "heading": "Co platí při předjíždění",
           "paragraphs": [
-            "Lekce „Co platí při předjíždění“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Předjíždí se zásadně vlevo. Předjížděné vozidlo nesmí bránit předjíždění (nesmí zvyšovat rychlost). Předjíždění je přísně zakázáno na přechodu pro chodce a bezprostředně před ním."
           ],
           "svg_placeholder": "ridici:q-r5",
           "checkQuestions": [
@@ -1081,7 +1081,7 @@
           "id": "ridici-slide-6",
           "heading": "Která úprava provozu má nejvyšší prioritu",
           "paragraphs": [
-            "Lekce „Která úprava provozu má nejvyšší prioritu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Nejvyšší prioritu nad všemi značkami mají vždy pokyny policisty řídícího provoz."
           ],
           "svg_placeholder": "ridici:q-r6",
           "checkQuestions": [
@@ -1101,7 +1101,7 @@
           "id": "ridici-slide-7",
           "heading": "Kde je zakázáno předjíždět",
           "paragraphs": [
-            "Lekce „Kde je zakázáno předjíždět“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Předjíždí se zásadně vlevo. Předjížděné vozidlo nesmí bránit předjíždění (nesmí zvyšovat rychlost). Předjíždění je přísně zakázáno na přechodu pro chodce a bezprostředně před ním."
           ],
           "svg_placeholder": "ridici:q-r7",
           "checkQuestions": [
@@ -1121,7 +1121,7 @@
           "id": "ridici-slide-8",
           "heading": "Jak má řidič používat vozidlo",
           "paragraphs": [
-            "Lekce „Jak má řidič používat vozidlo“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Řidič i spolujezdci musí být za jízdy připoutáni bezpečnostním pásem, pokud je jím vozidlo vybaveno. K jízdě lze použít pouze vozidlo, které plně splňuje technické podmínky."
           ],
           "svg_placeholder": "ridici:q-r8",
           "checkQuestions": [
@@ -1141,7 +1141,7 @@
           "id": "ridici-slide-9",
           "heading": "Jaký je základní princip bezpečné jízdy",
           "paragraphs": [
-            "Lekce „Jaký je základní princip bezpečné jízdy“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo. Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce. Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a situaci."
           ],
           "svg_placeholder": "ridici:q-r9",
           "checkQuestions": [
@@ -1161,7 +1161,7 @@
           "id": "ridici-slide-10",
           "heading": "Kde má chodec přednostně chodit",
           "paragraphs": [
-            "Lekce „Kde má chodec přednostně chodit“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při dopravní nehodě je řidič povinen neprodleně zastavit vozidlo. Chodec má povinnost chodit přednostně po chodníku nebo stezce pro chodce. Základním principem bezpečné jízdy je přizpůsobit jízdu stavu vozovky, vozidla a situaci."
           ],
           "svg_placeholder": "ridici:q-r10",
           "checkQuestions": [
@@ -1299,7 +1299,7 @@
           "id": "bremena-slide-1",
           "heading": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR…",
           "paragraphs": [
-            "Lekce „Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen muži v ČR…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b1",
           "checkQuestions": [
@@ -1319,7 +1319,7 @@
           "id": "bremena-slide-2",
           "heading": "Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v…",
           "paragraphs": [
-            "Lekce „Jaký je základní legislativní hmotnostní limit pro občasné zvedání břemen ženami v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pozor: Při práci vsedě se nosnost výrazně snižuje (u mužů na max. 5 kg). Těhotným ženám je ruční manipulace nad velmi nízké limity (5–10 kg občasně) legislativně zakázána."
           ],
           "svg_placeholder": "bremena:off-b2",
           "checkQuestions": [
@@ -1339,7 +1339,7 @@
           "id": "bremena-slide-3",
           "heading": "V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země",
           "paragraphs": [
-            "Lekce „V jaké pozici by se měla nacházet páteř při správném zvedání těžkého břemene ze země“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b3",
           "checkQuestions": [
@@ -1359,7 +1359,7 @@
           "id": "bremena-slide-4",
           "heading": "Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země",
           "paragraphs": [
-            "Lekce „Jaká je správná poloha nohou (chodidel) bezprostředně před zvednutím břemene ze země“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
           ],
           "svg_placeholder": "bremena:off-b4",
           "checkQuestions": [
@@ -1379,7 +1379,7 @@
           "id": "bremena-slide-5",
           "heading": "Jak daleko od těla by mělo být břemeno drženo během jeho přenášení",
           "paragraphs": [
-            "Lekce „Jak daleko od těla by mělo být břemeno drženo během jeho přenášení“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b5",
           "checkQuestions": [
@@ -1399,7 +1399,7 @@
           "id": "bremena-slide-6",
           "heading": "Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze",
           "paragraphs": [
-            "Lekce „Co je nebezpečným zlozvykem při přenášení břemene, pokud potřebujete změnit směr chůze“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zvedání trhavým pohybem (hrozí výhřez ploténky) a rotace (zkroucení) samotného trupu při pevných chodidlech na zemi při změně směru. Správně se otáčí celé tělo současným pohybem chodidel."
           ],
           "svg_placeholder": "bremena:off-b6",
           "checkQuestions": [
@@ -1419,7 +1419,7 @@
           "id": "bremena-slide-7",
           "heading": "Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo…",
           "paragraphs": [
-            "Lekce „Která svalová skupina by měla nést hlavní zátěž při zvedání břemene z dřepu nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b7",
           "checkQuestions": [
@@ -1439,7 +1439,7 @@
           "id": "bremena-slide-8",
           "heading": "Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky…",
           "paragraphs": [
-            "Lekce „Co by měl zaměstnanec udělat jako první krok ještě předtím, než břemeno fyzicky…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b8",
           "checkQuestions": [
@@ -1459,7 +1459,7 @@
           "id": "bremena-slide-9",
           "heading": "Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem",
           "paragraphs": [
-            "Lekce „Jaké riziko hrozí při zvedání břemene rychlým, trhavým pohybem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zvedání trhavým pohybem (hrozí výhřez ploténky) a rotace (zkroucení) samotného trupu při pevných chodidlech na zemi při změně směru. Správně se otáčí celé tělo současným pohybem chodidel."
           ],
           "svg_placeholder": "bremena:off-b9",
           "checkQuestions": [
@@ -1479,7 +1479,7 @@
           "id": "bremena-slide-10",
           "heading": "Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější…",
           "paragraphs": [
-            "Lekce „Do jaké maximální výšky nad podlahou je z ergonomického hlediska nejvhodnější…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b10",
           "checkQuestions": [
@@ -1499,7 +1499,7 @@
           "id": "bremena-slide-11",
           "heading": "Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě",
           "paragraphs": [
-            "Lekce „Jaký vliv má na nosnost pracovníka fakt, že s břemenem manipuluje v sedě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pozor: Při práci vsedě se nosnost výrazně snižuje (u mužů na max. 5 kg). Těhotným ženám je ruční manipulace nad velmi nízké limity (5–10 kg občasně) legislativně zakázána."
           ],
           "svg_placeholder": "bremena:off-b11",
           "checkQuestions": [
@@ -1519,7 +1519,7 @@
           "id": "bremena-slide-12",
           "heading": "Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky,…",
           "paragraphs": [
-            "Lekce „Kdy je podle legislativy zaměstnavatel povinen zajistit mechanické pomůcky (vozíky,…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
           ],
           "svg_placeholder": "bremena:off-b12",
           "checkQuestions": [
@@ -1539,7 +1539,7 @@
           "id": "bremena-slide-13",
           "heading": "Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo…",
           "paragraphs": [
-            "Lekce „Jaká jsou hlavní rizika spojená s manipulací s břemeny, která mají ostré hrany nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b13",
           "checkQuestions": [
@@ -1559,7 +1559,7 @@
           "id": "bremena-slide-14",
           "heading": "Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho…",
           "paragraphs": [
-            "Lekce „Jak by měla kooperovat dvojice pracovníků při společném ručním přenášení jednoho…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
           ],
           "svg_placeholder": "bremena:off-b14",
           "checkQuestions": [
@@ -1579,7 +1579,7 @@
           "id": "bremena-slide-15",
           "heading": "Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny",
           "paragraphs": [
-            "Lekce „Co znamená pojem „kumulativní hmotnost“ při ruční manipulaci s břemeny“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
           ],
           "svg_placeholder": "bremena:off-b15",
           "checkQuestions": [
@@ -1599,7 +1599,7 @@
           "id": "bremena-slide-16",
           "heading": "Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v…",
           "paragraphs": [
-            "Lekce „Jaký je legislativní limit kumulativní hmotnosti za osmihodinovou směnu pro muže v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
           ],
           "svg_placeholder": "bremena:off-b16",
           "checkQuestions": [
@@ -1619,7 +1619,7 @@
           "id": "bremena-slide-17",
           "heading": "Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější",
           "paragraphs": [
-            "Lekce „Který typ úchopu břemene je z hlediska bezpečnosti nejvhodnější“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
           ],
           "svg_placeholder": "bremena:off-b17",
           "checkQuestions": [
@@ -1639,7 +1639,7 @@
           "id": "bremena-slide-18",
           "heading": "Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu",
           "paragraphs": [
-            "Lekce „Proč je nebezpečné manipulovat s břemenem na nerovném, mokrém nebo znečištěném povrchu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zvedání trhavým pohybem (hrozí výhřez ploténky) a rotace (zkroucení) samotného trupu při pevných chodidlech na zemi při změně směru. Správně se otáčí celé tělo současným pohybem chodidel."
           ],
           "svg_placeholder": "bremena:off-b18",
           "checkQuestions": [
@@ -1659,7 +1659,7 @@
           "id": "bremena-slide-19",
           "heading": "Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční…",
           "paragraphs": [
-            "Lekce „Jaké osobní ochranné pracovní prostředky (OOPP) jsou základem pro bezpečnou ruční…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
           ],
           "svg_placeholder": "bremena:off-b19",
           "checkQuestions": [
@@ -1679,7 +1679,7 @@
           "id": "bremena-slide-20",
           "heading": "Jak by mělo být břemeno správně ukládáno na regál nebo stůl",
           "paragraphs": [
-            "Lekce „Jak by mělo být břemeno správně ukládáno na regál nebo stůl“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b20",
           "checkQuestions": [
@@ -1699,7 +1699,7 @@
           "id": "bremena-slide-21",
           "heading": "Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)",
           "paragraphs": [
-            "Lekce „Co je nejdůležitější sledovat u břemene, které obsahuje kapalinu (např. napůl plný sud)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Před zvednutím nejprve posoudíme hmotnost, tvar, stabilitu břemene a volnost trasy. Základními OOPP jsou rukavice s protiskluzovou úpravou a obuv s vyztuženou špičkou. U kapalin (např. sud) pozor na přelévání těžiště."
           ],
           "svg_placeholder": "bremena:off-b21",
           "checkQuestions": [
@@ -1719,7 +1719,7 @@
           "id": "bremena-slide-22",
           "heading": "Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v…",
           "paragraphs": [
-            "Lekce „Jak se mění povolené hmotnostní limity pro ruční manipulaci, pokud práce probíhá v…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pozor: Při práci vsedě se nosnost výrazně snižuje (u mužů na max. 5 kg). Těhotným ženám je ruční manipulace nad velmi nízké limity (5–10 kg občasně) legislativně zakázána."
           ],
           "svg_placeholder": "bremena:off-b22",
           "checkQuestions": [
@@ -1739,7 +1739,7 @@
           "id": "bremena-slide-23",
           "heading": "Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např.…",
           "paragraphs": [
-            "Lekce „Jaká je bezpečná technika pro tlačení nebo táhnutí pojízdných břemen (např.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b23",
           "checkQuestions": [
@@ -1759,7 +1759,7 @@
           "id": "bremena-slide-24",
           "heading": "Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů…",
           "paragraphs": [
-            "Lekce „Proč je zakázáno ručně manipulovat s břemeny v těsné blízkosti nechráněných okrajů…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b24",
           "checkQuestions": [
@@ -1779,7 +1779,7 @@
           "id": "bremena-slide-25",
           "heading": "Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR",
           "paragraphs": [
-            "Lekce „Jaký vliv má těhotenství na možnost ruční manipulace s břemeny v ČR“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pozor: Při práci vsedě se nosnost výrazně snižuje (u mužů na max. 5 kg). Těhotným ženám je ruční manipulace nad velmi nízké limity (5–10 kg občasně) legislativně zakázána."
           ],
           "svg_placeholder": "bremena:off-b25",
           "checkQuestions": [
@@ -1799,7 +1799,7 @@
           "id": "bremena-slide-26",
           "heading": "Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene",
           "paragraphs": [
-            "Lekce „Co vyjadřuje tzv. „ergonomická zóna komfortu“ při zvedání břemene“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b26",
           "checkQuestions": [
@@ -1819,7 +1819,7 @@
           "id": "bremena-slide-27",
           "heading": "Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a…",
           "paragraphs": [
-            "Lekce „Jaké riziko hrozí, pokud je břemeno na paletovém vozíku naskládáno nerovnoměrně a…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Chodidla rozkročit na šíři ramen celou plochou na zemi. Páteř musí být přirozeně rovná (napřímená), nikdy ne kulatá. Hlavní zátěž musí nést svaly dolních končetin (stehna) a hýždě (zvedáme se z dřepu/polodřepu). Břemeno držíme co nejblíže k tělu (u těžiště)."
           ],
           "svg_placeholder": "bremena:off-b27",
           "checkQuestions": [
@@ -1839,7 +1839,7 @@
           "id": "bremena-slide-28",
           "heading": "Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení…",
           "paragraphs": [
-            "Lekce „Jak se definuje „občasné“ zvedání a přenášení břemene z hlediska časového rozložení…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b28",
           "checkQuestions": [
@@ -1859,7 +1859,7 @@
           "id": "bremena-slide-29",
           "heading": "Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci…",
           "paragraphs": [
-            "Lekce „Co je primárním účelem používání mechanických chapadel nebo přísavek při manipulaci…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Muži: maximálně 50 kg."
           ],
           "svg_placeholder": "bremena:off-b29",
           "checkQuestions": [
@@ -1879,7 +1879,7 @@
           "id": "bremena-slide-30",
           "heading": "Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech…",
           "paragraphs": [
-            "Lekce „Kdo je povinen v organizaci proškolit zaměstnance o správných a bezpečných postupech…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Při práci ve dvojici musí být pracovníci podobně vysocí, koordinovaní a pokyny vydává pouze jeden. Kumulativní hmotnost je součet všech vah za směnu (limit pro muže v ČR je 10 000 kg za směnu). Zaměstnavatel je povinen zajistit mechanické pomůcky (jeřáby, vozíky), pokud limity překračují hygienické normy."
           ],
           "svg_placeholder": "bremena:off-b30",
           "checkQuestions": [
@@ -2217,7 +2217,7 @@
           "id": "gdpr-slide-1",
           "heading": "Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května…",
           "paragraphs": [
-            "Lekce „Jaký je hlavní právní předpis EU upravující ochranu osobních údajů účinný od května…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Hlavním evropským předpisem je nařízení GDPR (účinné od května 2018). Český zákon č. 110/2019 Sb. ho pouze doplňuje v oblastech, kde dává EU prostor."
           ],
           "svg_placeholder": "gdpr:off-g1",
           "checkQuestions": [
@@ -2257,7 +2257,7 @@
           "id": "gdpr-slide-3",
           "heading": "Kdo je podle GDPR považován za „správce“ osobních údajů",
           "paragraphs": [
-            "Lekce „Kdo je podle GDPR považován za „správce“ osobních údajů“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g3",
           "checkQuestions": [
@@ -2277,7 +2277,7 @@
           "id": "gdpr-slide-4",
           "heading": "Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření…",
           "paragraphs": [
-            "Lekce „Jaká je podle českého zákona č. 110/2019 Sb. věková hranice dítěte pro vyjádření…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g4",
           "checkQuestions": [
@@ -2297,7 +2297,7 @@
           "id": "gdpr-slide-5",
           "heading": "Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“…",
           "paragraphs": [
-            "Lekce „Který z následujících údajů patří mezi tzv. „zvláštní kategorie osobních údajů“…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g5",
           "checkQuestions": [
@@ -2317,7 +2317,7 @@
           "id": "gdpr-slide-6",
           "heading": "Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy,…",
           "paragraphs": [
-            "Lekce „Na jakém právním základě lze zpracovávat osobní údaje pro účely plnění smlouvy,…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g6",
           "checkQuestions": [
@@ -2337,7 +2337,7 @@
           "id": "gdpr-slide-7",
           "heading": "Co vyjadřuje zásada „minimalizace údajů“",
           "paragraphs": [
-            "Lekce „Co vyjadřuje zásada „minimalizace údajů““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g7",
           "checkQuestions": [
@@ -2357,7 +2357,7 @@
           "id": "gdpr-slide-8",
           "heading": "Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat",
           "paragraphs": [
-            "Lekce „Může subjekt údajů svůj udělený souhlas se zpracováním osobních údajů odvolat“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g8",
           "checkQuestions": [
@@ -2377,7 +2377,7 @@
           "id": "gdpr-slide-9",
           "heading": "Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje",
           "paragraphs": [
-            "Lekce „Jaké právo má subjekt údajů, pokud jsou o něm zpracovávány nepřesné nebo neúplné údaje“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g9",
           "checkQuestions": [
@@ -2397,7 +2397,7 @@
           "id": "gdpr-slide-10",
           "heading": "Co je to „právo na přenositelnost údajů“ (data portability)",
           "paragraphs": [
-            "Lekce „Co je to „právo na přenositelnost údajů“ (data portability)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g10",
           "checkQuestions": [
@@ -2417,7 +2417,7 @@
           "id": "gdpr-slide-11",
           "heading": "Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice",
           "paragraphs": [
-            "Lekce „Jaký orgán plní roli dozorového úřadu nad ochranou osobních údajů v České republice“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g11",
           "checkQuestions": [
@@ -2437,7 +2437,7 @@
           "id": "gdpr-slide-12",
           "heading": "Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu…",
           "paragraphs": [
-            "Lekce „Který subjekt má podle GDPR obecnou povinnost jmenovat pověřence pro ochranu…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Orgány veřejné moci mají obecnou povinnost jmenovat pověřence (DPO), který může fungovat interně i externě na smlouvu. Správce má povinnost vést Záznam o činnostech zpracování."
           ],
           "svg_placeholder": "gdpr:off-g12",
           "checkQuestions": [
@@ -2457,7 +2457,7 @@
           "id": "gdpr-slide-13",
           "heading": "V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení…",
           "paragraphs": [
-            "Lekce „V jaké lhůtě musí správce ohlásit dozorovému úřadu (ÚOOÚ) porušení zabezpečení…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Porušení zabezpečení (únik dat) musí správce nahlásit Úřadu pro ochranu osobních údajů (ÚOOÚ) do 72 hodin. Občanovi se hlásí jen při vysokém riziku pro jeho práva. Maximální pokuta pro firmy je do 20 000 000 EUR nebo 4 % celosvětového ročního obratu. Český zákon omezuje udělování pokut obcím."
           ],
           "svg_placeholder": "gdpr:off-g13",
           "checkQuestions": [
@@ -2477,7 +2477,7 @@
           "id": "gdpr-slide-14",
           "heading": "Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému…",
           "paragraphs": [
-            "Lekce „Kdy musí správce oznámit porušení zabezpečení osobních údajů přímo dotčenému…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g14",
           "checkQuestions": [
@@ -2497,7 +2497,7 @@
           "id": "gdpr-slide-15",
           "heading": "Co je to „Záznam o činnostech zpracování“",
           "paragraphs": [
-            "Lekce „Co je to „Záznam o činnostech zpracování““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Orgány veřejné moci mají obecnou povinnost jmenovat pověřence (DPO), který může fungovat interně i externě na smlouvu. Správce má povinnost vést Záznam o činnostech zpracování."
           ],
           "svg_placeholder": "gdpr:off-g15",
           "checkQuestions": [
@@ -2517,7 +2517,7 @@
           "id": "gdpr-slide-16",
           "heading": "Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější…",
           "paragraphs": [
-            "Lekce „Jaká je maximální výše správní pokuty pro komerční subjekty za nejzávažnější…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Porušení zabezpečení (únik dat) musí správce nahlásit Úřadu pro ochranu osobních údajů (ÚOOÚ) do 72 hodin. Občanovi se hlásí jen při vysokém riziku pro jeho práva. Maximální pokuta pro firmy je do 20 000 000 EUR nebo 4 % celosvětového ročního obratu. Český zákon omezuje udělování pokut obcím."
           ],
           "svg_placeholder": "gdpr:off-g16",
           "checkQuestions": [
@@ -2537,7 +2537,7 @@
           "id": "gdpr-slide-17",
           "heading": "Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité…",
           "paragraphs": [
-            "Lekce „Obsahuje český zákon č. 110/2019 Sb. výjimku z trestání (udělování pokut) pro určité…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Porušení zabezpečení (únik dat) musí správce nahlásit Úřadu pro ochranu osobních údajů (ÚOOÚ) do 72 hodin. Občanovi se hlásí jen při vysokém riziku pro jeho práva. Maximální pokuta pro firmy je do 20 000 000 EUR nebo 4 % celosvětového ročního obratu. Český zákon omezuje udělování pokut obcím."
           ],
           "svg_placeholder": "gdpr:off-g17",
           "checkQuestions": [
@@ -2557,7 +2557,7 @@
           "id": "gdpr-slide-18",
           "heading": "Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by…",
           "paragraphs": [
-            "Lekce „Co znamená princip „záměrné a standardní ochrany osobních údajů“ (Data protection by…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g18",
           "checkQuestions": [
@@ -2577,7 +2577,7 @@
           "id": "gdpr-slide-19",
           "heading": "Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)",
           "paragraphs": [
-            "Lekce „Kdy je správce povinen provést Posouzení vlivu na ochranu osobních údajů (DPIA)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Porušení zabezpečení (únik dat) musí správce nahlásit Úřadu pro ochranu osobních údajů (ÚOOÚ) do 72 hodin. Občanovi se hlásí jen při vysokém riziku pro jeho práva. Maximální pokuta pro firmy je do 20 000 000 EUR nebo 4 % celosvětového ročního obratu. Český zákon omezuje udělování pokut obcím."
           ],
           "svg_placeholder": "gdpr:off-g19",
           "checkQuestions": [
@@ -2597,7 +2597,7 @@
           "id": "gdpr-slide-20",
           "heading": "Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů",
           "paragraphs": [
-            "Lekce „Jaký vztah musí být právně ošetřen mezi správcem a zpracovatelem osobních údajů“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g20",
           "checkQuestions": [
@@ -2617,7 +2617,7 @@
           "id": "gdpr-slide-21",
           "heading": "Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv.…",
           "paragraphs": [
-            "Lekce „Může zpracovatel osobních údajů zapojit do zpracování dalšího zpracovatele (tzv.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Správce je ten, kdo určuje účely a prostředky zpracování dat. Mezi správcem a externím zpracovatelem musí být uzavřena písemná zpracovatelská smlouva. Dalšího podzpracovatele může zpracovatel zapojit jen s písemným povolením správce."
           ],
           "svg_placeholder": "gdpr:off-g21",
           "checkQuestions": [
@@ -2637,7 +2637,7 @@
           "id": "gdpr-slide-22",
           "heading": "Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský…",
           "paragraphs": [
-            "Lekce „Na základě čeho lze legálně předávat osobní údaje do třetích zemí mimo EHP (Evropský…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g22",
           "checkQuestions": [
@@ -2657,7 +2657,7 @@
           "id": "gdpr-slide-23",
           "heading": "Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv.…",
           "paragraphs": [
-            "Lekce „Jaké informace musí správce poskytnout subjektu údajů při sběru jeho dat (tzv.…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g23",
           "checkQuestions": [
@@ -2677,7 +2677,7 @@
           "id": "gdpr-slide-24",
           "heading": "Co znamená „právo na omezení zpracování“",
           "paragraphs": [
-            "Lekce „Co znamená „právo na omezení zpracování““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g24",
           "checkQuestions": [
@@ -2697,7 +2697,7 @@
           "id": "gdpr-slide-25",
           "heading": "Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných…",
           "paragraphs": [
-            "Lekce „Které zpracování osobních údajů je podle zákona č. 110/2019 Sb. vyňato z vybraných…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g25",
           "checkQuestions": [
@@ -2717,7 +2717,7 @@
           "id": "gdpr-slide-26",
           "heading": "Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se…",
           "paragraphs": [
-            "Lekce „Může správce podmiňovat poskytnutí služby nebo splnění smlouvy souhlasem se…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g26",
           "checkQuestions": [
@@ -2737,7 +2737,7 @@
           "id": "gdpr-slide-27",
           "heading": "Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo…",
           "paragraphs": [
-            "Lekce „Jaká sankce hrozí fyzické osobě (nepodnikateli), která neoprávněně zveřejní nebo…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g27",
           "checkQuestions": [
@@ -2757,7 +2757,7 @@
           "id": "gdpr-slide-28",
           "heading": "Co vyjadřuje zásada „omezení uložení“ (storage limitation)",
           "paragraphs": [
-            "Lekce „Co vyjadřuje zásada „omezení uložení“ (storage limitation)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g28",
           "checkQuestions": [
@@ -2777,7 +2777,7 @@
           "id": "gdpr-slide-29",
           "heading": "Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace",
           "paragraphs": [
-            "Lekce „Musí být pověřenec pro ochranu osobních údajů (DPO) zaměstnancem dané organizace“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Souhlas lze kdykoliv odvolat (stejně snadno, jako byl udělen). Souhlasem pro marketing nesmí být podmiňováno poskytnutí služby. Lidé mají právo na opravu údajů, omezení zpracování (dočasné pozastavení) a právo na přenositelnost údajů (získat je ve strojově čitelném formátu)."
           ],
           "svg_placeholder": "gdpr:off-g29",
           "checkQuestions": [
@@ -2797,7 +2797,7 @@
           "id": "gdpr-slide-30",
           "heading": "Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti…",
           "paragraphs": [
-            "Lekce „Jak se liší „anonymizovaný údaj“ od „pseudonymizovaného údaje“ z pohledu působnosti…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Platí zásada minimalizace údajů – data musí být omezena na nezbytný rozsah k danému účelu. Mezi zvláštní kategorie (citlivé údaje) patří rasový/etnický původ nebo genetické údaje (číslo účtu nebo e-mail tam nepatří). V ČR je věková hranice dítěte pro souhlas na sociálních sítích 15 let."
           ],
           "svg_placeholder": "gdpr:off-g30",
           "checkQuestions": [
@@ -3135,7 +3135,7 @@
           "id": "ergonomie-slide-1",
           "heading": "Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské…",
           "paragraphs": [
-            "Lekce „Jaký by měl být optimální úhel v kolenou a kyčlích při správném sedu na kancelářské…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e1",
           "checkQuestions": [
@@ -3155,7 +3155,7 @@
           "id": "ergonomie-slide-2",
           "heading": "V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu",
           "paragraphs": [
-            "Lekce „V jaké výšce vůči očím by měla být umístěna horní hrana monitoru při přímém pohledu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e2",
           "checkQuestions": [
@@ -3175,7 +3175,7 @@
           "id": "ergonomie-slide-3",
           "heading": "Jaká je doporučená optimální vzdálenost monitoru od očí uživatele",
           "paragraphs": [
-            "Lekce „Jaká je doporučená optimální vzdálenost monitoru od očí uživatele“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e3",
           "checkQuestions": [
@@ -3195,7 +3195,7 @@
           "id": "ergonomie-slide-4",
           "heading": "Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem",
           "paragraphs": [
-            "Lekce „Co znamená zkratka RSI v kontextu ergonomie a práce s počítačem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pravidlo 20-20-20 říká: každých 20 minut se podívat na předmět vzdálený 20 stop (6 metrů) na dobu 20 sekund. Doporučují se krátké pauzy (2–5 minut) každých 45–60 minut spojené s protažením."
           ],
           "svg_placeholder": "ergonomie:off-e4",
           "checkQuestions": [
@@ -3215,7 +3215,7 @@
           "id": "ergonomie-slide-5",
           "heading": "Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši",
           "paragraphs": [
-            "Lekce „Jaká je hlavní ergonomická výhoda vertikální myši oproti klasické myši“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e5",
           "checkQuestions": [
@@ -3235,7 +3235,7 @@
           "id": "ergonomie-slide-6",
           "heading": "Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům",
           "paragraphs": [
-            "Lekce „Jak by měla být nastavena výška pracovního stolu či područek židle ve vztahu k loktům“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e6",
           "checkQuestions": [
@@ -3255,7 +3255,7 @@
           "id": "ergonomie-slide-7",
           "heading": "Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím",
           "paragraphs": [
-            "Lekce „Co doporučuje populární pravidlo „20-20-20“ pro úlevu unaveným očím“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Pravidlo 20-20-20 říká: každých 20 minut se podívat na předmět vzdálený 20 stop (6 metrů) na dobu 20 sekund. Doporučují se krátké pauzy (2–5 minut) každých 45–60 minut spojené s protažením."
           ],
           "svg_placeholder": "ergonomie:off-e7",
           "checkQuestions": [
@@ -3275,7 +3275,7 @@
           "id": "ergonomie-slide-8",
           "heading": "Kam by měly směřovat plosky nohou při správném sedu u počítače",
           "paragraphs": [
-            "Lekce „Kam by měly směřovat plosky nohou při správném sedu u počítače“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e8",
           "checkQuestions": [
@@ -3295,7 +3295,7 @@
           "id": "ergonomie-slide-9",
           "heading": "Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti",
           "paragraphs": [
-            "Lekce „Jaké je nejvhodnější umístění monitoru na stole vzhledem k oknu v místnosti“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e9",
           "checkQuestions": [
@@ -3315,7 +3315,7 @@
           "id": "ergonomie-slide-10",
           "heading": "Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější",
           "paragraphs": [
-            "Lekce „Jaká poloha zápěstí při psaní na klávesnici je z ergonomického hlediska nejsprávnější“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e10",
           "checkQuestions": [
@@ -3335,7 +3335,7 @@
           "id": "ergonomie-slide-11",
           "heading": "K čemu primárně slouží bederní opěrka na ergonomické židli",
           "paragraphs": [
-            "Lekce „K čemu primárně slouží bederní opěrka na ergonomické židli“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e11",
           "checkQuestions": [
@@ -3355,7 +3355,7 @@
           "id": "ergonomie-slide-12",
           "heading": "Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem",
           "paragraphs": [
-            "Lekce „Jak se projevuje syndrom karpálního tunelu u lidí pracujících s počítačem“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e12",
           "checkQuestions": [
@@ -3375,7 +3375,7 @@
           "id": "ergonomie-slide-13",
           "heading": "Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na…",
           "paragraphs": [
-            "Lekce „Proč je nevhodné dlouhodobě pracovat s notebookem položeným přímo na klíně nebo na…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e13",
           "checkQuestions": [
@@ -3395,7 +3395,7 @@
           "id": "ergonomie-slide-14",
           "heading": "Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě",
           "paragraphs": [
-            "Lekce „Jak lze ergonomicky optimalizovat práci s notebookem na fixním pracovním místě“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e14",
           "checkQuestions": [
@@ -3415,7 +3415,7 @@
           "id": "ergonomie-slide-15",
           "heading": "Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo",
           "paragraphs": [
-            "Lekce „Jaký vliv má statické sezení bez pohybu po dobu několika hodin na lidské tělo“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e15",
           "checkQuestions": [
@@ -3435,7 +3435,7 @@
           "id": "ergonomie-slide-16",
           "heading": "Co je to „dynamické sezení“",
           "paragraphs": [
-            "Lekce „Co je to „dynamické sezení““. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e16",
           "checkQuestions": [
@@ -3455,7 +3455,7 @@
           "id": "ergonomie-slide-17",
           "heading": "Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně…",
           "paragraphs": [
-            "Lekce „Jaký typ osvětlení na pracovišti s počítačem je z ergonomického hlediska nejméně…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "U výškově stavitelných stolů (sit-stand) se doporučuje střídat polohy po 30–60 minutách. Nejlepší osvětlení je rovnoměrné, rozptýlené. Optimální teplota v kanceláři je 20–24 °C a vlhkost 40–60 %."
           ],
           "svg_placeholder": "ergonomie:off-e17",
           "checkQuestions": [
@@ -3475,7 +3475,7 @@
           "id": "ergonomie-slide-18",
           "heading": "Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na…",
           "paragraphs": [
-            "Lekce „Jaká je doporučená frekvence a délka krátkých přestávek při intenzivní práci na…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e18",
           "checkQuestions": [
@@ -3495,7 +3495,7 @@
           "id": "ergonomie-slide-19",
           "heading": "Jaký význam má správné nastavení hloubky sedáku na židli",
           "paragraphs": [
-            "Lekce „Jaký význam má správné nastavení hloubky sedáku na židli“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e19",
           "checkQuestions": [
@@ -3515,7 +3515,7 @@
           "id": "ergonomie-slide-20",
           "heading": "Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu",
           "paragraphs": [
-            "Lekce „Jaké barvy a kontrast na monitoru jsou obecně nejšetrnější pro dlouhodobé čtení textu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e20",
           "checkQuestions": [
@@ -3535,7 +3535,7 @@
           "id": "ergonomie-slide-21",
           "heading": "Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón…",
           "paragraphs": [
-            "Lekce „Co je hlavním cílem ergonomického uspořádání předmětů na pracovním stole do tzv. zón…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e21",
           "checkQuestions": [
@@ -3555,7 +3555,7 @@
           "id": "ergonomie-slide-22",
           "heading": "Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní…",
           "paragraphs": [
-            "Lekce „Jak ovlivňuje nevhodná výška židle (příliš vysoká), kdy nohy volně visí dolů, krevní…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e22",
           "checkQuestions": [
@@ -3575,7 +3575,7 @@
           "id": "ergonomie-slide-23",
           "heading": "Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a…",
           "paragraphs": [
-            "Lekce „Jaká je doporučená teplota a vlhkost vzduchu v kanceláři pro optimální pohodu a…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "U výškově stavitelných stolů (sit-stand) se doporučuje střídat polohy po 30–60 minutách. Nejlepší osvětlení je rovnoměrné, rozptýlené. Optimální teplota v kanceláři je 20–24 °C a vlhkost 40–60 %."
           ],
           "svg_placeholder": "ergonomie:off-e23",
           "checkQuestions": [
@@ -3595,7 +3595,7 @@
           "id": "ergonomie-slide-24",
           "heading": "Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou…",
           "paragraphs": [
-            "Lekce „Proč se u moderních ergonomických pracovišť doporučují stoly s nastavitelnou výškou…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "U výškově stavitelných stolů (sit-stand) se doporučuje střídat polohy po 30–60 minutách. Nejlepší osvětlení je rovnoměrné, rozptýlené. Optimální teplota v kanceláři je 20–24 °C a vlhkost 40–60 %."
           ],
           "svg_placeholder": "ergonomie:off-e24",
           "checkQuestions": [
@@ -3615,7 +3615,7 @@
           "id": "ergonomie-slide-25",
           "heading": "Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu",
           "paragraphs": [
-            "Lekce „Jak by měla být umístěna externí klávesnice na pracovním stole vzhledem k hraně stolu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e25",
           "checkQuestions": [
@@ -3635,7 +3635,7 @@
           "id": "ergonomie-slide-26",
           "heading": "Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)",
           "paragraphs": [
-            "Lekce „Co způsobuje dlouhodobý předsun hlavy k monitoru (tzv. želví krk)“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Horní hrana monitoru má být v úrovni očí nebo mírně pod ní. Vzdálenost od očí má být 50 až 70 cm (na délku natažené paže). Monitor má stát kolmo k oknu, aby nevznikaly odlesky ani protisvětlo. Dlouhodobá práce s notebookem na klíně způsobuje extrémní přetížení krku (tzv. text neck), proto se doporučuje podstavec a externí klávesnice s myší."
           ],
           "svg_placeholder": "ergonomie:off-e26",
           "checkQuestions": [
@@ -3655,7 +3655,7 @@
           "id": "ergonomie-slide-27",
           "heading": "Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání…",
           "paragraphs": [
-            "Lekce „Která z následujících pomůcek pomáhá snížit napětí v oblasti zápěstí při používání…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e27",
           "checkQuestions": [
@@ -3675,7 +3675,7 @@
           "id": "ergonomie-slide-28",
           "heading": "Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku",
           "paragraphs": [
-            "Lekce „Jak by měl uživatel sedět na židli z hlediska využití plochy sedáku“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e28",
           "checkQuestions": [
@@ -3695,7 +3695,7 @@
           "id": "ergonomie-slide-29",
           "heading": "Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je…",
           "paragraphs": [
-            "Lekce „Jaký vliv má používání dvou monitorů vedle sebe na ergonomii krční páteře, pokud je…“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Optimální úhel v kolenou a kyčlích je 90° až 110°. Plosky nohou musí celou plochou spočívat na podlaze nebo podložce. Uživatel má sedět plně vzadu, aby záda po celé délce podpíralo opěradlo. Bederní opěrka podporuje přirozené zakřivení páteře a brání hrbení. Hloubka sedáku nesmí tlačit na podkolenní jamku."
           ],
           "svg_placeholder": "ergonomie:off-e29",
           "checkQuestions": [
@@ -3715,7 +3715,7 @@
           "id": "ergonomie-slide-30",
           "heading": "Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu",
           "paragraphs": [
-            "Lekce „Jak často by se měla měnit poloha těla (vsedě/vestoje) u výškově stavitelného stolu“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem."
+            "Zápěstí musí být při psaní v jedné rovině s předloktím, bez zalomení. Klávesnice má být 10–15 cm od hrany stolu pro oporu dlaní. Vertikální myš je výhodná, protože udržuje ruku v přirozené pozici (podání ruky) a snižuje tlak na karpální tunel. Syndrom karpálního tunelu se projevuje brněním a mravenčením v palci, ukazováčku a prostředníčku."
           ],
           "svg_placeholder": "ergonomie:off-e30",
           "checkQuestions": [

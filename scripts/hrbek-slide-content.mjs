@@ -2,6 +2,63 @@
  * Nadpisy a učební texty lekcí – nesmí kopírovat znění správné odpovědi v testu.
  */
 
+/** @type {Record<string, { heading: string; paragraphs: string[] }[]>} */
+let hrbekSectionsBySlug = {};
+
+const TOKEN_STOP = new Set([
+  "je",
+  "se",
+  "na",
+  "za",
+  "po",
+  "do",
+  "od",
+  "pro",
+  "při",
+  "jak",
+  "co",
+  "kdo",
+  "kde",
+  "nebo",
+  "aby",
+  "musí",
+  "jsou",
+  "být",
+  "tak",
+  "že",
+  "s",
+  "v",
+  "z",
+  "k",
+  "o",
+  "u",
+  "a",
+  "i",
+  "byly",
+  "byl",
+  "byla",
+  "podle",
+  "mezi",
+  "pokud",
+  "než",
+  "bez",
+  "před",
+  "požár",
+  "požáru",
+  "požární",
+  "obsahuje",
+  "seznámení",
+  "správnou",
+  "správná",
+  "vyberte",
+]);
+
+export function setHrbekTheoryChapters(chapters) {
+  hrbekSectionsBySlug = Object.fromEntries(
+    chapters.map((chapter) => [chapter.courseSlug, chapter.sections ?? []])
+  );
+}
+
 function normalize(text) {
   return text.toLowerCase().replace(/\s+/g, " ").trim();
 }
@@ -120,6 +177,95 @@ function studyFallback(question) {
   return `Lekce „${heading}“. Prostudujte téma a v kontrolní otázce zvolte variantu odpovídající platným pravidlům – všímejte si rozdílů oproti záměrně nepřesným možnostem.`;
 }
 
+function isStudyFallback(text) {
+  return text.includes("Prostudujte téma");
+}
+
+function tokenize(text) {
+  return normalize(text)
+    .replace(/[^a-z0-9áčďéěíňóřšťúůýž\s-]/g, " ")
+    .split(/\s+/)
+    .filter((word) => word.length > 3 && !TOKEN_STOP.has(word));
+}
+
+function scoreSection(question, section) {
+  const questionTokens = tokenize(question.text);
+  const corpus = normalize([section.heading, ...section.paragraphs].join(" "));
+  let score = 0;
+
+  for (const token of questionTokens) {
+    if (corpus.includes(token)) {
+      score += 2;
+    }
+  }
+
+  for (const token of tokenize(section.heading)) {
+    if (questionTokens.includes(token)) {
+      score += 5;
+    }
+  }
+
+  return score;
+}
+
+function pickTheoryParagraph(question, section, correctAnswer) {
+  const questionTokens = tokenize(question.text);
+  let bestParagraph = null;
+  let bestScore = -1;
+
+  for (const paragraph of section.paragraphs) {
+    if (isSpoiler(paragraph, correctAnswer)) {
+      continue;
+    }
+
+    const corpus = normalize(paragraph);
+    let score = 0;
+    for (const token of questionTokens) {
+      if (corpus.includes(token)) {
+        score += 2;
+      }
+    }
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestParagraph = paragraph;
+    }
+  }
+
+  if (bestParagraph) {
+    return bestParagraph;
+  }
+
+  for (const paragraph of section.paragraphs) {
+    if (!isSpoiler(paragraph, correctAnswer)) {
+      return paragraph;
+    }
+  }
+
+  return null;
+}
+
+function theoryFromHrbek(slug, question) {
+  const sections = hrbekSectionsBySlug[slug];
+  if (!sections?.length) {
+    return null;
+  }
+
+  const correctAnswer = question.options[question.correctIndex];
+  let bestSection = sections[0];
+  let bestScore = -1;
+
+  for (const section of sections) {
+    const score = scoreSection(question, section);
+    if (score > bestScore) {
+      bestScore = score;
+      bestSection = section;
+    }
+  }
+
+  return pickTheoryParagraph(question, bestSection, correctAnswer);
+}
+
 function teachingFromAnswer(question) {
   const answer = question.options[question.correctIndex];
   const prompt = question.text.trim();
@@ -179,7 +325,12 @@ function teachingFromAnswer(question) {
 
 export function buildSlideCopy(slug, question) {
   const heading = questionHeading(question);
-  const paragraph = teachingFromAnswer(question);
+  let paragraph = teachingFromAnswer(question);
+
+  if (isStudyFallback(paragraph)) {
+    paragraph = theoryFromHrbek(slug, question) ?? paragraph;
+  }
+
   const correct = question.options[question.correctIndex];
 
   if (isSpoiler(heading, correct)) {

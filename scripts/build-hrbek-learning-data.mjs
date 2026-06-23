@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { buildSlideCopy } from "./hrbek-slide-content.mjs";
+import { buildSlideCopy, setHrbekTheoryChapters } from "./hrbek-slide-content.mjs";
 
 const ROOT = process.cwd();
 const THEORY_PATH = path.join(ROOT, "content/theory/hrbek.json");
@@ -68,6 +68,8 @@ async function main() {
     readFile(COURSES_PATH, "utf8").then(JSON.parse),
     loadSlideOverrides(),
   ]);
+
+  setHrbekTheoryChapters(theory.chapters);
 
   const courseMeta = Object.fromEntries(courses.map((course) => [course.slug, course]));
   const prices = Object.fromEntries(
