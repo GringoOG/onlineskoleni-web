@@ -1,5 +1,5 @@
 import { site } from "@/lib/content";
-import { sendEmail } from "@/lib/email/resend";
+import { sendEmail, type SendEmailResult } from "@/lib/email/resend";
 import type { EnrollmentResult } from "@/lib/lms/enroll-from-order";
 import { getLmsEntryUrl } from "@/lib/lms/course-paths";
 
@@ -13,10 +13,10 @@ interface WelcomeEmailInput {
 }
 
 /** Uvítací e-mail studentovi po aktivaci kurzu. */
-export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> {
+export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<SendEmailResult> {
   const first = input.enrollments[0];
   if (!first) {
-    return;
+    return { sent: false, skipped: true, error: "no_enrollments" };
   }
 
   const appUrl =
@@ -72,7 +72,7 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<void> 
 
   console.info("[Welcome email]\n" + text);
 
-  await sendEmail({
+  return sendEmail({
     to: first.studentEmail,
     subject: input.manualActivation
       ? `Přístup ke školení – objednávka ${input.orderNumber}`

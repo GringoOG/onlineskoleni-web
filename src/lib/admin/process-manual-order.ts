@@ -37,6 +37,7 @@ export interface ProcessManualOrderResult {
   appliedDiscountPercent: number;
   enrolledStudents: number;
   emailsSent: number;
+  emailFailures: { email: string; error: string }[];
   enrollments: EnrollmentResult[];
 }
 
@@ -132,6 +133,7 @@ export async function processManualOrder(
 
   const allEnrollments: EnrollmentResult[] = [];
   let emailsSent = 0;
+  const emailFailures: { email: string; error: string }[] = [];
   const perStudentItems = buildPerStudentItems(courseSlugs);
 
   for (const participant of participants) {
@@ -149,14 +151,25 @@ export async function processManualOrder(
 
     allEnrollments.push(...enrollments);
 
-    await sendWelcomeEmail({
+    const emailResult = await sendWelcomeEmail({
       orderNumber: order.orderNumber,
       companyName,
       enrollments,
       manualActivation: true,
       paymentMethodLabel: paymentMethodLabel(input.paymentMethod),
     });
-    emailsSent += 1;
+
+    if (emailResult.sent) {
+      emailsSent += 1;
+    } else {
+      emailFailures.push({
+        email: participant.email,
+        error: emailResult.error ?? (emailResult.skipped ? "resend_not_configured" : "send_failed"),
+      });
+      console.error(
+        `[Manual order] Welcome e-mail NOT sent to ${participant.email}: ${emailResult.error ?? "unknown"}`
+      );
+    }
   }
 
   await notifyOrderPaid({
@@ -188,6 +201,7 @@ export async function processManualOrder(
     appliedDiscountPercent,
     enrolledStudents: participants.length,
     emailsSent,
+    emailFailures,
     enrollments: allEnrollments,
   };
 }

@@ -20,6 +20,7 @@ interface SuccessState {
   appliedDiscountPercent: number;
   enrolledStudents: number;
   emailsSent: number;
+  emailFailures?: { email: string; error: string }[];
 }
 
 const inputClassName =
@@ -133,6 +134,7 @@ export function ManualOrderForm() {
         appliedDiscountPercent: data.appliedDiscountPercent,
         enrolledStudents: data.enrolledStudents,
         emailsSent: data.emailsSent,
+        emailFailures: data.emailFailures,
       });
       setParticipantsRaw("");
       setAdminNote("");
@@ -166,8 +168,31 @@ export function ManualOrderForm() {
             </li>
             <li>
               Odesláno e-mailů: <strong>{success.emailsSent}</strong>
+              {success.emailFailures && success.emailFailures.length > 0 ? (
+                <span className="text-amber-800">
+                  {" "}
+                  (selhalo: {success.emailFailures.length})
+                </span>
+              ) : null}
             </li>
           </ul>
+          {success.emailFailures && success.emailFailures.length > 0 ? (
+            <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-amber-950">
+              <p className="font-semibold">Uvítací e-mail se nepodařilo odeslat</p>
+              <p className="mt-1">
+                Účet a kurzy byly vytvořeny, ale student nedostal přihlašovací údaje e-mailem.
+                Zkontrolujte <code className="text-xs">RESEND_API_KEY</code> a ověřenou odesílací
+                doménu na Vercelu.
+              </p>
+              <ul className="mt-2 list-inside list-disc">
+                {success.emailFailures.map((failure) => (
+                  <li key={failure.email}>
+                    {failure.email}: {failure.error}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       ) : null}
 

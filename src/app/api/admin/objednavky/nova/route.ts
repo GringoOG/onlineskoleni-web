@@ -88,6 +88,7 @@ export async function POST(request: Request) {
       appliedDiscountPercent: result.appliedDiscountPercent,
       enrolledStudents: result.enrolledStudents,
       emailsSent: result.emailsSent,
+      emailFailures: result.emailFailures,
     });
   } catch (error) {
     console.error("[admin/objednavky/nova]", error);

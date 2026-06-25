@@ -40,11 +40,17 @@ export async function processPaidOrder(
     items: order.items,
   });
 
-  await sendWelcomeEmail({
+  const emailResult = await sendWelcomeEmail({
     orderNumber: order.orderNumber,
     companyName: order.companyName,
     enrollments,
   });
+
+  if (!emailResult.sent) {
+    console.error(
+      `[LMS enrollment] Welcome e-mail NOT sent to ${order.email}: ${emailResult.error ?? "unknown"}`
+    );
+  }
 
   await notifyOrderPaid({
     orderNumber: order.orderNumber,
