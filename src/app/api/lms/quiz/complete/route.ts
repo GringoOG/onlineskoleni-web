@@ -1,10 +1,18 @@
 import { NextResponse } from "next/server";
 import { completeQuizTest } from "@/lib/lms/complete-quiz";
+import { getLmsSession } from "@/lib/lms/session";
 
 export async function POST(request: Request) {
+  const session = await getLmsSession();
+  if (!session) {
+    return NextResponse.json(
+      { ok: false, message: "Nejste přihlášeni." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = (await request.json()) as {
-      userId?: string;
       courseId?: string;
       correctAnswers?: number;
       totalQuestions?: number;
@@ -12,11 +20,12 @@ export async function POST(request: Request) {
     };
 
     const result = await completeQuizTest({
-      userId: body.userId ?? "",
+      userId: session.userId,
       courseId: body.courseId ?? "",
       correctAnswers: Number(body.correctAnswers),
       totalQuestions: Number(body.totalQuestions),
       minCorrectAnswers: Number(body.minCorrectAnswers),
+      issueCertificate: true,
     });
 
     if (!result.ok) {

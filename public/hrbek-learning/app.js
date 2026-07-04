@@ -461,6 +461,7 @@ function renderFinalTest(category) {
           <h2 class="mt-3 text-2xl font-bold text-emerald-900">Gratulujeme!</h2>
           <p class="mt-2 text-emerald-800">
             Závěrečný test jste úspěšně dokončili (${ui.finalResult.correct}/${ui.finalResult.total} správně).
+            Certifikát (PDF) vydává až oficiální závěrečný test v přihlášeném LMS po objednávce školení.
           </p>
           <button data-action="go-catalog" class="mt-6 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800">
             Zpět do katalogu

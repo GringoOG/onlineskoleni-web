@@ -13,7 +13,6 @@ const navItems = [
   { href: "/cenik", label: "Ceník" },
   { href: "/objednavka", label: "Objednat" },
   { href: "/lms", label: "Moje\u00A0školení" },
-  { href: "/hrbek-learning/?demo=1", label: "Microlearning" },
   { href: "/lms/bozp/test", label: "Zkusit\u00A0test" },
   { href: "/kontakt", label: "Kontakt" },
 ];

@@ -41,11 +41,10 @@ export function LoginPlaceholder({ open, onClose }: LoginPlaceholderProps) {
         </div>
 
         <p className="mt-4 text-sm text-slate-600">
-          <strong>Student:</strong> e-mail a heslo z uvítacího e-mailu, nebo demo{" "}
-          <strong>{pages.demoTest.username}</strong> / <strong>{pages.demoTest.password}</strong>.
+          <strong>Student:</strong> e-mail a heslo z uvítacího e-mailu po objednávce.
           <br />
-          <strong>TechnikPO (admin):</strong> uživatel <strong>admin</strong> a heslo z nastavení
-          administrace.
+          <strong>Demo test:</strong>{" "}
+          <strong>{pages.demoTest.username}</strong> / <strong>{pages.demoTest.password}</strong>
         </p>
 
         <div className="mt-4">

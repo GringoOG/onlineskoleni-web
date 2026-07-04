@@ -5,7 +5,6 @@ import { LmsLoginForm } from "@/components/lms/LmsLoginForm";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { sanitizeLmsRedirect } from "@/lib/lms/mark-theory-started";
-import { getHrbekLearningPath } from "@/lib/lms/hrbek-learning-paths";
 import { getLmsSession } from "@/lib/lms/session";
 
 export const metadata: Metadata = {
@@ -30,7 +29,7 @@ export default async function LmsLoginPage({ searchParams }: PageProps) {
     <>
       <PageHero
         title="Přihlášení studenta"
-        subtitle="Přihlaste se jako student (e-mail z objednávky), demo účet testik, nebo admin TechnikPO (uživatel admin)."
+        subtitle="Přihlaste se jako student (e-mail z objednávky) nebo demo účtem pro vyzkoušení testu."
       >
         <Link
           href="/lms"
@@ -46,17 +45,11 @@ export default async function LmsLoginPage({ searchParams }: PageProps) {
             <LmsLoginForm redirectTo={redirectTo} />
             <div className="mt-4 space-y-2 text-center text-sm text-muted">
               <p>
-                <Link href="/lms" className="font-semibold text-brand-dark hover:underline">
-                  Po přihlášení demo účtem → Moje školení (všechny kurzy)
-                </Link>
-              </p>
-              <p>
-                <Link
-                  href={getHrbekLearningPath(undefined, { demo: true })}
-                  className="font-semibold text-brand-dark hover:underline"
-                >
-                  Microlearning – všechny učební materiály (demo) →
-                </Link>
+                Nemáte přihlašovací údaje?{" "}
+                <Link href="/objednavka" className="font-semibold text-brand-dark hover:underline">
+                  Objednejte školení
+                </Link>{" "}
+                a přístup obdržíte e-mailem.
               </p>
             </div>
           </div>

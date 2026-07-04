@@ -102,10 +102,10 @@
   },
   "demoTest": {
     "title": "Vyzkoušejte test zdarma",
-    "description": "Demo test BOZP s 10 otázkami – přihlaste se demo účtem a vyzkoušejte si závěrečný test online.",
+    "description": "Demo test BOZP s 10 otázkami – přihlaste se demo účtem a vyzkoušejte si formát závěrečného testu online.",
     "username": "testik",
     "password": "test1234",
-    "note": "Po úspěšném testu (min. 8/10 správně) se výsledek uloží do systému školení."
+    "note": "Demo test pouze ukazuje formát otázek – certifikát (PDF) se vydává až po úspěšném absolvování oficiálního závěrečného testu v LMS."
   },
   "qrPayment": {
     "accountNumber": "2500979023",

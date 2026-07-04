@@ -75,10 +75,9 @@ export function LmsLoginForm({
 
       {!compact && (
         <p className="text-sm text-muted">
-          Demo student: <strong>{pages.demoTest.username}</strong> /{" "}
-          <strong>{pages.demoTest.password}</strong>
+          <strong>Student:</strong> e-mail a heslo z uvítacího e-mailu po objednávce.
           <br />
-          Admin TechnikPO: <strong>admin</strong> + vaše admin heslo.
+          <strong>Demo test:</strong> {pages.demoTest.username} / {pages.demoTest.password}
         </p>
       )}
 

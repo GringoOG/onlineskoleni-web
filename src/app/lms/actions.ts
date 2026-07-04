@@ -252,6 +252,7 @@ export async function submitOfficialQuiz(
       correctAnswers,
       totalQuestions,
       minCorrectAnswers,
+      issueCertificate: true,
     });
   } catch (error) {
     console.error("[submitOfficialQuiz]", error);
@@ -306,12 +307,15 @@ export async function submitBozpQuiz(
   return submitBozpDemoQuiz(selectedIndices);
 }
 
-/** Volá se po dokončení testu v LMS. Při ≥ 8/10 správných zapíše pokus a označí kurz jako dokončený. */
+/** @deprecated Použijte submitOfficialQuiz – certifikát pouze u oficiálního závěrečného testu. */
 export async function submitQuizResult(
   input: CompleteQuizInput
 ): Promise<SubmitQuizResult> {
   try {
-    return await completeQuizTest(input);
+    return await completeQuizTest({
+      ...input,
+      issueCertificate: true,
+    });
   } catch (error) {
     console.error("[submitQuizResult]", error);
     return {

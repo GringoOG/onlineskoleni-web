@@ -1,4 +1,4 @@
-/** Cesta do microlearning aplikace HRBEK (statická SPA v public/). */
+/** Cesta do microlearning aplikace (statická SPA v public/). */
 export function getHrbekLearningPath(
   courseSlug?: string,
   options?: { demo?: boolean }

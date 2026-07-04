@@ -21,7 +21,7 @@ export function HrbekLearningGrid({ isDemoUser }: HrbekLearningGridProps) {
           </h2>
           <p className="mt-1 text-sm text-muted">
             Studijní karty s ilustracemi, průběžné ověření znalostí a závěrečný test
-            pro každou kategorii školení.
+            pro každou kategorii školení. Certifikát (PDF) vydává až oficiální závěrečný test v LMS.
           </p>
         </div>
         <Link
@@ -31,13 +31,6 @@ export function HrbekLearningGrid({ isDemoUser }: HrbekLearningGridProps) {
           Otevřít celý katalog →
         </Link>
       </div>
-
-      {isDemoUser && (
-        <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-          <strong>Demo režim:</strong> všechny kategorie microlearningu jsou odemčené bez
-          platby. Můžete projít učební materiály, demo testy i závěrečné testy u všech kurzů.
-        </p>
-      )}
 
       <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {courses.map((course) => {

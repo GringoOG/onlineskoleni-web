@@ -9,6 +9,8 @@ export interface CompleteQuizInput {
   correctAnswers: number;
   totalQuestions: number;
   minCorrectAnswers: number;
+  /** Certifikát a dokončení kurzu pouze u oficiálního závěrečného testu. */
+  issueCertificate: boolean;
 }
 
 export type CompleteQuizResult =
@@ -64,8 +66,14 @@ export async function completeQuizTest(
     return { ok: false, message: validationError };
   }
 
-  const { userId, courseId, correctAnswers, totalQuestions, minCorrectAnswers } =
-    input;
+  const {
+    userId,
+    courseId,
+    correctAnswers,
+    totalQuestions,
+    minCorrectAnswers,
+    issueCertificate: shouldIssueCertificate,
+  } = input;
   const scorePercent = Math.round((correctAnswers / totalQuestions) * 100);
   const isPassed = correctAnswers >= minCorrectAnswers;
 
@@ -89,6 +97,14 @@ export async function completeQuizTest(
       scorePercent,
       totalQuestions,
       message: `Test nebyl úspěšný (${correctAnswers}/${totalQuestions}, ${scorePercent} %). Pro splnění je potřeba alespoň ${minCorrectAnswers} správných odpovědí (${QUIZ_PASS_THRESHOLD_PERCENT} %).`,
+    };
+  }
+
+  if (!shouldIssueCertificate) {
+    return {
+      ok: false,
+      message:
+        "Certifikát lze vydat pouze po úspěšném absolvování oficiálního závěrečného testu.",
     };
   }
 
