@@ -20,11 +20,11 @@ export function Section({
   return (
     <section
       id={id}
-      className={`py-16 md:py-20 ${alt ? "bg-card" : ""} ${className}`}
+      className={`py-10 md:py-12 ${alt ? "bg-card" : ""} ${className}`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
-          <div className="mb-10 max-w-2xl">
+          <div className="mb-6 max-w-2xl">
             {title && (
               <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
                 {title}
