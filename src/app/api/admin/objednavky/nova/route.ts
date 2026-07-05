@@ -29,6 +29,13 @@ function parseCourseSlugs(body: Record<string, unknown>): string[] {
   return single ? [single] : [];
 }
 
+function parseContactSalutation(value: unknown): "pan" | "pani" | undefined {
+  if (value === "pan" || value === "pani") {
+    return value;
+  }
+  return undefined;
+}
+
 export async function POST(request: Request) {
   try {
     const authError = await requireOrdersApiAccess();
@@ -45,6 +52,7 @@ export async function POST(request: Request) {
     const adminNote = body.adminNote ? String(body.adminNote).trim() : undefined;
     const paymentMethod = parsePaymentMethod(body.paymentMethod);
     const discountMode = parseDiscountMode(body.discountMode);
+    const contactSalutation = parseContactSalutation(body.contactSalutation);
 
     if (!companyName || !contactName || !contactEmail || courseSlugs.length === 0 || !paymentMethod) {
       return NextResponse.json(
@@ -71,6 +79,7 @@ export async function POST(request: Request) {
       companyName,
       contactName,
       contactEmail,
+      contactSalutation,
       phone,
       ico,
       courseSlugs,

@@ -1,4 +1,5 @@
 import { site } from "@/lib/content";
+import { formatCzechEmailGreeting, type CzechSalutation } from "@/lib/email/czech-greeting";
 import { sendEmail, type SendEmailResult } from "@/lib/email/resend";
 import type { EnrollmentResult } from "@/lib/lms/enroll-from-order";
 import { getLmsEntryUrl } from "@/lib/lms/course-paths";
@@ -7,6 +8,9 @@ interface WelcomeEmailInput {
   orderNumber: string;
   companyName: string;
   enrollments: EnrollmentResult[];
+  /** Jméno příjemce z aktuální objednávky (má přednost před údajem v DB). */
+  recipientName?: string;
+  recipientSalutation?: CzechSalutation;
   /** Manuální aktivace provozovatelem (faktura / hotově). */
   manualActivation?: boolean;
   paymentMethodLabel?: string;
@@ -52,8 +56,11 @@ export async function sendWelcomeEmail(input: WelcomeEmailInput): Promise<SendEm
     ? `Váš přístup ke školení byl aktivován (${input.paymentMethodLabel ?? "mimo online platbu"}).`
     : `Vaše platba byla přijata a kurzy jsou připraveny v online systému školení.`;
 
+  const recipientName = (input.recipientName ?? first.studentName).trim();
+  const greeting = formatCzechEmailGreeting(recipientName, input.recipientSalutation);
+
   const text = [
-    `Dobrý den, ${first.studentName},`,
+    greeting,
     "",
     input.manualActivation
       ? `děkujeme za objednávku ${input.orderNumber} (${input.companyName}).`

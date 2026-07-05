@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
+import { GoogleAdsPurchaseConversion } from "@/components/GoogleAdsPurchaseConversion";
 import { OrderStatus } from "@/components/OrderStatus";
 
 export const metadata: Metadata = {
@@ -25,9 +26,12 @@ export default async function DekujemePage({ searchParams }: PageProps) {
         {!orderNumber ? (
           <p className="text-slate-600">Chybí číslo objednávky v adrese URL.</p>
         ) : (
-          <Suspense fallback={<p className="text-slate-600">Načítání…</p>}>
-            <OrderStatus orderNumber={orderNumber} showQrPayment={showQrPayment} />
-          </Suspense>
+          <>
+            <GoogleAdsPurchaseConversion orderNumber={orderNumber} />
+            <Suspense fallback={<p className="text-slate-600">Načítání…</p>}>
+              <OrderStatus orderNumber={orderNumber} showQrPayment={showQrPayment} />
+            </Suspense>
+          </>
         )}
       </Section>
     </>

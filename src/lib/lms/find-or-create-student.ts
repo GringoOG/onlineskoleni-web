@@ -33,10 +33,25 @@ export async function findOrCreateStudent(input: {
     .limit(1);
 
   if (existing) {
+    const updates: { name?: string; companyName?: string } = {};
+    if (name && name !== existing.name) {
+      updates.name = name;
+    }
+    if (companyName) {
+      updates.companyName = companyName;
+    }
+
+    if (updates.name || updates.companyName) {
+      await db
+        .update(users)
+        .set(updates)
+        .where(eq(users.id, existing.id));
+    }
+
     return {
       id: existing.id,
       email: existing.email,
-      name: existing.name,
+      name: updates.name ?? existing.name,
       isNew: false,
     };
   }

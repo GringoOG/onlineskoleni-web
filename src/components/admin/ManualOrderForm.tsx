@@ -30,6 +30,7 @@ export function ManualOrderForm() {
   const [companyName, setCompanyName] = useState("");
   const [ico, setIco] = useState("");
   const [contactName, setContactName] = useState("");
+  const [contactSalutation, setContactSalutation] = useState<"" | "pan" | "pani">("");
   const [contactEmail, setContactEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedCourses, setSelectedCourses] = useState<Record<string, boolean>>(() => ({
@@ -111,6 +112,7 @@ export function ManualOrderForm() {
           companyName,
           ico: ico || undefined,
           contactName,
+          contactSalutation: contactSalutation || undefined,
           contactEmail,
           phone: phone || undefined,
           courseSlugs: selectedSlugs,
@@ -226,13 +228,28 @@ export function ManualOrderForm() {
             <label htmlFor="contactName" className="block text-sm font-medium text-slate-700">
               Jméno kontaktu *
             </label>
-            <input
-              id="contactName"
-              required
-              value={contactName}
-              onChange={(e) => setContactName(e.target.value)}
-              className={inputClassName}
-            />
+            <div className="mt-1 flex gap-2">
+              <input
+                id="contactName"
+                required
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+              />
+              <select
+                id="contactSalutation"
+                value={contactSalutation}
+                onChange={(e) =>
+                  setContactSalutation(e.target.value as "" | "pan" | "pani")
+                }
+                className="w-36 shrink-0 rounded-lg border border-slate-300 px-2 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+                title="Oslovení v e-mailu"
+              >
+                <option value="">Auto (z příjmení)</option>
+                <option value="pan">Pane</option>
+                <option value="pani">Paní</option>
+              </select>
+            </div>
           </div>
           <div>
             <label htmlFor="contactEmail" className="block text-sm font-medium text-slate-700">
@@ -378,7 +395,9 @@ export function ManualOrderForm() {
         <legend className="text-lg font-bold text-slate-900">Zaměstnanci (hromadné zadání)</legend>
         <p className="text-sm text-slate-600">
           Každý řádek = jedna osoba = jedno místo (pro výpočet slevy). Formát:{" "}
-          <code className="rounded bg-slate-100 px-1">Jméno Příjmení, email@firma.cz</code>.
+          <code className="rounded bg-slate-100 px-1">Jméno Příjmení, email@firma.cz</code>{" "}
+          (volitelně prefix <code className="rounded bg-slate-100 px-1">pan</code> /{" "}
+          <code className="rounded bg-slate-100 px-1">paní</code> před jménem).
           Pokud necháte prázdné, vytvoří se účet pouze pro kontaktní osobu.
         </p>
         <textarea

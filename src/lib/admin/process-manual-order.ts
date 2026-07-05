@@ -13,6 +13,7 @@ import { sendWelcomeEmail } from "@/lib/lms/welcome-email";
 export interface ManualOrderParticipant {
   name: string;
   email: string;
+  salutation?: "pan" | "pani";
 }
 
 export type DiscountMode = "auto" | "0" | "10" | "15";
@@ -21,6 +22,7 @@ export interface ProcessManualOrderInput {
   companyName: string;
   contactName: string;
   contactEmail: string;
+  contactSalutation?: "pan" | "pani";
   phone?: string;
   ico?: string;
   courseSlugs: string[];
@@ -107,7 +109,13 @@ export async function processManualOrder(
   const participants: ManualOrderParticipant[] =
     parsed.participants.length > 0
       ? parsed.participants
-      : [{ name: contactName, email: contactEmail }];
+      : [
+          {
+            name: contactName,
+            email: contactEmail,
+            salutation: input.contactSalutation,
+          },
+        ];
 
   const seatsPurchased = participants.length;
   const discountMode = input.discountMode ?? "auto";
@@ -155,6 +163,8 @@ export async function processManualOrder(
       orderNumber: order.orderNumber,
       companyName,
       enrollments,
+      recipientName: participant.name,
+      recipientSalutation: participant.salutation,
       manualActivation: true,
       paymentMethodLabel: paymentMethodLabel(input.paymentMethod),
     });

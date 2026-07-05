@@ -44,6 +44,7 @@ export async function processPaidOrder(
     orderNumber: order.orderNumber,
     companyName: order.companyName,
     enrollments,
+    recipientName: order.contactName,
   });
 
   if (!emailResult.sent) {

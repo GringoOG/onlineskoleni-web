@@ -1,4 +1,5 @@
 import { site } from "@/lib/content";
+import { formatCzechEmailGreeting } from "@/lib/email/czech-greeting";
 import { sendEmail, type SendEmailResult } from "@/lib/email/resend";
 import { formatCzechDate } from "@/lib/lms/format-czech-date";
 
@@ -27,8 +28,10 @@ export async function sendCertificateExpiryReminderEmail(
   const orderUrl = `${appUrl}/objednavka?kurz=${encodeURIComponent(input.courseSlug)}`;
   const lmsUrl = `${appUrl}/lms`;
 
+  const greeting = formatCzechEmailGreeting(input.studentName);
+
   const text = [
-    `Dobrý den, ${input.studentName},`,
+    greeting,
     "",
     `platnost vašeho certifikátu ze školení „${input.courseTitle}“ končí dne ${expiryLabel}.`,
     `Evidenční kód certifikátu: ${input.certificateCode}`,

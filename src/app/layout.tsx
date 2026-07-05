@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CookieBanner } from "@/components/CookieBanner";
+import { GoogleTag } from "@/components/GoogleTag";
 import { site } from "@/lib/content";
 import "./globals.css";
 
@@ -46,6 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={`${inter.variable} h-full`}>
+      <head>
+        <GoogleTag />
+      </head>
       <body className="flex min-h-full flex-col antialiased">
         <Header />
         <main className="flex-1 pt-16">
