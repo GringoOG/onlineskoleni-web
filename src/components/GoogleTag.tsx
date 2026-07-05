@@ -1,24 +1,32 @@
 import Script from "next/script";
-import { GOOGLE_ADS_ID } from "@/lib/google-ads";
+import { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/google-ads";
 
-/** Globální Google tag (gtag.js) pro měření návštěvnosti a Google Ads. */
+/** Globální Google tag (gtag.js) – GA4 + Google Ads. */
 export function GoogleTag() {
-  if (!GOOGLE_ADS_ID) {
+  const primaryId = GA4_MEASUREMENT_ID || GOOGLE_ADS_ID;
+  if (!primaryId) {
     return null;
   }
+
+  const configLines = [
+    GA4_MEASUREMENT_ID ? `gtag('config', '${GA4_MEASUREMENT_ID}');` : null,
+    GOOGLE_ADS_ID ? `gtag('config', '${GOOGLE_ADS_ID}');` : null,
+  ]
+    .filter(Boolean)
+    .join("\n          ");
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${primaryId}`}
         strategy="afterInteractive"
       />
-      <Script id="google-ads-gtag" strategy="afterInteractive">
+      <Script id="google-gtag" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GOOGLE_ADS_ID}');
+          ${configLines}
         `}
       </Script>
     </>
