@@ -3,7 +3,7 @@ export const GOOGLE_ADS_ID =
 
 /** Google Analytics 4 – měření návštěvnosti */
 export const GA4_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA4_ID ?? "G-MYJ1MTYE91";
+  process.env.NEXT_PUBLIC_GA4_ID ?? "G-E51MX7EQNW";
 
 /** Event snippet: Nákup – onlineskoleni.eu */
 export const GOOGLE_ADS_PURCHASE_CONVERSION =
