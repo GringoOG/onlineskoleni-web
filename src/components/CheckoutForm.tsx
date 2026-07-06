@@ -8,6 +8,7 @@ import {
   orderCatalog,
 } from "@/lib/order-catalog";
 import { qrPayment } from "@/lib/content";
+import { CeskoPlatiKartouBadge } from "@/components/CeskoPlatiKartouBadge";
 
 export function CheckoutForm() {
   const searchParams = useSearchParams();
@@ -290,6 +291,8 @@ export function CheckoutForm() {
           {loadingBank ? "Vytvářím objednávku…" : "Zaplatit QR převodem"}
         </button>
       </div>
+
+      <CeskoPlatiKartouBadge variant="light" className="mt-4" />
 
       <p className="text-xs text-slate-500">
         GoPay: karty a online bankovní převody. QR platba: převod na účet{" "}

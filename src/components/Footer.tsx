@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { pages, site } from "@/lib/content";
+import { CeskoPlatiKartouBadge } from "@/components/CeskoPlatiKartouBadge";
 
 const footerNav = [
   { href: "/#o-nas", label: "O nás" },
@@ -97,6 +98,8 @@ export function Footer() {
             Jak funguje náhradní plnění →
           </Link>
         </div>
+
+        <CeskoPlatiKartouBadge variant="dark" className="mt-10" />
 
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-500">
           <p>
