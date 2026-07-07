@@ -149,6 +149,7 @@ export async function processManualOrder(
       email: participant.email,
       name: participant.name,
       companyName,
+      issueNewPassword: true,
     });
 
     const enrollments = await enrollStudentForOrderItems({

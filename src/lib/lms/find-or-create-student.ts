@@ -16,6 +16,8 @@ export async function findOrCreateStudent(input: {
   email: string;
   name: string;
   companyName: string;
+  /** U existujícího účtu vygeneruje nové heslo (např. manuální aktivace v adminu). */
+  issueNewPassword?: boolean;
 }): Promise<StudentRecord> {
   const email = input.email.trim().toLowerCase();
   const name = input.name.trim();
@@ -33,7 +35,7 @@ export async function findOrCreateStudent(input: {
     .limit(1);
 
   if (existing) {
-    const updates: { name?: string; companyName?: string } = {};
+    const updates: { name?: string; companyName?: string; passwordHash?: string } = {};
     if (name && name !== existing.name) {
       updates.name = name;
     }
@@ -41,7 +43,13 @@ export async function findOrCreateStudent(input: {
       updates.companyName = companyName;
     }
 
-    if (updates.name || updates.companyName) {
+    let temporaryPassword: string | undefined;
+    if (input.issueNewPassword) {
+      temporaryPassword = generateTemporaryPassword();
+      updates.passwordHash = hashPassword(temporaryPassword);
+    }
+
+    if (updates.name || updates.companyName || updates.passwordHash) {
       await db
         .update(users)
         .set(updates)
@@ -53,6 +61,7 @@ export async function findOrCreateStudent(input: {
       email: existing.email,
       name: updates.name ?? existing.name,
       isNew: false,
+      temporaryPassword,
     };
   }
 

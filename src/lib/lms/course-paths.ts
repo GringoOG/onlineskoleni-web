@@ -1,3 +1,5 @@
+import { getAppUrl } from "@/lib/email/app-url";
+
 /** Veřejná cesta do LMS pro daný kurz (oficiální závěrečný test). */
 export function getLmsEntryPath(courseSlug: string): string {
   if (courseSlug === "bozp") {
@@ -71,6 +73,5 @@ export function getOfficialTestHubPath(courseSlug: string): string | null {
 }
 
 export function getLmsEntryUrl(courseSlug: string): string {
-  const base = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "";
-  return `${base}${getLmsEntryPath(courseSlug)}`;
+  return `${getAppUrl()}${getLmsEntryPath(courseSlug)}`;
 }
