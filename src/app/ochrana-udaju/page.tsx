@@ -50,26 +50,26 @@ export default function PrivacyPage() {
               a) Návštěvníci webu
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>technické údaje o použití webu (IP adresa, typ prohlížeče, cookies).</li>
-              <li>údaje z analytických a marketingových nástrojů (viz část o cookies).</li>
+              <li>technické údaje o použití webu (IP adresa, typ prohlížeče, cookies)</li>
+              <li>údaje z analytických a marketingových nástrojů (viz část o cookies)</li>
             </ul>
 
             <h3 className="mt-4 text-base font-semibold text-slate-900">
               b) Kontaktní formulář
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>jméno a příjmení, e-mail, telefon a firma.</li>
-              <li>obsah zprávy a vybrané typy školení.</li>
+              <li>jméno a příjmení, e-mail, telefon a firma</li>
+              <li>obsah zprávy a vybrané typy školení</li>
             </ul>
 
             <h3 className="mt-4 text-base font-semibold text-slate-900">
               c) Objednatel kurzu (zaměstnavatel / kontaktní osoba)
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>název firmy, IČO (pokud je uvedeno) a jméno kontaktní osoby.</li>
-              <li>e-mail a telefon.</li>
-              <li>údaje o objednávce (kurzy, počet míst, cena, stav platby).</li>
-              <li>fakturační a platební související údaje.</li>
+              <li>název firmy, IČO (pokud je uvedeno) a jméno kontaktní osoby</li>
+              <li>e-mail a telefon</li>
+              <li>údaje o objednávce (kurzy, počet míst, cena, stav platby)</li>
+              <li>fakturační a platební související údaje</li>
             </ul>
 
             <h3 className="mt-4 text-base font-semibold text-slate-900">
@@ -80,11 +80,11 @@ export default function PrivacyPage() {
               objednatel zadá nebo které vzniknou při používání služby:
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>jméno a příjmení.</li>
-              <li>e-mail (slouží jako přihlašovací jméno).</li>
-              <li>název firmy / zaměstnavatele.</li>
-              <li>průběh a výsledek školení a testu.</li>
-              <li>údaje o vystaveném certifikátu (datum, evidenční kód, název kurzu).</li>
+              <li>jméno a příjmení</li>
+              <li>e-mail (slouží jako přihlašovací jméno)</li>
+              <li>název firmy / zaměstnavatele</li>
+              <li>průběh a výsledek školení a testu</li>
+              <li>údaje o vystaveném certifikátu (datum, evidenční kód, název kurzu)</li>
             </ul>
             <p className="mt-2">
               <strong>
@@ -151,8 +151,8 @@ export default function PrivacyPage() {
                 <strong>Google Ireland Limited</strong> — Google Analytics a Google Ads (měření
                 návštěvnosti a konverzí), pokud jsou aktivní.
               </li>
-              <li>účetní a daňoví poradci správce.</li>
-              <li>orgány veřejné moci, pokud to vyžaduje zákon.</li>
+              <li>účetní a daňoví poradci správce</li>
+              <li>orgány veřejné moci, pokud to vyžaduje zákon</li>
             </ul>
             <p className="mt-2">
               Někteří příjemci mohou zpracovávat údaje v zemích mimo EU/EHP. Přenos probíhá na
@@ -188,13 +188,13 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-slate-900">6. Vaše práva</h2>
             <p className="mt-2">Subjekt údajů má právo:</p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>na přístup ke svým osobním údajům.</li>
-              <li>na opravu nebo doplnění údajů.</li>
-              <li>na výmaz („být zapomenut“), pokud pro to existují zákonné podmínky.</li>
-              <li>na omezení zpracování.</li>
-              <li>na přenositelnost údajů.</li>
-              <li>vznést námitku proti zpracování na základě oprávněného zájmu.</li>
-              <li>podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.cz).</li>
+              <li>na přístup ke svým osobním údajům</li>
+              <li>na opravu nebo doplnění údajů</li>
+              <li>na výmaz („být zapomenut“), pokud pro to existují zákonné podmínky</li>
+              <li>na omezení zpracování</li>
+              <li>na přenositelnost údajů</li>
+              <li>vznést námitku proti zpracování na základě oprávněného zájmu</li>
+              <li>podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.cz)</li>
             </ul>
             <p className="mt-2">
               Žádosti o uplatnění práv zasílejte na{" "}
