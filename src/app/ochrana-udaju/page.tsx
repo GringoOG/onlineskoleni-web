@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               a) Návštěvníci webu
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>technické údaje o použití webu (IP adresa, typ prohlížeče, cookies),</li>
+              <li>technické údaje o použití webu (IP adresa, typ prohlížeče, cookies).</li>
               <li>údaje z analytických a marketingových nástrojů (viz část o cookies).</li>
             </ul>
 
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
               b) Kontaktní formulář
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>jméno a příjmení, e-mail, telefon, firma,</li>
+              <li>jméno a příjmení, e-mail, telefon a firma.</li>
               <li>obsah zprávy a vybrané typy školení.</li>
             </ul>
 
@@ -66,9 +66,9 @@ export default function PrivacyPage() {
               c) Objednatel kurzu (zaměstnavatel / kontaktní osoba)
             </h3>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>název firmy, IČO (pokud je uvedeno), jméno kontaktní osoby,</li>
-              <li>e-mail, telefon,</li>
-              <li>údaje o objednávce (kurzy, počet míst, cena, stav platby),</li>
+              <li>název firmy, IČO (pokud je uvedeno) a jméno kontaktní osoby.</li>
+              <li>e-mail a telefon.</li>
+              <li>údaje o objednávce (kurzy, počet míst, cena, stav platby).</li>
               <li>fakturační a platební související údaje.</li>
             </ul>
 
@@ -80,10 +80,10 @@ export default function PrivacyPage() {
               objednatel zadá nebo které vzniknou při používání služby:
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>jméno a příjmení,</li>
-              <li>e-mail (slouží jako přihlašovací jméno),</li>
-              <li>název firmy / zaměstnavatele,</li>
-              <li>průběh a výsledek školení a testu,</li>
+              <li>jméno a příjmení.</li>
+              <li>e-mail (slouží jako přihlašovací jméno).</li>
+              <li>název firmy / zaměstnavatele.</li>
+              <li>průběh a výsledek školení a testu.</li>
               <li>údaje o vystaveném certifikátu (datum, evidenční kód, název kurzu).</li>
             </ul>
             <p className="mt-2">
@@ -135,23 +135,23 @@ export default function PrivacyPage() {
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
-                <strong>GoPay s.r.o.</strong> — zpracování online plateb (platební brána),
+                <strong>GoPay s.r.o.</strong> — zpracování online plateb (platební brána).
               </li>
               <li>
                 <strong>Resend</strong> — doručování transakčních e-mailů (přístupové údaje,
-                potvrzení objednávky),
+                potvrzení objednávky).
               </li>
               <li>
-                <strong>Vercel Inc.</strong> — hosting webové aplikace,
+                <strong>Vercel Inc.</strong> — hosting webové aplikace.
               </li>
               <li>
-                <strong>Supabase</strong> — provoz databáze (objednávky, účty v LMS),
+                <strong>Supabase</strong> — provoz databáze (objednávky, účty v LMS).
               </li>
               <li>
                 <strong>Google Ireland Limited</strong> — Google Analytics a Google Ads (měření
-                návštěvnosti a konverzí), pokud jsou aktivní,
+                návštěvnosti a konverzí), pokud jsou aktivní.
               </li>
-              <li>účetní a daňoví poradci správce,</li>
+              <li>účetní a daňoví poradci správce.</li>
               <li>orgány veřejné moci, pokud to vyžaduje zákon.</li>
             </ul>
             <p className="mt-2">
@@ -188,12 +188,12 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-slate-900">6. Vaše práva</h2>
             <p className="mt-2">Subjekt údajů má právo:</p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>na přístup ke svým osobním údajům,</li>
-              <li>na opravu nebo doplnění údajů,</li>
-              <li>na výmaz („být zapomenut“), pokud pro to existují zákonné podmínky,</li>
-              <li>na omezení zpracování,</li>
-              <li>na přenositelnost údajů,</li>
-              <li>vznést námitku proti zpracování na základě oprávněného zájmu,</li>
+              <li>na přístup ke svým osobním údajům.</li>
+              <li>na opravu nebo doplnění údajů.</li>
+              <li>na výmaz („být zapomenut“), pokud pro to existují zákonné podmínky.</li>
+              <li>na omezení zpracování.</li>
+              <li>na přenositelnost údajů.</li>
+              <li>vznést námitku proti zpracování na základě oprávněného zájmu.</li>
               <li>podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.cz).</li>
             </ul>
             <p className="mt-2">
@@ -215,10 +215,10 @@ export default function PrivacyPage() {
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
                 <strong>Nezbytné / preferenční</strong> — např. uložení informace o souhlasu s
-                cookies v prohlížeči (localStorage),
+                cookies v prohlížeči (localStorage).
               </li>
               <li>
-                <strong>Analytické</strong> — Google Analytics 4 (ID měření G-E51MX7EQNW),
+                <strong>Analytické</strong> — Google Analytics 4 (ID měření G-E51MX7EQNW).
               </li>
               <li>
                 <strong>Marketingové</strong> — Google Ads (měření konverzí objednávek).
