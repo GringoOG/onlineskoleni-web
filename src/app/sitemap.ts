@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/objednavka",
     "/kontakt",
     "/ochrana-udaju",
+    "/obchodni-podminky",
   ];
   const courseRoutes = getCourseSlugs().map((slug) => `/skoleni/${slug}`);
 

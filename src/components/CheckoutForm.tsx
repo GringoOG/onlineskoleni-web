@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -293,6 +294,18 @@ export function CheckoutForm() {
       </div>
 
       <CeskoPlatiKartouBadge variant="light" className="mt-4" />
+
+      <p className="text-xs text-slate-500">
+        Odesláním objednávky souhlasíte s{" "}
+        <Link href="/obchodni-podminky" className="font-medium text-brand-dark underline">
+          obchodními podmínkami
+        </Link>{" "}
+        a se zpracováním údajů dle{" "}
+        <Link href="/ochrana-udaju" className="font-medium text-brand-dark underline">
+          ochrany osobních údajů
+        </Link>
+        .
+      </p>
 
       <p className="text-xs text-slate-500">
         GoPay: karty a online bankovní převody. QR platba: převod na účet{" "}

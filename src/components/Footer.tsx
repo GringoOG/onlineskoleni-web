@@ -11,6 +11,7 @@ const footerNav = [
   { href: "/objednavka", label: "Objednat" },
   { href: "/kontakt", label: "Kontakt" },
   { href: "/ochrana-udaju", label: "Ochrana údajů" },
+  { href: "/obchodni-podminky", label: "Obchodní podmínky" },
 ];
 
 export function Footer() {
