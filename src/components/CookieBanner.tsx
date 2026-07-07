@@ -44,7 +44,8 @@ export function CookieBanner() {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-slate-600">
-          Tento web používá pouze nezbytné cookies pro správné fungování. Více v{" "}
+          Web používá nezbytné cookies a nástroje pro měření návštěvnosti (Google Analytics,
+          Google Ads). Více v{" "}
           <Link href="/ochrana-udaju" className="link-brand underline">
             zásadách ochrany údajů
           </Link>
