@@ -270,12 +270,6 @@ export default function TermsPage() {
               </li>
             </ol>
           </section>
-
-          <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-            Tento text je základní šablona obchodních podmínek pro online školení. Před použitím
-            vůči spotřebitelům a pro účely platební brány GoPay doporučujeme finální kontrolu
-            právníkem dle skutečného obchodního modelu TechnikPO s.r.o.
-          </p>
         </div>
       </Section>
     </>

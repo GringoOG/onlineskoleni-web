@@ -251,12 +251,6 @@ export default function PrivacyPage() {
               školení správci.
             </p>
           </section>
-
-          <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-            Tento text popisuje skutečné zpracování údajů v systému onlineskoleni.eu. Před
-            použitím vůči spotřebitelům a pro účely platební brány doporučujeme finální revizi
-            právníkem (zejména právní základy a přeshraniční přenosy).
-          </p>
         </div>
       </Section>
     </>
