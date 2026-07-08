@@ -5,6 +5,7 @@ import { PROGRESS_DESCRIPTIONS } from "@/lib/lms/progress";
 import { CourseProgressBadge } from "@/components/lms/CourseProgressBadge";
 import { CourseProgressStepper } from "@/components/lms/CourseProgressStepper";
 import { StartTheoryButton } from "@/components/lms/StartTheoryButton";
+import { getStudyMaterialDownloadUrl } from "@/lib/lms/study-material";
 
 interface CourseProgressCardProps {
   course: DashboardCourse;
@@ -58,6 +59,13 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
       )}
 
       <div className="mt-6 flex flex-wrap gap-3">
+        <a
+          href={getStudyMaterialDownloadUrl(course.slug)}
+          className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground hover:bg-brand-tint"
+        >
+          Stáhnout studijní materiál (PDF)
+        </a>
+
         {course.progress === "not_started" && (
           <>
             <StartTheoryButton courseId={course.courseId} theoryPath={course.theoryPath} />

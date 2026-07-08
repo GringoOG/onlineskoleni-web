@@ -6,6 +6,7 @@ import {
   getDemoTestPath,
   getOfficialTestHubPath,
 } from "@/lib/lms/course-paths";
+import { getStudyMaterialDownloadUrl } from "@/lib/lms/study-material";
 
 interface HrbekLearningGridProps {
   isDemoUser: boolean;
@@ -85,6 +86,12 @@ export function HrbekLearningGrid({
                     Závěrečný test (LMS)
                   </Link>
                 )}
+                <a
+                  href={getStudyMaterialDownloadUrl(course.slug)}
+                  className="rounded-lg border border-border bg-white px-4 py-2.5 text-center text-sm font-semibold text-foreground hover:bg-brand-tint"
+                >
+                  Studijní materiál (PDF)
+                </a>
               </div>
             </li>
           );
