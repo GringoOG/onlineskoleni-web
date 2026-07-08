@@ -4,14 +4,25 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { logoutDemoUser } from "@/app/lms/actions";
 
-export function LmsLogoutButton() {
+interface LmsLogoutButtonProps {
+  redirectTo?: string;
+  className?: string;
+  onLoggedOut?: () => void;
+}
+
+export function LmsLogoutButton({
+  redirectTo = "/lms/login",
+  className = "rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition hover:bg-brand-tint disabled:opacity-60",
+  onLoggedOut,
+}: LmsLogoutButtonProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   function handleLogout() {
     startTransition(async () => {
       await logoutDemoUser();
-      router.push("/lms/login");
+      onLoggedOut?.();
+      router.push(redirectTo);
       router.refresh();
     });
   }
@@ -21,7 +32,7 @@ export function LmsLogoutButton() {
       type="button"
       onClick={handleLogout}
       disabled={isPending}
-      className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition hover:bg-brand-tint disabled:opacity-60"
+      className={className}
     >
       {isPending ? "Odhlašuji…" : "Odhlásit se"}
     </button>

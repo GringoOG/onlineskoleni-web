@@ -6,6 +6,7 @@ import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentB
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleTag } from "@/components/GoogleTag";
 import { site } from "@/lib/content";
+import { getLmsUserSummary } from "@/lib/lms/get-lms-user-summary";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,18 +41,20 @@ export const viewport = {
   themeColor: "#1a1a1b",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const lmsUser = await getLmsUserSummary();
+
   return (
     <html lang="cs" className={`${inter.variable} h-full`}>
       <head>
         <GoogleTag />
       </head>
       <body className="flex min-h-full flex-col antialiased">
-        <Header />
+        <Header lmsUser={lmsUser} />
         <main className="flex-1 pt-16">
           <SubstituteFulfillmentBanner variant="strip" />
           {children}

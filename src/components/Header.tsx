@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { LoginPlaceholder } from "./LoginPlaceholder";
+import { LmsLogoutButton } from "@/components/lms/LmsLogoutButton";
+import type { LmsUserSummary } from "@/lib/lms/get-lms-user-summary";
 
 const navItems = [
   { href: "/#o-nas", label: "O\u00A0nás" },
@@ -17,7 +19,11 @@ const navItems = [
   { href: "/kontakt", label: "Kontakt" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  lmsUser: LmsUserSummary | null;
+}
+
+export function Header({ lmsUser }: HeaderProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
@@ -68,19 +74,45 @@ export function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setLoginOpen(true)}
-              className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10"
-            >
-              Přihlásit&nbsp;se
-            </button>
-            <Link
-              href="/kontakt"
-              className="btn-primary hidden min-[1320px]:inline-flex shrink-0 whitespace-nowrap"
-            >
-              Kontaktovat
-            </Link>
+            {lmsUser ? (
+              <>
+                <div className="hidden min-[1320px]:flex min-w-0 flex-col items-end text-right">
+                  <span className="text-xs text-white/60">Přihlášen</span>
+                  <span
+                    className="max-w-[180px] truncate text-sm font-medium text-white"
+                    title={`${lmsUser.name} (${lmsUser.email})`}
+                  >
+                    {lmsUser.name}
+                  </span>
+                </div>
+                <Link
+                  href="/lms"
+                  className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+                >
+                  Moje&nbsp;školení
+                </Link>
+                <LmsLogoutButton
+                  redirectTo={pathname.startsWith("/lms") ? "/lms/login" : "/"}
+                  className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10 disabled:opacity-60"
+                />
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setLoginOpen(true)}
+                  className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg border border-white/20 px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10"
+                >
+                  Přihlásit&nbsp;se
+                </button>
+                <Link
+                  href="/kontakt"
+                  className="btn-primary hidden min-[1320px]:inline-flex shrink-0 whitespace-nowrap"
+                >
+                  Kontaktovat
+                </Link>
+              </>
+            )}
             <button
               type="button"
               className="inline-flex min-[1320px]:hidden rounded-lg p-2 text-white hover:bg-white/10"
@@ -124,27 +156,55 @@ export function Header() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  type="button"
-                  className="w-full rounded-md px-3 py-2 text-left text-sm font-medium text-white/90 hover:bg-white/10"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setLoginOpen(true);
-                  }}
-                >
-                  Přihlásit se
-                </button>
-              </li>
-              <li>
-                <Link
-                  href="/kontakt"
-                  className="btn-primary block text-center"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Kontaktovat
-                </Link>
-              </li>
+              {lmsUser ? (
+                <>
+                  <li className="border-t border-white/10 pt-3">
+                    <p className="px-3 text-xs text-white/60">Přihlášen</p>
+                    <p className="px-3 text-sm font-medium text-white">{lmsUser.name}</p>
+                    <p className="px-3 text-xs text-white/70">{lmsUser.email}</p>
+                  </li>
+                  <li>
+                    <Link
+                      href="/lms"
+                      className="btn-primary block text-center"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Moje školení
+                    </Link>
+                  </li>
+                  <li>
+                    <LmsLogoutButton
+                      redirectTo={pathname.startsWith("/lms") ? "/lms/login" : "/"}
+                      className="w-full rounded-md border border-white/20 px-3 py-2 text-left text-sm font-medium text-white/90 hover:bg-white/10 disabled:opacity-60"
+                      onLoggedOut={() => setMobileOpen(false)}
+                    />
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <button
+                      type="button"
+                      className="w-full rounded-md px-3 py-2 text-left text-sm font-medium text-white/90 hover:bg-white/10"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setLoginOpen(true);
+                      }}
+                    >
+                      Přihlásit se
+                    </button>
+                  </li>
+                  <li>
+                    <Link
+                      href="/kontakt"
+                      className="btn-primary block text-center"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Kontaktovat
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </>
