@@ -14,11 +14,11 @@ export function SubstituteFulfillmentBanner({
     return (
       <div className="border-b border-amber-300/40 bg-gradient-to-r from-amber-100 via-amber-50 to-brand-tint">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-2.5 text-center text-sm sm:justify-between sm:text-left">
-          <p className="font-semibold text-amber-950">
-            <span className="mr-1.5 inline-block rounded-full bg-amber-500 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-white">
+          <p className="flex flex-wrap items-center gap-3 font-semibold text-amber-950">
+            <span className="inline-flex rounded-full bg-amber-500 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-white">
               OZP
             </span>
-            {content.strip}
+            <span>{content.strip}</span>
           </p>
           <Link
             href="/#nahradni-plneni"

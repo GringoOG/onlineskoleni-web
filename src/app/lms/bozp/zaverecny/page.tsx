@@ -33,7 +33,7 @@ export default async function BozpOfficialTestHubPage() {
       >
         <Link
           href="/lms"
-          className="mt-4 inline-block text-sm text-white/80 hover:text-white"
+          className="inline-block text-sm text-white/80 hover:text-white"
         >
           ← Moje školení
         </Link>

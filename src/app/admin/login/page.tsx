@@ -24,7 +24,7 @@ export default async function AdminLoginPage() {
         title="Administrace TechnikPO"
         subtitle="Přihlaste se do administrace TechnikPO – manuální objednávky nebo generátor ilustrací."
       >
-        <Link href="/" className="mt-4 inline-block text-sm text-white/80 hover:text-white">
+        <Link href="/" className="inline-block text-sm text-white/80 hover:text-white">
           ← Zpět na web
         </Link>
       </PageHero>

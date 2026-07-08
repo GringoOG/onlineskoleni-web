@@ -17,9 +17,11 @@ export function PageHero({ title, subtitle, children }: PageHeroProps) {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{title}</h1>
         {subtitle && (
-          <p className="mt-3 max-w-2xl text-sm text-brand-light/90 sm:text-base">{subtitle}</p>
+          <p className="mt-4 max-w-2xl text-sm text-brand-light/90 sm:text-base">{subtitle}</p>
         )}
-        {children}
+        {children ? (
+          <div className="mt-6 flex flex-col gap-3 sm:gap-4">{children}</div>
+        ) : null}
       </div>
     </div>
   );

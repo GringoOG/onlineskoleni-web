@@ -6,19 +6,23 @@ import { markTheoryStarted } from "@/app/lms/actions";
 
 interface StartTheoryButtonProps {
   courseId: string;
+  theoryPath: string;
   className?: string;
 }
 
-export function StartTheoryButton({ courseId, className }: StartTheoryButtonProps) {
+export function StartTheoryButton({
+  courseId,
+  theoryPath,
+  className,
+}: StartTheoryButtonProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   function handleClick() {
     startTransition(async () => {
-      const result = await markTheoryStarted(courseId);
-      if (result.ok) {
-        router.refresh();
-      }
+      await markTheoryStarted(courseId);
+      router.push(theoryPath);
+      router.refresh();
     });
   }
 
@@ -29,7 +33,7 @@ export function StartTheoryButton({ courseId, className }: StartTheoryButtonProp
       disabled={isPending}
       className={className ?? "btn-primary"}
     >
-      {isPending ? "Ukládám…" : "Začít studium teorie"}
+      {isPending ? "Otevírám studium…" : "Začít studium teorie"}
     </button>
   );
 }

@@ -12,7 +12,7 @@ interface AdminNavProps {
 
 export function AdminNav({ current, canOrders, canGenerator }: AdminNavProps) {
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/80">
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-white/80">
       {current !== "hub" ? (
         <Link href="/admin" className="hover:text-white">
           ← Administrace

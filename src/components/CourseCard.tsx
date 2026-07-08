@@ -18,7 +18,7 @@ export function CourseCard({ course }: CourseCardProps) {
       >
         {course.shortTitle}
       </span>
-      <h3 className={`mt-4 text-xl font-bold ${colors.text}`}>{course.title}</h3>
+      <h3 className={`mt-5 text-xl font-bold ${colors.text}`}>{course.title}</h3>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-700">
         {course.description}
       </p>

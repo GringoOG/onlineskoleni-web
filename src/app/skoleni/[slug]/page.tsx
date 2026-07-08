@@ -6,8 +6,6 @@ import { CTABanner } from "@/components/CTABanner";
 import { getCourse, getCourseSlugs, courses } from "@/lib/content";
 import { courseColorClasses } from "@/lib/course-colors";
 import { getDemoTestPath } from "@/lib/lms/course-paths";
-import { markTheoryStartedForCourseSlug } from "@/lib/lms/mark-theory-started";
-import { getLmsSession } from "@/lib/lms/session";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -32,11 +30,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
   const course = getCourse(slug);
   if (!course) notFound();
 
-  const session = await getLmsSession();
-  if (session) {
-    await markTheoryStartedForCourseSlug(session.userId, slug);
-  }
-
   const colors = courseColorClasses[course.color];
   const otherCourses = courses.filter((c) => c.slug !== slug);
 
@@ -44,21 +37,23 @@ export default async function CourseDetailPage({ params }: PageProps) {
     <>
       <div className={`${colors.bg} border-b ${colors.border} py-10 sm:py-14`}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/skoleni"
-            className="text-sm font-medium text-slate-600 hover:text-slate-900"
-          >
-            ← Všechna školení
-          </Link>
-          <span
-            className={`mt-4 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${colors.badge}`}
-          >
-            {course.shortTitle}
-          </span>
-          <h1 className={`mt-4 break-words text-3xl font-bold leading-tight sm:text-4xl md:text-5xl ${colors.text}`}>
-            {course.title}
-          </h1>
-          <p className="mt-4 max-w-3xl text-base text-slate-700 sm:text-lg">{course.description}</p>
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <Link
+              href="/skoleni"
+              className="inline-flex w-fit text-sm font-medium text-slate-600 hover:text-slate-900"
+            >
+              ← Všechna školení
+            </Link>
+            <span
+              className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${colors.badge}`}
+            >
+              {course.shortTitle}
+            </span>
+            <h1 className={`break-words text-3xl font-bold leading-tight sm:text-4xl md:text-5xl ${colors.text}`}>
+              {course.title}
+            </h1>
+            <p className="max-w-3xl text-base text-slate-700 sm:text-lg">{course.description}</p>
+          </div>
         </div>
       </div>
 

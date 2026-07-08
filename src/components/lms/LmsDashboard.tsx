@@ -26,12 +26,15 @@ export function LmsDashboard({ data }: LmsDashboardProps) {
         <LmsLogoutButton />
       </div>
 
-      <HrbekLearningGrid isDemoUser={isDemoUser} />
+      <HrbekLearningGrid
+        isDemoUser={isDemoUser}
+        enrolledSlugs={data.courses.map((course) => course.slug)}
+      />
 
       <div>
         <h2 className="text-lg font-bold text-foreground">Moje kurzy</h2>
         <p className="mt-1 text-sm text-muted">
-          Sledujte průběh školení, studujte teorii a absolvujte závěrečné testy.
+          Kurzy z vaší objednávky – průběh studia, microlearning a závěrečné testy.
         </p>
       </div>
 

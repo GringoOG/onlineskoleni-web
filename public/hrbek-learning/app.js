@@ -89,6 +89,46 @@ function initFromUrl() {
   }
 }
 
+async function syncLmsEnrollments() {
+  if (demoMode) {
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/lms/microlearning-access", {
+      credentials: "same-origin",
+    });
+    if (!response.ok) {
+      return;
+    }
+
+    const data = await response.json();
+    const enrolledSlugs = Array.isArray(data.enrolledSlugs) ? data.enrolledSlugs : [];
+    if (enrolledSlugs.length === 0) {
+      return;
+    }
+
+    const state = loadState();
+    state.lmsMode = true;
+    if (data.sessionId) {
+      state.sessionId = data.sessionId;
+    }
+
+    for (const slug of enrolledSlugs) {
+      if (!state.paidCategories.includes(slug)) {
+        state.paidCategories.push(slug);
+      }
+      if (getCategory(slug)) {
+        ensureProgress(state, slug);
+      }
+    }
+
+    saveState(state);
+  } catch (error) {
+    console.warn("[hrbek-learning] LMS sync skipped:", error);
+  }
+}
+
 function getCategory(slug) {
   return appData.categories.find((category) => category.slug === slug) ?? null;
 }
@@ -194,8 +234,11 @@ function renderShell(content) {
 
 function renderCatalog() {
   const state = loadState();
+  const categories = state.lmsMode
+    ? appData.categories.filter((category) => isCategoryUnlocked(state, category.slug))
+    : appData.categories;
 
-  const cards = appData.categories
+  const cards = categories
     .map((category) => {
       const paid = isCategoryUnlocked(state, category.slug);
       const progress = ensureProgress(state, category.slug);
@@ -222,7 +265,11 @@ function renderCatalog() {
                       <div class="h-full rounded-full bg-brand transition-all" style="width:${percent}%"></div>
                     </div>
                   </div>`
-                : `<p class="mt-4 rounded-xl bg-amber-50 px-3 py-2 text-sm text-amber-800">Kategorie je zamčená – dokončete simulaci platby GoPay.</p>`
+                : `<p class="mt-4 rounded-xl bg-amber-50 px-3 py-2 text-sm text-amber-800">${
+                    state.lmsMode
+                      ? "Tento kurz nemáte v objednávce. Nový kurz si můžete dokoupit na webu."
+                      : "Kategorie je zamčená – dokončete simulaci platby GoPay."
+                  }</p>`
             }
             <div class="mt-auto flex flex-wrap gap-2 pt-5">
               ${
@@ -303,7 +350,7 @@ function renderPaymentModal() {
 
 function renderBreadcrumb(category, current) {
   return `
-    <nav class="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+    <nav class="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-500">
       <button data-action="go-catalog" class="hover:text-brand">Katalog</button>
       <span>/</span>
       <button data-action="open-category" data-slug="${category.slug}" class="hover:text-brand">${escapeHtml(category.shortTitle)}</button>
@@ -791,6 +838,8 @@ async function init() {
     }
 
     appData = await response.json();
+    initFromUrl();
+    await syncLmsEnrollments();
     initFromUrl();
     render();
   } catch (error) {

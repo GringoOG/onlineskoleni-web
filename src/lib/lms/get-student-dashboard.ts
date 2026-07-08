@@ -11,6 +11,7 @@ import { getCourse } from "@/lib/content";
 import type { CourseColor } from "@/types/content";
 import { getCertificateDownloadPath } from "@/lib/lms/certificate-config";
 import { getLmsEntryPath } from "@/lib/lms/course-paths";
+import { getHrbekLearningPath } from "@/lib/lms/hrbek-learning-paths";
 import {
   type CourseProgressStatus,
   resolveCourseProgress,
@@ -66,7 +67,7 @@ function getCourseMeta(slug: string) {
 }
 
 function getTheoryPath(slug: string): string {
-  return `/skoleni/${slug}`;
+  return getHrbekLearningPath(slug);
 }
 
 function getTestPath(slug: string): string | null {

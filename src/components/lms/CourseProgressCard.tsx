@@ -30,7 +30,7 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
           <p className={`text-sm font-semibold uppercase tracking-wide ${colors.text}`}>
             {course.shortTitle}
           </p>
-          <h2 className="mt-1 break-words text-lg font-bold text-foreground sm:text-xl">
+          <h2 className="mt-2 break-words text-lg font-bold text-foreground sm:text-xl">
             {course.title}
           </h2>
         </div>
@@ -60,12 +60,12 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
       <div className="mt-6 flex flex-wrap gap-3">
         {course.progress === "not_started" && (
           <>
-            <StartTheoryButton courseId={course.courseId} />
+            <StartTheoryButton courseId={course.courseId} theoryPath={course.theoryPath} />
             <Link
               href={course.theoryPath}
               className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground hover:bg-brand-tint"
             >
-              Prohlédnout materiály
+              Otevřít microlearning
             </Link>
           </>
         )}
@@ -73,7 +73,7 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
         {course.progress === "theory" && (
           <>
             <Link href={course.theoryPath} className="btn-primary">
-              Pokračovat ve studiu teorie
+              Pokračovat v microlearningu
             </Link>
             {course.testPath && (
               <Link

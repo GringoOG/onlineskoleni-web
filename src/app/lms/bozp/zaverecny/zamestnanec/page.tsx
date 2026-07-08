@@ -50,7 +50,7 @@ export default async function BozpOfficialEmployeeTestPage() {
       >
         <Link
           href="/lms/bozp/zaverecny"
-          className="mt-4 inline-block text-sm text-white/80 hover:text-white"
+          className="inline-block text-sm text-white/80 hover:text-white"
         >
           ← Výběr typu testu
         </Link>

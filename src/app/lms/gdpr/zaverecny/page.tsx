@@ -48,13 +48,13 @@ export default async function GdprOfficialTestPage() {
       >
         <Link
           href="/lms"
-          className="mt-4 inline-block text-sm text-white/80 hover:text-white"
+          className="inline-block text-sm text-white/80 hover:text-white"
         >
           ← Moje školení
         </Link>
         <Link
           href={getDemoTestPath(COURSE_SLUG)!}
-          className="mt-2 block text-sm text-white/70 hover:text-white"
+          className="block text-sm text-white/70 hover:text-white"
         >
           Demo test (10 otázek) →
         </Link>
