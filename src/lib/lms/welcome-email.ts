@@ -81,6 +81,8 @@ function buildWelcomeEmailContent(input: WelcomeEmailInput) {
     "",
     `Přihlášení: ${loginUrl}`,
     "",
+    "Tip: Pokud odkaz v e-mailu nefunguje (např. v aplikaci Seznam), otevřete tuto adresu v prohlížeči Chrome nebo Safari.",
+    "",
     "S pozdravem",
     site.name,
   ].join("\n");
@@ -137,6 +139,9 @@ function buildWelcomeEmailContent(input: WelcomeEmailInput) {
               </p>
               <p style="margin:0;font-size:13px;line-height:1.5;color:#64748b;word-break:break-all;">
                 Nebo otevřete odkaz: <a href="${escapeHtml(loginUrl)}" style="color:#1d4ed8;">${escapeHtml(loginUrl)}</a>
+              </p>
+              <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:#64748b;">
+                Pokud odkaz v e-mailu nefunguje (např. v aplikaci Seznam), zkopírujte adresu výše a otevřete ji v prohlížeči Chrome nebo Safari.
               </p>
             </td>
           </tr>
