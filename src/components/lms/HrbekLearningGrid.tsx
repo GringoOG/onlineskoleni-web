@@ -69,7 +69,7 @@ export function HrbekLearningGrid({
                 >
                   Studijní karty (microlearning)
                 </Link>
-                {isDemoUser && demoTestPath && (
+                {demoTestPath && (
                   <Link
                     href={demoTestPath}
                     className="rounded-lg border border-border bg-white px-4 py-2.5 text-center text-sm font-semibold text-foreground hover:bg-brand-tint"
