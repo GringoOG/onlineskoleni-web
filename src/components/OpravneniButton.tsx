@@ -36,7 +36,7 @@ export function OpravneniButton() {
 
   return (
     <>
-      <div className="max-w-3xl rounded-2xl border border-brand/30 bg-gradient-to-br from-brand-tint via-white to-brand-tint/60 p-5 shadow-sm sm:p-6">
+      <div className="mx-auto w-full max-w-3xl rounded-2xl border border-brand/30 bg-gradient-to-br from-brand-tint via-white to-brand-tint/60 p-5 text-center shadow-sm sm:p-6">
         <p className="text-xs font-bold uppercase tracking-wide text-brand-dark">
           Doložení odbornosti
         </p>
@@ -52,7 +52,7 @@ export function OpravneniButton() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="btn-primary mt-5 inline-flex items-center gap-2"
+          className="btn-primary mx-auto mt-5 inline-flex items-center justify-center gap-2"
         >
           <svg
             className="h-4 w-4 shrink-0"

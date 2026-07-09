@@ -27,9 +27,11 @@ export default function ONasPage() {
       </Section>
 
       <Section>
-        <p className="max-w-3xl text-lg leading-relaxed text-muted">{about.body}</p>
-        <div className="mt-8">
-          <OpravneniButton />
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <p className="text-lg leading-relaxed text-muted">{about.body}</p>
+          <div className="mt-8 w-full">
+            <OpravneniButton />
+          </div>
         </div>
       </Section>
 
