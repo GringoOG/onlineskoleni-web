@@ -28,7 +28,7 @@ export default function ONasPage() {
 
       <Section>
         <p className="max-w-3xl text-lg leading-relaxed text-muted">{about.body}</p>
-        <div className="mt-6">
+        <div className="mt-8">
           <OpravneniButton />
         </div>
       </Section>

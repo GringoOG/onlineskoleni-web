@@ -36,13 +36,41 @@ export function OpravneniButton() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-brand-tint"
-      >
-        Oprávnění
-      </button>
+      <div className="max-w-3xl rounded-2xl border border-brand/30 bg-gradient-to-br from-brand-tint via-white to-brand-tint/60 p-5 shadow-sm sm:p-6">
+        <p className="text-xs font-bold uppercase tracking-wide text-brand-dark">
+          Doložení odbornosti
+        </p>
+        <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">
+          Oprávnění k výkonu školení
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+          Naše online školení zajišťuje odborně způsobilá osoba. Můžete si zobrazit
+          osvědčení technika požární ochrany{" "}
+          <strong className="font-semibold text-foreground">Z-TPO-85/2012</strong> vydané
+          Ministerstvem vnitra – stejné číslo uvádíme i na certifikátech z požární ochrany.
+        </p>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="btn-primary mt-5 inline-flex items-center gap-2"
+        >
+          <svg
+            className="h-4 w-4 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          Zobrazit oprávnění
+        </button>
+      </div>
 
       {open && (
         <div
