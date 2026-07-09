@@ -299,18 +299,26 @@ export async function generateCertificatePdf(
     TEXT_DARK
   );
 
-  const trainerCredential = getCertificateTrainerCredential();
-  drawLeftText(
-    page,
-    `Školitel: ${getCertificateTrainer()}, číslo osvědčení.`,
-    729,
-    fontRegular,
-    11,
-    TEXT_DARK
-  );
+  const trainerCredential = getCertificateTrainerCredential(data.courseSlug);
   if (trainerCredential) {
-    const certNumber = trainerCredential.replace(/^číslo osvědčení\s*/i, "");
-    drawLeftText(page, certNumber, 741, fontRegular, 11, TEXT_DARK);
+    drawLeftText(
+      page,
+      `Školitel: ${getCertificateTrainer()}, číslo osvědčení.`,
+      729,
+      fontRegular,
+      11,
+      TEXT_DARK
+    );
+    drawLeftText(page, trainerCredential, 741, fontRegular, 11, TEXT_DARK);
+  } else {
+    drawLeftText(
+      page,
+      `Školitel: ${getCertificateTrainer()}.`,
+      729,
+      fontRegular,
+      11,
+      TEXT_DARK
+    );
   }
 
   const stampPath = getCertificateStampImagePath();

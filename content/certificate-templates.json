@@ -1,6 +1,5 @@
 {
   "trainer": "TechnikPO s.r.o.",
-  "trainerCredential": "číslo osvědčení ROVS/4785/PRE/2016",
   "logoImage": "public/images/certificate/company-logo.png",
   "stampImage": "public/images/certificate/trainer-stamp-signature.png",
   "validityLabel": "Platnost certifikátu 1 rok.",
@@ -14,27 +13,32 @@
     "bozp": {
       "codePrefix": "BOZP",
       "trainingTitle": "Školení bezpečnosti práce",
-      "legalBasis": "O školení zaměstnanců v bezpečnosti práce dle § 103 zákona č. 262/2006 Sb. v platném znění."
+      "legalBasis": "O školení zaměstnanců v bezpečnosti práce dle § 103 zákona č. 262/2006 Sb. v platném znění.",
+      "trainerCredential": "ROVS/4785/PRE/2016"
     },
     "pozarni": {
       "codePrefix": "PO",
       "trainingTitle": "Školení o požární ochraně",
-      "legalBasis": "O školení zaměstnanců v požární ochraně dle § 23 vyhlášky 246/2001 Sb. v platném znění."
+      "legalBasis": "O školení zaměstnanců v požární ochraně dle § 23 vyhlášky 246/2001 Sb. v platném znění.",
+      "trainerCredential": "Z-TPO-85/2012"
     },
     "bremena": {
       "codePrefix": "BRE",
       "trainingTitle": "Školení manipulace s břemeny",
-      "legalBasis": "O školení zaměstnanců v bezpečné manipulaci s břemeny dle vyhlášky č. 361/2007 Sb. o dalších požadavcích bezpečnosti a ochrany zdraví při práci v pracovněprávních vztazích."
+      "legalBasis": "O školení zaměstnanců v bezpečné manipulaci s břemeny dle vyhlášky č. 361/2007 Sb. o dalších požadavcích bezpečnosti a ochrany zdraví při práci v pracovněprávních vztazích.",
+      "trainerCredential": "ROVS/4785/PRE/2016"
     },
     "ridici": {
       "codePrefix": "RID",
       "trainingTitle": "Školení řidičů referentů",
-      "legalBasis": "O školení zaměstnanců dále jen referenti řidiči."
+      "legalBasis": "O školení zaměstnanců dále jen referenti řidiči.",
+      "trainerCredential": "ROVS/4785/PRE/2016"
     },
     "ergonomie": {
       "codePrefix": "ERG",
       "trainingTitle": "Školení ergonomie práce",
-      "legalBasis": "O školení zaměstnanců v oblasti ergonomie práce a prevence muskuloskeletálních poruch."
+      "legalBasis": "O školení zaměstnanců v oblasti ergonomie práce a prevence muskuloskeletálních poruch.",
+      "trainerCredential": "ROVS/4785/PRE/2016"
     },
     "gdpr": {
       "codePrefix": "GDPR",

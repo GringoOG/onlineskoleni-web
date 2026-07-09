@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleTag } from "@/components/GoogleTag";
+import { SmoothScrollHandler } from "@/components/SmoothScrollHandler";
 import { site } from "@/lib/content";
 import { getLmsUserSummary } from "@/lib/lms/get-lms-user-summary";
 import "./globals.css";
@@ -55,12 +56,13 @@ export default async function RootLayout({
       </head>
       <body className="flex min-h-full flex-col antialiased">
         <Header lmsUser={lmsUser} />
-        <main className="flex-1 pt-16">
+        <main className="flex-1 pt-[calc(4rem+env(safe-area-inset-top))]">
           <SubstituteFulfillmentBanner variant="strip" />
           {children}
         </main>
         <Footer />
         <CookieBanner />
+        <SmoothScrollHandler />
       </body>
     </html>
   );

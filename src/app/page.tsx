@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { CourseCard } from "@/components/CourseCard";
 import { Section } from "@/components/Section";
-import { USPGrid } from "@/components/USPGrid";
-import { Pillars } from "@/components/Pillars";
 import { BulkDiscountBanner } from "@/components/BulkDiscountBanner";
 import { SubstituteFulfillmentBanner } from "@/components/SubstituteFulfillmentBanner";
 import { CTABanner } from "@/components/CTABanner";
@@ -90,41 +88,14 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+        <p className="mt-8 text-center">
+          <Link href="/o-nas" className="link-brand text-sm font-semibold">
+            Více o TechnikPO a náhradním plnění →
+          </Link>
+        </p>
       </Section>
 
-      <Section id="o-nas" title={pages.about.title} subtitle={pages.about.intro}>
-        <div className="space-y-12">
-          <p className="max-w-3xl text-lg leading-relaxed text-muted">{pages.about.body}</p>
-
-          <div>
-            <h3 className="text-xl font-bold text-foreground sm:text-2xl">
-              {pages.whyUs.title}
-            </h3>
-            <div className="mt-6">
-              <USPGrid items={pages.whyUs.items} />
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section alt title={pages.howToOrder.title}>
-        <ol className="space-y-4">
-          {pages.howToOrder.steps.map((step, i) => (
-            <li key={step} className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-light to-brand-dark text-sm font-bold text-white">
-                {i + 1}
-              </span>
-              <span className="pt-1 text-muted">{step}</span>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section>
-        <Pillars items={pages.pillars} />
-      </Section>
-
-      <Section id="demo-test" alt title={pages.demoTest.title}>
+      <Section id="demo-test" title={pages.demoTest.title}>
         <div className="max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-sm">
           <p className="text-muted">{pages.demoTest.description}</p>
           <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">

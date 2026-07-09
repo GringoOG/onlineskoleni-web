@@ -6,6 +6,7 @@ const baseUrl = "https://www.onlineskoleni.eu";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
+    "/o-nas",
     "/skoleni",
     "/sluzby",
     "/cenik",

@@ -9,7 +9,7 @@ import { LmsLogoutButton } from "@/components/lms/LmsLogoutButton";
 import type { LmsUserSummary } from "@/lib/lms/get-lms-user-summary";
 
 const navItems = [
-  { href: "/#o-nas", label: "O\u00A0nás" },
+  { href: "/o-nas", label: "O\u00A0nás" },
   { href: "/skoleni", label: "Školení" },
   { href: "/sluzby", label: "Služby" },
   { href: "/cenik", label: "Ceník" },
@@ -50,7 +50,7 @@ export function Header({ lmsUser }: HeaderProps) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-surface-dark/95 text-white backdrop-blur supports-[backdrop-filter]:bg-surface-dark/90">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-surface-dark/95 pt-[env(safe-area-inset-top)] text-white backdrop-blur supports-[backdrop-filter]:bg-surface-dark/90">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
           <div className="shrink-0">
             <Logo />
@@ -85,6 +85,13 @@ export function Header({ lmsUser }: HeaderProps) {
                     {lmsUser.name}
                   </span>
                 </div>
+                <Link
+                  href="/lms"
+                  className="inline-flex max-w-[7.5rem] min-w-0 items-center truncate rounded-lg bg-brand px-2.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-dark min-[1320px]:hidden sm:max-w-[10rem] sm:px-3 sm:text-sm"
+                  title={`Moje školení – ${lmsUser.name}`}
+                >
+                  Moje&nbsp;školení
+                </Link>
                 <Link
                   href="/lms"
                   className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
@@ -136,12 +143,12 @@ export function Header({ lmsUser }: HeaderProps) {
         <>
           <button
             type="button"
-            className="fixed inset-0 top-16 z-40 bg-black/50 min-[1320px]:hidden"
+            className="fixed inset-0 top-[calc(4rem+env(safe-area-inset-top))] z-40 bg-black/50 min-[1320px]:hidden"
             aria-label="Zavřít menu"
             onClick={() => setMobileOpen(false)}
           />
           <nav
-            className="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-surface-darker px-4 py-4 shadow-xl min-[1320px]:hidden"
+            className="fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] z-40 max-h-[calc(100dvh-4rem-env(safe-area-inset-top))] overflow-y-auto border-t border-white/10 bg-surface-darker px-4 py-4 shadow-xl min-[1320px]:hidden"
             aria-label="Mobilní navigace"
           >
             <ul className="space-y-1">

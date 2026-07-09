@@ -4,7 +4,7 @@ import { pages, site } from "@/lib/content";
 import { CeskoPlatiKartouBadge } from "@/components/CeskoPlatiKartouBadge";
 
 const footerNav = [
-  { href: "/#o-nas", label: "O nás" },
+  { href: "/o-nas", label: "O nás" },
   { href: "/skoleni", label: "Školení" },
   { href: "/sluzby", label: "Služby" },
   { href: "/cenik", label: "Ceník" },

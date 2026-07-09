@@ -4,11 +4,11 @@ export interface CourseCertificateTemplate {
   codePrefix: string;
   trainingTitle: string;
   legalBasis: string;
+  trainerCredential?: string;
 }
 
 interface CertificateTemplatesFile {
   trainer: string;
-  trainerCredential?: string;
   logoImage?: string;
   stampImage?: string;
   validityLabel: string;
@@ -40,8 +40,9 @@ export function getCertificateTrainer(): string {
   return templates.trainer;
 }
 
-export function getCertificateTrainerCredential(): string | null {
-  return templates.trainerCredential?.trim() || null;
+export function getCertificateTrainerCredential(courseSlug: string): string | null {
+  const credential = getCertificateTemplate(courseSlug).trainerCredential?.trim();
+  return credential || null;
 }
 
 export function getCertificateLogoImagePath(): string | null {
