@@ -14,7 +14,7 @@
       "codePrefix": "BOZP",
       "trainingTitle": "Školení bezpečnosti práce",
       "legalBasis": "O školení zaměstnanců v bezpečnosti práce dle § 103 zákona č. 262/2006 Sb. v platném znění.",
-      "trainerCredential": "ROVS/4785/PRE/2016"
+      "trainerCredential": "ROVS/985/PREV/2021"
     },
     "pozarni": {
       "codePrefix": "PO",
@@ -26,19 +26,19 @@
       "codePrefix": "BRE",
       "trainingTitle": "Školení manipulace s břemeny",
       "legalBasis": "O školení zaměstnanců v bezpečné manipulaci s břemeny dle vyhlášky č. 361/2007 Sb. o dalších požadavcích bezpečnosti a ochrany zdraví při práci v pracovněprávních vztazích.",
-      "trainerCredential": "ROVS/4785/PRE/2016"
+      "trainerCredential": "ROVS/985/PREV/2021"
     },
     "ridici": {
       "codePrefix": "RID",
       "trainingTitle": "Školení řidičů referentů",
       "legalBasis": "O školení zaměstnanců dále jen referenti řidiči.",
-      "trainerCredential": "ROVS/4785/PRE/2016"
+      "trainerCredential": "ROVS/985/PREV/2021"
     },
     "ergonomie": {
       "codePrefix": "ERG",
       "trainingTitle": "Školení ergonomie práce",
       "legalBasis": "O školení zaměstnanců v oblasti ergonomie práce a prevence muskuloskeletálních poruch.",
-      "trainerCredential": "ROVS/4785/PRE/2016"
+      "trainerCredential": "ROVS/985/PREV/2021"
     },
     "gdpr": {
       "codePrefix": "GDPR",
