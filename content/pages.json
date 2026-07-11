@@ -96,7 +96,7 @@
     },
     "fireSafety": {
       "title": "Požární ochrana a revize",
-      "description": "Provádíme periodické zkoušky a plnění hasicích přístrojů. Prodáváme kvalitní české hasicí přístroje. Provádíme kontrolu provozuschopnosti hasicích přístrojů, hydrantů, požárních klapek, dveří, ucpávek, detektorů plynů a revize nouzového osvětlení."
+      "description": "Provádíme periodické zkoušky a plnění hasicích přístrojů, kontrolu provozuschopnosti hasicích přístrojů, hydrantů, požárních klapek, dveří, ucpávek, detektorů plynů a revize nouzového osvětlení."
     },
     "legalNote": "Každý zaměstnavatel má ze zákona povinnost školit své zaměstnance. Nabízíme kompletní online školení BOZP, požární ochrany, manipulace s břemeny, referenčního školení řidičů, ergonomie práce i GDPR – vše s certifikátem po úspěšném testu."
   },
@@ -115,7 +115,6 @@
   },
   "relatedLinks": [
     { "title": "Technik požární ochrany", "url": "https://www.technikpo.cz" },
-    { "title": "Hasící přístroje", "url": "https://www.hasicipristroje3.webnode.cz" },
     { "title": "Požární bezpečnost", "url": "https://www.pozarni-bezpecnost.cz" }
   ],
   "social": [
