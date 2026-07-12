@@ -3,6 +3,8 @@
 export interface ContactFormState {
   ok: boolean;
   message: string;
+  /** Unikátní ID pro jednorázové měření konverze na klientovi. */
+  trackId?: string;
 }
 
 export async function submitContactForm(
@@ -54,5 +56,6 @@ export async function submitContactForm(
     ok: true,
     message:
       "Děkujeme za zprávu. Ozveme se vám co nejdříve na uvedený e-mail. Pro urgentní dotazy volejte +420 720 028 655.",
+    trackId: crypto.randomUUID(),
   };
 }
