@@ -34,6 +34,8 @@ export const userCourses = pgTable("user_courses", {
   theoryStartedAt: timestamp("theory_started_at"),
   orderNumber: text("order_number"), // Objednávka, ze které enrollment vznikl
   seatsPurchased: integer("seats_purchased"), // Počet zakoupených míst (quantity z košíku)
+  /** PO/BOZP: zamestnanec | vedouci – vyplněno z objednávky, ne při otevření testu. */
+  audience: text("audience"),
 });
 
 // 4. Pokusy v testech / kvízech

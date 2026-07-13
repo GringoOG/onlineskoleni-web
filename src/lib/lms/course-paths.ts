@@ -1,11 +1,21 @@
 import { getAppUrl } from "@/lib/email/app-url";
+import type { CatalogAudience } from "@/lib/order-catalog";
 
 /** Veřejná cesta do LMS pro daný kurz (oficiální závěrečný test). */
-export function getLmsEntryPath(courseSlug: string): string {
+export function getLmsEntryPath(
+  courseSlug: string,
+  audience?: CatalogAudience | null
+): string {
   if (courseSlug === "bozp") {
     return "/lms/bozp/zaverecny";
   }
   if (courseSlug === "pozarni") {
+    if (audience === "zamestnanec") {
+      return "/lms/pozarni/zaverecny/zamestnanec";
+    }
+    if (audience === "vedouci") {
+      return "/lms/pozarni/zaverecny/vedouci";
+    }
     return "/lms/pozarni/zaverecny";
   }
   if (courseSlug === "ridici") {
@@ -72,6 +82,9 @@ export function getOfficialTestHubPath(courseSlug: string): string | null {
   return null;
 }
 
-export function getLmsEntryUrl(courseSlug: string): string {
-  return `${getAppUrl()}${getLmsEntryPath(courseSlug)}`;
+export function getLmsEntryUrl(
+  courseSlug: string,
+  audience?: CatalogAudience | null
+): string {
+  return `${getAppUrl()}${getLmsEntryPath(courseSlug, audience)}`;
 }

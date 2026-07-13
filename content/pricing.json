@@ -19,12 +19,20 @@
       "features": ["Prevence poranění páteře", "Správné techniky zvedání", "Test a certifikát"]
     },
     {
-      "catalogSlug": "pozarni",
-      "name": "Požární ochrana (PO)",
-      "description": "Zákonné školení požární ochrany",
+      "catalogSlug": "pozarni-zamestnanec",
+      "name": "Požární ochrana (PO) – zaměstnanec",
+      "description": "Zákonné školení požární ochrany pro řadové zaměstnance (platnost certifikátu 2 roky)",
       "price": "149 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Kompletní obsah PO", "Test navazující na prezentaci", "Certifikát v systému"]
+      "features": ["Test pro zaměstnance", "Certifikát platný 2 roky", "Aktualizace dle legislativy"]
+    },
+    {
+      "catalogSlug": "pozarni-vedouci",
+      "name": "Požární ochrana (PO) – vedoucí",
+      "description": "Rozšířené školení požární ochrany pro vedoucí zaměstnance (platnost certifikátu 3 roky)",
+      "price": "149 Kč",
+      "per": "osoba / kurz bez DPH",
+      "features": ["Složitější test pro vedoucí", "Certifikát platný 3 roky", "Aktualizace dle legislativy"]
     },
     {
       "catalogSlug": "ridici",
@@ -54,19 +62,19 @@
   "bundles": [
     {
       "catalogSlug": "balicek-bozp-po-bremena",
-      "name": "Balíček BOZP + břemena + PO",
-      "description": "Tři zákonná školení v jedné objednávce za výhodnější cenu",
+      "name": "Balíček BOZP + břemena + PO (zaměstnanec)",
+      "description": "Tři zákonná školení v jedné objednávce; PO v balíčku je pro řadové zaměstnance (vedoucí objednejte zvlášť)",
       "price": "259 Kč",
       "per": "osoba / balíček bez DPH",
-      "features": ["BOZP, manipulace s břemeny a PO", "Jedna objednávka pro všechny kurzy", "Certifikát ke každému školení"]
+      "features": ["BOZP, manipulace s břemeny a PO pro zaměstnance", "Jedna objednávka pro všechny kurzy", "Certifikát ke každému školení"]
     },
     {
       "catalogSlug": "balicek-komplet",
       "name": "Kompletní balíček",
-      "description": "BOZP + břemena + PO + GDPR + řidiči",
+      "description": "BOZP + břemena + PO (zaměstnanec) + GDPR + řidiči",
       "price": "449 Kč",
       "per": "osoba / balíček bez DPH",
-      "features": ["Všech 5 školení v jednom balíčku", "Nejvýhodnější cena oproti jednotlivým kurzům", "Certifikát ke každému školení"]
+      "features": ["5 školení v jednom balíčku (PO pro zaměstnance)", "Nejvýhodnější cena oproti jednotlivým kurzům", "Certifikát ke každému školení"]
     }
   ],
   "bulkDiscounts": [

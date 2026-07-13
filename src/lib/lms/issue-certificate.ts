@@ -1,11 +1,12 @@
 import { and, eq } from "drizzle-orm";
-import { certificates, courses, db, users } from "@/db";
+import { certificates, courses, db, userCourses, users } from "@/db";
 import { createCertificateCode } from "@/lib/lms/certificate-code";
 import {
-  CERTIFICATE_VALIDITY_YEARS,
   getCertificateDownloadPath,
+  getCertificateValidityYears,
 } from "@/lib/lms/certificate-config";
 import { getCertificateCodePrefix } from "@/lib/lms/certificate-template";
+import type { CatalogAudience } from "@/lib/order-catalog";
 
 type DbExecutor = Pick<typeof db, "select" | "insert" | "update">;
 
@@ -126,8 +127,24 @@ export async function issueCertificate(
     throw new Error("Uživatel nebo kurz pro certifikát nebyl nalezen.");
   }
 
+  const [enrollment] = await client
+    .select({ audience: userCourses.audience })
+    .from(userCourses)
+    .where(
+      and(eq(userCourses.userId, userId), eq(userCourses.courseId, courseId))
+    )
+    .limit(1);
+
+  const audience =
+    enrollment?.audience === "zamestnanec" || enrollment?.audience === "vedouci"
+      ? (enrollment.audience as CatalogAudience)
+      : null;
+
   const issuedAt = new Date();
-  const expiresAt = addYears(issuedAt, CERTIFICATE_VALIDITY_YEARS);
+  const expiresAt = addYears(
+    issuedAt,
+    getCertificateValidityYears(course.slug, audience)
+  );
 
   const created = await insertCertificate(client, {
     userId,

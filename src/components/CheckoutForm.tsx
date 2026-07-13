@@ -17,8 +17,10 @@ export function CheckoutForm() {
 
   const [quantities, setQuantities] = useState<Record<string, number>>(() => {
     const initial: Record<string, number> = {};
+    const selectedSlug =
+      preselected === "pozarni" ? "pozarni-zamestnanec" : preselected;
     for (const item of orderCatalog) {
-      initial[item.courseSlug] = preselected === item.courseSlug ? 1 : 0;
+      initial[item.courseSlug] = selectedSlug === item.courseSlug ? 1 : 0;
     }
     return initial;
   });

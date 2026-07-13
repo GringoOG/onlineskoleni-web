@@ -30,6 +30,7 @@ export interface DashboardCourse {
   completedAt: Date | null;
   purchasedAt: Date;
   seatsPurchased: number | null;
+  audience: "zamestnanec" | "vedouci" | null;
   testPath: string | null;
   theoryPath: string;
   certificate: {
@@ -70,8 +71,14 @@ function getTheoryPath(slug: string): string {
   return getHrbekLearningPath(slug);
 }
 
-function getTestPath(slug: string): string | null {
-  const path = getLmsEntryPath(slug);
+function getTestPath(
+  slug: string,
+  audience?: string | null
+): string | null {
+  const path = getLmsEntryPath(
+    slug,
+    audience === "zamestnanec" || audience === "vedouci" ? audience : null
+  );
   return path.startsWith("/lms/") ? path : null;
 }
 
@@ -105,6 +112,7 @@ export async function getStudentDashboard(
       completedAt: userCourses.completedAt,
       purchasedAt: userCourses.purchasedAt,
       seatsPurchased: userCourses.seatsPurchased,
+      audience: userCourses.audience,
     })
     .from(userCourses)
     .innerJoin(courses, eq(userCourses.courseId, courses.id))
@@ -179,7 +187,11 @@ export async function getStudentDashboard(
       completedAt: enrollment.completedAt,
       purchasedAt: enrollment.purchasedAt,
       seatsPurchased: enrollment.seatsPurchased,
-      testPath: getTestPath(enrollment.slug),
+      audience:
+        enrollment.audience === "zamestnanec" || enrollment.audience === "vedouci"
+          ? enrollment.audience
+          : null,
+      testPath: getTestPath(enrollment.slug, enrollment.audience),
       theoryPath: getTheoryPath(enrollment.slug),
       certificate: cert
         ? {

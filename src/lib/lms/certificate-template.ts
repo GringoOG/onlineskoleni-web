@@ -53,8 +53,13 @@ export function getCertificateStampImagePath(): string | null {
   return templates.stampImage?.trim() || null;
 }
 
-export function getCertificateValidityLabel(): string {
-  return templates.validityLabel;
+export function getCertificateValidityLabel(years?: number): string {
+  if (years === undefined) {
+    return templates.validityLabel;
+  }
+  if (years === 1) return "Platnost certifikátu 1 rok.";
+  if (years >= 2 && years <= 4) return `Platnost certifikátu ${years} roky.`;
+  return `Platnost certifikátu ${years} let.`;
 }
 
 export function getCertificateSuccessText(): string {
