@@ -1,25 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { OrderChannel } from "@/lib/orders/order-channel";
 import {
-  GOOGLE_ADS_CONVERSION_STORAGE_PREFIX,
-  GOOGLE_ADS_PURCHASE_CONVERSION,
-} from "@/lib/google-ads";
+  schedulePurchaseConversionTracking,
+  tracksPurchaseOnThankYouPage,
+} from "@/lib/track-purchase-conversion";
 
 interface OrderForConversion {
   orderNumber: string;
   status: string;
   totalAmountHalere: number;
+  paymentMethod: OrderChannel;
 }
 
 interface GoogleAdsPurchaseConversionProps {
   orderNumber: string;
-}
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
 }
 
 async function fetchOrder(orderNumber: string): Promise<OrderForConversion | null> {
@@ -28,28 +24,7 @@ async function fetchOrder(orderNumber: string): Promise<OrderForConversion | nul
   return res.json();
 }
 
-function firePurchaseConversion(order: OrderForConversion): boolean {
-  const storageKey = `${GOOGLE_ADS_CONVERSION_STORAGE_PREFIX}${order.orderNumber}`;
-  if (sessionStorage.getItem(storageKey)) {
-    return true;
-  }
-
-  if (typeof window.gtag !== "function") {
-    return false;
-  }
-
-  window.gtag("event", "conversion", {
-    send_to: GOOGLE_ADS_PURCHASE_CONVERSION,
-    value: order.totalAmountHalere / 100,
-    currency: "CZK",
-    transaction_id: order.orderNumber,
-  });
-
-  sessionStorage.setItem(storageKey, "1");
-  return true;
-}
-
-/** Měří Google Ads konverzi „Nákup“ po zaplacení objednávky. */
+/** Měří GA4 purchase + Google Ads konverzi „Nákup“ po zaplacení objednávky. */
 export function GoogleAdsPurchaseConversion({
   orderNumber,
 }: GoogleAdsPurchaseConversionProps) {
@@ -58,32 +33,19 @@ export function GoogleAdsPurchaseConversion({
   useEffect(() => {
     let cancelled = false;
     let pollInterval: ReturnType<typeof setInterval> | undefined;
-    let gtagRetryInterval: ReturnType<typeof setInterval> | undefined;
-    let gtagRetryTimeout: ReturnType<typeof setTimeout> | undefined;
+    let stopTracking: (() => void) | undefined;
 
     async function tryTrackConversion() {
       if (cancelled || firedRef.current) return;
 
       const order = await fetchOrder(orderNumber);
       if (!order || order.status !== "PAID") return;
+      if (!tracksPurchaseOnThankYouPage(order.paymentMethod)) return;
 
-      const attemptFire = () => {
-        if (firePurchaseConversion(order)) {
-          firedRef.current = true;
-          if (pollInterval) clearInterval(pollInterval);
-          if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-          if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
-        }
-      };
-
-      attemptFire();
-
-      if (!firedRef.current) {
-        gtagRetryInterval = setInterval(attemptFire, 200);
-        gtagRetryTimeout = setTimeout(() => {
-          if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-        }, 10000);
-      }
+      stopTracking?.();
+      stopTracking = schedulePurchaseConversionTracking(order);
+      firedRef.current = true;
+      if (pollInterval) clearInterval(pollInterval);
     }
 
     void tryTrackConversion();
@@ -95,8 +57,7 @@ export function GoogleAdsPurchaseConversion({
     return () => {
       cancelled = true;
       if (pollInterval) clearInterval(pollInterval);
-      if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-      if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
+      stopTracking?.();
     };
   }, [orderNumber]);
 
