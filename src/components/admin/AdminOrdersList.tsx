@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import type { AdminOrderListItem } from "@/lib/orders/admin-orders";
 import { OrdersByChannelColumns } from "@/components/admin/OrderListCards";
+import {
+  schedulePurchaseConversionTracking,
+  tracksPurchaseOnAdminPaid,
+} from "@/lib/track-purchase-conversion";
 
 export function AdminOrdersList() {
   const [orders, setOrders] = useState<AdminOrderListItem[]>([]);
@@ -42,6 +46,7 @@ export function AdminOrdersList() {
   }, [loadOrders]);
 
   async function handleSetStatus(orderNumber: string, paymentStatus: "PAID" | "PENDING") {
+    const orderBeforeUpdate = orders.find((order) => order.orderNumber === orderNumber);
     setBusyOrderNumber(orderNumber);
     setStatusMessage("");
     try {
@@ -76,6 +81,17 @@ export function AdminOrdersList() {
           ? `Objednávka ${orderNumber} označena jako zaplacená.`
           : `Objednávka ${orderNumber} označena jako nezaplacená.`
       );
+
+      if (
+        paymentStatus === "PAID" &&
+        orderBeforeUpdate &&
+        tracksPurchaseOnAdminPaid(orderBeforeUpdate.channel)
+      ) {
+        schedulePurchaseConversionTracking({
+          orderNumber: orderBeforeUpdate.orderNumber,
+          totalAmountHalere: orderBeforeUpdate.totalAmountHalere,
+        });
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Změna stavu se nezdařila.");
     } finally {
