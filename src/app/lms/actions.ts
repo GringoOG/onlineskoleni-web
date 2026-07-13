@@ -5,6 +5,7 @@ import { pages } from "@/lib/content";
 import { authenticateStudentByEmail } from "@/lib/lms/authenticate-student";
 import { ensureDemoEnrollment } from "@/lib/lms/demo-enrollment";
 import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
+import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
 import {
   completeQuizTest,
   type CompleteQuizInput,
@@ -228,9 +229,18 @@ export async function submitOfficialQuiz(
     return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
   }
 
+  // PO: typ školení je vázaný na objednávku – klientský výběr nepřepisuje zápis.
+  let resolvedAudience = audience;
+  if (courseSlug === "pozarni") {
+    const enrolled = await getEnrollmentAudience(session.userId, courseSlug);
+    if (enrolled) {
+      resolvedAudience = enrolled;
+    }
+  }
+
   const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
     courseSlug,
-    audience
+    resolvedAudience
   );
   const validationError = validateOfficialAnswers(answers, totalQuestions);
   if (validationError) {
@@ -239,7 +249,7 @@ export async function submitOfficialQuiz(
 
   let correctAnswers: number;
   try {
-    correctAnswers = scoreOfficialAnswers(courseSlug, answers, audience);
+    correctAnswers = scoreOfficialAnswers(courseSlug, answers, resolvedAudience);
   } catch {
     return { ok: false, message: "Neplatný formát odpovědí." };
   }

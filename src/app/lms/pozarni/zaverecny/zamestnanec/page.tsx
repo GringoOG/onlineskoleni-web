@@ -6,6 +6,7 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
+import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
 import {
   getOfficialQuizConfig,
   getOfficialTestSize,
@@ -15,6 +16,7 @@ import {
 import { getLmsSession } from "@/lib/lms/session";
 
 const COURSE_SLUG = "pozarni" as const;
+const AUDIENCE = "zamestnanec" as const;
 
 export const metadata: Metadata = {
   title: "Závěrečný test PO – zaměstnanec",
@@ -22,16 +24,21 @@ export const metadata: Metadata = {
 };
 
 export default async function PozarniOfficialEmployeeTestPage() {
-  const config = getOfficialQuizConfig(COURSE_SLUG, "zamestnanec");
+  const config = getOfficialQuizConfig(COURSE_SLUG, AUDIENCE);
   const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
     COURSE_SLUG,
-    "zamestnanec"
+    AUDIENCE
   );
-  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, "zamestnanec");
+  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, AUDIENCE);
   const session = await getLmsSession();
 
   if (!session) {
     redirect("/lms/login?redirect=%2Flms%2Fpozarni%2Fzaverecny%2Fzamestnanec");
+  }
+
+  const enrolledAudience = await getEnrollmentAudience(session.userId, COURSE_SLUG);
+  if (enrolledAudience === "vedouci") {
+    redirect("/lms/pozarni/zaverecny/vedouci");
   }
 
   let userName = "Student";
@@ -46,13 +53,10 @@ export default async function PozarniOfficialEmployeeTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · platnost certifikátu 2 roky`}
       >
-        <Link
-          href="/lms/pozarni/zaverecny"
-          className="inline-block text-sm text-white/80 hover:text-white"
-        >
-          ← Výběr typu testu
+        <Link href="/lms" className="inline-block text-sm text-white/80 hover:text-white">
+          ← Moje školení
         </Link>
       </PageHero>
 
@@ -64,7 +68,7 @@ export default async function PozarniOfficialEmployeeTestPage() {
           totalQuestions={totalQuestions}
           minCorrectAnswers={minCorrectAnswers}
           variant="oficialni"
-          audience="zamestnanec"
+          audience={AUDIENCE}
         />
       </Section>
     </>

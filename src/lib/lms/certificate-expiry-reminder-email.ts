@@ -19,13 +19,15 @@ function getAppUrl(): string {
   );
 }
 
-/** E-mail s připomenutím obnovy certifikátu po uplynutí platnosti (1 rok). */
+/** E-mail s připomenutím obnovy certifikátu před / po uplynutí platnosti. */
 export async function sendCertificateExpiryReminderEmail(
   input: CertificateExpiryReminderEmailInput
 ): Promise<SendEmailResult> {
   const appUrl = getAppUrl();
   const expiryLabel = formatCzechDate(input.expiresAt);
-  const orderUrl = `${appUrl}/objednavka?kurz=${encodeURIComponent(input.courseSlug)}`;
+  const orderUrl = `${appUrl}/objednavka?kurz=${encodeURIComponent(
+    input.courseSlug === "pozarni" ? "pozarni-zamestnanec" : input.courseSlug
+  )}`;
   const lmsUrl = `${appUrl}/lms`;
 
   const greeting = formatCzechEmailGreeting(input.studentName);
@@ -42,7 +44,7 @@ export async function sendCertificateExpiryReminderEmail(
     `  • Objednávka kurzu: ${orderUrl}`,
     `  • Přihlášení do systému: ${lmsUrl}`,
     "",
-    "Po zaplacení a absolvování testu vám bude vystaven nový certifikát s platností 1 rok.",
+    "Po zaplacení a absolvování testu vám bude vystaven nový certifikát.",
     "",
     "Máte-li dotazy, napište nám na " + site.email + ".",
     "",

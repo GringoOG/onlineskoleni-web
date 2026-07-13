@@ -1,11 +1,17 @@
 import catalogData from "../../content/order-catalog.json";
 
+export type CatalogAudience = "zamestnanec" | "vedouci";
+
 export interface OrderCatalogItem {
   courseSlug: string;
   name: string;
   pricePerPersonHalere: number;
   vatRate: number;
   bundleCourses?: string[];
+  /** LMS kurz (např. pozarni); výchozí = courseSlug. */
+  lmsCourseSlug?: string;
+  /** Typ školení z nabídky – určuje test i platnost certifikátu. */
+  audience?: CatalogAudience;
 }
 
 export const orderCatalog = catalogData as OrderCatalogItem[];
@@ -114,6 +120,19 @@ export interface OrderItemForEnrollment {
   courseSlug: string;
   name: string;
   quantity: number;
+  audience?: CatalogAudience | null;
+}
+
+function toEnrollmentItem(
+  catalog: OrderCatalogItem,
+  quantity: number
+): OrderItemForEnrollment {
+  return {
+    courseSlug: catalog.lmsCourseSlug ?? catalog.courseSlug,
+    name: catalog.name,
+    quantity,
+    audience: catalog.audience ?? null,
+  };
 }
 
 /** Rozbalí balíčky na jednotlivé kurzy pro přiřazení v LMS. */
@@ -127,15 +146,42 @@ export function expandOrderItemsForEnrollment(
     if (catalog?.bundleCourses?.length) {
       for (const slug of catalog.bundleCourses) {
         const course = getCatalogItem(slug);
-        expanded.push({
-          courseSlug: slug,
-          name: course?.name ?? slug,
-          quantity: item.quantity,
-        });
+        if (course) {
+          expanded.push(toEnrollmentItem(course, item.quantity));
+        } else {
+          expanded.push({
+            courseSlug: slug,
+            name: slug,
+            quantity: item.quantity,
+            audience: null,
+          });
+        }
       }
       continue;
     }
-    expanded.push(item);
+
+    if (catalog) {
+      expanded.push(toEnrollmentItem(catalog, item.quantity));
+      continue;
+    }
+
+    // Legacy objednávky se slugem „pozarni“ (před rozdělením nabídky).
+    if (item.courseSlug === "pozarni") {
+      expanded.push({
+        courseSlug: "pozarni",
+        name: item.name || "Požární ochrana (PO)",
+        quantity: item.quantity,
+        audience: item.audience ?? null,
+      });
+      continue;
+    }
+
+    expanded.push({
+      courseSlug: item.courseSlug,
+      name: item.name,
+      quantity: item.quantity,
+      audience: item.audience ?? null,
+    });
   }
 
   return expanded;

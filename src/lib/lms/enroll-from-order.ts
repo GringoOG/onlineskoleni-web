@@ -1,7 +1,8 @@
 import { and, eq } from "drizzle-orm";
-import { db, userCourses } from "@/db";
+import { courses, db, userCourses } from "@/db";
 import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
 import type { StudentRecord } from "@/lib/lms/find-or-create-student";
+import type { CatalogAudience } from "@/lib/order-catalog";
 import {
   expandOrderItemsForEnrollment,
   type OrderItemForEnrollment,
@@ -16,11 +17,21 @@ export interface EnrollmentResult {
   courseTitle: string;
   courseName: string;
   seatsPurchased: number;
+  audience: CatalogAudience | null;
   isNewEnrollment: boolean;
   isNewUser: boolean;
   temporaryPassword?: string;
   studentEmail: string;
   studentName: string;
+}
+
+function normalizeAudience(
+  audience: CatalogAudience | null | undefined
+): CatalogAudience | null {
+  if (audience === "zamestnanec" || audience === "vedouci") {
+    return audience;
+  }
+  return null;
 }
 
 /** Přiřadí kurzy existujícímu nebo nově vytvořenému studentovi. */
@@ -34,9 +45,10 @@ export async function enrollStudentForOrderItems(input: {
 
   for (const item of items) {
     const course = await ensureLmsCourse(item.courseSlug);
+    const audience = normalizeAudience(item.audience);
 
     const [existingEnrollment] = await db
-      .select({ id: userCourses.id })
+      .select({ id: userCourses.id, audience: userCourses.audience })
       .from(userCourses)
       .where(
         and(
@@ -55,6 +67,7 @@ export async function enrollStudentForOrderItems(input: {
         isCompleted: false,
         orderNumber: input.orderNumber,
         seatsPurchased: item.quantity,
+        audience,
       });
       isNewEnrollment = true;
     } else {
@@ -63,6 +76,7 @@ export async function enrollStudentForOrderItems(input: {
         .set({
           orderNumber: input.orderNumber,
           seatsPurchased: item.quantity,
+          ...(audience ? { audience } : {}),
         })
         .where(eq(userCourses.id, existingEnrollment.id));
     }
@@ -74,6 +88,11 @@ export async function enrollStudentForOrderItems(input: {
       courseTitle: course.title,
       courseName: item.name,
       seatsPurchased: item.quantity,
+      audience:
+        audience ??
+        normalizeAudience(
+          existingEnrollment?.audience as CatalogAudience | null | undefined
+        ),
       isNewEnrollment,
       isNewUser: input.student.isNew,
       temporaryPassword: input.student.temporaryPassword,
@@ -104,4 +123,19 @@ export async function enrollContactForOrderItems(input: {
     orderNumber: input.orderNumber,
     items: input.items,
   });
+}
+
+/** Audience zapsaná u zápisu do kurzu (z objednávky). */
+export async function getEnrollmentAudience(
+  userId: string,
+  courseSlug: string
+): Promise<CatalogAudience | null> {
+  const [row] = await db
+    .select({ audience: userCourses.audience })
+    .from(userCourses)
+    .innerJoin(courses, eq(userCourses.courseId, courses.id))
+    .where(and(eq(userCourses.userId, userId), eq(courses.slug, courseSlug)))
+    .limit(1);
+
+  return normalizeAudience(row?.audience as CatalogAudience | null | undefined);
 }

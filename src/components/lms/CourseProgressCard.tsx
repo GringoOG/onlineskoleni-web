@@ -40,6 +40,15 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
 
       <p className="mt-3 text-sm text-muted">{PROGRESS_DESCRIPTIONS[course.progress]}</p>
 
+      {course.slug === "pozarni" && course.audience ? (
+        <p className="mt-2 text-sm font-medium text-foreground">
+          Typ školení:{" "}
+          {course.audience === "vedouci"
+            ? "vedoucí (platnost certifikátu 3 roky)"
+            : "zaměstnanec (platnost certifikátu 2 roky)"}
+        </p>
+      ) : null}
+
       <div className="mt-5">
         <CourseProgressStepper status={course.progress} />
       </div>

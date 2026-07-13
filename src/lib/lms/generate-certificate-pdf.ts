@@ -251,7 +251,21 @@ export async function generateCertificatePdf(
   );
   drawCenterText(page, companyLabel, 399, fontBold, 27, TEXT_DARK);
 
-  drawLeftText(page, getCertificateValidityLabel(), 457, fontRegular, 11, TEXT_DARK);
+  const validityYears = Math.max(
+    1,
+    Math.round(
+      (data.expiresAt.getTime() - data.issuedAt.getTime()) /
+        (365.25 * 24 * 60 * 60 * 1000)
+    )
+  );
+  drawLeftText(
+    page,
+    getCertificateValidityLabel(validityYears),
+    457,
+    fontRegular,
+    11,
+    TEXT_DARK
+  );
 
   top = drawLeftWrapped(
     page,
