@@ -24,7 +24,7 @@ export function AdminOrdersList() {
       const res = await fetch(`/api/admin/objednavky${suffix}`);
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error ?? "Nepodařilo se načíst objednávky.");
+        throw new Error(data.error ?? `Chyba ${res.status}: Nepodařilo se načíst objednávky.`);
       }
       setOrders(data.orders ?? []);
     } catch (err) {
