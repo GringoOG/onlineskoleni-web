@@ -12,8 +12,9 @@ export const GOOGLE_ADS_PURCHASE_CONVERSION =
 
 export const GOOGLE_ADS_CONVERSION_STORAGE_PREFIX = "gads-purchase-";
 
-/** Event snippet: Kontakt – formulář (vytvořte v Ads a doplňte do env) */
+/** Event snippet: Kontakt – formulář „Odeslání formuláře pro zájemce“ */
 export const GOOGLE_ADS_LEAD_CONVERSION =
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_CONVERSION ?? "";
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_CONVERSION ??
+  "AW-17515137667/shLHCIur688cEIOV759B";
 
 export const GOOGLE_ADS_LEAD_STORAGE_PREFIX = "gads-lead-";
