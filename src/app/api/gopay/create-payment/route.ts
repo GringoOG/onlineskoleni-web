@@ -85,6 +85,10 @@ export async function POST(request: Request) {
     }
 
     const { prisma } = await import("@/lib/prisma");
+    await prisma.order.update({
+      where: { id: order.id },
+      data: { paymentMethod: "GOPAY" },
+    });
     await prisma.payment.update({
       where: { orderId: order.id },
       data: {

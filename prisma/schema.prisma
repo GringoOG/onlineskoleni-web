@@ -23,6 +23,7 @@ model Order {
   createdAt              DateTime    @default(now())
   updatedAt              DateTime    @updatedAt
   enrollmentProcessedAt  DateTime?
+  paidStatusChangedAt    DateTime?
   items                  OrderItem[]
   payment                Payment?
 }

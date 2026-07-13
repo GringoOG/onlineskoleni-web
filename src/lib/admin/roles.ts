@@ -22,7 +22,7 @@ export function canAccessGenerator(role: AdminRole): boolean {
 
 export function getDefaultAdminRedirect(role: AdminRole): string {
   if (role === "ORDERS_MANAGER") {
-    return "/admin/objednavky/nova";
+    return "/admin/objednavky";
   }
   if (role === "IMAGE_CREATOR") {
     return "/admin/generator";
