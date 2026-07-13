@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import {
-  GOOGLE_ADS_CONVERSION_STORAGE_PREFIX,
-  GOOGLE_ADS_PURCHASE_CONVERSION,
-} from "@/lib/google-ads";
+import { trackPurchaseConversion } from "@/lib/track-purchase-conversion";
 
 interface OrderForConversion {
   orderNumber: string;
@@ -16,40 +13,13 @@ interface GoogleAdsPurchaseConversionProps {
   orderNumber: string;
 }
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 async function fetchOrder(orderNumber: string): Promise<OrderForConversion | null> {
   const res = await fetch(`/api/orders/${encodeURIComponent(orderNumber)}`);
   if (!res.ok) return null;
   return res.json();
 }
 
-function firePurchaseConversion(order: OrderForConversion): boolean {
-  const storageKey = `${GOOGLE_ADS_CONVERSION_STORAGE_PREFIX}${order.orderNumber}`;
-  if (sessionStorage.getItem(storageKey)) {
-    return true;
-  }
-
-  if (typeof window.gtag !== "function") {
-    return false;
-  }
-
-  window.gtag("event", "conversion", {
-    send_to: GOOGLE_ADS_PURCHASE_CONVERSION,
-    value: order.totalAmountHalere / 100,
-    currency: "CZK",
-    transaction_id: order.orderNumber,
-  });
-
-  sessionStorage.setItem(storageKey, "1");
-  return true;
-}
-
-/** Měří Google Ads konverzi „Nákup“ po zaplacení objednávky. */
+/** Měří GA4 purchase + Google Ads konverzi „Nákup“ po zaplacení objednávky. */
 export function GoogleAdsPurchaseConversion({
   orderNumber,
 }: GoogleAdsPurchaseConversionProps) {
@@ -68,7 +38,7 @@ export function GoogleAdsPurchaseConversion({
       if (!order || order.status !== "PAID") return;
 
       const attemptFire = () => {
-        if (firePurchaseConversion(order)) {
+        if (trackPurchaseConversion(order)) {
           firedRef.current = true;
           if (pollInterval) clearInterval(pollInterval);
           if (gtagRetryInterval) clearInterval(gtagRetryInterval);
