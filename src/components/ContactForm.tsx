@@ -1,13 +1,46 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { submitContactForm, type ContactFormState } from "@/app/kontakt/actions";
 import { courses } from "@/lib/content";
+import { trackLeadConversion } from "@/lib/track-lead-conversion";
 
 const initialState: ContactFormState = { ok: false, message: "" };
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState);
+  const trackedIdRef = useRef<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (!state.ok || !state.trackId || trackedIdRef.current === state.trackId) {
+      return;
+    }
+
+    let gtagRetryInterval: ReturnType<typeof setInterval> | undefined;
+    let gtagRetryTimeout: ReturnType<typeof setTimeout> | undefined;
+
+    const attemptTrack = () => {
+      if (trackLeadConversion(state.trackId!)) {
+        trackedIdRef.current = state.trackId;
+        if (gtagRetryInterval) clearInterval(gtagRetryInterval);
+        if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
+      }
+    };
+
+    attemptTrack();
+
+    if (trackedIdRef.current !== state.trackId) {
+      gtagRetryInterval = setInterval(attemptTrack, 200);
+      gtagRetryTimeout = setTimeout(() => {
+        if (gtagRetryInterval) clearInterval(gtagRetryInterval);
+      }, 10000);
+    }
+
+    return () => {
+      if (gtagRetryInterval) clearInterval(gtagRetryInterval);
+      if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
+    };
+  }, [state.ok, state.trackId]);
 
   return (
     <form action={formAction} className="space-y-5">

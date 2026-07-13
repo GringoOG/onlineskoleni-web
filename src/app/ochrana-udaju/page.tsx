@@ -221,7 +221,8 @@ export default function PrivacyPage() {
                 <strong>Analytické</strong> — Google Analytics 4 (ID měření G-E51MX7EQNW).
               </li>
               <li>
-                <strong>Marketingové</strong> — Google Ads (měření konverzí objednávek).
+                <strong>Marketingové</strong> — Google Ads (měření konverzí objednávek a
+                kontaktního formuláře).
               </li>
             </ul>
             <p className="mt-2">
