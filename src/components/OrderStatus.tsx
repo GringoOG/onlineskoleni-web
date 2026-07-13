@@ -17,7 +17,7 @@ interface OrderData {
   totalAmountHalere: number;
   items: { name: string; quantity: number }[];
   paymentState: string | null;
-  paymentMethod: "gopay" | "bank_transfer";
+  paymentMethod: "gopay" | "qr" | "manual";
 }
 
 async function fetchOrder(orderNumber: string): Promise<OrderData | null> {
@@ -66,7 +66,7 @@ export function OrderStatus({ orderNumber, showQrPayment = false }: OrderStatusP
 
   const paid = order.status === "PAID";
   const failed = order.status === "FAILED";
-  const isBankTransfer = showQrPayment || order.paymentMethod === "bank_transfer";
+  const isBankTransfer = showQrPayment || order.paymentMethod === "qr";
 
   return (
     <div className="space-y-6">

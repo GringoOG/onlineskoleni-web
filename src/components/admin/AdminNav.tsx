@@ -2,7 +2,7 @@ import Link from "next/link";
 import { logoutAdmin } from "@/app/admin/login/actions";
 import { canAccessGenerator, canAccessOrders } from "@/lib/admin/roles";
 
-type AdminSection = "hub" | "orders" | "generator";
+type AdminSection = "hub" | "orders-list" | "orders-new" | "generator";
 
 interface AdminNavProps {
   current: AdminSection;
@@ -19,13 +19,22 @@ export function AdminNav({ current, canOrders, canGenerator }: AdminNavProps) {
         </Link>
       ) : null}
       {canOrders ? (
-        current !== "orders" ? (
-          <Link href="/admin/objednavky/nova" className="hover:text-white">
-            Manuální objednávky
-          </Link>
-        ) : (
-          <span className="text-white">Manuální objednávky</span>
-        )
+        <>
+          {current !== "orders-list" ? (
+            <Link href="/admin/objednavky" className="hover:text-white">
+              Přehled objednávek
+            </Link>
+          ) : (
+            <span className="text-white">Přehled objednávek</span>
+          )}
+          {current !== "orders-new" ? (
+            <Link href="/admin/objednavky/nova" className="hover:text-white">
+              Nová manuální objednávka
+            </Link>
+          ) : (
+            <span className="text-white">Nová manuální objednávka</span>
+          )}
+        </>
       ) : null}
       {canGenerator ? (
         current !== "generator" ? (

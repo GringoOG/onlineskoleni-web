@@ -14,8 +14,16 @@ export const metadata: Metadata = {
 
 const sections = [
   {
+    href: "/admin/objednavky",
+    title: "Přehled objednávek",
+    description:
+      "Seznam všech objednávek (GoPay, QR platba, ručně). Vyhledávání, stav zaplaceno/nezaplaceno a ruční změna stavu.",
+    cta: "Otevřít přehled",
+    permission: "orders" as const,
+  },
+  {
     href: "/admin/objednavky/nova",
-    title: "Manuální objednávky",
+    title: "Nová manuální objednávka",
     description:
       "Založte přístup ke školení po faktuře nebo hotovosti. Systém vytvoří účty, přiřadí kurzy a odešle uvítací e-maily.",
     cta: "Nová objednávka",

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getOrderChannel } from "@/lib/orders/order-channel";
 import { getOrderByNumber } from "@/lib/orders";
 
 interface RouteParams {
@@ -23,6 +24,6 @@ export async function GET(_request: Request, { params }: RouteParams) {
       quantity: i.quantity,
     })),
     paymentState: order.payment?.state ?? null,
-    paymentMethod: order.payment?.gopayPaymentId ? "gopay" : "bank_transfer",
+    paymentMethod: getOrderChannel(order),
   });
 }

@@ -64,7 +64,10 @@ export async function markOrderPaid(orderId: string, gopayPaymentId: string, sta
   await prisma.$transaction([
     prisma.order.update({
       where: { id: orderId },
-      data: { status: OrderStatus.PAID },
+      data: {
+        status: OrderStatus.PAID,
+        paidStatusChangedAt: new Date(),
+      },
     }),
     prisma.payment.update({
       where: { orderId },
@@ -125,6 +128,7 @@ export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
       status: OrderStatus.PAID,
       paymentMethod: input.paymentMethod,
       adminNote: input.adminNote?.trim() || null,
+      paidStatusChangedAt: new Date(),
       companyName: input.companyName.trim(),
       ico: input.ico?.trim() || null,
       contactName: input.contactName.trim(),

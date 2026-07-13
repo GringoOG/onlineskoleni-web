@@ -33,6 +33,16 @@ export async function POST(request: Request) {
       lines,
     });
 
+    const { prisma } = await import("@/lib/prisma");
+    await prisma.order.update({
+      where: { id: order.id },
+      data: { paymentMethod: "BANK_TRANSFER" },
+    });
+    await prisma.payment.update({
+      where: { orderId: order.id },
+      data: { state: "AWAITING_TRANSFER" },
+    });
+
     return NextResponse.json({
       orderNumber: order.orderNumber,
       paymentMethod: "bank_transfer",
