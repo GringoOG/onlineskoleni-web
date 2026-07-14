@@ -5,11 +5,31 @@ import {
 
 declare global {
   interface Window {
+    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
   }
 }
 
-/** GA4 generate_lead + volitelná Google Ads konverze po odeslání kontaktního formuláře. */
+function ensureGtag(): ((...args: unknown[]) => void) | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+
+  if (typeof window.gtag === "function") {
+    return window.gtag;
+  }
+
+  // Stejná fronta jako gtag.js – eventy se odešlou, až se skript dočte.
+  const gtag = function gtag(...args: unknown[]) {
+    window.dataLayer!.push(args);
+  };
+  window.gtag = gtag;
+  return gtag;
+}
+
+/** GA4 generate_lead + Google Ads konverze po odeslání kontaktního formuláře. */
 export function trackLeadConversion(trackId: string): boolean {
   if (typeof window === "undefined") {
     return false;
@@ -20,17 +40,18 @@ export function trackLeadConversion(trackId: string): boolean {
     return true;
   }
 
-  if (typeof window.gtag !== "function") {
+  const gtag = ensureGtag();
+  if (!gtag) {
     return false;
   }
 
-  window.gtag("event", "generate_lead", {
+  gtag("event", "generate_lead", {
     currency: "CZK",
     form_name: "contact",
   });
 
   if (GOOGLE_ADS_LEAD_CONVERSION) {
-    window.gtag("event", "conversion", {
+    gtag("event", "conversion", {
       send_to: GOOGLE_ADS_LEAD_CONVERSION,
     });
   }
