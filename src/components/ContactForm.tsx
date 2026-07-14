@@ -7,39 +7,37 @@ import { trackLeadConversion } from "@/lib/track-lead-conversion";
 
 const initialState: ContactFormState = { ok: false, message: "" };
 
+function scheduleLeadTracking(trackId: string) {
+  const attempt = () => trackLeadConversion(trackId);
+  attempt();
+  queueMicrotask(attempt);
+  window.setTimeout(attempt, 0);
+  window.setTimeout(attempt, 300);
+  window.setTimeout(attempt, 1000);
+}
+
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitContactForm, initialState);
   const trackedIdRef = useRef<string | undefined>(undefined);
+
+  const [state, formAction, pending] = useActionState(
+    async (prev: ContactFormState, formData: FormData) => {
+      const result = await submitContactForm(prev, formData);
+      if (result.ok && result.trackId && trackedIdRef.current !== result.trackId) {
+        scheduleLeadTracking(result.trackId);
+        trackedIdRef.current = result.trackId;
+      }
+      return result;
+    },
+    initialState
+  );
 
   useEffect(() => {
     if (!state.ok || !state.trackId || trackedIdRef.current === state.trackId) {
       return;
     }
 
-    let gtagRetryInterval: ReturnType<typeof setInterval> | undefined;
-    let gtagRetryTimeout: ReturnType<typeof setTimeout> | undefined;
-
-    const attemptTrack = () => {
-      if (trackLeadConversion(state.trackId!)) {
-        trackedIdRef.current = state.trackId;
-        if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-        if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
-      }
-    };
-
-    attemptTrack();
-
-    if (trackedIdRef.current !== state.trackId) {
-      gtagRetryInterval = setInterval(attemptTrack, 200);
-      gtagRetryTimeout = setTimeout(() => {
-        if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-      }, 10000);
-    }
-
-    return () => {
-      if (gtagRetryInterval) clearInterval(gtagRetryInterval);
-      if (gtagRetryTimeout) clearTimeout(gtagRetryTimeout);
-    };
+    scheduleLeadTracking(state.trackId);
+    trackedIdRef.current = state.trackId;
   }, [state.ok, state.trackId]);
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import {
+  GA4_MEASUREMENT_ID,
   GOOGLE_ADS_LEAD_CONVERSION,
   GOOGLE_ADS_LEAD_STORAGE_PREFIX,
 } from "@/lib/google-ads";
@@ -21,10 +22,11 @@ function ensureGtag(): ((...args: unknown[]) => void) | null {
     return window.gtag;
   }
 
-  // Stejná fronta jako gtag.js – eventy se odešlou, až se skript dočte.
-  const gtag = function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args);
-  };
+  // Stejná fronta jako oficiální snippet gtag.js (Arguments, ne Array).
+  const gtag = function gtag(this: void) {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments);
+  } as (...args: unknown[]) => void;
   window.gtag = gtag;
   return gtag;
 }
@@ -45,10 +47,20 @@ export function trackLeadConversion(trackId: string): boolean {
     return false;
   }
 
-  gtag("event", "generate_lead", {
-    currency: "CZK",
-    form_name: "contact",
-  });
+  // Explicitní send_to na GA4 – při duálním AW+GA4 configu jinak event
+  // občas nedorazí do Realtime (page_view z config ano, custom event ne).
+  if (GA4_MEASUREMENT_ID) {
+    gtag("event", "generate_lead", {
+      send_to: GA4_MEASUREMENT_ID,
+      currency: "CZK",
+      form_name: "contact",
+    });
+  } else {
+    gtag("event", "generate_lead", {
+      currency: "CZK",
+      form_name: "contact",
+    });
+  }
 
   if (GOOGLE_ADS_LEAD_CONVERSION) {
     gtag("event", "conversion", {
