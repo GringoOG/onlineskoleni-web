@@ -42,6 +42,12 @@ export function ContactForm() {
     };
   }, [state.ok, state.trackId]);
 
+  useEffect(() => {
+    if (!state.ok || !state.message) return;
+    const el = document.getElementById("contact-form-status");
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [state.ok, state.message]);
+
   return (
     <form action={formAction} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
@@ -150,6 +156,7 @@ export function ContactForm() {
 
       {state.message && (
         <p
+          id="contact-form-status"
           className={`rounded-lg px-4 py-3 text-sm ${
             state.ok
               ? "bg-emerald-50 text-emerald-800"
