@@ -299,11 +299,11 @@ export function CheckoutForm() {
 
       <p className="text-xs text-slate-500">
         Odesláním objednávky souhlasíte s{" "}
-        <Link href="/obchodni-podminky" className="font-medium text-brand-dark underline">
+        <Link href="/obchodni-podminky" target="_blank" rel="noopener noreferrer" className="font-medium text-brand-dark underline">
           obchodními podmínkami
         </Link>{" "}
         a se zpracováním údajů dle{" "}
-        <Link href="/ochrana-udaju" className="font-medium text-brand-dark underline">
+        <Link href="/ochrana-udaju" target="_blank" rel="noopener noreferrer" className="font-medium text-brand-dark underline">
           ochrany osobních údajů
         </Link>
         .

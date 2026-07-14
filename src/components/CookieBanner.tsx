@@ -51,7 +51,12 @@ export function CookieBanner() {
           <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
             Web používá nezbytné cookies a nástroje pro měření návštěvnosti (Google Analytics,
             Google Ads), abychom mohli vyhodnocovat provoz a reklamy. Podrobnosti najdete v{" "}
-            <Link href="/ochrana-udaju" className="font-semibold text-brand-dark underline">
+            <Link
+              href="/ochrana-udaju"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-dark underline"
+            >
               zásadách ochrany údajů
             </Link>
             .
