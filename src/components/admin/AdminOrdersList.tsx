@@ -132,7 +132,8 @@ export function AdminOrdersList() {
         </div>
         <p className="mt-3 text-xs text-slate-500">
           Zobrazuje se max. 500 nejnovějších objednávek. Po označení jako zaplaceno se spustí
-          založení účtů a odeslání uvítacího e-mailu (pokud ještě neproběhlo).
+          založení účtů a odeslání uvítacího e-mailu (pokud ještě neproběhlo). U ručních a QR
+          objednávek se zároveň odešle konverze Nákup (GA4 + Google Ads).
         </p>
       </div>
 
