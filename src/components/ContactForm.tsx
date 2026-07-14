@@ -145,7 +145,12 @@ export function ContactForm() {
         />
         <span>
           Souhlasím se zpracováním osobních údajů dle{" "}
-          <a href="/ochrana-udaju" className="link-brand underline">
+          <a
+            href="/ochrana-udaju"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-brand underline"
+          >
             zásad ochrany údajů
           </a>
           . *
