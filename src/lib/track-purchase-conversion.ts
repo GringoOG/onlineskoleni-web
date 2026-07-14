@@ -15,14 +15,17 @@ export interface PurchaseOrderForConversion {
   totalAmountHalere: number;
 }
 
-/** Děkovná stránka – GoPay a QR platba (student čeká na potvrzení). */
+/** Děkovná stránka – jen GoPay (student se vrací z platební brány). */
 export function tracksPurchaseOnThankYouPage(channel: OrderChannel): boolean {
-  return channel === "gopay" || channel === "qr";
+  return channel === "gopay";
 }
 
-/** Admin – ručně zadané objednávky bez děkovné stránky. */
+/**
+ * Admin při označení Zaplaceno – ruční objednávky a QR převody
+ * (u QR student často zavře děkovnou stránku dřív, než admin potvrdí platbu).
+ */
 export function tracksPurchaseOnAdminPaid(channel: OrderChannel): boolean {
-  return channel === "manual";
+  return channel === "manual" || channel === "qr";
 }
 
 /** GA4 purchase + Google Ads konverze po zaplacení objednávky. */
