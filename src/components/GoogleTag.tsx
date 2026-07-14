@@ -7,7 +7,8 @@ export function GoogleTag() {
     return null;
   }
 
-  const scriptId = GOOGLE_ADS_ID || GA4_MEASUREMENT_ID;
+  // Preferuj GA4 jako primární script ID – custom eventy (generate_lead) jsou spolehlivější.
+  const scriptId = GA4_MEASUREMENT_ID || GOOGLE_ADS_ID;
 
   return (
     <>
@@ -20,8 +21,8 @@ export function GoogleTag() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          ${GOOGLE_ADS_ID ? `gtag('config', '${GOOGLE_ADS_ID}');` : ""}
           ${GA4_MEASUREMENT_ID ? `gtag('config', '${GA4_MEASUREMENT_ID}');` : ""}
+          ${GOOGLE_ADS_ID ? `gtag('config', '${GOOGLE_ADS_ID}');` : ""}
         `}
       </Script>
     </>

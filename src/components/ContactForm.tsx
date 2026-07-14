@@ -1,44 +1,32 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useLayoutEffect } from "react";
 import { submitContactForm, type ContactFormState } from "@/app/kontakt/actions";
 import { courses } from "@/lib/content";
 import { trackLeadConversion } from "@/lib/track-lead-conversion";
 
 const initialState: ContactFormState = { ok: false, message: "" };
 
-function scheduleLeadTracking(trackId: string) {
-  const attempt = () => trackLeadConversion(trackId);
-  attempt();
-  queueMicrotask(attempt);
-  window.setTimeout(attempt, 0);
-  window.setTimeout(attempt, 300);
-  window.setTimeout(attempt, 1000);
+/** Mountne se jen po úspěchu – garantuje klientské spuštění měření. */
+function LeadConversionEffect({ trackId }: { trackId: string }) {
+  useLayoutEffect(() => {
+    trackLeadConversion(trackId);
+  }, [trackId]);
+
+  useEffect(() => {
+    const t1 = window.setTimeout(() => trackLeadConversion(trackId), 250);
+    const t2 = window.setTimeout(() => trackLeadConversion(trackId), 1500);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+    };
+  }, [trackId]);
+
+  return null;
 }
 
 export function ContactForm() {
-  const trackedIdRef = useRef<string | undefined>(undefined);
-
-  const [state, formAction, pending] = useActionState(
-    async (prev: ContactFormState, formData: FormData) => {
-      const result = await submitContactForm(prev, formData);
-      if (result.ok && result.trackId && trackedIdRef.current !== result.trackId) {
-        scheduleLeadTracking(result.trackId);
-        trackedIdRef.current = result.trackId;
-      }
-      return result;
-    },
-    initialState
-  );
-
-  useEffect(() => {
-    if (!state.ok || !state.trackId || trackedIdRef.current === state.trackId) {
-      return;
-    }
-
-    scheduleLeadTracking(state.trackId);
-    trackedIdRef.current = state.trackId;
-  }, [state.ok, state.trackId]);
+  const [state, formAction, pending] = useActionState(submitContactForm, initialState);
 
   useEffect(() => {
     if (!state.ok || !state.message) return;
@@ -48,6 +36,8 @@ export function ContactForm() {
 
   return (
     <form action={formAction} className="space-y-5">
+      {state.ok && state.trackId ? <LeadConversionEffect trackId={state.trackId} /> : null}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-slate-700">
