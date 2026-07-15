@@ -21,10 +21,10 @@
     {
       "catalogSlug": "bremena",
       "name": "Manipulace s břemeny",
-      "description": "Bezpečná manipulace s břemeny při práci",
+      "description": "Bezpečná manipulace s břemeny při práci (v periodice BOZP – platnost certifikátu 2 roky)",
       "price": "99 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Prevence poranění páteře", "Správné techniky zvedání", "Test a certifikát"]
+      "features": ["Prevence poranění páteře", "Správné techniky zvedání", "Certifikát platný 2 roky"]
     },
     {
       "catalogSlug": "pozarni-zamestnanec",
@@ -45,26 +45,26 @@
     {
       "catalogSlug": "ridici",
       "name": "Řidiči – referenti",
-      "description": "Referenční školení řidičů",
+      "description": "Referenční školení řidičů (platnost certifikátu 2 roky)",
       "price": "149 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Pro zaměstnance na služebních cestách", "Online absolvování", "Certifikát"]
+      "features": ["Pro zaměstnance na služebních cestách", "Online absolvování", "Certifikát platný 2 roky"]
     },
     {
       "catalogSlug": "gdpr",
       "name": "GDPR a ochrana údajů",
-      "description": "Školení ochrany osobních údajů pro zaměstnance",
+      "description": "Školení ochrany osobních údajů pro zaměstnance (platnost certifikátu 1 rok)",
       "price": "249 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["GDPR v praxi firmy", "Bezpečné nakládání s daty", "Test a certifikát"]
+      "features": ["GDPR v praxi firmy", "Bezpečné nakládání s daty", "Certifikát platný 1 rok"]
     },
     {
       "catalogSlug": "ergonomie",
       "name": "Ergonomie práce",
-      "description": "Ergonomie práce u počítače a na pracovišti",
+      "description": "Ergonomie práce u počítače a na pracovišti (platnost certifikátu 1 rok)",
       "price": "149 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Prevence bolesti zad a přetížení", "Home office i kancelář", "Test a certifikát"]
+      "features": ["Prevence bolesti zad a přetížení", "Home office i kancelář", "Certifikát platný 1 rok"]
     }
   ],
   "bundles": [

@@ -32,9 +32,9 @@
     "title": "Manipulace s břemeny",
     "shortTitle": "Břemena",
     "color": "teal",
-    "description": "Školení zaměstnanců v bezpečné manipulaci s břemeny při práci. Prevence poranění páteře, správné techniky zvedání, přenášení a skladování břemen.",
+    "description": "Školení zaměstnanců v bezpečné manipulaci s břemeny při práci. Absolvuje se v periodice BOZP (platnost certifikátu 2 roky).",
     "highlights": [
-      "Zákonné školení dle požadavků BOZP",
+      "Součást periodiky BOZP – platnost 2 roky",
       "Správné techniky manipulace a prevence zranění",
       "Online absolvování s certifikátem po testu"
     ]
@@ -44,9 +44,9 @@
     "title": "Referenční školení řidičů",
     "shortTitle": "Řidiči",
     "color": "amber",
-    "description": "Školení řidičů referentů je určeno pro zaměstnance, kteří řídí služební nebo vlastní vozidlo v rámci služební cesty, avšak nejedná se o přímý výkon z povolání.",
+    "description": "Školení řidičů referentů je určeno pro zaměstnance, kteří řídí služební nebo vlastní vozidlo v rámci služební cesty (platnost certifikátu 2 roky).",
     "highlights": [
-      "Zákonné školení pro referenční řidiče",
+      "Periodika 1× za 2 roky",
       "Online absolvování bez organizace školení na místě",
       "Certifikát po úspěšném testu"
     ]
@@ -56,10 +56,10 @@
     "title": "Ergonomie práce",
     "shortTitle": "Ergonomie",
     "color": "green",
-    "description": "Praktické online školení ergonomie práce u počítače i na pracovišti. Prevence bolesti zad, správné pracovní polohy a bezpečné pracovní návyky pro zaměstnance i home office.",
+    "description": "Praktické online školení ergonomie práce u počítače i na pracovišti (platnost certifikátu 1 rok).",
     "highlights": [
       "Správné sezení, poloha monitoru a klávesnice",
-      "Prevence muskuloskeletálních poruch",
+      "Periodika 1× ročně",
       "Ergonomie při práci z domova i v kanceláři",
       "Certifikát po úspěšném testu"
     ]
@@ -69,10 +69,10 @@
     "title": "GDPR a ochrana osobních údajů",
     "shortTitle": "GDPR",
     "color": "violet",
-    "description": "Školení zaměstnanců o ochraně osobních údajů, právech subjektů údajů a bezpečném nakládání s daty ve firmě dle GDPR a zákona o zpracování osobních údajů.",
+    "description": "Školení zaměstnanců o ochraně osobních údajů dle GDPR (platnost certifikátu 1 rok).",
     "highlights": [
       "Zásady GDPR v praxi zaměstnavatele",
-      "Povinnosti při zpracování osobních údajů",
+      "Periodika 1× ročně",
       "Bezpečnost dat a hlášení incidentů",
       "Certifikát po úspěšném testu"
     ]

@@ -40,7 +40,7 @@ export default async function BremenaOfficialTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · platnost certifikátu 2 roky (v periodice BOZP)`}
       >
         <Link
           href="/lms"

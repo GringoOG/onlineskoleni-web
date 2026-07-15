@@ -40,7 +40,7 @@ export default async function GdprOfficialTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · platnost certifikátu 1 rok`}
       >
         <Link
           href="/lms"
