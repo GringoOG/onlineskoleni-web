@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { CourseQuiz } from "@/components/lms/BozpQuiz";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
+import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
 import {
   getOfficialQuizConfig,
   getOfficialTestSize,
@@ -14,6 +16,7 @@ import {
 import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
 const COURSE_SLUG = "bozp" as const;
+const AUDIENCE = "vedouci" as const;
 
 export const metadata: Metadata = {
   title: "Závěrečný test BOZP – vedoucí",
@@ -21,11 +24,21 @@ export const metadata: Metadata = {
 };
 
 export default async function BozpOfficialSupervisorTestPage() {
-  const config = getOfficialQuizConfig(COURSE_SLUG, "vedouci");
-  const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(COURSE_SLUG, "vedouci");
-  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, "vedouci");
-  const session = await requireOfficialTestAccess(COURSE_SLUG, '/lms/bozp/zaverecny/vedouci');
+  const config = getOfficialQuizConfig(COURSE_SLUG, AUDIENCE);
+  const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(
+    COURSE_SLUG,
+    AUDIENCE
+  );
+  const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, AUDIENCE);
+  const session = await requireOfficialTestAccess(
+    COURSE_SLUG,
+    "/lms/bozp/zaverecny/vedouci"
+  );
 
+  const enrolledAudience = await getEnrollmentAudience(session.userId, COURSE_SLUG);
+  if (enrolledAudience === "zamestnanec") {
+    redirect("/lms/bozp/zaverecny/zamestnanec");
+  }
 
   let userName = "Student";
   const [user] = await db
@@ -39,13 +52,10 @@ export default async function BozpOfficialSupervisorTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · náhodný výběr ze zásobníku`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · po absolvování může školit své zaměstnance`}
       >
-        <Link
-          href="/lms/bozp/zaverecny"
-          className="inline-block text-sm text-white/80 hover:text-white"
-        >
-          ← Výběr typu testu
+        <Link href="/lms" className="inline-block text-sm text-white/80 hover:text-white">
+          ← Moje školení
         </Link>
       </PageHero>
 
@@ -57,7 +67,7 @@ export default async function BozpOfficialSupervisorTestPage() {
           totalQuestions={totalQuestions}
           minCorrectAnswers={minCorrectAnswers}
           variant="oficialni"
-          audience="vedouci"
+          audience={AUDIENCE}
         />
       </Section>
     </>

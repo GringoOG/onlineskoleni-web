@@ -1,9 +1,19 @@
 [
   {
-    "courseSlug": "bozp",
-    "name": "BOZP – základní školení",
+    "courseSlug": "bozp-zamestnanec",
+    "name": "BOZP – zaměstnanec",
     "pricePerPersonHalere": 14900,
-    "vatRate": 21
+    "vatRate": 21,
+    "lmsCourseSlug": "bozp",
+    "audience": "zamestnanec"
+  },
+  {
+    "courseSlug": "bozp-vedouci",
+    "name": "BOZP – vedoucí",
+    "pricePerPersonHalere": 35000,
+    "vatRate": 21,
+    "lmsCourseSlug": "bozp",
+    "audience": "vedouci"
   },
   {
     "courseSlug": "bremena",
@@ -22,7 +32,7 @@
   {
     "courseSlug": "pozarni-vedouci",
     "name": "Požární ochrana (PO) – vedoucí",
-    "pricePerPersonHalere": 14900,
+    "pricePerPersonHalere": 35000,
     "vatRate": 21,
     "lmsCourseSlug": "pozarni",
     "audience": "vedouci"
@@ -50,13 +60,13 @@
     "name": "Balíček BOZP + břemena + PO (zaměstnanec)",
     "pricePerPersonHalere": 25900,
     "vatRate": 21,
-    "bundleCourses": ["bozp", "bremena", "pozarni-zamestnanec"]
+    "bundleCourses": ["bozp-zamestnanec", "bremena", "pozarni-zamestnanec"]
   },
   {
     "courseSlug": "balicek-komplet",
     "name": "Kompletní balíček (BOZP + břemena + PO zaměstnanec + GDPR + řidiči)",
     "pricePerPersonHalere": 44900,
     "vatRate": 21,
-    "bundleCourses": ["bozp", "bremena", "pozarni-zamestnanec", "gdpr", "ridici"]
+    "bundleCourses": ["bozp-zamestnanec", "bremena", "pozarni-zamestnanec", "gdpr", "ridici"]
   }
 ]

@@ -124,7 +124,13 @@ function toRuntimeConfig(
   courseSlug: LmsQuizCourseSlug,
   quiz: QuizDefinition
 ): QuizRuntimeConfig {
-  const totalQuestions = quiz.questions.length;
+  const totalQuestions =
+    quiz.variant === "demo"
+      ? quiz.questions.length
+      : Math.min(
+          getOfficialQuestionCount(courseSlug, quiz.audience),
+          quiz.questions.length
+        );
   return {
     courseSlug,
     variant: quiz.variant,
@@ -162,14 +168,14 @@ export function getOfficialQuizConfig(
   return toRuntimeConfig(courseSlug, getOfficialQuizDefinition(courseSlug, audience));
 }
 
-/** Počet otázek a práh úspěchu pro ostrý test (15, u břemen 10). */
+/** Počet otázek a práh úspěchu pro ostrý test (15, vedoucí 20, břemena 10). */
 export function getOfficialTestSize(
   courseSlug: LmsQuizCourseSlug,
   audience?: QuizAudience
 ): { totalQuestions: number; minCorrectAnswers: number } {
   const pool = getOfficialQuizDefinition(courseSlug, audience).questions;
   const totalQuestions = Math.min(
-    getOfficialQuestionCount(courseSlug),
+    getOfficialQuestionCount(courseSlug, audience),
     pool.length
   );
   return {
@@ -184,7 +190,10 @@ export function prepareOfficialQuizQuestions(
   audience?: QuizAudience
 ): QuizQuestion[] {
   const pool = getOfficialQuizDefinition(courseSlug, audience).questions;
-  return pickOfficialQuizQuestions(pool, getOfficialQuestionCount(courseSlug));
+  return pickOfficialQuizQuestions(
+    pool,
+    getOfficialQuestionCount(courseSlug, audience)
+  );
 }
 
 /** @deprecated Use getDemoQuizConfig("bozp") */

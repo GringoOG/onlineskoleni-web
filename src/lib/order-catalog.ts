@@ -165,13 +165,23 @@ export function expandOrderItemsForEnrollment(
       continue;
     }
 
-    // Legacy objednávky se slugem „pozarni“ (před rozdělením nabídky).
+    // Legacy objednávky se slugem „pozarni“ / „bozp“ (před rozdělením nabídky).
     if (item.courseSlug === "pozarni") {
       expanded.push({
         courseSlug: "pozarni",
         name: item.name || "Požární ochrana (PO)",
         quantity: item.quantity,
         audience: item.audience ?? null,
+      });
+      continue;
+    }
+
+    if (item.courseSlug === "bozp") {
+      expanded.push({
+        courseSlug: "bozp",
+        name: item.name || "BOZP – základní školení",
+        quantity: item.quantity,
+        audience: item.audience ?? "zamestnanec",
       });
       continue;
     }

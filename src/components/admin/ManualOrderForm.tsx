@@ -34,7 +34,7 @@ export function ManualOrderForm() {
   const [contactEmail, setContactEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedCourses, setSelectedCourses] = useState<Record<string, boolean>>(() => ({
-    bozp: true,
+    "bozp-zamestnanec": true,
   }));
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("INVOICE");
   const [discountMode, setDiscountMode] = useState<DiscountMode>("auto");

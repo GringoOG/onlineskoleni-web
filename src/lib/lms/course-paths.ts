@@ -7,6 +7,12 @@ export function getLmsEntryPath(
   audience?: CatalogAudience | null
 ): string {
   if (courseSlug === "bozp") {
+    if (audience === "zamestnanec") {
+      return "/lms/bozp/zaverecny/zamestnanec";
+    }
+    if (audience === "vedouci") {
+      return "/lms/bozp/zaverecny/vedouci";
+    }
     return "/lms/bozp/zaverecny";
   }
   if (courseSlug === "pozarni") {

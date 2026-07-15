@@ -25,9 +25,13 @@ export async function sendCertificateExpiryReminderEmail(
 ): Promise<SendEmailResult> {
   const appUrl = getAppUrl();
   const expiryLabel = formatCzechDate(input.expiresAt);
-  const orderUrl = `${appUrl}/objednavka?kurz=${encodeURIComponent(
-    input.courseSlug === "pozarni" ? "pozarni-zamestnanec" : input.courseSlug
-  )}`;
+  const orderSlug =
+    input.courseSlug === "pozarni"
+      ? "pozarni-zamestnanec"
+      : input.courseSlug === "bozp"
+        ? "bozp-zamestnanec"
+        : input.courseSlug;
+  const orderUrl = `${appUrl}/objednavka?kurz=${encodeURIComponent(orderSlug)}`;
   const lmsUrl = `${appUrl}/lms`;
 
   const greeting = formatCzechEmailGreeting(input.studentName);

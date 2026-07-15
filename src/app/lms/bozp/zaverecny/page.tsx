@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
-import {
-  getOfficialQuizConfig,
-} from "@/lib/lms/quiz-data";
+import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
+import { getOfficialQuizConfig } from "@/lib/lms/quiz-data";
 import { getDemoTestPath } from "@/lib/lms/course-paths";
 import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
@@ -12,13 +12,21 @@ const COURSE_SLUG = "bozp" as const;
 
 export const metadata: Metadata = {
   title: "Závěrečný test BOZP",
-  description: "Vyberte oficiální test podle typu školení – zaměstnanec nebo vedoucí.",
+  description: "Oficiální test BOZP podle typu školení z objednávky.",
 };
 
 export default async function BozpOfficialTestHubPage() {
-  await requireOfficialTestAccess(COURSE_SLUG, '/lms/bozp/zaverecny');
+  const session = await requireOfficialTestAccess(COURSE_SLUG, "/lms/bozp/zaverecny");
 
+  const enrolledAudience = await getEnrollmentAudience(session.userId, COURSE_SLUG);
+  if (enrolledAudience === "zamestnanec") {
+    redirect("/lms/bozp/zaverecny/zamestnanec");
+  }
+  if (enrolledAudience === "vedouci") {
+    redirect("/lms/bozp/zaverecny/vedouci");
+  }
 
+  // Legacy zápisy bez audience – výběr ještě nabídneme jednou.
   const zamestnanec = getOfficialQuizConfig(COURSE_SLUG, "zamestnanec");
   const vedouci = getOfficialQuizConfig(COURSE_SLUG, "vedouci");
 
@@ -26,7 +34,7 @@ export default async function BozpOfficialTestHubPage() {
     <>
       <PageHero
         title="Oficiální závěrečný test BOZP"
-        subtitle="Vyberte test odpovídající vašemu typu školení. Po úspěšném složení obdržíte certifikát."
+        subtitle="U novějších objednávek je typ školení (zaměstnanec / vedoucí) určen už v nabídce. U starších zápisů vyberte odpovídající test."
       >
         <Link
           href="/lms"
@@ -59,7 +67,7 @@ export default async function BozpOfficialTestHubPage() {
             <h2 className="mt-2 text-xl font-bold text-foreground">{vedouci.title}</h2>
             <p className="mt-2 text-sm text-muted">
               {vedouci.totalQuestions} otázek · úspěch od {vedouci.minCorrectAnswers} správných
-              (80 %)
+              (80 %) · po absolvování může školit své zaměstnance
             </p>
             <Link href="/lms/bozp/zaverecny/vedouci" className="btn-primary mt-6 inline-flex">
               Spustit test pro vedoucí
@@ -69,7 +77,10 @@ export default async function BozpOfficialTestHubPage() {
 
         <p className="mt-8 text-center text-sm text-muted">
           Chcete si nejdřív vyzkoušet formát?{" "}
-          <Link href={getDemoTestPath(COURSE_SLUG)!} className="font-semibold text-brand-dark hover:underline">
+          <Link
+            href={getDemoTestPath(COURSE_SLUG)!}
+            className="font-semibold text-brand-dark hover:underline"
+          >
             Demo test (10 otázek)
           </Link>
         </p>

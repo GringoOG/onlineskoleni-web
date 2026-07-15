@@ -239,9 +239,9 @@ export async function submitOfficialQuiz(
     };
   }
 
-  // PO: typ školení je vázaný na objednávku – klientský výběr nepřepisuje zápis.
+  // BOZP / PO: typ školení je vázaný na objednávku – klientský výběr nepřepisuje zápis.
   let resolvedAudience = audience;
-  if (courseSlug === "pozarni") {
+  if (courseSlug === "pozarni" || courseSlug === "bozp") {
     const enrolled = await getEnrollmentAudience(session.userId, courseSlug);
     if (enrolled) {
       resolvedAudience = enrolled;
