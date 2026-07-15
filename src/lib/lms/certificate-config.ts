@@ -11,7 +11,11 @@ export const CERTIFICATE_VALIDITY_YEARS = 1;
  *   – vedoucí zaměstnanec nejméně 1× za 3 roky
  *
  * BOZP (zákoník práce § 103): zákon přesnou lhůtu neurčuje; běžná praxe
- * a doporučení SUIP/odborných zdrojů je stejně 2 / 3 roky podle role.
+ * je 2 / 3 roky podle role.
+ *
+ * Břemena: v periodice BOZP (u nás 2 roky).
+ * Řidiči referenti: 1× za 2 roky.
+ * Ergonomie, GDPR: 1× ročně.
  */
 export function getCertificateValidityYears(
   courseSlug: string,
@@ -22,6 +26,15 @@ export function getCertificateValidityYears(
     // Zaměstnanec i legacy zápis bez audience → 2 roky.
     return 2;
   }
+
+  if (courseSlug === "bremena" || courseSlug === "ridici") {
+    return 2;
+  }
+
+  if (courseSlug === "ergonomie" || courseSlug === "gdpr") {
+    return 1;
+  }
+
   return CERTIFICATE_VALIDITY_YEARS;
 }
 

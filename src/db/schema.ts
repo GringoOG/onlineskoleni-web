@@ -65,6 +65,6 @@ export const certificates = pgTable("certificates", {
   certificateCode: text("certificate_code").notNull().unique(), // Unikátní číslo (např. BOZP-2026-0001)
   pdfUrl: text("pdf_url").notNull(), // Odkaz na stažení PDF ze Supabase Storage
   issuedAt: timestamp("issued_at").defaultNow().notNull(),
-  expiresAt: timestamp("expires_at").notNull(), // BOZP/PO: 2 roky (zaměstnanec) / 3 roky (vedoucí); ostatní typicky 1 rok
+  expiresAt: timestamp("expires_at").notNull(), // BOZP/PO 2y/3y; břemena+řidiči 2y; ergonomie+GDPR 1y
   expiryReminderSentAt: timestamp("expiry_reminder_sent_at"), // Kdy byl odeslán e-mail o konci platnosti
 });
