@@ -95,8 +95,8 @@ export default function HomePage() {
         </p>
       </Section>
 
-      <Section id="demo-test" title={pages.demoTest.title}>
-        <div className="max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <Section id="demo-test" title={pages.demoTest.title} align="center">
+        <div className="w-full rounded-2xl border border-border bg-card p-6 text-left shadow-sm">
           <p className="text-muted">{pages.demoTest.description}</p>
           <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
             <div className="rounded-lg bg-brand-tint px-4 py-3">
