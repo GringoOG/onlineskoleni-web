@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { pricing } from "@/lib/content";
 
 interface BulkDiscountBannerProps {
@@ -22,8 +21,8 @@ export function BulkDiscountBanner({ variant = "full" }: BulkDiscountBannerProps
             </li>
           ))}
         </ul>
-        <p className="mt-3 text-center text-xs text-slate-600">
-          Slevy se počítají automaticky v objednávce · ceny bez DPH
+        <p className="mt-3 text-center text-sm font-bold text-brand-darker">
+          Sleva se započítá automaticky dle počtu osob.
         </p>
       </div>
     );
@@ -32,7 +31,7 @@ export function BulkDiscountBanner({ variant = "full" }: BulkDiscountBannerProps
   return (
     <div className="rounded-2xl border-2 border-brand bg-gradient-to-br from-brand-tint via-white to-brand-tint p-6 shadow-md">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0 flex-1">
           <p className="text-xs font-bold uppercase tracking-wider text-brand-dark">
             Výhodné pro firmy
           </p>
@@ -43,12 +42,9 @@ export function BulkDiscountBanner({ variant = "full" }: BulkDiscountBannerProps
             {pricing.bulkDiscount}
           </p>
         </div>
-        <Link
-          href="/objednavka"
-          className="btn-primary shrink-0 px-5 py-2.5 text-sm"
-        >
-          Objednat se slevou
-        </Link>
+        <p className="max-w-xs shrink-0 rounded-xl border-2 border-brand bg-white px-4 py-3 text-center text-sm font-bold leading-snug text-brand-darker shadow-sm sm:text-base">
+          Sleva se započítá automaticky dle počtu osob.
+        </p>
       </div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
