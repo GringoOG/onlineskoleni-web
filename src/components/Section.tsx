@@ -43,15 +43,7 @@ export function Section({
       return;
     }
 
-    const rect = element.getBoundingClientRect();
-    const alreadyVisible =
-      rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
-
-    if (alreadyVisible) {
-      requestAnimationFrame(() => setIsVisible(true));
-      return;
-    }
-
+    // Vždy animovat přes observer – i sekce už ve viewportu se pozvolna objeví.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -59,7 +51,7 @@ export function Section({
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -8% 0px" }
     );
 
     observer.observe(element);
