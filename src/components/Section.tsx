@@ -9,7 +9,7 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   alt?: boolean;
-  /** Zarovnání nadpisu (a podnadpisu) – obsah sekce zůstává plná šířka. */
+  /** Zarovnání nadpisu (a podnadpisu). Výchozí: střed. Obsah sekce zůstává plná šířka. */
   align?: "left" | "center";
   /** Postupné zobrazení při scrollu (vypnout u formulářů / adminu). */
   reveal?: boolean;
