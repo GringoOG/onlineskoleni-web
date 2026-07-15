@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { CourseQuiz } from "@/components/lms/BozpQuiz";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -13,7 +12,7 @@ import {
   prepareOfficialQuizQuestions,
 } from "@/lib/lms/quiz-data";
 import { getDemoTestPath } from "@/lib/lms/course-paths";
-import { getLmsSession } from "@/lib/lms/session";
+import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
 const COURSE_SLUG = "ridici" as const;
 
@@ -26,11 +25,8 @@ export default async function RidiciOfficialTestPage() {
   const config = getOfficialQuizConfig(COURSE_SLUG);
   const { totalQuestions, minCorrectAnswers } = getOfficialTestSize(COURSE_SLUG);
   const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG);
-  const session = await getLmsSession();
+  const session = await requireOfficialTestAccess(COURSE_SLUG, '/lms/ridici/zaverecny');
 
-  if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fridici%2Fzaverecny");
-  }
 
   let userName = "Student";
   const [user] = await db

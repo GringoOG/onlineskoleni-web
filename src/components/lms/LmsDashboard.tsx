@@ -52,7 +52,7 @@ export function LmsDashboard({ data }: LmsDashboardProps) {
         <ul className="space-y-6">
           {data.courses.map((course) => (
             <li key={course.enrollmentId}>
-              <CourseProgressCard course={course} />
+              <CourseProgressCard course={course} isDemoUser={isDemoUser} />
             </li>
           ))}
         </ul>

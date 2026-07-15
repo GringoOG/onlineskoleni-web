@@ -8,6 +8,7 @@ import { eq } from "drizzle-orm";
 import { db, users } from "@/db";
 import { getDemoQuizConfig, getQuizQuestionsPublic } from "@/lib/lms/quiz-data";
 import { getOfficialTestHubPath } from "@/lib/lms/course-paths";
+import { isDemoUserEmail } from "@/lib/lms/demo-user";
 import { getLmsSession } from "@/lib/lms/session";
 
 const COURSE_SLUG = "bremena" as const;
@@ -28,11 +29,12 @@ export default async function BremenaDemoTestPage() {
 
   let userName = "Demo student";
   const [user] = await db
-    .select({ name: users.name })
+    .select({ name: users.name, email: users.email })
     .from(users)
     .where(eq(users.id, session.userId))
     .limit(1);
   if (user) userName = user.name;
+  const isDemoUser = user ? isDemoUserEmail(user.email) : true;
 
   return (
     <>
@@ -46,21 +48,45 @@ export default async function BremenaDemoTestPage() {
         >
           ← Moje školení
         </Link>
-        <Link
-          href={getOfficialTestHubPath(COURSE_SLUG)!}
-          className="block text-sm text-white/70 hover:text-white"
-        >
-          Oficiální závěrečný test →
-        </Link>
+        {!isDemoUser ? (
+          <Link
+            href={getOfficialTestHubPath(COURSE_SLUG)!}
+            className="block text-sm text-white/70 hover:text-white"
+          >
+            Oficiální závěrečný test →
+          </Link>
+        ) : (
+          <Link href="/objednavka" className="block text-sm text-white/70 hover:text-white">
+            Objednat školení (oficiální test) →
+          </Link>
+        )}
       </PageHero>
 
       <Section>
         <p className="mb-6 rounded-xl border border-teal-200 bg-teal-50 px-4 py-3 text-sm text-teal-900">
-          Toto je <strong>demo ukázka</strong> – certifikát se vydává až po úspěšném absolvování{" "}
-          <Link href={getOfficialTestHubPath(COURSE_SLUG)!} className="font-semibold underline">
-            oficiálního testu
-          </Link>
-          .
+          Toto je <strong>demo ukázka</strong> – certifikát se vydává až po úspěšném
+          absolvování oficiálního testu{isDemoUser ? (
+            <>
+              {" "}
+              (ten je dostupný až po{" "}
+              <Link href="/objednavka" className="font-semibold underline">
+                zaplacení školení
+              </Link>
+              ).
+            </>
+          ) : (
+            <>
+              {" "}
+              (
+              <Link
+                href={getOfficialTestHubPath(COURSE_SLUG)!}
+                className="font-semibold underline"
+              >
+                oficiální test v LMS
+              </Link>
+              ).
+            </>
+          )}
         </p>
         <CourseQuiz
           courseSlug={COURSE_SLUG}
@@ -69,6 +95,7 @@ export default async function BremenaDemoTestPage() {
           totalQuestions={config.totalQuestions}
           minCorrectAnswers={config.minCorrectAnswers}
           variant="demo"
+          allowOfficialCta={!isDemoUser}
         />
       </Section>
     </>

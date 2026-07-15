@@ -12,7 +12,11 @@ export const metadata: Metadata = {
   description: "Přehled vašich online kurzů, průběhu studia a certifikátů.",
 };
 
-export default async function LmsDashboardPage() {
+interface PageProps {
+  searchParams: Promise<{ official?: string }>;
+}
+
+export default async function LmsDashboardPage({ searchParams }: PageProps) {
   const session = await getLmsSession();
 
   if (!session) {
@@ -23,6 +27,8 @@ export default async function LmsDashboardPage() {
   if (!data) {
     redirect("/lms/login");
   }
+
+  const { official } = await searchParams;
 
   return (
     <>
@@ -39,6 +45,15 @@ export default async function LmsDashboardPage() {
       </PageHero>
 
       <Section>
+        {official === "denied" ? (
+          <p className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+            Oficiální závěrečný test je dostupný jen po zaplacení školení v klientské
+            zóně. Veřejné demo slouží pouze k vyzkoušení formátu.{" "}
+            <Link href="/objednavka" className="font-semibold underline">
+              Objednat školení
+            </Link>
+          </p>
+        ) : null}
         <LmsDashboard data={data} />
       </Section>
     </>
