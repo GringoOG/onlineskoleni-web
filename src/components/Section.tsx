@@ -22,7 +22,7 @@ export function Section({
   children,
   className = "",
   alt = false,
-  align = "left",
+  align = "center",
   reveal = true,
 }: SectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
