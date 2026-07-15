@@ -7,8 +7,9 @@ export function GoogleTag() {
     return null;
   }
 
-  // Preferuj GA4 jako primární script ID – custom eventy (generate_lead) jsou spolehlivější.
-  const scriptId = GA4_MEASUREMENT_ID || GOOGLE_ADS_ID;
+  // Preferuj Ads ID – konverzní tagy v Ads jsou spolehlivější při načtení AW scriptu.
+  // GA4 se konfiguruje druhým gtag('config', ...).
+  const scriptId = GOOGLE_ADS_ID || GA4_MEASUREMENT_ID;
 
   return (
     <>

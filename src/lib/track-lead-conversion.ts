@@ -3,6 +3,7 @@ import {
   GOOGLE_ADS_LEAD_CONVERSION,
   GOOGLE_ADS_LEAD_STORAGE_PREFIX,
 } from "@/lib/google-ads";
+import { sendGoogleAdsConversionPixel } from "@/lib/google-ads-conversion-pixel";
 
 declare global {
   interface Window {
@@ -89,16 +90,23 @@ export function trackLeadConversion(trackId: string): boolean {
     });
   }
 
-  // Vždy i přímý beacon – Realtime ho typicky zachytí i když gtag event „zmizí“.
   sendGa4CollectBeacon("generate_lead", {
     form_name: "contact",
     currency: "CZK",
     lead_id: trackId,
   });
 
-  if (gtag && GOOGLE_ADS_LEAD_CONVERSION) {
-    gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_LEAD_CONVERSION,
+  if (GOOGLE_ADS_LEAD_CONVERSION) {
+    if (gtag) {
+      gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_LEAD_CONVERSION,
+      });
+    }
+    // Záložní Ads pixel – GA4 generate_lead / collect Ads konverzi nevytvoří.
+    // Image GET je spolehlivější než samotný gtag conversion event.
+    sendGoogleAdsConversionPixel({
+      sendTo: GOOGLE_ADS_LEAD_CONVERSION,
+      transactionId: trackId,
     });
   }
 
