@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/Section";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTABanner } from "@/components/CTABanner";
 import { getCourse, getCourseSlugs, courses } from "@/lib/content";
 import { courseColorClasses } from "@/lib/course-colors";
@@ -37,27 +38,29 @@ export default async function CourseDetailPage({ params }: PageProps) {
     <>
       <div className={`${colors.bg} border-b ${colors.border} py-10 sm:py-14`}>
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-4 sm:gap-5">
-            <Link
-              href="/skoleni"
-              className="inline-flex text-sm font-medium text-slate-600 hover:text-slate-900"
-            >
-              ← Všechna školení
-            </Link>
-            <span
-              className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${colors.badge}`}
-            >
-              {course.shortTitle}
-            </span>
-            <h1
-              className={`break-words text-3xl font-bold leading-tight sm:text-4xl md:text-5xl ${colors.text}`}
-            >
-              {course.title}
-            </h1>
-            <p className="mx-auto max-w-3xl text-base text-slate-700 sm:text-lg">
-              {course.description}
-            </p>
-          </div>
+          <ScrollReveal variant="hero">
+            <div className="flex flex-col items-center gap-4 sm:gap-5">
+              <Link
+                href="/skoleni"
+                className="inline-flex text-sm font-medium text-slate-600 hover:text-slate-900"
+              >
+                ← Všechna školení
+              </Link>
+              <span
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${colors.badge}`}
+              >
+                {course.shortTitle}
+              </span>
+              <h1
+                className={`break-words text-3xl font-bold leading-tight sm:text-4xl md:text-5xl ${colors.text}`}
+              >
+                {course.title}
+              </h1>
+              <p className="mx-auto max-w-3xl text-base text-slate-700 sm:text-lg">
+                {course.description}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
