@@ -39,10 +39,10 @@ export default function SluzbyPage() {
         </div>
       </Section>
 
-      <Section alt title="Související weby">
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Section alt title="Související weby" align="center">
+        <ul className="mx-auto flex max-w-3xl flex-col justify-center gap-4 sm:flex-row">
           {pages.relatedLinks.map((link) => (
-            <li key={link.url}>
+            <li key={link.url} className="min-w-0 flex-1">
               <a
                 href={link.url}
                 target="_blank"

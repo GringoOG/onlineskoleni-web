@@ -60,7 +60,12 @@ export default function HomePage() {
         <SubstituteFulfillmentBanner variant="full" />
       </Section>
 
-      <Section id="skoleni" title="Naše školení" subtitle="Zákonné online kurzy s certifikátem po úspěšném testu">
+      <Section
+        id="skoleni"
+        title="Naše školení"
+        subtitle="Zákonné online kurzy s certifikátem po úspěšném testu"
+        align="center"
+      >
         <div className="grid gap-6 sm:grid-cols-2">
           {courses.map((course) => (
             <CourseCard key={course.slug} course={course} />
@@ -76,7 +81,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section alt title={pages.onlineBenefits.title}>
+      <Section alt title={pages.onlineBenefits.title} align="center">
         <ul className="grid gap-3 sm:grid-cols-2">
           {pages.onlineBenefits.items.map((item) => (
             <li
@@ -95,8 +100,8 @@ export default function HomePage() {
         </p>
       </Section>
 
-      <Section id="demo-test" title={pages.demoTest.title}>
-        <div className="max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <Section id="demo-test" title={pages.demoTest.title} align="center">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card p-6 text-left shadow-sm">
           <p className="text-muted">{pages.demoTest.description}</p>
           <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
             <div className="rounded-lg bg-brand-tint px-4 py-3">
