@@ -81,7 +81,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section alt title={pages.onlineBenefits.title}>
+      <Section alt title={pages.onlineBenefits.title} align="center">
         <ul className="grid gap-3 sm:grid-cols-2">
           {pages.onlineBenefits.items.map((item) => (
             <li
