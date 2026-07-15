@@ -18,7 +18,11 @@ export function CheckoutForm() {
   const [quantities, setQuantities] = useState<Record<string, number>>(() => {
     const initial: Record<string, number> = {};
     const selectedSlug =
-      preselected === "pozarni" ? "pozarni-zamestnanec" : preselected;
+      preselected === "pozarni"
+        ? "pozarni-zamestnanec"
+        : preselected === "bozp"
+          ? "bozp-zamestnanec"
+          : preselected;
     for (const item of orderCatalog) {
       initial[item.courseSlug] = selectedSlug === item.courseSlug ? 1 : 0;
     }
@@ -137,6 +141,13 @@ export function CheckoutForm() {
           Zadejte počet osob pro každý kurz nebo balíček (0 = neobjednávat). Ceny jsou bez DPH.
           Při 10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
         </p>
+        <p className="mt-2 text-sm text-slate-700">
+          <span className="font-semibold">BOZP a požární ochrana:</span> zvlášť objednejte školení
+          pro řadové zaměstnance (149 Kč) a pro vedoucí (350 Kč). U vedoucího je test na{" "}
+          <span className="font-semibold">20 otázek</span> a po absolvování může vedoucí následně
+          školit své zaměstnance. U BOZP i PO má zaměstnanec certifikát na 2 roky a vedoucí na
+          3 roky.
+        </p>
         <ul className="mt-4 space-y-3">
           {orderCatalog.map((item) => (
             <li
@@ -147,6 +158,17 @@ export function CheckoutForm() {
                 <p className="font-medium text-slate-900">{item.name}</p>
                 <p className="text-sm text-slate-500">
                   {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
+                  {item.audience === "vedouci" ? (
+                    <span className="mt-1 block text-xs text-brand-dark">
+                      Test 20 otázek · certifikát 3 roky · po absolvování může školit své
+                      zaměstnance
+                    </span>
+                  ) : null}
+                  {item.audience === "zamestnanec" ? (
+                    <span className="mt-1 block text-xs text-slate-400">
+                      Certifikát platný 2 roky
+                    </span>
+                  ) : null}
                   {item.bundleCourses?.length ? (
                     <span className="block text-xs text-slate-400">
                       Balíček: {item.bundleCourses.length} školení

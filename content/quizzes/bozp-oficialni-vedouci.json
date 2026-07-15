@@ -4,7 +4,31 @@
   "audience": "vedouci",
   "title": "Závěrečný test BOZP – vedoucí zaměstnanec",
   "subtitle": "Oficiální test pro vedoucí zaměstnance",
-  "sourceNumbers": ["147", "148", "173", "174", "176", "178", "179", "180"],
+  "sourceNumbers": [
+    "147",
+    "148",
+    "173",
+    "174",
+    "176",
+    "178",
+    "179",
+    "180",
+    "94",
+    "95",
+    "96",
+    "96b",
+    "149",
+    "150",
+    "170",
+    "171",
+    "175",
+    "177",
+    "181",
+    "182",
+    "183",
+    "184",
+    "185"
+  ],
   "questions": [
     {
       "id": "q147",
@@ -85,6 +109,156 @@
         "nesmí"
       ],
       "correctIndex": 1
+    },
+    {
+      "id": "q94",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "účastnit se školení bezpečnosti a ochrany zdraví při práci, ale nemusí se podrobit ověření svých znalostí",
+        "účastnit se večírků a slavností vyhlášených firmou",
+        "účastnit se školení zajišťovaných zaměstnavatelem zaměřených na bezpečnost a ochranu zdraví při práci včetně ověření svých znalostí"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q95",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "nedodržovat při práci stanovené pracovní postupy",
+        "dodržovat při práci stanovené pracovní postupy, ale používat stanovené pracovní prostředky není povinností zaměstnance",
+        "dodržovat při práci stanovené pracovní postupy, používat stanovené pracovní prostředky, dopravní prostředky, osobní ochranné pracovní prostředky a ochranná zařízení a svévolně je neměnit a nevyřazovat z provozu"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q96",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele, ale v pracovní době i mimo tato pracoviště alkoholické nápoje může požívat",
+        "požívat alkoholické nápoje a zneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště",
+        "nepožívat alkoholické nápoje a nezneužívat jiné návykové látky na pracovištích zaměstnavatele a v pracovní době i mimo tato pracoviště"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q96b",
+      "text": "Je zaměstnanec povinen podrobit se na pokyn oprávněného vedoucího zaměstnance písemně určeného zaměstnavatelem zjištění, zda není pod vlivem alkoholu nebo jiných návykových látek?",
+      "options": [
+        "ne",
+        "ano, ale jen pokud je zaměstnaný na hlavní pracovní poměr",
+        "ano"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q149",
+      "text": "Vstupní lékařskou prohlídku hradí:",
+      "options": [
+        "vždy osoba ucházející se o zaměstnání",
+        "osoba ucházející se o zaměstnání. Zaměstnavatel hradí vstupní lékařskou prohlídku, pokud uzavře s uchazečem o zaměstnání pracovněprávní nebo obdobný vztah",
+        "vždy a bez výhrad zaměstnavatel"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q150",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "pouze poskytovateli pracovně lékařských sdělit adresu",
+        "sdělit poskytovateli pracovně lékařských služeb jméno, ale adresu registrujícího poskytovatele sdělit nemusí",
+        "sdělit poskytovateli pracovně lékařských služeb jméno a adresu registrujícího poskytovatele a dalších poskytovatelů, kteří ho přijali do péče"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q170",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "bezodkladně oznamovat svůj pracovní úraz, ale pracovní úraz jiného zaměstnance neohlašuje",
+        "oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, ale spolupracovat při objasňování jeho příčin nemusí",
+        "bezodkladně oznamovat svému nadřízenému vedoucímu zaměstnanci svůj pracovní úraz, pokud mu to jeho zdravotní stav dovolí, a pracovní úraz jiného zaměstnance, popřípadě úraz jiné fyzické osoby, jehož byl svědkem, a spolupracovat při objasňování jeho příčin"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q171",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "oznamovat svému nadřízenému nedostatky může, ale nemusí. Nedostatky na pracovišti vyhledává pouze vedoucí",
+        "oznamovat svému nadřízenému vedoucímu zaměstnanci nedostatky a závady na pracovišti, které ohrožují nebo by bezprostředně a závažným způsobem mohly ohrozit bezpečnost nebo zdraví zaměstnanců při práci",
+        "vést požární knihu a tam zapisovat nedostatky na pracovišti"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q175",
+      "text": "Zaměstnanec je povinen:",
+      "options": [
+        "navštívit lékaře a požádat ho o vyšetření zraku",
+        "navštívit lékaře",
+        "podrobit se pracovně lékařským službám u poskytovatele pracovně lékařských služeb"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q177",
+      "text": "Pro ochranu rukou a paží použijeme:",
+      "options": [
+        "snímatelné chrániče nártu",
+        "rukavice proti plynům a proti radioaktivnímu prachu s vhodnou lícnicovou částí",
+        "rukavice před mechanickým poškozením (proti bodnutí, proříznutí, vibracím apod.)"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q181",
+      "text": "Je zaměstnanec povinen nahradit zaměstnavateli škodu, kterou mu způsobil zaviněným porušením povinností při plnění pracovních úkolů nebo v přímé souvislosti s ním?",
+      "options": [
+        "ne",
+        "ano",
+        "ano, ale nevztahuje se na zaměstnance, který je ve zkušební době"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q182",
+      "text": "Čištění elektrických spotřebičů je možné provádět:",
+      "options": [
+        "jen při zapnutém stavu",
+        "jen při vypnutém stavu",
+        "pouze vlhkým hadrem"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q183",
+      "text": "Jestliže se elektrické spotřebiče nadměrně hřejí, silně jiskří, zapáchají po spálenině:",
+      "options": [
+        "oznámíme závadu na spotřebiči vedoucímu",
+        "připravíme si hasicí přístroj a čekáme na případný požár",
+        "okamžitě je odpojíme od elektrické sítě a zajistíme odbornou opravu"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q184",
+      "text": "Kdo odpovídá za bezpečnost práce na pracovišti?",
+      "options": [
+        "Pouze zaměstavatel",
+        "Pouze zaměstnanec",
+        "Zaměstnavatel i zaměstnanec"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q185",
+      "text": "Co musí zaměstnanec udělat při zjištění nebezpečné situace?",
+      "options": [
+        "Nahlásit nadřízenému",
+        "Vyfotit ji a pak se rozmyslet, jak dál",
+        "Ignorovat ji, protože to není jeho věc"
+      ],
+      "correctIndex": 0
     }
   ]
 }

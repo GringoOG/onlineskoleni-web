@@ -145,7 +145,8 @@ export default function TermsPage() {
             <p className="mt-2">
               Po úspěšném absolvování závěrečného testu dle podmínek kurzu může být účastníkovi
               vystaven elektronický certifikát ke stažení v LMS. Platnost certifikátu je uvedena
-              u konkrétního kurzu (standardně 1 rok od vystavení, pokud není uvedeno jinak).
+              u konkrétního kurzu: u BOZP a požární ochrany 2 roky pro zaměstnance a 3 roky pro
+              vedoucí, u ostatních kurzů standardně 1 rok od vystavení, pokud není uvedeno jinak.
               Certifikát nenahrazuje odbornou způsobilost tam, kde ji zákon vyžaduje formou
               prezenčního školení — objednatel odpovídá za volbu vhodné formy školení.
             </p>

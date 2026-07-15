@@ -71,7 +71,7 @@ export default async function PozarniOfficialTestHubPage() {
             <h2 className="mt-2 text-xl font-bold text-foreground">{vedouci.title}</h2>
             <p className="mt-2 text-sm text-muted">
               {vedouci.totalQuestions} otázek · úspěch od {vedouci.minCorrectAnswers} správných
-              (80 %) · platnost certifikátu 3 roky
+              (80 %) · platnost certifikátu 3 roky · po absolvování může školit své zaměstnance
             </p>
             <Link href="/lms/pozarni/zaverecny/vedouci" className="btn-primary mt-6 inline-flex">
               Spustit test pro vedoucí

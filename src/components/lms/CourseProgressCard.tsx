@@ -58,7 +58,16 @@ export function CourseProgressCard({
         <p className="mt-2 text-sm font-medium text-foreground">
           Typ školení:{" "}
           {course.audience === "vedouci"
-            ? "vedoucí (platnost certifikátu 3 roky)"
+            ? "vedoucí (platnost certifikátu 3 roky · může školit své zaměstnance)"
+            : "zaměstnanec (platnost certifikátu 2 roky)"}
+        </p>
+      ) : null}
+
+      {course.slug === "bozp" && course.audience ? (
+        <p className="mt-2 text-sm font-medium text-foreground">
+          Typ školení:{" "}
+          {course.audience === "vedouci"
+            ? "vedoucí (platnost certifikátu 3 roky · test 20 otázek · může školit své zaměstnance)"
             : "zaměstnanec (platnost certifikátu 2 roky)"}
         </p>
       ) : null}

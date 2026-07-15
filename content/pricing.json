@@ -3,12 +3,20 @@
   "note": "Všechny uvedené ceny jsou bez DPH. Pro přesnou kalkulaci včetně DPH nás kontaktujte na info@onlineskoleni.eu.",
   "plans": [
     {
-      "catalogSlug": "bozp",
-      "name": "BOZP – základní školení",
-      "description": "Školení bezpečnosti a ochrany zdraví při práci pro zaměstnance",
+      "catalogSlug": "bozp-zamestnanec",
+      "name": "BOZP – zaměstnanec",
+      "description": "Školení bezpečnosti a ochrany zdraví při práci pro řadové zaměstnance (platnost certifikátu 2 roky)",
       "price": "149 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Online prezentace a test", "Certifikát po absolvování", "Aktualizace dle legislativy"]
+      "features": ["Online prezentace a test (15 otázek)", "Certifikát platný 2 roky", "Aktualizace dle legislativy"]
+    },
+    {
+      "catalogSlug": "bozp-vedouci",
+      "name": "BOZP – vedoucí",
+      "description": "Rozšířené školení BOZP pro vedoucí (test 20 otázek, platnost 3 roky). Po absolvování může vedoucí následně školit své zaměstnance.",
+      "price": "350 Kč",
+      "per": "osoba / kurz bez DPH",
+      "features": ["Test pro vedoucí (20 otázek)", "Oprávnění školit své zaměstnance", "Certifikát platný 3 roky"]
     },
     {
       "catalogSlug": "bremena",
@@ -29,10 +37,10 @@
     {
       "catalogSlug": "pozarni-vedouci",
       "name": "Požární ochrana (PO) – vedoucí",
-      "description": "Rozšířené školení požární ochrany pro vedoucí zaměstnance (platnost certifikátu 3 roky)",
-      "price": "149 Kč",
+      "description": "Rozšířené školení požární ochrany pro vedoucí (test 20 otázek, platnost 3 roky). Po absolvování může vedoucí následně školit své zaměstnance.",
+      "price": "350 Kč",
       "per": "osoba / kurz bez DPH",
-      "features": ["Složitější test pro vedoucí", "Certifikát platný 3 roky", "Aktualizace dle legislativy"]
+      "features": ["Test pro vedoucí (20 otázek)", "Oprávnění školit své zaměstnance", "Certifikát platný 3 roky"]
     },
     {
       "catalogSlug": "ridici",
@@ -63,7 +71,7 @@
     {
       "catalogSlug": "balicek-bozp-po-bremena",
       "name": "Balíček BOZP + břemena + PO (zaměstnanec)",
-      "description": "Tři zákonná školení v jedné objednávce; PO v balíčku je pro řadové zaměstnance (vedoucí objednejte zvlášť)",
+      "description": "Tři zákonná školení v jedné objednávce; BOZP i PO v balíčku je pro řadové zaměstnance (vedoucí objednejte zvlášť)",
       "price": "259 Kč",
       "per": "osoba / balíček bez DPH",
       "features": ["BOZP, manipulace s břemeny a PO pro zaměstnance", "Jedna objednávka pro všechny kurzy", "Certifikát ke každému školení"]
@@ -74,7 +82,7 @@
       "description": "BOZP + břemena + PO (zaměstnanec) + GDPR + řidiči",
       "price": "449 Kč",
       "per": "osoba / balíček bez DPH",
-      "features": ["5 školení v jednom balíčku (PO pro zaměstnance)", "Nejvýhodnější cena oproti jednotlivým kurzům", "Certifikát ke každému školení"]
+      "features": ["5 školení v jednom balíčku (BOZP i PO pro zaměstnance)", "Nejvýhodnější cena oproti jednotlivým kurzům", "Certifikát ke každému školení"]
     }
   ],
   "bulkDiscounts": [

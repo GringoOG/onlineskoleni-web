@@ -32,7 +32,7 @@
         "nejméně jednou za 2 roky",
         "nejméně jednou za rok"
       ],
-      "correctIndex": 2
+      "correctIndex": 1
     },
     {
       "id": "q38",
@@ -83,17 +83,183 @@
         "hasicí přístroje umístěné na podlaze nebo na jiné vodorovné stavební konstrukci musí být vhodným způsobem zajištěny proti pádu"
       ],
       "correctIndex": 2
+    },
+    {
+      "id": "q20",
+      "text": "Hasicí přístroje se umísťují tak, aby byly:",
+      "options": [
+        "snadno viditelné",
+        "snadno viditelné a dosažitelné",
+        "snadno viditelné a volně přístupné. Je-li to nezbytné (např. z provozních důvodů), lze hasicí přístroje umístit i do skrytých prostor"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q21",
+      "text": "Základní povinnosti fyzických osob:",
+      "options": [
+        "nevytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+        "vytvářet v prostorách ve svém vlastnictví nebo užívání podmínky pro rychlé zdolání požáru a pro záchranné práce",
+        "ohlásit požár, ale pouze v případě založení"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q23",
+      "text": "Úniková cesta musí být vybavena:",
+      "options": [
+        "hasicími prostředky",
+        "hydranty",
+        "bezpečnostními značkami, tabulkami a texty s bezpečnostním sdělením"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q24",
+      "text": "Školení zaměstnanců o požární ochraně obsahuje seznámení:",
+      "options": [
+        "s rozmístěním a se způsobem použití věcných prostředků požární ochrany na pracovišti",
+        "s požárním pořádkem",
+        "s rozmístěním elektrického zařízení na pracovišti"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q27",
+      "text": "Práškový hasicí přístroj je nevhodný k hašení:",
+      "options": [
+        "sypkých hořlavých hmot, kde hrozí nebezpečí rozfoukání a vytvoření místně výbušné koncentrace",
+        "elektrického zařízení pod napětím",
+        "látek kde vzniká teplota větší než 1800 stupňů celsia"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q28",
+      "text": "Sněhový hasicí přístroj (inertní plyn – CO2) je vhodný k hašení:",
+      "options": [
+        "elektrického zařízení pod napětím",
+        "plošných požárů",
+        "požárů lehkých kovů"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q30",
+      "text": "Vodní hasicí přístroj je vhodný k hašení:",
+      "options": [
+        "tuhých organických látek hořících plamenem nebo žhnutím",
+        "lehkých a alkalických kovů",
+        "elektrického zařízení pod napětím"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q31",
+      "text": "Fyzická osoba je povinna:",
+      "options": [
+        "být přítomna při požáru",
+        "zajistit přístup k rozvodným zařízením elektrické energie a k uzávěrům plynu, vody a topení",
+        "v případě nebezpečí požáru kontaktovat osobu odborně způsobilou"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q32",
+      "text": "Každý je povinen s souvislosti se zdolávání požáru:",
+      "options": [
+        "v každém případě uhasit požár",
+        "provést nutná opatření pro záchranu ohrožených osob",
+        "zavolat vedoucího na linku 112"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q33",
+      "text": "Jak často se musí kontrolovat hasicí přístroj:",
+      "options": [
+        "nejméně jednou za 5 let",
+        "nejméně jednou za 2 roky",
+        "nejméně jednou za rok"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q35",
+      "text": "Použití hasicího přístroje je graficky znázorněno:",
+      "options": [
+        "v požárně bezpečnostním řešení stavby",
+        "v požárním řádu",
+        "na hasicím přístroji"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q36",
+      "text": "Školení zaměstnanců o požární ochraně obsahuje:",
+      "options": [
+        "seznámení s požárními poplachovými směrnicemi",
+        "seznámení s dokumentací BOZP",
+        "seznámení se spolupracovníky"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q39",
+      "text": "Při vzniku požáru:",
+      "options": [
+        "vyčkáme na hasiče uvnitř budovy a řídíme se jejich pokyny",
+        "opouštíme budovu v souladu s jejím evakuačním řádem",
+        "opouštíme budovu pouze na výzvu velitele zásahu"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q41",
+      "text": "Vyberte správnou odpověď:",
+      "options": [
+        "pokud je požár v počáteční fázi, pokusíme se jej uhasit použitím přenosných hasicích přístrojů",
+        "požár nikdy nehasíme sami",
+        "při požáru vždy nejprve voláme tísňovou linku a následně ihned opustíme prostory zasažené požárem, bez ohledu na rozsah požáru"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q150",
+      "text": "Tísňové telefonní číslo pro přivolání hasičů je:",
+      "options": [
+        "158",
+        "155",
+        "150",
+        "144"
+      ],
+      "correctIndex": 2
     }
   ],
   "audience": "vedouci",
   "sourceNumbers": [
-    "145",
-    "146",
     "22",
     "34",
     "37",
     "38",
     "40",
-    "147"
+    "145",
+    "146",
+    "147",
+    "20",
+    "21",
+    "23",
+    "24",
+    "27",
+    "28",
+    "30",
+    "31",
+    "32",
+    "33",
+    "35",
+    "36",
+    "39",
+    "41",
+    "150"
   ]
 }
