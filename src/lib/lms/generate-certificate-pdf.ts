@@ -12,8 +12,9 @@ import {
   getCertificateTemplate,
   getCertificateTrainer,
   getCertificateTrainerCredential,
-  getCertificateValidityLabel,
+  getCertificateValidityStatement,
 } from "@/lib/lms/certificate-template";
+import { formatCzechDate } from "@/lib/lms/format-czech-date";
 
 export interface CertificatePdfData {
   studentName: string;
@@ -63,14 +64,6 @@ async function loadFonts() {
     fontCache = { regular, bold };
   }
   return fontCache;
-}
-
-function formatCzechDate(date: Date): string {
-  return new Intl.DateTimeFormat("cs-CZ", {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  }).format(date);
 }
 
 function wrapText(text: string, font: PDFFont, size: number, maxWidth: number): string[] {
@@ -253,14 +246,15 @@ export async function generateCertificatePdf(
 
   const validityYears = Math.max(
     1,
-    Math.round(
-      (data.expiresAt.getTime() - data.issuedAt.getTime()) /
-        (365.25 * 24 * 60 * 60 * 1000)
-    )
+    data.expiresAt.getFullYear() - data.issuedAt.getFullYear()
   );
   drawLeftText(
     page,
-    getCertificateValidityLabel(validityYears),
+    getCertificateValidityStatement(
+      validityYears,
+      data.expiresAt,
+      formatCzechDate
+    ),
     457,
     fontRegular,
     11,

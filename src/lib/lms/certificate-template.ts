@@ -62,6 +62,15 @@ export function getCertificateValidityLabel(years?: number): string {
   return `Platnost certifikátu ${years} let.`;
 }
 
+/** Text na PDF: délka platnosti + konkrétní datum konce. */
+export function getCertificateValidityStatement(
+  years: number,
+  expiresAt: Date,
+  formatDate: (date: Date) => string
+): string {
+  return `${getCertificateValidityLabel(years)} Platné do ${formatDate(expiresAt)}.`;
+}
+
 export function getCertificateSuccessText(): string {
   return templates.successText;
 }

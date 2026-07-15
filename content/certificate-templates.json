@@ -2,7 +2,7 @@
   "trainer": "TechnikPO s.r.o.",
   "logoImage": "public/images/certificate/company-logo.png",
   "stampImage": "public/images/certificate/trainer-stamp-signature.png",
-  "validityLabel": "Platnost certifikátu 1 rok.",
+  "validityLabel": "Platnost certifikátu dle typu školení.",
   "successText": "Jmenovaný absolvoval/a úspěšně kurz a online složil/a úspěšně test.",
   "instructionsTitle": "Poučení:",
   "instructions": [
