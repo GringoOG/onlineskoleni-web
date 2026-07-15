@@ -9,7 +9,7 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   alt?: boolean;
-  /** Zarovnání nadpisu a obsahu na střed. */
+  /** Zarovnání nadpisu (a podnadpisu) – obsah sekce zůstává plná šířka. */
   align?: "left" | "center";
   /** Postupné zobrazení při scrollu (vypnout u formulářů / adminu). */
   reveal?: boolean;
@@ -91,13 +91,7 @@ export function Section({
             {subtitle && <p className="mt-4 text-lg text-muted">{subtitle}</p>}
           </div>
         )}
-        {align === "center" ? (
-          <div className="mx-auto flex w-full max-w-2xl justify-center">
-            {children}
-          </div>
-        ) : (
-          children
-        )}
+        {children}
       </div>
     </section>
   );
