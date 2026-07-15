@@ -11,16 +11,22 @@ export function PageHero({ title, subtitle, children }: PageHeroProps) {
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 20% 0%, rgba(245, 166, 35, 0.35), transparent 55%)",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245, 166, 35, 0.35), transparent 55%)",
         }}
       />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{title}</h1>
+      <div className="relative mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+          {title}
+        </h1>
         {subtitle && (
-          <p className="mt-4 max-w-2xl text-sm text-brand-light/90 sm:text-base">{subtitle}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-brand-light/90 sm:text-base">
+            {subtitle}
+          </p>
         )}
         {children ? (
-          <div className="mt-6 flex flex-col gap-3 sm:gap-4">{children}</div>
+          <div className="mt-6 flex flex-col items-center gap-3 sm:gap-4">
+            {children}
+          </div>
         ) : null}
       </div>
     </div>
