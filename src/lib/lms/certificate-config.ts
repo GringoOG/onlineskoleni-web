@@ -5,16 +5,21 @@ export const CERTIFICATE_VALIDITY_YEARS = 1;
 
 /**
  * Platnost certifikátu v letech.
- * PO: řadový zaměstnanec 2 roky, vedoucí 3 roky (ze zákona jen u požární ochrany).
+ *
+ * PO (vyhláška č. 246/2001 Sb. § 23):
+ *   – řadový zaměstnanec nejméně 1× za 2 roky
+ *   – vedoucí zaměstnanec nejméně 1× za 3 roky
+ *
+ * BOZP (zákoník práce § 103): zákon přesnou lhůtu neurčuje; běžná praxe
+ * a doporučení SUIP/odborných zdrojů je stejně 2 / 3 roky podle role.
  */
 export function getCertificateValidityYears(
   courseSlug: string,
   audience?: CatalogAudience | null
 ): number {
-  if (courseSlug === "pozarni") {
+  if (courseSlug === "pozarni" || courseSlug === "bozp") {
     if (audience === "vedouci") return 3;
-    if (audience === "zamestnanec") return 2;
-    // Legacy zápis bez audience – konzervativně 2 roky (zaměstnanec).
+    // Zaměstnanec i legacy zápis bez audience → 2 roky.
     return 2;
   }
   return CERTIFICATE_VALIDITY_YEARS;

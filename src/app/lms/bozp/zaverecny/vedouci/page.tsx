@@ -52,7 +52,7 @@ export default async function BozpOfficialSupervisorTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · po absolvování může školit své zaměstnance`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · platnost certifikátu 3 roky · po absolvování může školit své zaměstnance`}
       >
         <Link href="/lms" className="inline-block text-sm text-white/80 hover:text-white">
           ← Moje školení

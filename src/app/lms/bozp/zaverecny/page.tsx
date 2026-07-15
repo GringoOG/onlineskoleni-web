@@ -53,7 +53,7 @@ export default async function BozpOfficialTestHubPage() {
             <h2 className="mt-2 text-xl font-bold text-foreground">{zamestnanec.title}</h2>
             <p className="mt-2 text-sm text-muted">
               {zamestnanec.totalQuestions} otázek · úspěch od {zamestnanec.minCorrectAnswers}{" "}
-              správných (80 %)
+              správných (80 %) · platnost certifikátu 2 roky
             </p>
             <Link href="/lms/bozp/zaverecny/zamestnanec" className="btn-primary mt-6 inline-flex">
               Spustit test pro zaměstnance
@@ -67,7 +67,7 @@ export default async function BozpOfficialTestHubPage() {
             <h2 className="mt-2 text-xl font-bold text-foreground">{vedouci.title}</h2>
             <p className="mt-2 text-sm text-muted">
               {vedouci.totalQuestions} otázek · úspěch od {vedouci.minCorrectAnswers} správných
-              (80 %) · po absolvování může školit své zaměstnance
+              (80 %) · platnost certifikátu 3 roky · po absolvování může školit své zaměstnance
             </p>
             <Link href="/lms/bozp/zaverecny/vedouci" className="btn-primary mt-6 inline-flex">
               Spustit test pro vedoucí

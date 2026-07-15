@@ -52,7 +52,7 @@ export default async function BozpOfficialEmployeeTestPage() {
     <>
       <PageHero
         title={config.title}
-        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %)`}
+        subtitle={`${config.subtitle} · ${totalQuestions} otázek · úspěch od ${minCorrectAnswers} správných (80 %) · platnost certifikátu 2 roky`}
       >
         <Link href="/lms" className="inline-block text-sm text-white/80 hover:text-white">
           ← Moje školení

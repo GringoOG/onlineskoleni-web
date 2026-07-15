@@ -145,7 +145,8 @@ export function CheckoutForm() {
           <span className="font-semibold">BOZP a požární ochrana:</span> zvlášť objednejte školení
           pro řadové zaměstnance (149 Kč) a pro vedoucí (350 Kč). U vedoucího je test na{" "}
           <span className="font-semibold">20 otázek</span> a po absolvování může vedoucí následně
-          školit své zaměstnance. U PO má zaměstnanec certifikát na 2 roky a vedoucí na 3 roky.
+          školit své zaměstnance. U BOZP i PO má zaměstnanec certifikát na 2 roky a vedoucí na
+          3 roky.
         </p>
         <ul className="mt-4 space-y-3">
           {orderCatalog.map((item) => (
@@ -159,11 +160,11 @@ export function CheckoutForm() {
                   {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
                   {item.audience === "vedouci" ? (
                     <span className="mt-1 block text-xs text-brand-dark">
-                      Test 20 otázek · po absolvování může školit své zaměstnance
-                      {item.lmsCourseSlug === "pozarni" ? " · certifikát 3 roky" : ""}
+                      Test 20 otázek · certifikát 3 roky · po absolvování může školit své
+                      zaměstnance
                     </span>
                   ) : null}
-                  {item.audience === "zamestnanec" && item.lmsCourseSlug === "pozarni" ? (
+                  {item.audience === "zamestnanec" ? (
                     <span className="mt-1 block text-xs text-slate-400">
                       Certifikát platný 2 roky
                     </span>
