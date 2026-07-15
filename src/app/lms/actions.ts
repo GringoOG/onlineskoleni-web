@@ -6,6 +6,7 @@ import { authenticateStudentByEmail } from "@/lib/lms/authenticate-student";
 import { ensureDemoEnrollment } from "@/lib/lms/demo-enrollment";
 import { ensureLmsCourse } from "@/lib/lms/ensure-lms-course";
 import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
+import { canTakeOfficialTest } from "@/lib/lms/official-test-access";
 import {
   completeQuizTest,
   type CompleteQuizInput,
@@ -227,6 +228,15 @@ export async function submitOfficialQuiz(
   const session = await getLmsSession();
   if (!session) {
     return { ok: false, message: "Nejste přihlášeni. Přihlaste se prosím." };
+  }
+
+  const allowed = await canTakeOfficialTest(session.userId, courseSlug);
+  if (!allowed) {
+    return {
+      ok: false,
+      message:
+        "Oficiální závěrečný test je dostupný jen po zaplacení školení v klientské zóně. Demo účet slouží pouze k vyzkoušení formátu testu.",
+    };
   }
 
   // PO: typ školení je vázaný na objednávku – klientský výběr nepřepisuje zápis.

@@ -78,13 +78,18 @@ export function HrbekLearningGrid({
                     Demo test
                   </Link>
                 )}
-                {officialTestPath && (
+                {officialTestPath && !isDemoUser && (
                   <Link
                     href={officialTestPath}
                     className="rounded-lg border border-border bg-white px-4 py-2.5 text-center text-sm font-semibold text-foreground hover:bg-brand-tint"
                   >
                     Závěrečný test (LMS)
                   </Link>
+                )}
+                {isDemoUser && (
+                  <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                    Oficiální test a certifikát jsou jen po zaplacení školení.
+                  </p>
                 )}
                 <a
                   href={getStudyMaterialDownloadUrl(course.slug)}

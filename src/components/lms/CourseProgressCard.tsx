@@ -5,10 +5,12 @@ import { PROGRESS_DESCRIPTIONS } from "@/lib/lms/progress";
 import { CourseProgressBadge } from "@/components/lms/CourseProgressBadge";
 import { CourseProgressStepper } from "@/components/lms/CourseProgressStepper";
 import { StartTheoryButton } from "@/components/lms/StartTheoryButton";
+import { getDemoTestPath } from "@/lib/lms/course-paths";
 import { getStudyMaterialDownloadUrl } from "@/lib/lms/study-material";
 
 interface CourseProgressCardProps {
   course: DashboardCourse;
+  isDemoUser?: boolean;
 }
 
 function formatDate(date: Date): string {
@@ -19,8 +21,20 @@ function formatDate(date: Date): string {
   }).format(date);
 }
 
-export function CourseProgressCard({ course }: CourseProgressCardProps) {
+export function CourseProgressCard({
+  course,
+  isDemoUser = false,
+}: CourseProgressCardProps) {
   const colors = courseColorClasses[course.color];
+  const demoTestPath = getDemoTestPath(course.slug);
+  // Demo účet nesmí jít na ostrý závěrečný test – jen demo.
+  const officialOrDemoTestPath = isDemoUser ? demoTestPath : course.testPath;
+  const testLabel = isDemoUser
+    ? "Spustit demo test"
+    : course.latestAttempt
+      ? "Opakovat test"
+      : "Spustit závěrečný test";
+  const midTestLabel = isDemoUser ? "Přejít na demo test" : "Přejít na test";
 
   return (
     <article
@@ -92,26 +106,26 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
             <Link href={course.theoryPath} className="btn-primary">
               Pokračovat v microlearningu
             </Link>
-            {course.testPath && (
+            {officialOrDemoTestPath && (
               <Link
-                href={course.testPath}
+                href={officialOrDemoTestPath}
                 className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-foreground hover:bg-brand-tint"
               >
-                Přejít na test
+                {midTestLabel}
               </Link>
             )}
           </>
         )}
 
-        {course.progress === "ready_for_test" && course.testPath && (
-          <Link href={course.testPath} className="btn-primary">
-            {course.latestAttempt ? "Opakovat test" : "Spustit závěrečný test"}
+        {course.progress === "ready_for_test" && officialOrDemoTestPath && (
+          <Link href={officialOrDemoTestPath} className="btn-primary">
+            {testLabel}
           </Link>
         )}
 
         {course.progress === "completed" && (
           <>
-            {course.certificate ? (
+            {course.certificate && !isDemoUser ? (
               <a
                 href={course.certificate.downloadUrl}
                 className="btn-primary"
@@ -120,7 +134,12 @@ export function CourseProgressCard({ course }: CourseProgressCardProps) {
                 Stáhnout certifikát (PDF)
               </a>
             ) : (
-              <Link href={course.testPath ?? course.theoryPath} className="btn-primary">
+              <Link
+                href={
+                  (isDemoUser ? demoTestPath : course.testPath) ?? course.theoryPath
+                }
+                className="btn-primary"
+              >
                 Otevřít kurz
               </Link>
             )}

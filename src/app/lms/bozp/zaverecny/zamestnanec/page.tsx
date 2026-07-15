@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { CourseQuiz } from "@/components/lms/BozpQuiz";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -12,7 +11,7 @@ import {
   getQuizQuestionsPublic,
   prepareOfficialQuizQuestions,
 } from "@/lib/lms/quiz-data";
-import { getLmsSession } from "@/lib/lms/session";
+import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
 const COURSE_SLUG = "bozp" as const;
 
@@ -28,11 +27,8 @@ export default async function BozpOfficialEmployeeTestPage() {
     "zamestnanec"
   );
   const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, "zamestnanec");
-  const session = await getLmsSession();
+  const session = await requireOfficialTestAccess(COURSE_SLUG, '/lms/bozp/zaverecny/zamestnanec');
 
-  if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fbozp%2Fzaverecny%2Fzamestnanec");
-  }
 
   let userName = "Student";
   const [user] = await db

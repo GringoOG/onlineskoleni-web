@@ -13,7 +13,7 @@ import {
   getQuizQuestionsPublic,
   prepareOfficialQuizQuestions,
 } from "@/lib/lms/quiz-data";
-import { getLmsSession } from "@/lib/lms/session";
+import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
 const COURSE_SLUG = "pozarni" as const;
 const AUDIENCE = "zamestnanec" as const;
@@ -30,11 +30,8 @@ export default async function PozarniOfficialEmployeeTestPage() {
     AUDIENCE
   );
   const shuffledQuestions = prepareOfficialQuizQuestions(COURSE_SLUG, AUDIENCE);
-  const session = await getLmsSession();
+  const session = await requireOfficialTestAccess(COURSE_SLUG, '/lms/pozarni/zaverecny/zamestnanec');
 
-  if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fpozarni%2Fzaverecny%2Fzamestnanec");
-  }
 
   const enrolledAudience = await getEnrollmentAudience(session.userId, COURSE_SLUG);
   if (enrolledAudience === "vedouci") {

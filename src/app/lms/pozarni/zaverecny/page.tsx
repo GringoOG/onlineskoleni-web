@@ -6,7 +6,7 @@ import { Section } from "@/components/Section";
 import { getEnrollmentAudience } from "@/lib/lms/enroll-from-order";
 import { getOfficialQuizConfig } from "@/lib/lms/quiz-data";
 import { getDemoTestPath } from "@/lib/lms/course-paths";
-import { getLmsSession } from "@/lib/lms/session";
+import { requireOfficialTestAccess } from "@/lib/lms/official-test-access";
 
 const COURSE_SLUG = "pozarni" as const;
 
@@ -16,10 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default async function PozarniOfficialTestHubPage() {
-  const session = await getLmsSession();
-  if (!session) {
-    redirect("/lms/login?redirect=%2Flms%2Fpozarni%2Fzaverecny");
-  }
+  const session = await requireOfficialTestAccess(COURSE_SLUG, '/lms/pozarni/zaverecny');
+
 
   const enrolledAudience = await getEnrollmentAudience(session.userId, COURSE_SLUG);
   if (enrolledAudience === "zamestnanec") {

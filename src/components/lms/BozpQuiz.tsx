@@ -20,6 +20,8 @@ interface CourseQuizProps {
   minCorrectAnswers: number;
   variant: "demo" | "oficialni";
   audience?: QuizAudience;
+  /** Po úspěšném demu nabídnout přechod na ostrý test (jen placený LMS). */
+  allowOfficialCta?: boolean;
 }
 
 type QuizPhase = "active" | "submitting" | "done";
@@ -32,6 +34,7 @@ export function CourseQuiz({
   minCorrectAnswers,
   variant,
   audience,
+  allowOfficialCta = false,
 }: CourseQuizProps) {
   const officialHubPath = getOfficialTestHubPath(courseSlug) ?? "/lms";
 
@@ -126,9 +129,15 @@ export function CourseQuiz({
             oficiální závěrečný test.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href={officialHubPath} className="btn-primary">
-              Přejít na oficiální test
-            </Link>
+            {allowOfficialCta ? (
+              <Link href={officialHubPath} className="btn-primary">
+                Přejít na oficiální test
+              </Link>
+            ) : (
+              <Link href="/objednavka" className="btn-primary">
+                Objednat školení
+              </Link>
+            )}
             <Link
               href="/lms"
               className="rounded-lg border border-green-300 px-4 py-2 text-sm font-semibold text-green-900 hover:bg-green-100"
