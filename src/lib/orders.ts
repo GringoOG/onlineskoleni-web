@@ -131,6 +131,11 @@ export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
   }
 
   const orderNumber = generateOrderNumber();
+  const participantsJson = input.participants?.length
+    ? ({
+        participants: input.participants,
+      } as unknown as Prisma.InputJsonValue)
+    : undefined;
 
   const order = await prisma.order.create({
     data: {
@@ -145,6 +150,7 @@ export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
       email: input.email.trim().toLowerCase(),
       phone: input.phone?.trim() || null,
       totalAmountHalere: cart.totalAmountHalere,
+      ...(participantsJson ? { participantsJson } : {}),
       items: {
         create: cart.items.map((item) => ({
           courseSlug: item.courseSlug,
