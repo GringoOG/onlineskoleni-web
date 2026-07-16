@@ -328,7 +328,8 @@ export function CheckoutForm() {
         <legend className="text-lg font-bold text-slate-900">Kurzy a počet zaměstnanců</legend>
         <p className="mt-1 text-sm text-slate-600">
           Zadejte počet osob pro každý kurz nebo balíček (0 = neobjednávat). Ceny jsou bez DPH.
-          Při 10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
+          Sleva 10 % / 15 % se počítá z celkového počtu osob v objednávce a platí na všechny
+          položky (ne jen na jeden kurz).
         </p>
         <p className="mt-2 text-sm text-slate-700">
           <span className="font-semibold">BOZP a požární ochrana:</span> zvlášť objednejte školení

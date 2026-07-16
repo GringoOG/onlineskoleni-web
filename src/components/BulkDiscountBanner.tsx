@@ -22,7 +22,7 @@ export function BulkDiscountBanner({ variant = "full" }: BulkDiscountBannerProps
           ))}
         </ul>
         <p className="mt-3 text-center text-sm font-bold text-brand-darker">
-          Sleva se započítá automaticky dle počtu osob.
+          Sleva se započítá automaticky dle celkového počtu osob v objednávce na všechny položky.
         </p>
       </div>
     );
@@ -43,7 +43,7 @@ export function BulkDiscountBanner({ variant = "full" }: BulkDiscountBannerProps
           </p>
         </div>
         <p className="max-w-xs shrink-0 rounded-xl border-2 border-brand bg-white px-4 py-3 text-center text-sm font-bold leading-snug text-brand-darker shadow-sm sm:text-base">
-          Sleva se započítá automaticky dle počtu osob.
+          Sleva se započítá automaticky dle celkového počtu osob v objednávce na všechny položky.
         </p>
       </div>
 

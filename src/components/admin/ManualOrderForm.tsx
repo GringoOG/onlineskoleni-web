@@ -155,7 +155,12 @@ export function ManualOrderForm() {
     [assignmentCounts]
   );
 
-  const autoDiscount = getBulkDiscountPercent(Math.max(seatCount, 1));
+  const totalSeatsForDiscount = useMemo(
+    () => lines.reduce((sum, line) => sum + line.quantity, 0),
+    [lines]
+  );
+
+  const autoDiscount = getBulkDiscountPercent(Math.max(totalSeatsForDiscount, 1));
 
   const cartResult = useMemo(() => {
     if (lines.length === 0) {
@@ -752,14 +757,16 @@ export function ManualOrderForm() {
         <BulkDiscountBanner variant="compact" />
         <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
           <p>
-            Počet osob: <strong>{seatCount || "—"}</strong>
+            Účastníků: <strong>{seatCount || "—"}</strong>
+            {" · "}
+            míst ve školeních: <strong>{totalSeatsForDiscount || "—"}</strong>
             {discountMode === "auto" && autoDiscount === "contact" ? (
               <span className="ml-2 text-amber-700">
-                (100+ osob – individuální nabídka, zvolte slevu ručně)
+                (100+ míst – individuální nabídka, zvolte slevu ručně)
               </span>
             ) : (
               <span className="ml-2">
-                → automatická sleva:{" "}
+                → sleva na celou objednávku:{" "}
                 <strong>{effectiveDiscountPercent ?? 0} %</strong>
               </span>
             )}

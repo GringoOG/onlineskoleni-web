@@ -64,33 +64,40 @@ export function computeCart(
 ): {
   items: ComputedCartLine[];
   totalAmountHalere: number;
+  /** Součet množství v objednávce – z něj se počítá firemní sleva. */
+  totalPeople: number;
+  discountPercent: number;
 } | { error: string } {
   if (lines.length === 0) {
     return { error: "Vyberte alespoň jeden kurz." };
+  }
+
+  const totalPeople = lines.reduce((sum, line) => sum + line.quantity, 0);
+
+  for (const line of lines) {
+    if (line.quantity < 1 || line.quantity > 99) {
+      return { error: "Neplatný počet zaměstnanců (1–99). Pro 100+ osob nás kontaktujte." };
+    }
+  }
+
+  let discountPercent: number;
+  if (options?.discountPercentOverride !== undefined) {
+    discountPercent = options.discountPercentOverride;
+  } else {
+    const discount = getBulkDiscountPercent(totalPeople);
+    if (discount === "contact") {
+      return {
+        error:
+          "Pro 100 a více osob v jedné objednávce nás prosím kontaktujte pro individuální nabídku.",
+      };
+    }
+    discountPercent = discount;
   }
 
   const items: ComputedCartLine[] = [];
   let totalAmountHalere = 0;
 
   for (const line of lines) {
-    if (line.quantity < 1 || line.quantity > 99) {
-      return { error: "Neplatný počet zaměstnanců (1–99). Pro 100+ osob nás kontaktujte." };
-    }
-
-    let discountPercent: number;
-    if (options?.discountPercentOverride !== undefined) {
-      discountPercent = options.discountPercentOverride;
-    } else {
-      const discount = getBulkDiscountPercent(line.quantity);
-      if (discount === "contact") {
-        return {
-          error:
-            "Pro 100 a více osob u jednoho kurzu nebo balíčku nás prosím kontaktujte pro individuální nabídku.",
-        };
-      }
-      discountPercent = discount;
-    }
-
     const catalog = getCatalogItem(line.courseSlug);
     if (!catalog) {
       return { error: `Neznámý kurz: ${line.courseSlug}` };
@@ -113,7 +120,7 @@ export function computeCart(
     totalAmountHalere += lineTotalHalere;
   }
 
-  return { items, totalAmountHalere };
+  return { items, totalAmountHalere, totalPeople, discountPercent };
 }
 
 export interface OrderItemForEnrollment {

@@ -202,8 +202,12 @@ export async function processManualOrder(
   const courseCount = new Set(lines.map((line) => line.courseSlug)).size;
 
   const seatsPurchased = participants.length;
+  const totalSeatsForDiscount = lines.reduce((sum, line) => sum + line.quantity, 0);
   const discountMode = input.discountMode ?? "auto";
-  const appliedDiscountPercent = resolveDiscountPercent(seatsPurchased, discountMode);
+  const appliedDiscountPercent = resolveDiscountPercent(
+    totalSeatsForDiscount,
+    discountMode
+  );
   const discountPercentOverride = discountMode === "auto" ? undefined : appliedDiscountPercent;
 
   const participantsForStorage: OrderParticipantInput[] = participants.map(

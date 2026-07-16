@@ -90,5 +90,5 @@
     { "range": "50–99 osob", "discount": "sleva 15 %" },
     { "range": "100+ osob", "discount": "individuální nabídka – kontaktujte nás" }
   ],
-  "bulkDiscount": "Firemní slevy: 10–49 osob sleva 10 %, 50–99 osob sleva 15 %, od 100 osob individuální nabídka. Slevy se počítají z ceny bez DPH podle počtu osob u daného kurzu nebo balíčku. Nákup školení u nás zároveň lze uplatnit jako náhradní plnění (zaměstnáváme více než 50 % OZP)."
+  "bulkDiscount": "Firemní slevy: 10–49 osob sleva 10 %, 50–99 osob sleva 15 %, od 100 osob individuální nabídka. Sleva se počítá z ceny bez DPH podle celkového počtu osob v jedné objednávce a platí na všechny položky. Nákup školení u nás zároveň lze uplatnit jako náhradní plnění (zaměstnáváme více než 50 % OZP)."
 }
