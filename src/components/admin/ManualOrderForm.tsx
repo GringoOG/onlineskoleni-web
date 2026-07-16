@@ -515,82 +515,6 @@ export function ManualOrderForm() {
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-lg font-bold text-slate-900">Sleva dle ceníku</legend>
-        <BulkDiscountBanner variant="compact" />
-        <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-          <p>
-            Počet osob: <strong>{seatCount || "—"}</strong>
-            {discountMode === "auto" && autoDiscount === "contact" ? (
-              <span className="ml-2 text-amber-700">
-                (100+ osob – individuální nabídka, zvolte slevu ručně)
-              </span>
-            ) : (
-              <span className="ml-2">
-                → automatická sleva:{" "}
-                <strong>{effectiveDiscountPercent ?? 0} %</strong>
-              </span>
-            )}
-          </p>
-        </div>
-        <div>
-          <span className="block text-sm font-medium text-slate-700">Nastavení slevy</span>
-          <div className="mt-2 flex flex-wrap gap-3">
-            {(
-              [
-                ["auto", "Automaticky dle počtu osob"],
-                ["0", "Bez slevy (0 %)"],
-                ["10", "10 % (10–49 osob)"],
-                ["15", "15 % (50–99 osob)"],
-              ] as const
-            ).map(([value, label]) => (
-              <label
-                key={value}
-                className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50"
-              >
-                <input
-                  type="radio"
-                  name="discountMode"
-                  value={value}
-                  checked={discountMode === value}
-                  onChange={() => setDiscountMode(value)}
-                  className="text-brand-dark focus:ring-brand"
-                />
-                {label}
-              </label>
-            ))}
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset className="space-y-4">
-        <legend className="text-lg font-bold text-slate-900">Platba</legend>
-        <div className="flex flex-wrap gap-3">
-          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50">
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="INVOICE"
-              checked={paymentMethod === "INVOICE"}
-              onChange={() => setPaymentMethod("INVOICE")}
-              className="text-brand-dark focus:ring-brand"
-            />
-            Faktura
-          </label>
-          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50">
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="CASH"
-              checked={paymentMethod === "CASH"}
-              onChange={() => setPaymentMethod("CASH")}
-              className="text-brand-dark focus:ring-brand"
-            />
-            Hotově
-          </label>
-        </div>
-      </fieldset>
-
-      <fieldset className="space-y-4">
         <legend className="text-lg font-bold text-slate-900">
           Účastníci a přiřazení školení
         </legend>
@@ -821,6 +745,82 @@ export function ManualOrderForm() {
           placeholder="Např. číslo faktury, způsob doručení, poznámka pro TechnikPO…"
           className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
         />
+      </fieldset>
+
+      <fieldset className="space-y-4">
+        <legend className="text-lg font-bold text-slate-900">Sleva dle ceníku</legend>
+        <BulkDiscountBanner variant="compact" />
+        <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+          <p>
+            Počet osob: <strong>{seatCount || "—"}</strong>
+            {discountMode === "auto" && autoDiscount === "contact" ? (
+              <span className="ml-2 text-amber-700">
+                (100+ osob – individuální nabídka, zvolte slevu ručně)
+              </span>
+            ) : (
+              <span className="ml-2">
+                → automatická sleva:{" "}
+                <strong>{effectiveDiscountPercent ?? 0} %</strong>
+              </span>
+            )}
+          </p>
+        </div>
+        <div>
+          <span className="block text-sm font-medium text-slate-700">Nastavení slevy</span>
+          <div className="mt-2 flex flex-wrap gap-3">
+            {(
+              [
+                ["auto", "Automaticky dle počtu osob"],
+                ["0", "Bez slevy (0 %)"],
+                ["10", "10 % (10–49 osob)"],
+                ["15", "15 % (50–99 osob)"],
+              ] as const
+            ).map(([value, label]) => (
+              <label
+                key={value}
+                className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50"
+              >
+                <input
+                  type="radio"
+                  name="discountMode"
+                  value={value}
+                  checked={discountMode === value}
+                  onChange={() => setDiscountMode(value)}
+                  className="text-brand-dark focus:ring-brand"
+                />
+                {label}
+              </label>
+            ))}
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset className="space-y-4">
+        <legend className="text-lg font-bold text-slate-900">Platba</legend>
+        <div className="flex flex-wrap gap-3">
+          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="INVOICE"
+              checked={paymentMethod === "INVOICE"}
+              onChange={() => setPaymentMethod("INVOICE")}
+              className="text-brand-dark focus:ring-brand"
+            />
+            Faktura
+          </label>
+          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm hover:bg-slate-50">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="CASH"
+              checked={paymentMethod === "CASH"}
+              onChange={() => setPaymentMethod("CASH")}
+              className="text-brand-dark focus:ring-brand"
+            />
+            Hotově
+          </label>
+        </div>
       </fieldset>
 
       {cart ? (
