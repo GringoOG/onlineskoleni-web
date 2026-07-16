@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createPendingOrder } from "@/lib/orders";
 import type { CartLineInput } from "@/lib/order-catalog";
+import { validateOrderParticipants } from "@/lib/order-participants";
 
 export async function POST(request: Request) {
   try {
@@ -24,6 +25,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Neplatný e-mail." }, { status: 400 });
     }
 
+    const participantsResult = validateOrderParticipants(body.participants, lines);
+    if (!participantsResult.ok) {
+      return NextResponse.json({ error: participantsResult.error }, { status: 400 });
+    }
+
     const { order } = await createPendingOrder({
       companyName,
       contactName,
@@ -31,6 +37,7 @@ export async function POST(request: Request) {
       ico,
       phone,
       lines,
+      participants: participantsResult.participants,
     });
 
     const { prisma } = await import("@/lib/prisma");

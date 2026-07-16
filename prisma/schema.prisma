@@ -20,6 +20,8 @@ model Order {
   currency          String      @default("CZK")
   paymentMethod     String?     // INVOICE, CASH, GOPAY, BANK_TRANSFER
   adminNote         String?
+  /// LMS participants JSON: { participants: [{ name, email, courseSlugs }] }. null = legacy single contact.
+  participantsJson       Json?
   createdAt              DateTime    @default(now())
   updatedAt              DateTime    @updatedAt
   enrollmentProcessedAt  DateTime?

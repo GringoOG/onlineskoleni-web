@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 const OrderStatus = {
   PENDING: "PENDING",
@@ -11,6 +12,7 @@ import {
   generateOrderNumber,
   type CartLineInput,
 } from "@/lib/order-catalog";
+import type { OrderParticipantInput } from "@/lib/order-participants";
 
 export interface CreateOrderInput {
   companyName: string;
@@ -19,6 +21,8 @@ export interface CreateOrderInput {
   email: string;
   phone?: string;
   lines: CartLineInput[];
+  /** Přiřazení školení k e-mailům účastníků (GoPay / QR). */
+  participants?: OrderParticipantInput[];
 }
 
 export async function createPendingOrder(input: CreateOrderInput) {
@@ -28,6 +32,11 @@ export async function createPendingOrder(input: CreateOrderInput) {
   }
 
   const orderNumber = generateOrderNumber();
+  const participantsJson = input.participants?.length
+    ? ({
+        participants: input.participants,
+      } as unknown as Prisma.InputJsonValue)
+    : undefined;
 
   const order = await prisma.order.create({
     data: {
@@ -39,6 +48,7 @@ export async function createPendingOrder(input: CreateOrderInput) {
       email: input.email.trim().toLowerCase(),
       phone: input.phone?.trim() || null,
       totalAmountHalere: cart.totalAmountHalere,
+      ...(participantsJson ? { participantsJson } : {}),
       items: {
         create: cart.items.map((item) => ({
           courseSlug: item.courseSlug,
