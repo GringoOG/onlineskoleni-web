@@ -388,7 +388,7 @@ export function ManualOrderForm() {
           </div>
           <div>
             <label htmlFor="contactEmail" className="block text-sm font-medium text-slate-700">
-              E-mail kontaktu *
+              E-mail pro potvrzení objednávky *
             </label>
             <input
               id="contactEmail"
@@ -398,6 +398,10 @@ export function ManualOrderForm() {
               onChange={(e) => setContactEmail(e.target.value)}
               className={inputClassName}
             />
+            <p className="mt-1 text-xs text-slate-500">
+              Sem přijde jen děkovný / potvrzovací e-mail. Přihlášení ke školení nastavíte níže u
+              účastníků (může být i stejný e-mail).
+            </p>
           </div>
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
@@ -495,8 +499,8 @@ export function ManualOrderForm() {
           Účastníci a přiřazení školení
         </legend>
         <p className="text-sm text-slate-600">
-          U každého e-mailu zatrhněte školení, která má osoba absolvovat. Jedna osoba může mít více
-          kurzů — každé školení se účtuje jen u přiřazených lidí.
+          U každého účastníka vyplňte jméno a e-mail pro přihlášení (může být stejný jako e-mail
+          potvrzení výše) a zatrhněte školení, která má absolvovat. Jedna osoba může mít více kurzů.
         </p>
 
         {lines.length > 0 ? (

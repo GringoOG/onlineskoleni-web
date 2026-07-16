@@ -25,7 +25,7 @@ const sections = [
     href: "/admin/objednavky/nova",
     title: "Nová manuální objednávka",
     description:
-      "Založte přístup ke školení po faktuře nebo hotovosti. Systém vytvoří účty, přiřadí kurzy a odešle uvítací e-maily.",
+      "Založte přístup ke školení po faktuře nebo hotovosti. Kontakt dostane potvrzení; u každého účastníka nastavíte e-mail a školení.",
     cta: "Nová objednávka",
     permission: "orders" as const,
   },
