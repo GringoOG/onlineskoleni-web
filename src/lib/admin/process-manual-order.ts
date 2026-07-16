@@ -9,6 +9,7 @@ import {
   type EnrollmentResult,
 } from "@/lib/lms/enroll-from-order";
 import { sendWelcomeEmail } from "@/lib/lms/welcome-email";
+import { sendOrderThankYouEmail } from "@/lib/email/order-thank-you-email";
 import {
   normalizeParticipantEmail,
   type OrderParticipantInput,
@@ -165,23 +166,9 @@ function normalizeManualParticipants(
     }));
   }
 
-  const contactName = input.contactName.trim();
-  const contactEmail = normalizeParticipantEmail(input.contactEmail);
-  if (!contactName || !contactEmail) {
-    throw new Error("Vyplňte firmu, jméno kontaktu a e-mail.");
-  }
-  if (fallbackCourseSlugs.length === 0) {
-    throw new Error("Vyberte alespoň jeden kurz.");
-  }
-
-  return [
-    {
-      name: contactName,
-      email: contactEmail,
-      salutation: input.contactSalutation,
-      courseSlugs: fallbackCourseSlugs,
-    },
-  ];
+  throw new Error(
+    "Vyplňte alespoň jednoho účastníka se jménem, e-mailem a přiřazenými školeními."
+  );
 }
 
 function buildOrderLines(participants: ManualOrderParticipant[]) {
@@ -281,6 +268,32 @@ export async function processManualOrder(
         `[Manual order] Welcome e-mail NOT sent to ${participant.email}: ${emailResult.error ?? "unknown"}`
       );
     }
+  }
+
+  const thankYouResult = await sendOrderThankYouEmail({
+    orderNumber: order.orderNumber,
+    companyName,
+    contactName,
+    contactEmail,
+    contactSalutation: input.contactSalutation,
+    paymentMethodLabel: paymentMethodLabel(input.paymentMethod),
+    participants: participants.map((participant) => ({
+      name: participant.name,
+      email: participant.email,
+      courseNames: participant.courseSlugs.map(
+        (slug) => getCatalogItem(slug)?.name ?? slug
+      ),
+    })),
+    items: cart.items.map((item) => ({
+      name: item.name,
+      quantity: item.quantity,
+    })),
+  });
+
+  if (!thankYouResult.sent) {
+    console.error(
+      `[Manual order] Thank-you e-mail NOT sent to ${contactEmail}: ${thankYouResult.error ?? "unknown"}`
+    );
   }
 
   await notifyOrderPaid({

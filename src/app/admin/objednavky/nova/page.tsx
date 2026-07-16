@@ -19,7 +19,7 @@ export default async function AdminManualOrderPage() {
     <>
       <PageHero
         title="Nová manuální objednávka"
-        subtitle="Založte přístup ke školení po faktuře nebo hotovosti. Systém vytvoří účty, přiřadí kurz a odešle uvítací e-maily."
+        subtitle="Založte přístup ke školení po faktuře nebo hotovosti. Kontaktní e-mail dostane potvrzení objednávky; přihlášení a kurzy nastavíte u každého účastníka zvlášť."
       >
         <AdminNav
           current="orders-new"

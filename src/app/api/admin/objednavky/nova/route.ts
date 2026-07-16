@@ -90,15 +90,18 @@ export async function POST(request: Request) {
     if (!companyName || !contactName || !contactEmail || !paymentMethod) {
       return NextResponse.json(
         {
-          error: "Vyplňte firmu, kontakt, e-mail a způsob platby.",
+          error: "Vyplňte firmu, kontakt, e-mail pro potvrzení a způsob platby.",
         },
         { status: 400 }
       );
     }
 
-    if (!hasParticipants && courseSlugs.length === 0) {
+    if (!hasParticipants && !String(body.participantsRaw ?? "").trim()) {
       return NextResponse.json(
-        { error: "Vyplňte účastníky se školeními nebo vyberte alespoň jeden kurz." },
+        {
+          error:
+            "Vyplňte alespoň jednoho účastníka (jméno, e-mail pro přihlášení a školení).",
+        },
         { status: 400 }
       );
     }
