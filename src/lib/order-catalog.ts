@@ -29,6 +29,9 @@ export function formatPriceFromHalere(halere: number): string {
   }).format(halere / 100);
 }
 
+/** Maximální počet osob u jednoho kurzu / v počtu studentů na objednávce. */
+export const MAX_COURSE_QUANTITY = 200;
+
 export function getBulkDiscountPercent(
   quantity: number
 ): number | "contact" {
@@ -75,8 +78,10 @@ export function computeCart(
   const totalPeople = lines.reduce((sum, line) => sum + line.quantity, 0);
 
   for (const line of lines) {
-    if (line.quantity < 1 || line.quantity > 99) {
-      return { error: "Neplatný počet zaměstnanců (1–99). Pro 100+ osob nás kontaktujte." };
+    if (line.quantity < 1 || line.quantity > MAX_COURSE_QUANTITY) {
+      return {
+        error: `Neplatný počet zaměstnanců u kurzu (1–${MAX_COURSE_QUANTITY}).`,
+      };
     }
   }
 
