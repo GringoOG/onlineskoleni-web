@@ -9,11 +9,16 @@ import {
   type EnrollmentResult,
 } from "@/lib/lms/enroll-from-order";
 import { sendWelcomeEmail } from "@/lib/lms/welcome-email";
+import {
+  normalizeParticipantEmail,
+  type OrderParticipantInput,
+} from "@/lib/order-participants";
 
 export interface ManualOrderParticipant {
   name: string;
   email: string;
   salutation?: "pan" | "pani";
+  courseSlugs: string[];
 }
 
 export type DiscountMode = "auto" | "0" | "10" | "15";
@@ -25,9 +30,17 @@ export interface ProcessManualOrderInput {
   contactSalutation?: "pan" | "pani";
   phone?: string;
   ico?: string;
-  courseSlugs: string[];
+  /** Legacy: společný seznam kurzů, pokud účastníci nemají vlastní courseSlugs. */
+  courseSlugs?: string[];
   paymentMethod: ManualPaymentMethod;
   participantsRaw?: string;
+  /** Preferovaný vstup: účastníci s přiřazenými školeními. */
+  participants?: Array<{
+    name: string;
+    email: string;
+    salutation?: "pan" | "pani";
+    courseSlugs?: string[];
+  }>;
   adminNote?: string;
   discountMode?: DiscountMode;
 }
@@ -42,6 +55,8 @@ export interface ProcessManualOrderResult {
   emailFailures: { email: string; error: string }[];
   enrollments: EnrollmentResult[];
 }
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function paymentMethodLabel(method: ManualPaymentMethod): string {
   return method === "INVOICE" ? "faktura" : "hotově";
@@ -74,7 +89,7 @@ function validateCourseSlugs(courseSlugs: string[]): string[] {
   return unique;
 }
 
-function buildPerStudentItems(courseSlugs: string[]) {
+function buildItemsForSlugs(courseSlugs: string[]) {
   return courseSlugs.map((courseSlug) => {
     const catalog = getCatalogItem(courseSlug);
     if (!catalog) {
@@ -88,17 +103,51 @@ function buildPerStudentItems(courseSlugs: string[]) {
   });
 }
 
-/** Vytvoří PAID objednávku a pro každého účastníka založí účet, enrollment a uvítací e-mail. */
-export async function processManualOrder(
+function normalizeManualParticipants(
   input: ProcessManualOrderInput
-): Promise<ProcessManualOrderResult> {
-  const companyName = input.companyName.trim();
-  const contactName = input.contactName.trim();
-  const contactEmail = input.contactEmail.trim().toLowerCase();
-  const courseSlugs = validateCourseSlugs(input.courseSlugs);
+): ManualOrderParticipant[] {
+  const fallbackCourseSlugs = input.courseSlugs?.length
+    ? validateCourseSlugs(input.courseSlugs)
+    : [];
 
-  if (!companyName || !contactName || !contactEmail) {
-    throw new Error("Vyplňte firmu, jméno kontaktu a e-mail.");
+  if (Array.isArray(input.participants) && input.participants.length > 0) {
+    const seenEmails = new Set<string>();
+    const result: ManualOrderParticipant[] = [];
+
+    for (let index = 0; index < input.participants.length; index += 1) {
+      const row = input.participants[index];
+      const name = String(row.name ?? "").trim();
+      const email = normalizeParticipantEmail(String(row.email ?? ""));
+      const salutation =
+        row.salutation === "pan" || row.salutation === "pani"
+          ? row.salutation
+          : undefined;
+      const rawSlugs = Array.isArray(row.courseSlugs) ? row.courseSlugs : [];
+      const courseSlugs =
+        rawSlugs.length > 0
+          ? validateCourseSlugs(rawSlugs.map(String))
+          : fallbackCourseSlugs;
+
+      if (!name) {
+        throw new Error(`Účastník ${index + 1}: vyplňte jméno.`);
+      }
+      if (!email || !EMAIL_REGEX.test(email)) {
+        throw new Error(`Účastník ${index + 1}: neplatný e-mail.`);
+      }
+      if (seenEmails.has(email)) {
+        throw new Error(
+          `E-mail ${email} je uveden u více účastníků. Každá osoba potřebuje vlastní e-mail.`
+        );
+      }
+      if (courseSlugs.length === 0) {
+        throw new Error(`Účastník ${email}: vyberte alespoň jedno školení.`);
+      }
+
+      seenEmails.add(email);
+      result.push({ name, email, salutation, courseSlugs });
+    }
+
+    return result;
   }
 
   const parsed = parseParticipants(input.participantsRaw ?? "");
@@ -106,26 +155,77 @@ export async function processManualOrder(
     throw new Error(parsed.errors.join(" "));
   }
 
-  const participants: ManualOrderParticipant[] =
-    parsed.participants.length > 0
-      ? parsed.participants
-      : [
-          {
-            name: contactName,
-            email: contactEmail,
-            salutation: input.contactSalutation,
-          },
-        ];
+  if (parsed.participants.length > 0) {
+    if (fallbackCourseSlugs.length === 0) {
+      throw new Error("Vyberte alespoň jeden kurz.");
+    }
+    return parsed.participants.map((participant) => ({
+      ...participant,
+      courseSlugs: fallbackCourseSlugs,
+    }));
+  }
+
+  const contactName = input.contactName.trim();
+  const contactEmail = normalizeParticipantEmail(input.contactEmail);
+  if (!contactName || !contactEmail) {
+    throw new Error("Vyplňte firmu, jméno kontaktu a e-mail.");
+  }
+  if (fallbackCourseSlugs.length === 0) {
+    throw new Error("Vyberte alespoň jeden kurz.");
+  }
+
+  return [
+    {
+      name: contactName,
+      email: contactEmail,
+      salutation: input.contactSalutation,
+      courseSlugs: fallbackCourseSlugs,
+    },
+  ];
+}
+
+function buildOrderLines(participants: ManualOrderParticipant[]) {
+  const counts = new Map<string, number>();
+  for (const participant of participants) {
+    for (const slug of participant.courseSlugs) {
+      counts.set(slug, (counts.get(slug) ?? 0) + 1);
+    }
+  }
+
+  return [...counts.entries()].map(([courseSlug, quantity]) => ({
+    courseSlug,
+    quantity,
+  }));
+}
+
+/** Vytvoří PAID objednávku a pro každého účastníka založí účet, enrollment a uvítací e-mail. */
+export async function processManualOrder(
+  input: ProcessManualOrderInput
+): Promise<ProcessManualOrderResult> {
+  const companyName = input.companyName.trim();
+  const contactName = input.contactName.trim();
+  const contactEmail = normalizeParticipantEmail(input.contactEmail);
+
+  if (!companyName || !contactName || !contactEmail) {
+    throw new Error("Vyplňte firmu, jméno kontaktu a e-mail.");
+  }
+
+  const participants = normalizeManualParticipants(input);
+  const lines = buildOrderLines(participants);
+  const courseCount = new Set(lines.map((line) => line.courseSlug)).size;
 
   const seatsPurchased = participants.length;
   const discountMode = input.discountMode ?? "auto";
   const appliedDiscountPercent = resolveDiscountPercent(seatsPurchased, discountMode);
   const discountPercentOverride = discountMode === "auto" ? undefined : appliedDiscountPercent;
 
-  const lines = courseSlugs.map((courseSlug) => ({
-    courseSlug,
-    quantity: seatsPurchased,
-  }));
+  const participantsForStorage: OrderParticipantInput[] = participants.map(
+    (participant) => ({
+      name: participant.name,
+      email: participant.email,
+      courseSlugs: participant.courseSlugs,
+    })
+  );
 
   const { order, cart } = await createManualPaidOrder({
     companyName,
@@ -137,12 +237,12 @@ export async function processManualOrder(
     paymentMethod: input.paymentMethod,
     adminNote: input.adminNote,
     discountPercentOverride,
+    participants: participantsForStorage,
   });
 
   const allEnrollments: EnrollmentResult[] = [];
   let emailsSent = 0;
   const emailFailures: { email: string; error: string }[] = [];
-  const perStudentItems = buildPerStudentItems(courseSlugs);
 
   for (const participant of participants) {
     const student = await findOrCreateStudent({
@@ -155,7 +255,7 @@ export async function processManualOrder(
     const enrollments = await enrollStudentForOrderItems({
       student,
       orderNumber: order.orderNumber,
-      items: perStudentItems,
+      items: buildItemsForSlugs(participant.courseSlugs),
     });
 
     allEnrollments.push(...enrollments);
@@ -202,13 +302,13 @@ export async function processManualOrder(
   });
 
   console.info(
-    `[Manual order] ${order.orderNumber}: ${participants.length} student(s), ${courseSlugs.length} course(s), discount ${appliedDiscountPercent}%`
+    `[Manual order] ${order.orderNumber}: ${participants.length} student(s), ${courseCount} course(s), discount ${appliedDiscountPercent}%`
   );
 
   return {
     orderNumber: order.orderNumber,
     seatsPurchased,
-    courseCount: courseSlugs.length,
+    courseCount,
     appliedDiscountPercent,
     enrolledStudents: participants.length,
     emailsSent,

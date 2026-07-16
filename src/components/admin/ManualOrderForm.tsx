@@ -13,6 +13,14 @@ import { BulkDiscountBanner } from "@/components/BulkDiscountBanner";
 type PaymentMethod = "INVOICE" | "CASH";
 type DiscountMode = "auto" | "0" | "10" | "15";
 
+type ParticipantDraft = {
+  id: string;
+  name: string;
+  email: string;
+  salutation: "" | "pan" | "pani";
+  courseSlugs: string[];
+};
+
 interface SuccessState {
   orderNumber: string;
   seatsPurchased: number;
@@ -26,6 +34,20 @@ interface SuccessState {
 const inputClassName =
   "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25";
 
+function createParticipantId() {
+  return `p-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function emptyParticipant(courseSlugs: string[] = []): ParticipantDraft {
+  return {
+    id: createParticipantId(),
+    name: "",
+    email: "",
+    salutation: "",
+    courseSlugs,
+  };
+}
+
 export function ManualOrderForm() {
   const [companyName, setCompanyName] = useState("");
   const [ico, setIco] = useState("");
@@ -33,40 +55,46 @@ export function ManualOrderForm() {
   const [contactSalutation, setContactSalutation] = useState<"" | "pan" | "pani">("");
   const [contactEmail, setContactEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [selectedCourses, setSelectedCourses] = useState<Record<string, boolean>>(() => ({
-    "bozp-zamestnanec": true,
-  }));
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("INVOICE");
   const [discountMode, setDiscountMode] = useState<DiscountMode>("auto");
-  const [participantsRaw, setParticipantsRaw] = useState("");
+  const [participants, setParticipants] = useState<ParticipantDraft[]>([
+    emptyParticipant(["bozp-zamestnanec"]),
+  ]);
+  const [bulkPaste, setBulkPaste] = useState("");
   const [adminNote, setAdminNote] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<SuccessState | null>(null);
 
-  const parsedParticipants = useMemo(
-    () => parseParticipants(participantsRaw),
-    [participantsRaw]
-  );
+  const seatCount = participants.length;
 
-  const seatCount =
-    parsedParticipants.participants.length > 0 ? parsedParticipants.participants.length : 1;
+  const assignmentCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const participant of participants) {
+      for (const slug of participant.courseSlugs) {
+        counts.set(slug, (counts.get(slug) ?? 0) + 1);
+      }
+    }
+    return counts;
+  }, [participants]);
 
-  const selectedSlugs = useMemo(
-    () => orderCatalog.filter((item) => selectedCourses[item.courseSlug]).map((item) => item.courseSlug),
-    [selectedCourses]
+  const lines = useMemo(
+    () =>
+      [...assignmentCounts.entries()]
+        .filter(([, quantity]) => quantity > 0)
+        .map(([courseSlug, quantity]) => ({ courseSlug, quantity })),
+    [assignmentCounts]
   );
 
   const autoDiscount = getBulkDiscountPercent(seatCount);
 
   const cartResult = useMemo(() => {
-    if (selectedSlugs.length === 0) {
-      return { error: "Vyberte alespoň jeden kurz." } as const;
+    if (lines.length === 0) {
+      return { error: "U účastníků vyberte alespoň jedno školení." } as const;
     }
-    const lines = selectedSlugs.map((courseSlug) => ({ courseSlug, quantity: seatCount }));
     const override = discountMode === "auto" ? undefined : Number(discountMode);
     return computeCart(lines, { discountPercentOverride: override });
-  }, [selectedSlugs, seatCount, discountMode]);
+  }, [lines, discountMode]);
 
   const cart = cartResult && !("error" in cartResult) ? cartResult : null;
   const cartError = cartResult && "error" in cartResult ? cartResult.error : null;
@@ -78,8 +106,96 @@ export function ManualOrderForm() {
         : autoDiscount
       : Number(discountMode);
 
-  function toggleCourse(slug: string) {
-    setSelectedCourses((prev) => ({ ...prev, [slug]: !prev[slug] }));
+  function updateParticipant(
+    id: string,
+    patch: Partial<Omit<ParticipantDraft, "id">>
+  ) {
+    setParticipants((prev) =>
+      prev.map((participant) =>
+        participant.id === id ? { ...participant, ...patch } : participant
+      )
+    );
+  }
+
+  function toggleParticipantCourse(participantId: string, courseSlug: string) {
+    setParticipants((prev) =>
+      prev.map((participant) => {
+        if (participant.id !== participantId) return participant;
+        const has = participant.courseSlugs.includes(courseSlug);
+        return {
+          ...participant,
+          courseSlugs: has
+            ? participant.courseSlugs.filter((slug) => slug !== courseSlug)
+            : [...participant.courseSlugs, courseSlug],
+        };
+      })
+    );
+  }
+
+  function addParticipant() {
+    setParticipants((prev) => [...prev, emptyParticipant()]);
+  }
+
+  function removeParticipant(id: string) {
+    setParticipants((prev) => {
+      if (prev.length <= 1) return [emptyParticipant()];
+      return prev.filter((participant) => participant.id !== id);
+    });
+  }
+
+  function fillFirstFromContact() {
+    setParticipants((prev) => {
+      if (prev.length === 0) return prev;
+      const [first, ...rest] = prev;
+      return [
+        {
+          ...first,
+          name: contactName.trim() || first.name,
+          email: contactEmail.trim() || first.email,
+          salutation: contactSalutation || first.salutation,
+        },
+        ...rest,
+      ];
+    });
+  }
+
+  function importBulkPaste() {
+    const parsed = parseParticipants(bulkPaste);
+    if (parsed.errors.length > 0) {
+      setError(parsed.errors.join(" "));
+      return;
+    }
+    if (parsed.participants.length === 0) {
+      setError("Vložte alespoň jeden řádek ve formátu Jméno Příjmení, email@firma.cz.");
+      return;
+    }
+
+    setError("");
+    setParticipants((prev) => {
+      const existingEmails = new Set(
+        prev
+          .map((participant) => participant.email.trim().toLowerCase())
+          .filter(Boolean)
+      );
+      const defaultCourses =
+        prev[0]?.courseSlugs.length > 0 ? prev[0].courseSlugs : ["bozp-zamestnanec"];
+
+      const imported = parsed.participants
+        .filter((participant) => !existingEmails.has(participant.email))
+        .map((participant) => ({
+          id: createParticipantId(),
+          name: participant.name,
+          email: participant.email,
+          salutation: (participant.salutation ?? "") as "" | "pan" | "pani",
+          courseSlugs: [...defaultCourses],
+        }));
+
+      const replaceEmptyShell =
+        prev.length === 1 && !prev[0].name.trim() && !prev[0].email.trim();
+
+      return replaceEmptyShell ? imported : [...prev, ...imported];
+    });
+    setBulkPaste("");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -87,13 +203,27 @@ export function ManualOrderForm() {
     setError("");
     setSuccess(null);
 
-    if (selectedSlugs.length === 0) {
-      setError("Vyberte alespoň jeden kurz.");
-      return;
+    for (let index = 0; index < participants.length; index += 1) {
+      const participant = participants[index];
+      if (!participant.name.trim()) {
+        setError(`Účastník ${index + 1}: vyplňte jméno.`);
+        return;
+      }
+      if (!participant.email.trim()) {
+        setError(`Účastník ${index + 1}: vyplňte e-mail.`);
+        return;
+      }
+      if (participant.courseSlugs.length === 0) {
+        setError(`Účastník ${index + 1}: vyberte alespoň jedno školení.`);
+        return;
+      }
     }
 
-    if (parsedParticipants.errors.length > 0) {
-      setError(parsedParticipants.errors.join(" "));
+    const emails = participants.map((participant) =>
+      participant.email.trim().toLowerCase()
+    );
+    if (new Set(emails).size !== emails.length) {
+      setError("Každá osoba potřebuje vlastní e-mail (duplicitní e-mail v seznamu).");
       return;
     }
 
@@ -115,10 +245,14 @@ export function ManualOrderForm() {
           contactSalutation: contactSalutation || undefined,
           contactEmail,
           phone: phone || undefined,
-          courseSlugs: selectedSlugs,
           paymentMethod,
           discountMode,
-          participantsRaw,
+          participants: participants.map((participant) => ({
+            name: participant.name,
+            email: participant.email,
+            salutation: participant.salutation || undefined,
+            courseSlugs: participant.courseSlugs,
+          })),
           adminNote: adminNote || undefined,
         }),
       });
@@ -138,8 +272,9 @@ export function ManualOrderForm() {
         emailsSent: data.emailsSent,
         emailFailures: data.emailFailures,
       });
-      setParticipantsRaw("");
+      setParticipants([emptyParticipant(["bozp-zamestnanec"])]);
       setAdminNote("");
+      setBulkPaste("");
     } catch {
       setError("Chyba spojení. Zkuste to prosím znovu.");
     } finally {
@@ -157,7 +292,7 @@ export function ManualOrderForm() {
               Číslo objednávky: <strong>{success.orderNumber}</strong>
             </li>
             <li>
-              Kurzů na osobu: <strong>{success.courseCount}</strong>
+              Typů školení v objednávce: <strong>{success.courseCount}</strong>
             </li>
             <li>
               Počet osob: <strong>{success.seatsPurchased}</strong>
@@ -280,42 +415,6 @@ export function ManualOrderForm() {
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-lg font-bold text-slate-900">Kurzy pro každého studenta</legend>
-        <p className="text-sm text-slate-600">
-          Zaškrtněte všechny kurzy, které má každý zaměstnanec absolvovat. Balíček se v systému
-          automaticky rozloží na jednotlivá školení.
-        </p>
-        <ul className="space-y-3">
-          {orderCatalog.map((item) => (
-            <li
-              key={item.courseSlug}
-              className="flex flex-wrap items-start justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4"
-            >
-              <label className="flex min-w-0 flex-1 cursor-pointer items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={Boolean(selectedCourses[item.courseSlug])}
-                  onChange={() => toggleCourse(item.courseSlug)}
-                  className="mt-1 shrink-0 rounded border-slate-300 text-brand-dark focus:ring-brand"
-                />
-                <span>
-                  <span className="block font-medium text-slate-900">{item.name}</span>
-                  <span className="block text-sm text-slate-500">
-                    {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
-                    {item.bundleCourses?.length ? (
-                      <span className="block text-xs text-slate-400">
-                        Balíček: {item.bundleCourses.length} školení
-                      </span>
-                    ) : null}
-                  </span>
-                </span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </fieldset>
-
-      <fieldset className="space-y-4">
         <legend className="text-lg font-bold text-slate-900">Sleva dle ceníku</legend>
         <BulkDiscountBanner variant="compact" />
         <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
@@ -392,43 +491,188 @@ export function ManualOrderForm() {
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-lg font-bold text-slate-900">Zaměstnanci (hromadné zadání)</legend>
+        <legend className="text-lg font-bold text-slate-900">
+          Účastníci a přiřazení školení
+        </legend>
         <p className="text-sm text-slate-600">
-          Každý řádek = jedna osoba = jedno místo (pro výpočet slevy). Formát:{" "}
-          <code className="rounded bg-slate-100 px-1">Jméno Příjmení, email@firma.cz</code>{" "}
-          (volitelně prefix <code className="rounded bg-slate-100 px-1">pan</code> /{" "}
-          <code className="rounded bg-slate-100 px-1">paní</code> před jménem).
-          Pokud necháte prázdné, vytvoří se účet pouze pro kontaktní osobu.
+          U každého e-mailu zatrhněte školení, která má osoba absolvovat. Jedna osoba může mít více
+          kurzů — každé školení se účtuje jen u přiřazených lidí.
         </p>
-        <textarea
-          id="participantsRaw"
-          value={participantsRaw}
-          onChange={(e) => setParticipantsRaw(e.target.value)}
-          rows={8}
-          placeholder={
-            "Jan Novák, jan.novak@firma.cz\nMarie Svobodová, marie@firma.cz\nPetr Dvořák, petr@firma.cz"
-          }
-          className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
-        />
-        <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-          {parsedParticipants.errors.length > 0 ? (
-            <ul className="list-disc space-y-1 pl-5 text-red-700">
-              {parsedParticipants.errors.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+
+        {lines.length > 0 ? (
+          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+            <p className="font-medium text-slate-900">Počty míst dle přiřazení</p>
+            <ul className="mt-2 space-y-1">
+              {lines.map((line) => {
+                const catalog = orderCatalog.find((item) => item.courseSlug === line.courseSlug);
+                return (
+                  <li key={line.courseSlug}>
+                    {catalog?.name ?? line.courseSlug}:{" "}
+                    <strong>{line.quantity}</strong>
+                  </li>
+                );
+              })}
             </ul>
-          ) : parsedParticipants.participants.length > 0 ? (
-            <ul className="space-y-1">
-              {parsedParticipants.participants.map((participant) => (
-                <li key={participant.email}>
-                  {participant.name} — {participant.email}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-slate-500">Použije se kontaktní osoba ({contactName || "—"}).</p>
-          )}
+          </div>
+        ) : null}
+
+        <div className="flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={fillFirstFromContact}
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            Doplnit 1. účastníka z kontaktu
+          </button>
+          <button
+            type="button"
+            onClick={addParticipant}
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            Přidat účastníka
+          </button>
         </div>
+
+        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-4">
+          <label htmlFor="bulkPaste" className="block text-sm font-medium text-slate-700">
+            Hromadně vložit jména a e-maily (volitelné)
+          </label>
+          <p className="mt-1 text-xs text-slate-500">
+            Formát: <code className="rounded bg-slate-100 px-1">Jméno Příjmení, email@firma.cz</code>
+            . Po importu doplňte / upravte školení u každého řádku.
+          </p>
+          <textarea
+            id="bulkPaste"
+            value={bulkPaste}
+            onChange={(e) => setBulkPaste(e.target.value)}
+            rows={4}
+            placeholder={
+              "Jan Novák, jan.novak@firma.cz\nMarie Svobodová, marie@firma.cz"
+            }
+            className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+          />
+          <button
+            type="button"
+            onClick={importBulkPaste}
+            className="mt-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            Importovat do seznamu
+          </button>
+        </div>
+
+        <ul className="space-y-4">
+          {participants.map((participant, index) => (
+            <li
+              key={participant.id}
+              className="rounded-xl border border-slate-200 bg-white p-4"
+            >
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <p className="text-sm font-semibold text-slate-900">Účastník {index + 1}</p>
+                {participants.length > 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => removeParticipant(participant.id)}
+                    className="text-sm font-medium text-slate-500 hover:text-red-700"
+                  >
+                    Odebrat
+                  </button>
+                ) : null}
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor={`participant-name-${participant.id}`}
+                    className="block text-sm font-medium text-slate-700"
+                  >
+                    Jméno a příjmení *
+                  </label>
+                  <div className="mt-1 flex gap-2">
+                    <input
+                      id={`participant-name-${participant.id}`}
+                      value={participant.name}
+                      onChange={(e) =>
+                        updateParticipant(participant.id, { name: e.target.value })
+                      }
+                      className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+                    />
+                    <select
+                      value={participant.salutation}
+                      onChange={(e) =>
+                        updateParticipant(participant.id, {
+                          salutation: e.target.value as "" | "pan" | "pani",
+                        })
+                      }
+                      className="w-36 shrink-0 rounded-lg border border-slate-300 px-2 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+                      title="Oslovení v e-mailu"
+                    >
+                      <option value="">Auto</option>
+                      <option value="pan">Pane</option>
+                      <option value="pani">Paní</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor={`participant-email-${participant.id}`}
+                    className="block text-sm font-medium text-slate-700"
+                  >
+                    E-mail pro přihlášení *
+                  </label>
+                  <input
+                    id={`participant-email-${participant.id}`}
+                    type="email"
+                    value={participant.email}
+                    onChange={(e) =>
+                      updateParticipant(participant.id, { email: e.target.value })
+                    }
+                    className={inputClassName}
+                  />
+                </div>
+              </div>
+
+              <fieldset className="mt-4">
+                <legend className="text-sm font-medium text-slate-700">
+                  Přiřazená školení *
+                </legend>
+                <ul className="mt-2 space-y-2">
+                  {orderCatalog.map((item) => {
+                    const checked = participant.courseSlugs.includes(item.courseSlug);
+                    return (
+                      <li key={item.courseSlug}>
+                        <label
+                          className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 text-sm ${
+                            checked
+                              ? "border-brand bg-brand-tint/40"
+                              : "border-slate-200 hover:bg-slate-50"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="mt-0.5"
+                            checked={checked}
+                            onChange={() =>
+                              toggleParticipantCourse(participant.id, item.courseSlug)
+                            }
+                          />
+                          <span>
+                            <span className="font-medium text-slate-900">{item.name}</span>
+                            <span className="mt-0.5 block text-xs text-slate-500">
+                              {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba
+                              {item.bundleCourses?.length
+                                ? ` · balíček ${item.bundleCourses.length} školení`
+                                : ""}
+                            </span>
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </fieldset>
+            </li>
+          ))}
+        </ul>
       </fieldset>
 
       <fieldset>
@@ -447,7 +691,7 @@ export function ManualOrderForm() {
         <div className="rounded-xl bg-brand-tint px-4 py-3 text-sm text-brand-darker">
           <p className="font-semibold">
             Celkem bez DPH: {formatPriceFromHalere(cart.totalAmountHalere)} · {seatCount} osob ·{" "}
-            {selectedSlugs.length} kurz(ů) na osobu
+            {lines.length} typ(ů) školení
           </p>
           <ul className="mt-2 space-y-1 text-brand-dark">
             {cart.items.map((item) => (
@@ -474,9 +718,7 @@ export function ManualOrderForm() {
 
       <button
         type="submit"
-        disabled={
-          loading || !cart || parsedParticipants.errors.length > 0 || selectedSlugs.length === 0
-        }
+        disabled={loading || !cart || lines.length === 0}
         className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       >
         {loading ? "Vytvářím objednávku a odesílám přístupy…" : "Vytvořit a aktivovat přístup"}

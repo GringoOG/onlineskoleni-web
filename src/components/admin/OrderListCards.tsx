@@ -30,6 +30,11 @@ function OrderCard({ order, busy, onSetStatus }: OrderCardProps) {
           <p className="mt-1 text-sm font-medium text-slate-800">{order.companyName}</p>
           <p className="text-sm text-slate-600">{order.contactName}</p>
           <p className="text-xs text-slate-500">{order.email}</p>
+          {order.participantCount != null ? (
+            <p className="mt-1 text-xs text-slate-500">
+              LMS účastníci: {order.participantCount}
+            </p>
+          ) : null}
         </div>
         <span
           className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide ${

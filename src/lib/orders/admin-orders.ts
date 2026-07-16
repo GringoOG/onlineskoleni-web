@@ -3,6 +3,7 @@ import {
   processPaidOrder,
   toPaidOrderForEnrollment,
 } from "@/lib/lms/process-paid-order";
+import { parseParticipantsJson } from "@/lib/order-participants";
 import { getOrderChannel, type OrderChannel } from "@/lib/orders/order-channel";
 
 export type AdminPaymentStatus = "PAID" | "PENDING";
@@ -18,6 +19,8 @@ export interface AdminOrderListItem {
   totalAmountHalere: number;
   createdAt: string;
   paidStatusChangedAt: string | null;
+  /** Počet LMS účastníků z checkoutu (null = legacy jedna kontaktní osoba). */
+  participantCount: number | null;
 }
 
 export interface ListAdminOrdersInput {
@@ -86,18 +89,22 @@ export async function listAdminOrders(
     take: 500,
   });
 
-  return orders.map((order) => ({
-    orderNumber: order.orderNumber,
-    companyName: order.companyName,
-    contactName: order.contactName,
-    email: order.email,
-    status: order.status,
-    paymentStatus: toPaymentStatus(order.status),
-    channel: getOrderChannel(order),
-    totalAmountHalere: order.totalAmountHalere,
-    createdAt: order.createdAt.toISOString(),
-    paidStatusChangedAt: order.paidStatusChangedAt?.toISOString() ?? null,
-  }));
+  return orders.map((order) => {
+    const participants = parseParticipantsJson(order.participantsJson);
+    return {
+      orderNumber: order.orderNumber,
+      companyName: order.companyName,
+      contactName: order.contactName,
+      email: order.email,
+      status: order.status,
+      paymentStatus: toPaymentStatus(order.status),
+      channel: getOrderChannel(order),
+      totalAmountHalere: order.totalAmountHalere,
+      createdAt: order.createdAt.toISOString(),
+      paidStatusChangedAt: order.paidStatusChangedAt?.toISOString() ?? null,
+      participantCount: participants ? participants.length : null,
+    };
+  });
 }
 
 export async function setAdminOrderPaymentStatus(

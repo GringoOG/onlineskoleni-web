@@ -36,6 +36,37 @@ function parseContactSalutation(value: unknown): "pan" | "pani" | undefined {
   return undefined;
 }
 
+function parseParticipants(body: Record<string, unknown>):
+  | Array<{
+      name: string;
+      email: string;
+      salutation?: "pan" | "pani";
+      courseSlugs?: string[];
+    }>
+  | undefined {
+  if (!Array.isArray(body.participants)) {
+    return undefined;
+  }
+
+  return body.participants.map((row) => {
+    const item = row && typeof row === "object" ? (row as Record<string, unknown>) : {};
+    const salutation: "pan" | "pani" | undefined =
+      item.salutation === "pan" || item.salutation === "pani"
+        ? item.salutation
+        : undefined;
+    const courseSlugs = Array.isArray(item.courseSlugs)
+      ? item.courseSlugs.map((slug) => String(slug).trim()).filter(Boolean)
+      : undefined;
+
+    return {
+      name: String(item.name ?? ""),
+      email: String(item.email ?? ""),
+      salutation,
+      courseSlugs,
+    };
+  });
+}
+
 export async function POST(request: Request) {
   try {
     const authError = await requireOrdersApiAccess();
@@ -48,18 +79,26 @@ export async function POST(request: Request) {
     const phone = body.phone ? String(body.phone).trim() : undefined;
     const ico = body.ico ? String(body.ico).trim() : undefined;
     const courseSlugs = parseCourseSlugs(body);
-    const participantsRaw = String(body.participantsRaw ?? body.participants ?? "");
+    const participants = parseParticipants(body);
+    const participantsRaw = String(body.participantsRaw ?? body.participantsText ?? "");
     const adminNote = body.adminNote ? String(body.adminNote).trim() : undefined;
     const paymentMethod = parsePaymentMethod(body.paymentMethod);
     const discountMode = parseDiscountMode(body.discountMode);
     const contactSalutation = parseContactSalutation(body.contactSalutation);
 
-    if (!companyName || !contactName || !contactEmail || courseSlugs.length === 0 || !paymentMethod) {
+    const hasParticipants = Array.isArray(participants) && participants.length > 0;
+    if (!companyName || !contactName || !contactEmail || !paymentMethod) {
       return NextResponse.json(
         {
-          error:
-            "Vyplňte firmu, kontakt, e-mail, alespoň jeden kurz a způsob platby.",
+          error: "Vyplňte firmu, kontakt, e-mail a způsob platby.",
         },
+        { status: 400 }
+      );
+    }
+
+    if (!hasParticipants && courseSlugs.length === 0) {
+      return NextResponse.json(
+        { error: "Vyplňte účastníky se školeními nebo vyberte alespoň jeden kurz." },
         { status: 400 }
       );
     }
@@ -82,9 +121,10 @@ export async function POST(request: Request) {
       contactSalutation,
       phone,
       ico,
-      courseSlugs,
+      courseSlugs: courseSlugs.length > 0 ? courseSlugs : undefined,
       paymentMethod,
-      participantsRaw,
+      participants,
+      participantsRaw: hasParticipants ? undefined : participantsRaw,
       adminNote,
       discountMode,
     });
