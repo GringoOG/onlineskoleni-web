@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import {
   computeCart,
   formatPriceFromHalere,
+  MAX_COURSE_QUANTITY,
   orderCatalog,
 } from "@/lib/order-catalog";
 import { qrPayment } from "@/lib/content";
@@ -23,95 +24,79 @@ function createParticipantId() {
   return `p-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-function emptyParticipant(): ParticipantDraft {
+function emptyParticipant(courseSlugs: string[] = []): ParticipantDraft {
   return {
     id: createParticipantId(),
     name: "",
     email: "",
-    courseSlugs: [],
+    courseSlugs: [...courseSlugs],
   };
 }
 
-function adjustParticipants(
+function resizeParticipants(
   prev: ParticipantDraft[],
-  totalSeats: number,
-  allowedSlugs: Set<string>
+  count: number,
+  defaultCourseSlugs: string[]
 ): ParticipantDraft[] {
-  let next = prev.map((participant) => ({
-    ...participant,
-    courseSlugs: participant.courseSlugs.filter((slug) => allowedSlugs.has(slug)),
-  }));
+  if (count <= 0) return [];
 
-  if (totalSeats <= 0) {
-    return next.length > 0 ? next : [emptyParticipant()];
-  }
+  if (prev.length === count) return prev;
 
-  if (next.length < totalSeats) {
-    next = [
-      ...next,
-      ...Array.from({ length: totalSeats - next.length }, () => emptyParticipant()),
+  if (prev.length < count) {
+    return [
+      ...prev,
+      ...Array.from({ length: count - prev.length }, () =>
+        emptyParticipant(defaultCourseSlugs)
+      ),
     ];
-  } else if (next.length > totalSeats) {
-    const removable = [...next]
-      .map((participant, index) => ({ participant, index }))
-      .filter(
-        ({ participant }) =>
-          !participant.name.trim() &&
-          !participant.email.trim() &&
-          participant.courseSlugs.length === 0
-      )
-      .map(({ index }) => index)
-      .reverse();
-
-    const removeCount = Math.min(next.length - totalSeats, removable.length);
-    if (removeCount > 0) {
-      const removeIndexes = new Set(removable.slice(0, removeCount));
-      next = next.filter((_, index) => !removeIndexes.has(index));
-    }
   }
 
-  return next;
+  return prev.slice(0, count);
 }
 
 export function CheckoutForm() {
   const searchParams = useSearchParams();
   const preselected = searchParams.get("kurz");
 
-  const [quantities, setQuantities] = useState<Record<string, number>>(() => {
-    const initial: Record<string, number> = {};
-    const selectedSlug =
-      preselected === "pozarni"
-        ? "pozarni-zamestnanec"
-        : preselected === "bozp"
-          ? "bozp-zamestnanec"
-          : preselected;
-    for (const item of orderCatalog) {
-      initial[item.courseSlug] = selectedSlug === item.courseSlug ? 1 : 0;
-    }
-    return initial;
-  });
+  const preselectedSlug =
+    preselected === "pozarni"
+      ? "pozarni-zamestnanec"
+      : preselected === "bozp"
+        ? "bozp-zamestnanec"
+        : preselected && orderCatalog.some((item) => item.courseSlug === preselected)
+          ? preselected
+          : null;
+
+  const [studentCount, setStudentCount] = useState(() => (preselectedSlug ? 1 : 1));
+  const [participants, setParticipants] = useState<ParticipantDraft[]>(() => [
+    emptyParticipant(preselectedSlug ? [preselectedSlug] : []),
+  ]);
 
   const [companyName, setCompanyName] = useState("");
   const [ico, setIco] = useState("");
   const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [participants, setParticipants] = useState<ParticipantDraft[]>([
-    emptyParticipant(),
-  ]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingBank, setLoadingBank] = useState(false);
 
+  const assignmentCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const participant of participants) {
+      for (const slug of participant.courseSlugs) {
+        counts.set(slug, (counts.get(slug) ?? 0) + 1);
+      }
+    }
+    return counts;
+  }, [participants]);
+
   const lines = useMemo(
     () =>
-      orderCatalog
-        .filter((item) => (quantities[item.courseSlug] ?? 0) > 0)
-        .map((item) => ({
-          courseSlug: item.courseSlug,
-          quantity: quantities[item.courseSlug] ?? 0,
-        })),
-    [quantities]
+      [...assignmentCounts.entries()]
+        .filter(([, quantity]) => quantity > 0)
+        .map(([courseSlug, quantity]) => ({ courseSlug, quantity })),
+    [assignmentCounts]
   );
 
   const cart = useMemo(() => {
@@ -120,41 +105,15 @@ export function CheckoutForm() {
     return "error" in result ? null : result;
   }, [lines]);
 
-  const totalSeats = useMemo(
-    () => lines.reduce((sum, line) => sum + line.quantity, 0),
-    [lines]
-  );
-
-  const assignmentCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const line of lines) {
-      counts.set(line.courseSlug, 0);
-    }
-    for (const participant of participants) {
-      for (const slug of participant.courseSlugs) {
-        if (counts.has(slug)) {
-          counts.set(slug, (counts.get(slug) ?? 0) + 1);
-        }
-      }
-    }
-    return counts;
-  }, [lines, participants]);
-
-  function setQty(slug: string, qty: number) {
-    const nextQty = Math.max(0, Math.min(99, qty));
-    const nextQuantities = { ...quantities, [slug]: nextQty };
-    const nextTotalSeats = orderCatalog.reduce(
-      (sum, item) => sum + (nextQuantities[item.courseSlug] ?? 0),
-      0
+  function handleStudentCountChange(raw: number) {
+    const next = Math.max(
+      0,
+      Math.min(MAX_COURSE_QUANTITY, Number.isFinite(raw) ? raw : 0)
     );
-    const allowedSlugs = new Set(
-      orderCatalog
-        .filter((item) => (nextQuantities[item.courseSlug] ?? 0) > 0)
-        .map((item) => item.courseSlug)
+    setStudentCount(next);
+    setParticipants((prev) =>
+      resizeParticipants(prev, next, preselectedSlug ? [preselectedSlug] : [])
     );
-
-    setQuantities(nextQuantities);
-    setParticipants((prev) => adjustParticipants(prev, nextTotalSeats, allowedSlugs));
   }
 
   function updateParticipant(
@@ -173,6 +132,15 @@ export function CheckoutForm() {
       prev.map((participant) => {
         if (participant.id !== participantId) return participant;
         const has = participant.courseSlugs.includes(courseSlug);
+        if (!has) {
+          const currentCount = prev.reduce(
+            (sum, row) => sum + (row.courseSlugs.includes(courseSlug) ? 1 : 0),
+            0
+          );
+          if (currentCount >= MAX_COURSE_QUANTITY) {
+            return participant;
+          }
+        }
         return {
           ...participant,
           courseSlugs: has
@@ -181,20 +149,6 @@ export function CheckoutForm() {
         };
       })
     );
-  }
-
-  function addParticipant() {
-    if (participants.length >= Math.max(totalSeats, 1)) return;
-    setParticipants((prev) => [...prev, emptyParticipant()]);
-  }
-
-  function removeParticipant(id: string) {
-    setParticipants((prev) => {
-      if (prev.length <= 1) {
-        return [emptyParticipant()];
-      }
-      return prev.filter((participant) => participant.id !== id);
-    });
   }
 
   function fillFirstFromContact() {
@@ -212,22 +166,7 @@ export function CheckoutForm() {
     });
   }
 
-  function activeParticipants() {
-    return participants.filter(
-      (participant) =>
-        participant.name.trim() ||
-        participant.email.trim() ||
-        participant.courseSlugs.length > 0
-    );
-  }
-
   function buildPayload() {
-    const participantsPayload = activeParticipants().map((participant) => ({
-      name: participant.name,
-      email: participant.email,
-      courseSlugs: participant.courseSlugs,
-    }));
-
     return {
       companyName,
       ico: ico || undefined,
@@ -235,13 +174,33 @@ export function CheckoutForm() {
       email,
       phone: phone || undefined,
       lines,
-      participants: participantsPayload,
+      participants: participants.map((participant) => ({
+        name: participant.name,
+        email: participant.email,
+        courseSlugs: participant.courseSlugs,
+      })),
     };
   }
 
   function clientValidateParticipants(): string | null {
+    if (studentCount < 1) {
+      return "Zadejte počet studentů (alespoň 1).";
+    }
+    if (studentCount > MAX_COURSE_QUANTITY) {
+      return `Maximální počet studentů je ${MAX_COURSE_QUANTITY}.`;
+    }
+    if (participants.length !== studentCount) {
+      return "Počet kartiček účastníků neodpovídá počtu studentů.";
+    }
+    for (const [slug, quantity] of assignmentCounts) {
+      if (quantity > MAX_COURSE_QUANTITY) {
+        const name =
+          orderCatalog.find((item) => item.courseSlug === slug)?.name ?? slug;
+        return `U kurzu „${name}“ je maximum ${MAX_COURSE_QUANTITY} osob.`;
+      }
+    }
     const result = validateOrderParticipants(
-      activeParticipants().map((participant) => ({
+      participants.map((participant) => ({
         name: participant.name,
         email: participant.email,
         courseSlugs: participant.courseSlugs,
@@ -325,11 +284,55 @@ export function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       <fieldset>
-        <legend className="text-lg font-bold text-slate-900">Kurzy a počet zaměstnanců</legend>
-        <p className="mt-1 text-sm text-slate-600">
-          Zadejte počet osob pro každý kurz nebo balíček (0 = neobjednávat). Ceny jsou bez DPH.
-          Sleva 10 % / 15 % se počítá z celkového počtu osob v objednávce a platí na všechny
-          položky (ne jen na jeden kurz).
+        <legend className="sr-only">Kurzy a počet studentů</legend>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+          <h2 className="text-lg font-bold text-slate-900">
+            Kurzy a počet zaměstnanců
+          </h2>
+          <div className="flex items-center gap-3">
+            <label
+              htmlFor="studentCount"
+              className="text-sm font-semibold text-slate-800"
+            >
+              Počet studentů
+            </label>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
+                onClick={() => handleStudentCountChange(studentCount - 1)}
+                aria-label="Méně studentů"
+              >
+                −
+              </button>
+              <input
+                id="studentCount"
+                type="number"
+                min={0}
+                max={MAX_COURSE_QUANTITY}
+                value={studentCount}
+                onChange={(e) =>
+                  handleStudentCountChange(parseInt(e.target.value, 10) || 0)
+                }
+                className="w-20 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm font-semibold"
+              />
+              <button
+                type="button"
+                className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
+                onClick={() => handleStudentCountChange(studentCount + 1)}
+                aria-label="Více studentů"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-3 text-sm text-slate-600">
+          Nejdřív zvolte počet studentů (max. {MAX_COURSE_QUANTITY}). Pod přehledem kurzů se
+          zobrazí kartičky účastníků — u každého vyplníte jméno, e-mail a zatrhnete školení. U
+          jednoho kurzu jde vybrat nejvýše {MAX_COURSE_QUANTITY} osob. Ceny jsou bez DPH. Při
+          10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
         </p>
         <p className="mt-2 text-sm text-slate-700">
           <span className="font-semibold">BOZP a požární ochrana:</span> zvlášť objednejte školení
@@ -338,70 +341,161 @@ export function CheckoutForm() {
           školit své zaměstnance. U BOZP i PO má zaměstnanec certifikát na 2 roky a vedoucí na
           3 roky.
         </p>
+
         <ul className="mt-4 space-y-3">
-          {orderCatalog.map((item) => (
-            <li
-              key={item.courseSlug}
-              className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4"
-            >
-              <div>
-                <p className="font-medium text-slate-900">{item.name}</p>
-                <p className="text-sm text-slate-500">
-                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
-                  {item.audience === "vedouci" ? (
-                    <span className="mt-1 block text-xs text-brand-dark">
-                      Test 20 otázek · certifikát 3 roky · po absolvování může školit své
-                      zaměstnance
-                    </span>
-                  ) : null}
-                  {item.audience === "zamestnanec" ? (
-                    <span className="mt-1 block text-xs text-slate-400">
-                      Certifikát platný 2 roky
-                    </span>
-                  ) : null}
-                  {item.bundleCourses?.length ? (
-                    <span className="block text-xs text-slate-400">
-                      Balíček: {item.bundleCourses.length} školení
-                    </span>
-                  ) : null}
+          {orderCatalog.map((item) => {
+            const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
+            return (
+              <li
+                key={item.courseSlug}
+                className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4"
+              >
+                <div>
+                  <p className="font-medium text-slate-900">{item.name}</p>
+                  <p className="text-sm text-slate-500">
+                    {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
+                    {item.audience === "vedouci" ? (
+                      <span className="mt-1 block text-xs text-brand-dark">
+                        Test 20 otázek · certifikát 3 roky · po absolvování může školit své
+                        zaměstnance
+                      </span>
+                    ) : null}
+                    {item.audience === "zamestnanec" ? (
+                      <span className="mt-1 block text-xs text-slate-400">
+                        Certifikát platný 2 roky
+                      </span>
+                    ) : null}
+                    {item.bundleCourses?.length ? (
+                      <span className="block text-xs text-slate-400">
+                        Balíček: {item.bundleCourses.length} školení
+                      </span>
+                    ) : null}
+                  </p>
+                </div>
+                <p className="text-sm font-semibold text-slate-700">
+                  Vybráno: {assigned} / {MAX_COURSE_QUANTITY}
                 </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <label htmlFor={`qty-${item.courseSlug}`} className="sr-only">
-                  Počet pro {item.name}
-                </label>
-                <button
-                  type="button"
-                  className="h-9 w-9 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-                  onClick={() => setQty(item.courseSlug, (quantities[item.courseSlug] ?? 0) - 1)}
-                  aria-label="Méně"
-                >
-                  −
-                </button>
-                <input
-                  id={`qty-${item.courseSlug}`}
-                  type="number"
-                  min={0}
-                  max={99}
-                  value={quantities[item.courseSlug] ?? 0}
-                  onChange={(e) => setQty(item.courseSlug, parseInt(e.target.value, 10) || 0)}
-                  className="w-16 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm"
-                />
-                <button
-                  type="button"
-                  className="h-9 w-9 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-                  onClick={() => setQty(item.courseSlug, (quantities[item.courseSlug] ?? 0) + 1)}
-                  aria-label="Více"
-                >
-                  +
-                </button>
-              </div>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
       </fieldset>
 
-      {cart && (
+      {studentCount > 0 ? (
+        <fieldset className="space-y-4">
+          <legend className="text-lg font-bold text-slate-900">Účastníci školení</legend>
+          <p className="text-sm text-slate-600">
+            Podle počtu studentů ({studentCount}) se zobrazují kartičky. Ke každému e-mailu vznikne
+            samostatný přístup — zatrhněte školení, která má osoba absolvovat.
+          </p>
+
+          <button
+            type="button"
+            onClick={fillFirstFromContact}
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            Doplnit 1. účastníka z fakturačních údajů
+          </button>
+
+          <ul className="space-y-4">
+            {participants.map((participant, index) => (
+              <li
+                key={participant.id}
+                className="rounded-xl border border-slate-200 bg-white p-4"
+              >
+                <p className="mb-3 text-sm font-semibold text-slate-900">
+                  Účastník {index + 1}
+                </p>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor={`participant-name-${participant.id}`}
+                      className="block text-sm font-medium text-slate-700"
+                    >
+                      Jméno a příjmení *
+                    </label>
+                    <input
+                      id={`participant-name-${participant.id}`}
+                      value={participant.name}
+                      onChange={(e) =>
+                        updateParticipant(participant.id, { name: e.target.value })
+                      }
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor={`participant-email-${participant.id}`}
+                      className="block text-sm font-medium text-slate-700"
+                    >
+                      E-mail pro přihlášení *
+                    </label>
+                    <input
+                      id={`participant-email-${participant.id}`}
+                      type="email"
+                      value={participant.email}
+                      onChange={(e) =>
+                        updateParticipant(participant.id, { email: e.target.value })
+                      }
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                      autoComplete="email"
+                    />
+                  </div>
+                </div>
+
+                <fieldset className="mt-4">
+                  <legend className="text-sm font-medium text-slate-700">
+                    Přiřazená školení *
+                  </legend>
+                  <ul className="mt-2 space-y-2">
+                    {orderCatalog.map((item) => {
+                      const checked = participant.courseSlugs.includes(item.courseSlug);
+                      const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
+                      const wouldExceed = !checked && assigned >= MAX_COURSE_QUANTITY;
+                      return (
+                        <li key={item.courseSlug}>
+                          <label
+                            className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 text-sm ${
+                              checked
+                                ? "border-brand bg-brand-tint/40"
+                                : "border-slate-200 hover:bg-slate-50"
+                            } ${wouldExceed ? "opacity-50" : ""}`}
+                          >
+                            <input
+                              type="checkbox"
+                              className="mt-0.5"
+                              checked={checked}
+                              disabled={wouldExceed}
+                              onChange={() =>
+                                toggleCourse(participant.id, item.courseSlug)
+                              }
+                            />
+                            <span>
+                              <span className="font-medium text-slate-900">{item.name}</span>
+                              <span className="mt-0.5 block text-xs text-slate-500">
+                                {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba · max.{" "}
+                                {MAX_COURSE_QUANTITY}
+                              </span>
+                            </span>
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </fieldset>
+              </li>
+            ))}
+          </ul>
+        </fieldset>
+      ) : (
+        <p className="rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center text-sm text-slate-600">
+          Nastavte počet studentů výše — pak se zde zobrazí kartičky Účastník 1, 2, …
+        </p>
+      )}
+
+      {cart ? (
         <div className="rounded-xl bg-brand-tint px-4 py-3 text-sm text-brand-darker">
           <p className="font-semibold">
             Celkem bez DPH: {formatPriceFromHalere(cart.totalAmountHalere)}
@@ -415,7 +509,7 @@ export function CheckoutForm() {
             ))}
           </ul>
         </div>
-      )}
+      ) : null}
 
       <fieldset className="space-y-4">
         <legend className="text-lg font-bold text-slate-900">Fakturační údaje</legend>
@@ -468,7 +562,7 @@ export function CheckoutForm() {
               className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
             />
             <p className="mt-1 text-xs text-slate-500">
-              Pro potvrzení platby. Přihlášení ke školení nastavíte níže u účastníků.
+              Pro potvrzení platby. Přihlášení ke školení nastavíte u účastníků výše.
             </p>
           </div>
           <div>
@@ -486,168 +580,6 @@ export function CheckoutForm() {
         </div>
       </fieldset>
 
-      {cart && totalSeats > 0 ? (
-        <fieldset className="space-y-4">
-          <legend className="text-lg font-bold text-slate-900">
-            Účastníci a přiřazení školení
-          </legend>
-          <p className="text-sm text-slate-600">
-            Ke každému e-mailu vznikne samostatný přístup do školení. U účastníka zatrhněte školení,
-            která má absolvovat. Jedna osoba může mít více školení — počet zatržení u každého kurzu
-            musí přesně odpovídat počtu míst výše.
-          </p>
-
-          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-            <p className="font-medium text-slate-900">Zbývá přiřadit</p>
-            <ul className="mt-2 space-y-1">
-              {cart.items.map((item) => {
-                const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
-                const remaining = item.quantity - assigned;
-                return (
-                  <li key={item.courseSlug}>
-                    {item.name}:{" "}
-                    <span
-                      className={
-                        remaining === 0
-                          ? "font-semibold text-emerald-700"
-                          : "font-semibold text-amber-800"
-                      }
-                    >
-                      {assigned} / {item.quantity}
-                      {remaining === 0
-                        ? " (hotovo)"
-                        : remaining > 0
-                          ? ` (zbývá ${remaining})`
-                          : ` (přebývá ${Math.abs(remaining)})`}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={fillFirstFromContact}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            >
-              Doplnit 1. účastníka z kontaktních údajů
-            </button>
-            <button
-              type="button"
-              onClick={addParticipant}
-              disabled={participants.length >= totalSeats}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Přidat účastníka
-            </button>
-          </div>
-
-          <ul className="space-y-4">
-            {participants.map((participant, index) => (
-              <li
-                key={participant.id}
-                className="rounded-xl border border-slate-200 bg-white p-4"
-              >
-                <div className="mb-3 flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-slate-900">
-                    Účastník {index + 1}
-                  </p>
-                  {participants.length > 1 ? (
-                    <button
-                      type="button"
-                      onClick={() => removeParticipant(participant.id)}
-                      className="text-sm font-medium text-slate-500 hover:text-red-700"
-                    >
-                      Odebrat
-                    </button>
-                  ) : null}
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor={`participant-name-${participant.id}`}
-                      className="block text-sm font-medium text-slate-700"
-                    >
-                      Jméno a příjmení *
-                    </label>
-                    <input
-                      id={`participant-name-${participant.id}`}
-                      value={participant.name}
-                      onChange={(e) =>
-                        updateParticipant(participant.id, { name: e.target.value })
-                      }
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-                      autoComplete="name"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor={`participant-email-${participant.id}`}
-                      className="block text-sm font-medium text-slate-700"
-                    >
-                      E-mail pro přihlášení *
-                    </label>
-                    <input
-                      id={`participant-email-${participant.id}`}
-                      type="email"
-                      value={participant.email}
-                      onChange={(e) =>
-                        updateParticipant(participant.id, { email: e.target.value })
-                      }
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-                      autoComplete="email"
-                    />
-                  </div>
-                </div>
-
-                <fieldset className="mt-4">
-                  <legend className="text-sm font-medium text-slate-700">
-                    Přiřazená školení *
-                  </legend>
-                  <ul className="mt-2 space-y-2">
-                    {cart.items.map((item) => {
-                      const checked = participant.courseSlugs.includes(item.courseSlug);
-                      const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
-                      const wouldExceed = !checked && assigned >= item.quantity;
-                      return (
-                        <li key={item.courseSlug}>
-                          <label
-                            className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 text-sm ${
-                              checked
-                                ? "border-brand bg-brand-tint/40"
-                                : "border-slate-200 hover:bg-slate-50"
-                            } ${wouldExceed ? "opacity-50" : ""}`}
-                          >
-                            <input
-                              type="checkbox"
-                              className="mt-0.5"
-                              checked={checked}
-                              disabled={wouldExceed}
-                              onChange={() =>
-                                toggleCourse(participant.id, item.courseSlug)
-                              }
-                            />
-                            <span>
-                              <span className="font-medium text-slate-900">{item.name}</span>
-                              <span className="mt-0.5 block text-xs text-slate-500">
-                                {item.quantity} míst v objednávce
-                              </span>
-                            </span>
-                          </label>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </fieldset>
-              </li>
-            ))}
-          </ul>
-        </fieldset>
-      ) : null}
-
       {error && (
         <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
           {error}
@@ -657,14 +589,14 @@ export function CheckoutForm() {
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button
           type="submit"
-          disabled={loading || loadingBank || !cart}
+          disabled={loading || loadingBank || !cart || studentCount < 1}
           className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
           {loading ? "Přesměrování na GoPay…" : "Zaplatit přes GoPay"}
         </button>
         <button
           type="button"
-          disabled={loading || loadingBank || !cart}
+          disabled={loading || loadingBank || !cart || studentCount < 1}
           onClick={handleBankTransfer}
           className="w-full rounded-lg border border-brand px-6 py-3 text-sm font-semibold text-brand-dark hover:bg-brand-tint disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
