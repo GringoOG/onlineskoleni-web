@@ -226,3 +226,33 @@ export async function setAdminOrderPaymentStatus(
     unchanged: false,
   };
 }
+
+/** Smazání QR / ruční objednávky ze soupisu (GoPay nelze). */
+export async function deleteAdminOrder(orderNumber: string) {
+  const order = await prisma.order.findUnique({
+    where: { orderNumber },
+    include: { payment: true },
+  });
+
+  if (!order) {
+    return { ok: false as const, error: "Objednávka nenalezena." };
+  }
+
+  const channel = getOrderChannel(order);
+  if (channel === "gopay") {
+    return {
+      ok: false as const,
+      error: "Objednávky GoPay nelze smazat ze seznamu.",
+    };
+  }
+
+  await prisma.order.delete({
+    where: { id: order.id },
+  });
+
+  return {
+    ok: true as const,
+    orderNumber: order.orderNumber,
+    channel,
+  };
+}

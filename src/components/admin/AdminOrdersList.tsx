@@ -101,6 +101,42 @@ export function AdminOrdersList() {
     }
   }
 
+  async function handleDelete(orderNumber: string) {
+    const order = orders.find((row) => row.orderNumber === orderNumber);
+    if (!order || (order.channel !== "qr" && order.channel !== "manual")) {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Opravdu smazat objednávku ${orderNumber} ze soupisu?\n\n` +
+        "Záznam zmizí z přehledu. Případné už odeslané přístupy do LMS tím nezrušíte."
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    setBusyOrderNumber(orderNumber);
+    setStatusMessage("");
+    setError("");
+    try {
+      const res = await fetch(
+        `/api/admin/objednavky/${encodeURIComponent(orderNumber)}`,
+        { method: "DELETE" }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error ?? "Smazání se nezdařilo.");
+      }
+
+      setOrders((prev) => prev.filter((row) => row.orderNumber !== orderNumber));
+      setStatusMessage(`Objednávka ${orderNumber} byla smazána ze soupisu.`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Smazání se nezdařilo.");
+    } finally {
+      setBusyOrderNumber(null);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
@@ -135,7 +171,8 @@ export function AdminOrdersList() {
         <p className="mt-3 text-xs text-slate-500">
           Zobrazuje se max. 500 nejnovějších objednávek. Po označení jako zaplaceno se spustí
           založení účtů a odeslání uvítacího e-mailu (pokud ještě neproběhlo). U ručních a QR
-          objednávek se zároveň odešle konverze Nákup (GA4 + Google Ads).
+          objednávek se zároveň odešle konverze Nákup (GA4 + Google Ads). Ruční a QR objednávky
+          lze ze soupisu smazat (GoPay ne).
         </p>
       </div>
 
@@ -158,6 +195,7 @@ export function AdminOrdersList() {
           orders={orders}
           busyOrderNumber={busyOrderNumber}
           onSetStatus={handleSetStatus}
+          onDelete={handleDelete}
         />
       )}
     </div>

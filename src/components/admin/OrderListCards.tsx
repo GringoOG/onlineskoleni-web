@@ -20,12 +20,14 @@ interface OrderCardProps {
   order: AdminOrderListItem;
   busy: boolean;
   onSetStatus: (orderNumber: string, paymentStatus: "PAID" | "PENDING") => void;
+  onDelete?: (orderNumber: string) => void;
 }
 
-function OrderCard({ order, busy, onSetStatus }: OrderCardProps) {
+function OrderCard({ order, busy, onSetStatus, onDelete }: OrderCardProps) {
   const [expanded, setExpanded] = useState(false);
   const paid = order.paymentStatus === "PAID";
   const recipientCount = order.accessRecipients.length;
+  const canDelete = order.channel === "qr" || order.channel === "manual";
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -125,6 +127,16 @@ function OrderCard({ order, busy, onSetStatus }: OrderCardProps) {
             Označit nezaplaceno
           </button>
         )}
+        {canDelete && onDelete ? (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onDelete(order.orderNumber)}
+            className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+          >
+            Smazat ze seznamu
+          </button>
+        ) : null}
       </div>
     </article>
   );
@@ -134,6 +146,7 @@ interface OrdersByChannelColumnsProps {
   orders: AdminOrderListItem[];
   busyOrderNumber: string | null;
   onSetStatus: (orderNumber: string, paymentStatus: "PAID" | "PENDING") => void;
+  onDelete: (orderNumber: string) => void;
 }
 
 const CHANNELS: OrderChannel[] = ["gopay", "qr", "manual"];
@@ -142,6 +155,7 @@ export function OrdersByChannelColumns({
   orders,
   busyOrderNumber,
   onSetStatus,
+  onDelete,
 }: OrdersByChannelColumnsProps) {
   return (
     <div className="grid gap-6 lg:grid-cols-3">
@@ -169,6 +183,7 @@ export function OrdersByChannelColumns({
                       order={order}
                       busy={busyOrderNumber === order.orderNumber}
                       onSetStatus={onSetStatus}
+                      onDelete={onDelete}
                     />
                   </li>
                 ))}
