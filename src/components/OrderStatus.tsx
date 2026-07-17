@@ -83,12 +83,8 @@ export function OrderStatus({ orderNumber, showQrPayment = false }: OrderStatusP
           <>
             <p className="font-semibold">Platba přijata – děkujeme</p>
             <p className="mt-1">
-              Objednávka je zaznamenána. Na e-mail objednatele vám brzy zašleme přihlašovací údaje
-              pro zaměstnance. Mezitím můžete poslat seznam jmen na{" "}
-              <a href="mailto:info@onlineskoleni.eu" className="font-medium underline">
-                info@onlineskoleni.eu
-              </a>
-              .
+              Objednávka je aktivována. Přihlašovací údaje ke školení jsme odeslali na e-maily
+              jednotlivých účastníků. Na fakturační e-mail jde potvrzení objednávky (bez hesel).
             </p>
           </>
         ) : failed ? (
@@ -103,8 +99,8 @@ export function OrderStatus({ orderNumber, showQrPayment = false }: OrderStatusP
           <>
             <p className="font-semibold">Objednávka vytvořena – čekáme na platbu</p>
             <p className="mt-1">
-              Uhraďte prosím částku bankovním převodem (QR kód níže). Po připsání platby vás
-              budeme kontaktovat s přihlašovacími údaji.
+              Uhraďte prosím částku bankovním převodem (QR kód níže). Po připsání platby odešleme
+              přihlašovací údaje na e-maily účastníků a potvrzení na fakturační e-mail.
             </p>
           </>
         ) : (

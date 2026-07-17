@@ -74,8 +74,7 @@ function CourseChecklist({
               <span>
                 <span className="font-medium text-slate-900">{item.name}</span>
                 <span className="mt-0.5 block text-xs text-slate-500">
-                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba · max.{" "}
-                  {MAX_COURSE_QUANTITY}
+                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba
                 </span>
               </span>
             </label>
@@ -245,18 +244,6 @@ export function CheckoutForm() {
     );
   }
 
-  function fillBulkFromContact() {
-    const name = contactName.trim();
-    const contactEmail = email.trim();
-    if (!name || !contactEmail) {
-      setError("Nejdřív vyplňte kontaktní osobu a fakturační e-mail níže.");
-      return;
-    }
-    const line = `${name}, ${contactEmail}`;
-    const next = bulkPaste.trim() ? `${bulkPaste.trim()}\n${line}` : line;
-    handleBulkPasteChange(next);
-  }
-
   function buildPayload() {
     return {
       companyName,
@@ -391,18 +378,9 @@ export function CheckoutForm() {
         </p>
 
         <div className="rounded-xl border-2 border-orange-500 bg-orange-50/40 p-4">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <label htmlFor="bulkPaste" className="block text-sm font-medium text-slate-800">
-              Hromadně vložit jména a e-maily
-            </label>
-            <button
-              type="button"
-              onClick={fillBulkFromContact}
-              className="rounded-lg border border-orange-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-orange-50"
-            >
-              Doplnit řádek z kontaktu
-            </button>
-          </div>
+          <label htmlFor="bulkPaste" className="block text-sm font-medium text-slate-800">
+            Hromadně vložit jména a e-maily
+          </label>
           <p className="mt-1 text-xs text-slate-600">
             Formát:{" "}
             <code className="rounded bg-white px-1">Jméno Příjmení, email@firma.cz</code>
