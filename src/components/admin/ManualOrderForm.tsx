@@ -27,9 +27,6 @@ interface SuccessState {
   seatsPurchased: number;
   courseCount: number;
   appliedDiscountPercent: number;
-  enrolledStudents: number;
-  emailsSent: number;
-  emailFailures?: { email: string; error: string }[];
 }
 
 const inputClassName =
@@ -361,9 +358,6 @@ export function ManualOrderForm() {
         seatsPurchased: data.seatsPurchased,
         courseCount: data.courseCount,
         appliedDiscountPercent: data.appliedDiscountPercent,
-        enrolledStudents: data.enrolledStudents,
-        emailsSent: data.emailsSent,
-        emailFailures: data.emailFailures,
       });
       setBulkPaste("");
       setCourseMode(null);
@@ -387,7 +381,7 @@ export function ManualOrderForm() {
     <form onSubmit={handleSubmit} className="space-y-8">
       {success ? (
         <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-sm text-emerald-900">
-          <p className="font-semibold">Objednávka byla aktivována</p>
+          <p className="font-semibold">Objednávka byla vytvořena</p>
           <ul className="mt-2 space-y-1">
             <li>
               Číslo objednávky: <strong>{success.orderNumber}</strong>
@@ -402,35 +396,13 @@ export function ManualOrderForm() {
               Sleva: <strong>{success.appliedDiscountPercent} %</strong>
             </li>
             <li>
-              Založeno účtů: <strong>{success.enrolledStudents}</strong>
-            </li>
-            <li>
-              Odesláno e-mailů: <strong>{success.emailsSent}</strong>
-              {success.emailFailures && success.emailFailures.length > 0 ? (
-                <span className="text-amber-800">
-                  {" "}
-                  (selhalo: {success.emailFailures.length})
-                </span>
-              ) : null}
+              Stav: <strong>nezaplaceno</strong>
             </li>
           </ul>
-          {success.emailFailures && success.emailFailures.length > 0 ? (
-            <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-amber-950">
-              <p className="font-semibold">Uvítací e-mail se nepodařilo odeslat</p>
-              <p className="mt-1">
-                Účet a kurzy byly vytvořeny, ale student nedostal přihlašovací údaje e-mailem.
-                Zkontrolujte <code className="text-xs">RESEND_API_KEY</code> a ověřenou odesílací
-                doménu na Vercelu.
-              </p>
-              <ul className="mt-2 list-inside list-disc">
-                {success.emailFailures.map((failure) => (
-                  <li key={failure.email}>
-                    {failure.email}: {failure.error}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
+          <p className="mt-3 text-emerald-950">
+            Přístupy ke školení se odešlou na e-maily účastníků až po označení objednávky jako
+            zaplacené v seznamu objednávek.
+          </p>
         </div>
       ) : null}
 
@@ -870,7 +842,7 @@ export function ManualOrderForm() {
         }
         className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       >
-        {loading ? "Vytvářím objednávku a odesílám přístupy…" : "Vytvořit a aktivovat přístup"}
+        {loading ? "Vytvářím objednávku…" : "Vytvořit objednávku"}
       </button>
     </form>
   );

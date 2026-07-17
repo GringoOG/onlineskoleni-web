@@ -138,9 +138,10 @@ export async function POST(request: Request) {
       seatsPurchased: result.seatsPurchased,
       courseCount: result.courseCount,
       appliedDiscountPercent: result.appliedDiscountPercent,
-      enrolledStudents: result.enrolledStudents,
-      emailsSent: result.emailsSent,
-      emailFailures: result.emailFailures,
+      status: "PENDING",
+      enrolledStudents: 0,
+      emailsSent: 0,
+      emailFailures: [],
     });
   } catch (error) {
     console.error("[admin/objednavky/nova]", error);
