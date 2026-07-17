@@ -244,18 +244,6 @@ export function CheckoutForm() {
     );
   }
 
-  function fillBulkFromContact() {
-    const name = contactName.trim();
-    const contactEmail = email.trim();
-    if (!name || !contactEmail) {
-      setError("Nejdřív vyplňte kontaktní osobu a fakturační e-mail níže.");
-      return;
-    }
-    const line = `${name}, ${contactEmail}`;
-    const next = bulkPaste.trim() ? `${bulkPaste.trim()}\n${line}` : line;
-    handleBulkPasteChange(next);
-  }
-
   function buildPayload() {
     return {
       companyName,
