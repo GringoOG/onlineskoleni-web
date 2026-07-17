@@ -462,7 +462,7 @@ export function ManualOrderForm() {
           </div>
           <div>
             <label htmlFor="contactName" className="block text-sm font-medium text-slate-700">
-              Jméno kontaktu *
+              Jméno a příjmení *
             </label>
             <div className="mt-1 flex gap-2">
               <input
