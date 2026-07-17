@@ -100,7 +100,7 @@ export function Header({ lmsUser, adminUser = null }: HeaderProps) {
                 <Link
                   href={adminUser.homeHref}
                   className="inline-flex max-w-[9.5rem] min-w-0 items-center truncate rounded-lg bg-brand px-2.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-dark min-[1320px]:hidden sm:max-w-[12rem] sm:px-3 sm:text-sm"
-                  title="Administrace TechnikPO"
+                  title="Administrace"
                 >
                   Administrace
                 </Link>
@@ -108,7 +108,7 @@ export function Header({ lmsUser, adminUser = null }: HeaderProps) {
                   href={adminUser.homeHref}
                   className="hidden min-[1320px]:inline-flex shrink-0 items-center whitespace-nowrap rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
                 >
-                  Administrace&nbsp;TechnikPO
+                  Administrace
                 </Link>
                 <AdminLogoutButton
                   redirectTo="/admin/login"
@@ -216,7 +216,7 @@ export function Header({ lmsUser, adminUser = null }: HeaderProps) {
                       className="btn-primary block text-center"
                       onClick={() => setMobileOpen(false)}
                     >
-                      Administrace TechnikPO
+                      Administrace
                     </Link>
                   </li>
                   <li>
