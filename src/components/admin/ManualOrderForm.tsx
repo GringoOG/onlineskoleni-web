@@ -545,57 +545,33 @@ export function ManualOrderForm() {
           ) : null}
 
           {needsCourseModeChoice ? (
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 space-y-3">
               <p className="text-sm font-medium text-slate-800">
                 Mají všechny osoby stejné školení?
               </p>
-              <div className="grid gap-2 sm:grid-cols-2">
-                <label
-                  className={`flex cursor-pointer items-start gap-3 rounded-lg border-2 bg-white px-3 py-3 text-sm ${
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => selectCourseMode("same")}
+                  className={`min-w-[5.5rem] rounded-lg border-2 px-4 py-2 text-sm font-semibold ${
                     courseMode === "same"
-                      ? "border-orange-500"
-                      : "border-slate-200 hover:border-orange-300"
+                      ? "border-orange-500 bg-orange-50 text-slate-900"
+                      : "border-slate-200 bg-white text-slate-700 hover:border-orange-300"
                   }`}
                 >
-                  <input
-                    type="radio"
-                    name="courseMode"
-                    className="mt-0.5"
-                    checked={courseMode === "same"}
-                    onChange={() => selectCourseMode("same")}
-                  />
-                  <span>
-                    <span className="font-semibold text-slate-900">
-                      Všechny osoby MAJÍ stejné školení
-                    </span>
-                    <span className="mt-1 block text-xs text-slate-500">
-                      Zobrazí se jeden společný seznam školení pro všechny.
-                    </span>
-                  </span>
-                </label>
-                <label
-                  className={`flex cursor-pointer items-start gap-3 rounded-lg border-2 bg-white px-3 py-3 text-sm ${
+                  ANO
+                </button>
+                <button
+                  type="button"
+                  onClick={() => selectCourseMode("different")}
+                  className={`min-w-[5.5rem] rounded-lg border-2 px-4 py-2 text-sm font-semibold ${
                     courseMode === "different"
-                      ? "border-orange-500"
-                      : "border-slate-200 hover:border-orange-300"
+                      ? "border-orange-500 bg-orange-50 text-slate-900"
+                      : "border-slate-200 bg-white text-slate-700 hover:border-orange-300"
                   }`}
                 >
-                  <input
-                    type="radio"
-                    name="courseMode"
-                    className="mt-0.5"
-                    checked={courseMode === "different"}
-                    onChange={() => selectCourseMode("different")}
-                  />
-                  <span>
-                    <span className="font-semibold text-slate-900">
-                      Všechny osoby NEMAJÍ stejné školení
-                    </span>
-                    <span className="mt-1 block text-xs text-slate-500">
-                      Vytvoří se účastníci s vyplněnými jmény a školení u každého zvlášť.
-                    </span>
-                  </span>
-                </label>
+                  NE
+                </button>
               </div>
             </div>
           ) : null}
