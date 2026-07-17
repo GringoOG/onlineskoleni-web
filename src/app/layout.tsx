@@ -7,6 +7,8 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleTag } from "@/components/GoogleTag";
 import { SmoothScrollHandler } from "@/components/SmoothScrollHandler";
 import { site } from "@/lib/content";
+import { getAdminSession } from "@/lib/admin/auth";
+import { getDefaultAdminRedirect, type AdminRole } from "@/lib/admin/roles";
 import { getLmsUserSummary } from "@/lib/lms/get-lms-user-summary";
 import "./globals.css";
 
@@ -49,13 +51,28 @@ export default async function RootLayout({
 }>) {
   const lmsUser = await getLmsUserSummary();
 
+  let adminUser: { username: string; role: AdminRole; homeHref: string } | null =
+    null;
+  try {
+    const adminSession = await getAdminSession();
+    if (adminSession) {
+      adminUser = {
+        username: adminSession.username,
+        role: adminSession.role,
+        homeHref: getDefaultAdminRedirect(adminSession.role),
+      };
+    }
+  } catch {
+    adminUser = null;
+  }
+
   return (
     <html lang="cs" className={`${inter.variable} h-full`}>
       <head>
         <GoogleTag />
       </head>
       <body className="flex min-h-full flex-col antialiased">
-        <Header lmsUser={lmsUser} />
+        <Header lmsUser={lmsUser} adminUser={adminUser} />
         <main className="flex-1 pt-[calc(4rem+env(safe-area-inset-top))]">
           <SubstituteFulfillmentBanner variant="strip" />
           {children}
