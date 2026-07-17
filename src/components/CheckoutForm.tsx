@@ -285,46 +285,44 @@ export function CheckoutForm() {
     <form onSubmit={handleSubmit} className="space-y-8">
       <fieldset>
         <legend className="sr-only">Kurzy a počet studentů</legend>
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-          <h2 className="text-lg font-bold text-slate-900">
-            Kurzy a počet zaměstnanců
-          </h2>
-          <div className="flex items-center gap-3">
-            <label
-              htmlFor="studentCount"
-              className="text-sm font-semibold text-slate-800"
+        <h2 className="text-lg font-bold text-slate-900">
+          Kurzy a počet zaměstnanců
+        </h2>
+        <div className="mt-4 flex flex-wrap items-center justify-start gap-3">
+          <label
+            htmlFor="studentCount"
+            className="text-sm font-semibold text-slate-800"
+          >
+            Počet studentů
+          </label>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
+              onClick={() => handleStudentCountChange(studentCount - 1)}
+              aria-label="Méně studentů"
             >
-              Počet studentů
-            </label>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-                onClick={() => handleStudentCountChange(studentCount - 1)}
-                aria-label="Méně studentů"
-              >
-                −
-              </button>
-              <input
-                id="studentCount"
-                type="number"
-                min={0}
-                max={MAX_COURSE_QUANTITY}
-                value={studentCount}
-                onChange={(e) =>
-                  handleStudentCountChange(parseInt(e.target.value, 10) || 0)
-                }
-                className="w-20 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm font-semibold"
-              />
-              <button
-                type="button"
-                className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-                onClick={() => handleStudentCountChange(studentCount + 1)}
-                aria-label="Více studentů"
-              >
-                +
-              </button>
-            </div>
+              −
+            </button>
+            <input
+              id="studentCount"
+              type="number"
+              min={0}
+              max={MAX_COURSE_QUANTITY}
+              value={studentCount}
+              onChange={(e) =>
+                handleStudentCountChange(parseInt(e.target.value, 10) || 0)
+              }
+              className="w-20 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm font-semibold"
+            />
+            <button
+              type="button"
+              className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
+              onClick={() => handleStudentCountChange(studentCount + 1)}
+              aria-label="Více studentů"
+            >
+              +
+            </button>
           </div>
         </div>
 

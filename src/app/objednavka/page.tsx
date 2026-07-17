@@ -26,9 +26,11 @@ export default function ObjednavkaPage() {
       <Section>
         <BulkDiscountBanner />
 
-        <Suspense fallback={<p className="text-slate-600">Načítání formuláře…</p>}>
-          <CheckoutForm />
-        </Suspense>
+        <div className="mt-12 sm:mt-14">
+          <Suspense fallback={<p className="text-slate-600">Načítání formuláře…</p>}>
+            <CheckoutForm />
+          </Suspense>
+        </div>
       </Section>
     </>
   );
