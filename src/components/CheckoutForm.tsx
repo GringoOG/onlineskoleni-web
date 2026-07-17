@@ -335,11 +335,12 @@ export function CheckoutForm() {
           10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
         </p>
         <p className="mt-2 text-sm text-slate-700">
-          <span className="font-semibold">BOZP a požární ochrana:</span> zvlášť objednejte školení
-          pro řadové zaměstnance (149 Kč) a pro vedoucí (350 Kč). U vedoucího je test na{" "}
-          <span className="font-semibold">20 otázek</span> a po absolvování může vedoucí následně
-          školit své zaměstnance. U BOZP i PO má zaměstnanec certifikát na 2 roky a vedoucí na
-          3 roky.
+          <span className="font-semibold">BOZP a požární ochrana:</span> u každého účastníka
+          vyberte správnou variantu —{" "}
+          <span className="font-semibold">zaměstnanec (149 Kč)</span> nebo{" "}
+          <span className="font-semibold">vedoucí (350 Kč)</span>. Obě varianty můžete mít v jedné
+          objednávce. U vedoucího je test na <span className="font-semibold">20 otázek</span> a po
+          absolvování může školit své zaměstnance. Certifikát: zaměstnanec 2 roky, vedoucí 3 roky.
         </p>
 
         <ul className="mt-4 space-y-3">
