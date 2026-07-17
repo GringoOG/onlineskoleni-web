@@ -7,6 +7,7 @@ import {
 } from "@/lib/lms/enroll-from-order";
 import { findOrCreateStudent } from "@/lib/lms/find-or-create-student";
 import { sendWelcomeEmail } from "@/lib/lms/welcome-email";
+import { sendOrderThankYouEmail } from "@/lib/email/order-thank-you-email";
 import {
   parseParticipantsJson,
   type OrderParticipantInput,
@@ -99,6 +100,32 @@ export async function processPaidOrder(
 
   if (participants) {
     enrollments = await enrollParticipants(order, participants);
+
+    const thankYouResult = await sendOrderThankYouEmail({
+      orderNumber: order.orderNumber,
+      companyName: order.companyName,
+      contactName: order.contactName,
+      contactEmail: order.email,
+      paymentMethodLabel: "po přijetí platby",
+      participants: participants.map((participant) => ({
+        name: participant.name,
+        email: participant.email,
+        courseNames: participant.courseSlugs.map(
+          (slug) =>
+            order.items.find((item) => item.courseSlug === slug)?.name ?? slug
+        ),
+      })),
+      items: order.items.map((item) => ({
+        name: item.name,
+        quantity: item.quantity,
+      })),
+    });
+
+    if (!thankYouResult.sent) {
+      console.error(
+        `[LMS enrollment] Thank-you e-mail NOT sent to ${order.email}: ${thankYouResult.error ?? "unknown"}`
+      );
+    }
   } else {
     enrollments = await enrollContactForOrderItems({
       email: order.email,
