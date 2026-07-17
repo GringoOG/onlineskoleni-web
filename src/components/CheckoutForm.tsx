@@ -74,8 +74,7 @@ function CourseChecklist({
               <span>
                 <span className="font-medium text-slate-900">{item.name}</span>
                 <span className="mt-0.5 block text-xs text-slate-500">
-                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba · max.{" "}
-                  {MAX_COURSE_QUANTITY}
+                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba
                 </span>
               </span>
             </label>
