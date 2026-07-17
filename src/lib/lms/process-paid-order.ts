@@ -20,6 +20,7 @@ export interface PaidOrderForEnrollment {
   contactName: string;
   email: string;
   phone: string | null;
+  paymentMethod?: string | null;
   totalAmountHalere: number;
   enrollmentProcessedAt: Date | null;
   participantsJson?: unknown;
@@ -28,6 +29,18 @@ export interface PaidOrderForEnrollment {
     name: string;
     quantity: number;
   }[];
+}
+
+function isManualPaymentMethod(method: string | null | undefined): boolean {
+  return method === "INVOICE" || method === "CASH";
+}
+
+function paymentMethodLabelForEmails(method: string | null | undefined): string {
+  if (method === "INVOICE") return "faktura";
+  if (method === "CASH") return "hotově";
+  if (method === "BANK_TRANSFER") return "po přijetí platby";
+  if (method === "GOPAY") return "online platba";
+  return "po přijetí platby";
 }
 
 export interface ProcessPaidOrderResult {
@@ -54,12 +67,14 @@ async function enrollParticipants(
   participants: OrderParticipantInput[]
 ): Promise<EnrollmentResult[]> {
   const allEnrollments: EnrollmentResult[] = [];
+  const manual = isManualPaymentMethod(order.paymentMethod);
 
   for (const participant of participants) {
     const student = await findOrCreateStudent({
       email: participant.email,
       name: participant.name,
       companyName: order.companyName,
+      issueNewPassword: manual ? true : undefined,
     });
 
     const enrollments = await enrollStudentForOrderItems({
@@ -75,6 +90,8 @@ async function enrollParticipants(
       companyName: order.companyName,
       enrollments,
       recipientName: participant.name,
+      manualActivation: manual,
+      paymentMethodLabel: paymentMethodLabelForEmails(order.paymentMethod),
     });
 
     if (!emailResult.sent) {
@@ -106,7 +123,7 @@ export async function processPaidOrder(
       companyName: order.companyName,
       contactName: order.contactName,
       contactEmail: order.email,
-      paymentMethodLabel: "po přijetí platby",
+      paymentMethodLabel: paymentMethodLabelForEmails(order.paymentMethod),
       participants: participants.map((participant) => ({
         name: participant.name,
         email: participant.email,
@@ -183,6 +200,7 @@ export function toPaidOrderForEnrollment(order: {
   contactName: string;
   email: string;
   phone: string | null;
+  paymentMethod?: string | null;
   totalAmountHalere: number;
   enrollmentProcessedAt: Date | null;
   participantsJson?: unknown;
@@ -195,6 +213,7 @@ export function toPaidOrderForEnrollment(order: {
     contactName: order.contactName,
     email: order.email,
     phone: order.phone,
+    paymentMethod: order.paymentMethod ?? null,
     totalAmountHalere: order.totalAmountHalere,
     enrollmentProcessedAt: order.enrollmentProcessedAt,
     participantsJson: order.participantsJson,

@@ -121,7 +121,10 @@ export interface CreateManualPaidOrderInput extends CreateOrderInput {
   discountPercentOverride?: number;
 }
 
-/** Manuální objednávka (faktura / hotově) – ihned PAID, bez GoPay. */
+/**
+ * Manuální objednávka (faktura / hotově) – PENDING bez GoPay.
+ * Přístupy do LMS se odešlou až po označení jako zaplaceno v adminu.
+ */
 export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
   const cart = computeCart(input.lines, {
     discountPercentOverride: input.discountPercentOverride,
@@ -140,10 +143,9 @@ export async function createManualPaidOrder(input: CreateManualPaidOrderInput) {
   const order = await prisma.order.create({
     data: {
       orderNumber,
-      status: OrderStatus.PAID,
+      status: OrderStatus.PENDING,
       paymentMethod: input.paymentMethod,
       adminNote: input.adminNote?.trim() || null,
-      paidStatusChangedAt: new Date(),
       companyName: input.companyName.trim(),
       ico: input.ico?.trim() || null,
       contactName: input.contactName.trim(),

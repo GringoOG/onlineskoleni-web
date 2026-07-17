@@ -99,7 +99,7 @@ export function OrderStatus({ orderNumber, showQrPayment = false }: OrderStatusP
           <>
             <p className="font-semibold">Objednávka vytvořena – čekáme na platbu</p>
             <p className="mt-1">
-              Uhraďte prosím částku bankovním převodem (QR kód níže). Po připsání platby odešleme
+              Uhraďte prosím částku bankovním převodem (QR kód níže). Po ověření platby odešleme
               přihlašovací údaje na e-maily účastníků a potvrzení na fakturační e-mail.
             </p>
           </>

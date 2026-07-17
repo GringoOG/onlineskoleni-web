@@ -1,15 +1,6 @@
-import { prisma } from "@/lib/prisma";
-import { notifyOrderPaid } from "@/lib/order-notify";
 import { getCatalogItem, getBulkDiscountPercent } from "@/lib/order-catalog";
 import { createManualPaidOrder, type ManualPaymentMethod } from "@/lib/orders";
 import { parseParticipants } from "@/lib/admin/parse-participants";
-import { findOrCreateStudent } from "@/lib/lms/find-or-create-student";
-import {
-  enrollStudentForOrderItems,
-  type EnrollmentResult,
-} from "@/lib/lms/enroll-from-order";
-import { sendWelcomeEmail } from "@/lib/lms/welcome-email";
-import { sendOrderThankYouEmail } from "@/lib/email/order-thank-you-email";
 import {
   normalizeParticipantEmail,
   type OrderParticipantInput,
@@ -51,17 +42,13 @@ export interface ProcessManualOrderResult {
   seatsPurchased: number;
   courseCount: number;
   appliedDiscountPercent: number;
+  /** Vždy 0 – účty a e-maily až po označení zaplaceno v adminu. */
   enrolledStudents: number;
   emailsSent: number;
   emailFailures: { email: string; error: string }[];
-  enrollments: EnrollmentResult[];
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function paymentMethodLabel(method: ManualPaymentMethod): string {
-  return method === "INVOICE" ? "faktura" : "hotově";
-}
 
 function resolveDiscountPercent(seatCount: number, mode: DiscountMode = "auto"): number {
   if (mode === "0") return 0;
@@ -88,20 +75,6 @@ function validateCourseSlugs(courseSlugs: string[]): string[] {
     }
   }
   return unique;
-}
-
-function buildItemsForSlugs(courseSlugs: string[]) {
-  return courseSlugs.map((courseSlug) => {
-    const catalog = getCatalogItem(courseSlug);
-    if (!catalog) {
-      throw new Error(`Neznámý kurz: ${courseSlug}`);
-    }
-    return {
-      courseSlug: catalog.courseSlug,
-      name: catalog.name,
-      quantity: 1,
-    };
-  });
 }
 
 function normalizeManualParticipants(
@@ -185,7 +158,11 @@ function buildOrderLines(participants: ManualOrderParticipant[]) {
   }));
 }
 
-/** Vytvoří PAID objednávku a pro každého účastníka založí účet, enrollment a uvítací e-mail. */
+/**
+ * Vytvoří PENDING manuální objednávku.
+ * Účty LMS a uvítací e-maily se odešlou až po označení jako zaplaceno v adminu
+ * (stejně jako u QR převodu).
+ */
 export async function processManualOrder(
   input: ProcessManualOrderInput
 ): Promise<ProcessManualOrderResult> {
@@ -218,7 +195,7 @@ export async function processManualOrder(
     })
   );
 
-  const { order, cart } = await createManualPaidOrder({
+  const { order } = await createManualPaidOrder({
     companyName,
     contactName,
     email: contactEmail,
@@ -231,95 +208,8 @@ export async function processManualOrder(
     participants: participantsForStorage,
   });
 
-  const allEnrollments: EnrollmentResult[] = [];
-  let emailsSent = 0;
-  const emailFailures: { email: string; error: string }[] = [];
-
-  for (const participant of participants) {
-    const student = await findOrCreateStudent({
-      email: participant.email,
-      name: participant.name,
-      companyName,
-      issueNewPassword: true,
-    });
-
-    const enrollments = await enrollStudentForOrderItems({
-      student,
-      orderNumber: order.orderNumber,
-      items: buildItemsForSlugs(participant.courseSlugs),
-    });
-
-    allEnrollments.push(...enrollments);
-
-    const emailResult = await sendWelcomeEmail({
-      orderNumber: order.orderNumber,
-      companyName,
-      enrollments,
-      recipientName: participant.name,
-      recipientSalutation: participant.salutation,
-      manualActivation: true,
-      paymentMethodLabel: paymentMethodLabel(input.paymentMethod),
-    });
-
-    if (emailResult.sent) {
-      emailsSent += 1;
-    } else {
-      emailFailures.push({
-        email: participant.email,
-        error: emailResult.error ?? (emailResult.skipped ? "resend_not_configured" : "send_failed"),
-      });
-      console.error(
-        `[Manual order] Welcome e-mail NOT sent to ${participant.email}: ${emailResult.error ?? "unknown"}`
-      );
-    }
-  }
-
-  const thankYouResult = await sendOrderThankYouEmail({
-    orderNumber: order.orderNumber,
-    companyName,
-    contactName,
-    contactEmail,
-    contactSalutation: input.contactSalutation,
-    paymentMethodLabel: paymentMethodLabel(input.paymentMethod),
-    participants: participants.map((participant) => ({
-      name: participant.name,
-      email: participant.email,
-      courseNames: participant.courseSlugs.map(
-        (slug) => getCatalogItem(slug)?.name ?? slug
-      ),
-    })),
-    items: cart.items.map((item) => ({
-      name: item.name,
-      quantity: item.quantity,
-    })),
-  });
-
-  if (!thankYouResult.sent) {
-    console.error(
-      `[Manual order] Thank-you e-mail NOT sent to ${contactEmail}: ${thankYouResult.error ?? "unknown"}`
-    );
-  }
-
-  await notifyOrderPaid({
-    orderNumber: order.orderNumber,
-    companyName,
-    contactName,
-    email: contactEmail,
-    phone: order.phone,
-    totalAmountHalere: order.totalAmountHalere,
-    items: cart.items.map((item) => ({
-      name: item.name,
-      quantity: item.quantity,
-    })),
-  });
-
-  await prisma.order.update({
-    where: { id: order.id },
-    data: { enrollmentProcessedAt: new Date() },
-  });
-
   console.info(
-    `[Manual order] ${order.orderNumber}: ${participants.length} student(s), ${courseCount} course(s), discount ${appliedDiscountPercent}%`
+    `[Manual order] ${order.orderNumber}: created PENDING with ${participants.length} student(s), ${courseCount} course(s), discount ${appliedDiscountPercent}% — access e-mails after admin marks PAID`
   );
 
   return {
@@ -327,9 +217,8 @@ export async function processManualOrder(
     seatsPurchased,
     courseCount,
     appliedDiscountPercent,
-    enrolledStudents: participants.length,
-    emailsSent,
-    emailFailures,
-    enrollments: allEnrollments,
+    enrolledStudents: 0,
+    emailsSent: 0,
+    emailFailures: [],
   };
 }
