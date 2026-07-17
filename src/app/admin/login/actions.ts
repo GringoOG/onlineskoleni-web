@@ -33,3 +33,8 @@ export async function logoutAdmin(): Promise<void> {
   await clearAdminSession();
   redirect("/admin/login");
 }
+
+/** Odhlášení bez redirectu – pro tlačítko v hlavičce webu. */
+export async function logoutAdminSession(): Promise<void> {
+  await clearAdminSession();
+}
