@@ -382,7 +382,7 @@ export function CheckoutForm() {
     personCount >= 2 && effectiveCourseMode === "different";
 
   return (
-    <form onSubmit={handleSubmit} className="mt-12 space-y-8 sm:mt-14">
+    <form onSubmit={handleSubmit} className="space-y-8">
       <fieldset className="space-y-4">
         <legend className="text-lg font-bold text-slate-900">Účastníci a školení</legend>
         <p className="text-sm text-slate-600">
