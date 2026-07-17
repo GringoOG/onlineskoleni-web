@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { AdminOrderListItem } from "@/lib/orders/admin-orders";
 import { ORDER_CHANNEL_LABELS, type OrderChannel } from "@/lib/orders/order-channel";
 import { formatPriceFromHalere } from "@/lib/order-catalog";
@@ -20,21 +23,28 @@ interface OrderCardProps {
 }
 
 function OrderCard({ order, busy, onSetStatus }: OrderCardProps) {
+  const [expanded, setExpanded] = useState(false);
   const paid = order.paymentStatus === "PAID";
+  const recipientCount = order.accessRecipients.length;
 
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <div>
+      <button
+        type="button"
+        onClick={() => setExpanded((open) => !open)}
+        className="flex w-full flex-wrap items-start justify-between gap-2 text-left"
+        aria-expanded={expanded}
+      >
+        <div className="min-w-0">
           <p className="font-mono text-sm font-bold text-slate-900">{order.orderNumber}</p>
           <p className="mt-1 text-sm font-medium text-slate-800">{order.companyName}</p>
           <p className="text-sm text-slate-600">{order.contactName}</p>
           <p className="text-xs text-slate-500">{order.email}</p>
-          {order.participantCount != null ? (
-            <p className="mt-1 text-xs text-slate-500">
-              LMS účastníci: {order.participantCount}
-            </p>
-          ) : null}
+          <p className="mt-1 text-xs font-medium text-brand-dark">
+            {expanded ? "Skrýt detaily ▲" : "Zobrazit přístupy LMS ▼"}
+            {" · "}
+            {recipientCount} {recipientCount === 1 ? "e-mail" : "e-mailů"}
+          </p>
         </div>
         <span
           className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide ${
@@ -45,7 +55,36 @@ function OrderCard({ order, busy, onSetStatus }: OrderCardProps) {
         >
           {paid ? "Zaplaceno" : "Nezaplaceno"}
         </span>
-      </div>
+      </button>
+
+      {expanded ? (
+        <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            E-maily s přístupem do online školení
+          </p>
+          <p className="mt-1 text-xs text-slate-600">
+            {order.accessEmailsSent
+              ? "Přístupy už byly odeslány (nebo zapsány do LMS)."
+              : "Přístupy se odešlou až po označení jako zaplaceno (u GoPay ihned po platbě)."}
+          </p>
+          <ul className="mt-3 space-y-2">
+            {order.accessRecipients.map((recipient) => (
+              <li
+                key={`${recipient.email}-${recipient.name}`}
+                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
+              >
+                <p className="font-medium text-slate-900">{recipient.name}</p>
+                <p className="break-all text-slate-700">{recipient.email}</p>
+                {recipient.courseNames.length > 0 ? (
+                  <p className="mt-1 text-xs text-slate-500">
+                    {recipient.courseNames.join(" · ")}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <dl className="mt-3 space-y-1 text-xs text-slate-600">
         <div className="flex justify-between gap-2">

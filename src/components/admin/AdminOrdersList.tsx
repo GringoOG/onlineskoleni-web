@@ -71,6 +71,8 @@ export function AdminOrdersList() {
                 status: paymentStatus,
                 paymentStatus,
                 paidStatusChangedAt: data.order?.paidStatusChangedAt ?? order.paidStatusChangedAt,
+                accessEmailsSent:
+                  paymentStatus === "PAID" ? true : order.accessEmailsSent,
               }
             : order
         )

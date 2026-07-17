@@ -8,6 +8,12 @@ import { getOrderChannel, type OrderChannel } from "@/lib/orders/order-channel";
 
 export type AdminPaymentStatus = "PAID" | "PENDING";
 
+export interface AdminOrderAccessRecipient {
+  name: string;
+  email: string;
+  courseNames: string[];
+}
+
 export interface AdminOrderListItem {
   orderNumber: string;
   companyName: string;
@@ -21,6 +27,13 @@ export interface AdminOrderListItem {
   paidStatusChangedAt: string | null;
   /** Počet LMS účastníků z checkoutu (null = legacy jedna kontaktní osoba). */
   participantCount: number | null;
+  /**
+   * E-maily, na které jdou / šly přístupy do LMS (uvítací e-mail).
+   * U starších objednávek bez participantsJson = kontaktní e-mail.
+   */
+  accessRecipients: AdminOrderAccessRecipient[];
+  /** True = processPaidOrder už proběhl (přístupy měly být odeslány). */
+  accessEmailsSent: boolean;
 }
 
 export interface ListAdminOrdersInput {
@@ -84,13 +97,34 @@ export async function listAdminOrders(
           }
         : {}),
     },
-    include: { payment: true },
+    include: { payment: true, items: true },
     orderBy: { createdAt: "desc" },
     take: 500,
   });
 
   return orders.map((order) => {
     const participants = parseParticipantsJson(order.participantsJson);
+    const courseNameBySlug = new Map(
+      order.items.map((item) => [item.courseSlug, item.name] as const)
+    );
+    const allCourseNames = order.items.map((item) => item.name);
+
+    const accessRecipients: AdminOrderAccessRecipient[] = participants
+      ? participants.map((participant) => ({
+          name: participant.name,
+          email: participant.email,
+          courseNames: participant.courseSlugs.map(
+            (slug) => courseNameBySlug.get(slug) ?? slug
+          ),
+        }))
+      : [
+          {
+            name: order.contactName,
+            email: order.email,
+            courseNames: allCourseNames,
+          },
+        ];
+
     return {
       orderNumber: order.orderNumber,
       companyName: order.companyName,
@@ -103,6 +137,8 @@ export async function listAdminOrders(
       createdAt: order.createdAt.toISOString(),
       paidStatusChangedAt: order.paidStatusChangedAt?.toISOString() ?? null,
       participantCount: participants ? participants.length : null,
+      accessRecipients,
+      accessEmailsSent: Boolean(order.enrollmentProcessedAt),
     };
   });
 }
