@@ -16,7 +16,7 @@ export default function ObjednavkaPage() {
     <>
       <PageHero
         title="Objednávka školení"
-        subtitle="Vyberte kurzy, zadejte účastníky a zaplaťte online přes GoPay."
+        subtitle="Zadejte účastníky, přiřaďte školení a zaplaťte online přes GoPay."
       />
 
       <Section>

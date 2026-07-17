@@ -383,65 +383,8 @@ export function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-12 space-y-8 sm:mt-14">
-      <fieldset>
-        <legend className="text-lg font-bold text-slate-900">Kurzy</legend>
-        <p className="mt-3 text-sm text-slate-600">
-          Přehled dostupných školení a cen. Účastníky a přiřazení kurzů zadáte níže — podle toho se
-          spočítá počet míst. Ceny jsou bez DPH. Při 10–49 osobách sleva 10 %, při 50–99 osobách
-          sleva 15 %. U jednoho kurzu jde vybrat nejvýše {MAX_COURSE_QUANTITY} osob.
-        </p>
-        <p className="mt-2 text-sm text-slate-700">
-          <span className="font-semibold">BOZP a požární ochrana:</span> u každého účastníka
-          vyberte správnou variantu —{" "}
-          <span className="font-semibold">zaměstnanec (149 Kč)</span> nebo{" "}
-          <span className="font-semibold">vedoucí (350 Kč)</span>. Obě varianty můžete mít v jedné
-          objednávce. U vedoucího je test na <span className="font-semibold">20 otázek</span> a po
-          absolvování může školit své zaměstnance. Certifikát: zaměstnanec 2 roky, vedoucí 3 roky.
-        </p>
-
-        <ul className="mt-4 space-y-3">
-          {orderCatalog.map((item) => {
-            const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
-            return (
-              <li
-                key={item.courseSlug}
-                className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4"
-              >
-                <div>
-                  <p className="font-medium text-slate-900">{item.name}</p>
-                  <p className="text-sm text-slate-500">
-                    {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba bez DPH
-                    {item.audience === "vedouci" ? (
-                      <span className="mt-1 block text-xs text-brand-dark">
-                        Test 20 otázek · certifikát 3 roky · po absolvování může školit své
-                        zaměstnance
-                      </span>
-                    ) : null}
-                    {item.audience === "zamestnanec" ? (
-                      <span className="mt-1 block text-xs text-slate-400">
-                        Certifikát platný 2 roky
-                      </span>
-                    ) : null}
-                    {item.bundleCourses?.length ? (
-                      <span className="block text-xs text-slate-400">
-                        Balíček: {item.bundleCourses.length} školení
-                      </span>
-                    ) : null}
-                  </p>
-                </div>
-                <p className="text-sm font-semibold text-slate-700">
-                  Vybráno: {assigned} / {MAX_COURSE_QUANTITY}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
-      </fieldset>
-
       <fieldset className="space-y-4">
-        <legend className="text-lg font-bold text-slate-900">
-          Účastníci a přiřazení školení
-        </legend>
+        <legend className="text-lg font-bold text-slate-900">Účastníci a školení</legend>
         <p className="text-sm text-slate-600">
           Nejdřív vložte jména a e-maily. Po prvním řádku zvolíte školení. Od druhého řádku
           zvolíte, zda mají všichni stejná školení, nebo každému zvlášť.
