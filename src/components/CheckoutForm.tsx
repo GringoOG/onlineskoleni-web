@@ -9,9 +9,12 @@ import {
   MAX_COURSE_QUANTITY,
   orderCatalog,
 } from "@/lib/order-catalog";
+import { parseParticipants, type ParsedParticipant } from "@/lib/admin/parse-participants";
 import { qrPayment } from "@/lib/content";
 import { CeskoPlatiKartouBadge } from "@/components/CeskoPlatiKartouBadge";
 import { validateOrderParticipants } from "@/lib/order-participants";
+
+type CourseMode = "same" | "different";
 
 type ParticipantDraft = {
   id: string;
@@ -24,34 +27,63 @@ function createParticipantId() {
   return `p-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-function emptyParticipant(courseSlugs: string[] = []): ParticipantDraft {
+function toDraft(
+  participant: ParsedParticipant,
+  courseSlugs: string[],
+  existingId?: string
+): ParticipantDraft {
   return {
-    id: createParticipantId(),
-    name: "",
-    email: "",
+    id: existingId ?? createParticipantId(),
+    name: participant.name,
+    email: participant.email,
     courseSlugs: [...courseSlugs],
   };
 }
 
-function resizeParticipants(
-  prev: ParticipantDraft[],
-  count: number,
-  defaultCourseSlugs: string[]
-): ParticipantDraft[] {
-  if (count <= 0) return [];
-
-  if (prev.length === count) return prev;
-
-  if (prev.length < count) {
-    return [
-      ...prev,
-      ...Array.from({ length: count - prev.length }, () =>
-        emptyParticipant(defaultCourseSlugs)
-      ),
-    ];
-  }
-
-  return prev.slice(0, count);
+function CourseChecklist({
+  selected,
+  onToggle,
+  assignmentCounts,
+}: {
+  selected: string[];
+  onToggle: (courseSlug: string) => void;
+  assignmentCounts: Map<string, number>;
+}) {
+  return (
+    <ul className="mt-2 space-y-2">
+      {orderCatalog.map((item) => {
+        const checked = selected.includes(item.courseSlug);
+        const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
+        const wouldExceed = !checked && assigned >= MAX_COURSE_QUANTITY;
+        return (
+          <li key={item.courseSlug}>
+            <label
+              className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 text-sm ${
+                checked
+                  ? "border-brand bg-brand-tint/40"
+                  : "border-slate-200 hover:bg-slate-50"
+              } ${wouldExceed ? "opacity-50" : ""}`}
+            >
+              <input
+                type="checkbox"
+                className="mt-0.5"
+                checked={checked}
+                disabled={wouldExceed}
+                onChange={() => onToggle(item.courseSlug)}
+              />
+              <span>
+                <span className="font-medium text-slate-900">{item.name}</span>
+                <span className="mt-0.5 block text-xs text-slate-500">
+                  {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba · max.{" "}
+                  {MAX_COURSE_QUANTITY}
+                </span>
+              </span>
+            </label>
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export function CheckoutForm() {
@@ -67,10 +99,12 @@ export function CheckoutForm() {
           ? preselected
           : null;
 
-  const [studentCount, setStudentCount] = useState(() => (preselectedSlug ? 1 : 1));
-  const [participants, setParticipants] = useState<ParticipantDraft[]>(() => [
-    emptyParticipant(preselectedSlug ? [preselectedSlug] : []),
-  ]);
+  const [bulkPaste, setBulkPaste] = useState("");
+  const [sharedCourseSlugs, setSharedCourseSlugs] = useState<string[]>(() =>
+    preselectedSlug ? [preselectedSlug] : []
+  );
+  const [courseMode, setCourseMode] = useState<CourseMode | null>(null);
+  const [participants, setParticipants] = useState<ParticipantDraft[]>([]);
 
   const [companyName, setCompanyName] = useState("");
   const [ico, setIco] = useState("");
@@ -81,15 +115,36 @@ export function CheckoutForm() {
   const [loading, setLoading] = useState(false);
   const [loadingBank, setLoadingBank] = useState(false);
 
+  const parsedBulk = useMemo(() => parseParticipants(bulkPaste), [bulkPaste]);
+  const parsedPeople = parsedBulk.participants;
+  const personCount = parsedPeople.length;
+  const needsCourseModeChoice = personCount >= 2;
+  const effectiveCourseMode: CourseMode | null =
+    personCount === 0 ? null : personCount === 1 ? "same" : courseMode;
+
+  const activeParticipants = useMemo(() => {
+    if (personCount === 0 || !effectiveCourseMode) return [];
+    if (effectiveCourseMode === "same") {
+      return parsedPeople.map((person) => toDraft(person, sharedCourseSlugs));
+    }
+    return participants;
+  }, [
+    personCount,
+    effectiveCourseMode,
+    parsedPeople,
+    sharedCourseSlugs,
+    participants,
+  ]);
+
   const assignmentCounts = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const participant of participants) {
+    for (const participant of activeParticipants) {
       for (const slug of participant.courseSlugs) {
         counts.set(slug, (counts.get(slug) ?? 0) + 1);
       }
     }
     return counts;
-  }, [participants]);
+  }, [activeParticipants]);
 
   const lines = useMemo(
     () =>
@@ -105,29 +160,68 @@ export function CheckoutForm() {
     return "error" in result ? null : result;
   }, [lines]);
 
-  function handleStudentCountChange(raw: number) {
-    const next = Math.max(
-      0,
-      Math.min(MAX_COURSE_QUANTITY, Number.isFinite(raw) ? raw : 0)
-    );
-    setStudentCount(next);
-    setParticipants((prev) =>
-      resizeParticipants(prev, next, preselectedSlug ? [preselectedSlug] : [])
-    );
-  }
-
-  function updateParticipant(
-    id: string,
-    patch: Partial<Omit<ParticipantDraft, "id">>
+  function rebuildDifferentParticipants(
+    people: ParsedParticipant[],
+    previous: ParticipantDraft[],
+    fallbackCourses: string[]
   ) {
-    setParticipants((prev) =>
-      prev.map((participant) =>
-        participant.id === id ? { ...participant, ...patch } : participant
-      )
+    const byEmail = new Map(
+      previous.map((participant) => [participant.email.toLowerCase(), participant])
     );
+    return people.map((person) => {
+      const existing = byEmail.get(person.email.toLowerCase());
+      return toDraft(
+        person,
+        existing?.courseSlugs.length ? existing.courseSlugs : fallbackCourses,
+        existing?.id
+      );
+    });
   }
 
-  function toggleCourse(participantId: string, courseSlug: string) {
+  function handleBulkPasteChange(value: string) {
+    setBulkPaste(value);
+    setError("");
+    const parsed = parseParticipants(value);
+    const people = parsed.participants;
+
+    if (people.length <= 1) {
+      setCourseMode(null);
+      setParticipants([]);
+      return;
+    }
+
+    if (courseMode === "different") {
+      setParticipants((prev) =>
+        rebuildDifferentParticipants(people, prev, sharedCourseSlugs)
+      );
+    }
+  }
+
+  function selectCourseMode(mode: CourseMode) {
+    setCourseMode(mode);
+    setError("");
+    if (mode === "different") {
+      setParticipants(
+        rebuildDifferentParticipants(parsedPeople, participants, sharedCourseSlugs)
+      );
+    } else {
+      setParticipants([]);
+    }
+  }
+
+  function toggleSharedCourse(courseSlug: string) {
+    setSharedCourseSlugs((prev) => {
+      const has = prev.includes(courseSlug);
+      if (!has && personCount > MAX_COURSE_QUANTITY) {
+        return prev;
+      }
+      return has
+        ? prev.filter((slug) => slug !== courseSlug)
+        : [...prev, courseSlug];
+    });
+  }
+
+  function toggleParticipantCourse(participantId: string, courseSlug: string) {
     setParticipants((prev) =>
       prev.map((participant) => {
         if (participant.id !== participantId) return participant;
@@ -151,19 +245,16 @@ export function CheckoutForm() {
     );
   }
 
-  function fillFirstFromContact() {
-    setParticipants((prev) => {
-      if (prev.length === 0) return prev;
-      const [first, ...rest] = prev;
-      return [
-        {
-          ...first,
-          name: contactName.trim() || first.name,
-          email: email.trim() || first.email,
-        },
-        ...rest,
-      ];
-    });
+  function fillBulkFromContact() {
+    const name = contactName.trim();
+    const contactEmail = email.trim();
+    if (!name || !contactEmail) {
+      setError("Nejdřív vyplňte kontaktní osobu a fakturační e-mail níže.");
+      return;
+    }
+    const line = `${name}, ${contactEmail}`;
+    const next = bulkPaste.trim() ? `${bulkPaste.trim()}\n${line}` : line;
+    handleBulkPasteChange(next);
   }
 
   function buildPayload() {
@@ -174,7 +265,7 @@ export function CheckoutForm() {
       email,
       phone: phone || undefined,
       lines,
-      participants: participants.map((participant) => ({
+      participants: activeParticipants.map((participant) => ({
         name: participant.name,
         email: participant.email,
         courseSlugs: participant.courseSlugs,
@@ -183,14 +274,17 @@ export function CheckoutForm() {
   }
 
   function clientValidateParticipants(): string | null {
-    if (studentCount < 1) {
-      return "Zadejte počet studentů (alespoň 1).";
+    if (parsedBulk.errors.length > 0) {
+      return parsedBulk.errors.join(" ");
     }
-    if (studentCount > MAX_COURSE_QUANTITY) {
-      return `Maximální počet studentů je ${MAX_COURSE_QUANTITY}.`;
+    if (personCount === 0) {
+      return "Vložte alespoň jednoho účastníka (Jméno Příjmení, email@firma.cz).";
     }
-    if (participants.length !== studentCount) {
-      return "Počet kartiček účastníků neodpovídá počtu studentů.";
+    if (personCount > MAX_COURSE_QUANTITY) {
+      return `Maximální počet účastníků je ${MAX_COURSE_QUANTITY}.`;
+    }
+    if (needsCourseModeChoice && !courseMode) {
+      return "Vyberte, zda mají všechny osoby stejné školení, nebo různé školení.";
     }
     for (const [slug, quantity] of assignmentCounts) {
       if (quantity > MAX_COURSE_QUANTITY) {
@@ -200,7 +294,7 @@ export function CheckoutForm() {
       }
     }
     const result = validateOrderParticipants(
-      participants.map((participant) => ({
+      activeParticipants.map((participant) => ({
         name: participant.name,
         email: participant.email,
         courseSlugs: participant.courseSlugs,
@@ -281,56 +375,20 @@ export function CheckoutForm() {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <fieldset>
-        <legend className="sr-only">Kurzy a počet studentů</legend>
-        <h2 className="text-lg font-bold text-slate-900">
-          Kurzy a počet zaměstnanců
-        </h2>
-        <div className="mt-4 flex flex-wrap items-center justify-start gap-3">
-          <label
-            htmlFor="studentCount"
-            className="text-sm font-semibold text-slate-800"
-          >
-            Počet studentů
-          </label>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-              onClick={() => handleStudentCountChange(studentCount - 1)}
-              aria-label="Méně studentů"
-            >
-              −
-            </button>
-            <input
-              id="studentCount"
-              type="number"
-              min={0}
-              max={MAX_COURSE_QUANTITY}
-              value={studentCount}
-              onChange={(e) =>
-                handleStudentCountChange(parseInt(e.target.value, 10) || 0)
-              }
-              className="w-20 rounded-lg border border-slate-300 px-2 py-2 text-center text-sm font-semibold"
-            />
-            <button
-              type="button"
-              className="h-10 w-10 rounded-lg border border-slate-300 text-lg hover:bg-slate-50"
-              onClick={() => handleStudentCountChange(studentCount + 1)}
-              aria-label="Více studentů"
-            >
-              +
-            </button>
-          </div>
-        </div>
+  const showSharedCourses =
+    personCount >= 1 &&
+    (effectiveCourseMode === "same" || personCount === 1);
+  const showDifferentParticipants =
+    personCount >= 2 && effectiveCourseMode === "different";
 
+  return (
+    <form onSubmit={handleSubmit} className="mt-12 space-y-8 sm:mt-14">
+      <fieldset>
+        <legend className="text-lg font-bold text-slate-900">Kurzy</legend>
         <p className="mt-3 text-sm text-slate-600">
-          Nejdřív zvolte počet studentů (max. {MAX_COURSE_QUANTITY}). Pod přehledem kurzů se
-          zobrazí kartičky účastníků — u každého vyplníte jméno, e-mail a zatrhnete školení. U
-          jednoho kurzu jde vybrat nejvýše {MAX_COURSE_QUANTITY} osob. Ceny jsou bez DPH. Při
-          10–49 osobách sleva 10 %, při 50–99 osobách sleva 15 %.
+          Přehled dostupných školení a cen. Účastníky a přiřazení kurzů zadáte níže — podle toho se
+          spočítá počet míst. Ceny jsou bez DPH. Při 10–49 osobách sleva 10 %, při 50–99 osobách
+          sleva 15 %. U jednoho kurzu jde vybrat nejvýše {MAX_COURSE_QUANTITY} osob.
         </p>
         <p className="mt-2 text-sm text-slate-700">
           <span className="font-semibold">BOZP a požární ochrana:</span> u každého účastníka
@@ -380,22 +438,132 @@ export function CheckoutForm() {
         </ul>
       </fieldset>
 
-      {studentCount > 0 ? (
-        <fieldset className="space-y-4">
-          <legend className="text-lg font-bold text-slate-900">Účastníci školení</legend>
-          <p className="text-sm text-slate-600">
-            Podle počtu studentů ({studentCount}) se zobrazují kartičky. Ke každému e-mailu vznikne
-            samostatný přístup — zatrhněte školení, která má osoba absolvovat.
+      <fieldset className="space-y-4">
+        <legend className="text-lg font-bold text-slate-900">
+          Účastníci a přiřazení školení
+        </legend>
+        <p className="text-sm text-slate-600">
+          Nejdřív vložte jména a e-maily. Po prvním řádku zvolíte školení. Od druhého řádku
+          zvolíte, zda mají všichni stejná školení, nebo každému zvlášť.
+        </p>
+
+        <div className="rounded-xl border-2 border-orange-500 bg-orange-50/40 p-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <label htmlFor="bulkPaste" className="block text-sm font-medium text-slate-800">
+              Hromadně vložit jména a e-maily
+            </label>
+            <button
+              type="button"
+              onClick={fillBulkFromContact}
+              className="rounded-lg border border-orange-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-orange-50"
+            >
+              Doplnit řádek z kontaktu
+            </button>
+          </div>
+          <p className="mt-1 text-xs text-slate-600">
+            Formát:{" "}
+            <code className="rounded bg-white px-1">Jméno Příjmení, email@firma.cz</code>
+            {" "}(volitelně prefix <code className="rounded bg-white px-1">pan</code> /{" "}
+            <code className="rounded bg-white px-1">paní</code>). Jeden účastník na řádek.
           </p>
+          <textarea
+            id="bulkPaste"
+            value={bulkPaste}
+            onChange={(e) => handleBulkPasteChange(e.target.value)}
+            rows={5}
+            placeholder={
+              "Jan Novák, jan.novak@firma.cz\nMarie Svobodová, marie@firma.cz"
+            }
+            className="mt-2 w-full rounded-lg border border-orange-300 bg-white px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/25"
+          />
 
-          <button
-            type="button"
-            onClick={fillFirstFromContact}
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-          >
-            Doplnit 1. účastníka z fakturačních údajů
-          </button>
+          {parsedBulk.errors.length > 0 ? (
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-red-700">
+              {parsedBulk.errors.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : null}
 
+          {personCount > 0 ? (
+            <p className="mt-3 text-sm font-medium text-slate-800">
+              Rozpoznáno osob: {personCount}
+            </p>
+          ) : null}
+
+          {needsCourseModeChoice ? (
+            <div className="mt-4 space-y-2">
+              <p className="text-sm font-medium text-slate-800">
+                Mají všechny osoby stejné školení?
+              </p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <label
+                  className={`flex cursor-pointer items-start gap-3 rounded-lg border-2 bg-white px-3 py-3 text-sm ${
+                    courseMode === "same"
+                      ? "border-orange-500"
+                      : "border-slate-200 hover:border-orange-300"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="courseMode"
+                    className="mt-0.5"
+                    checked={courseMode === "same"}
+                    onChange={() => selectCourseMode("same")}
+                  />
+                  <span>
+                    <span className="font-semibold text-slate-900">
+                      Všechny osoby MAJÍ stejné školení
+                    </span>
+                    <span className="mt-1 block text-xs text-slate-500">
+                      Zobrazí se jeden společný seznam školení pro všechny.
+                    </span>
+                  </span>
+                </label>
+                <label
+                  className={`flex cursor-pointer items-start gap-3 rounded-lg border-2 bg-white px-3 py-3 text-sm ${
+                    courseMode === "different"
+                      ? "border-orange-500"
+                      : "border-slate-200 hover:border-orange-300"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="courseMode"
+                    className="mt-0.5"
+                    checked={courseMode === "different"}
+                    onChange={() => selectCourseMode("different")}
+                  />
+                  <span>
+                    <span className="font-semibold text-slate-900">
+                      Všechny osoby NEMAJÍ stejné školení
+                    </span>
+                    <span className="mt-1 block text-xs text-slate-500">
+                      Vytvoří se kartičky účastníků s vyplněnými jmény a školení u každého zvlášť.
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          ) : null}
+
+          {showSharedCourses ? (
+            <div className="mt-4 rounded-lg border border-orange-200 bg-white p-3">
+              <p className="text-sm font-medium text-slate-800">
+                {personCount === 1
+                  ? "Školení pro tohoto účastníka *"
+                  : "Společná školení pro všechny osoby *"}
+              </p>
+              <CourseChecklist
+                selected={sharedCourseSlugs}
+                onToggle={toggleSharedCourse}
+                assignmentCounts={assignmentCounts}
+              />
+            </div>
+          ) : null}
+        </div>
+
+        {showDifferentParticipants ? (
           <ul className="space-y-4">
             {participants.map((participant, index) => (
               <li
@@ -418,7 +586,13 @@ export function CheckoutForm() {
                       id={`participant-name-${participant.id}`}
                       value={participant.name}
                       onChange={(e) =>
-                        updateParticipant(participant.id, { name: e.target.value })
+                        setParticipants((prev) =>
+                          prev.map((row) =>
+                            row.id === participant.id
+                              ? { ...row, name: e.target.value }
+                              : row
+                          )
+                        )
                       }
                       className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
                       autoComplete="name"
@@ -436,7 +610,13 @@ export function CheckoutForm() {
                       type="email"
                       value={participant.email}
                       onChange={(e) =>
-                        updateParticipant(participant.id, { email: e.target.value })
+                        setParticipants((prev) =>
+                          prev.map((row) =>
+                            row.id === participant.id
+                              ? { ...row, email: e.target.value }
+                              : row
+                          )
+                        )
                       }
                       className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
                       autoComplete="email"
@@ -448,51 +628,25 @@ export function CheckoutForm() {
                   <legend className="text-sm font-medium text-slate-700">
                     Přiřazená školení *
                   </legend>
-                  <ul className="mt-2 space-y-2">
-                    {orderCatalog.map((item) => {
-                      const checked = participant.courseSlugs.includes(item.courseSlug);
-                      const assigned = assignmentCounts.get(item.courseSlug) ?? 0;
-                      const wouldExceed = !checked && assigned >= MAX_COURSE_QUANTITY;
-                      return (
-                        <li key={item.courseSlug}>
-                          <label
-                            className={`flex cursor-pointer items-start gap-3 rounded-lg border px-3 py-2 text-sm ${
-                              checked
-                                ? "border-brand bg-brand-tint/40"
-                                : "border-slate-200 hover:bg-slate-50"
-                            } ${wouldExceed ? "opacity-50" : ""}`}
-                          >
-                            <input
-                              type="checkbox"
-                              className="mt-0.5"
-                              checked={checked}
-                              disabled={wouldExceed}
-                              onChange={() =>
-                                toggleCourse(participant.id, item.courseSlug)
-                              }
-                            />
-                            <span>
-                              <span className="font-medium text-slate-900">{item.name}</span>
-                              <span className="mt-0.5 block text-xs text-slate-500">
-                                {formatPriceFromHalere(item.pricePerPersonHalere)} / osoba · max.{" "}
-                                {MAX_COURSE_QUANTITY}
-                              </span>
-                            </span>
-                          </label>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <CourseChecklist
+                    selected={participant.courseSlugs}
+                    onToggle={(courseSlug) =>
+                      toggleParticipantCourse(participant.id, courseSlug)
+                    }
+                    assignmentCounts={assignmentCounts}
+                  />
                 </fieldset>
               </li>
             ))}
           </ul>
-        </fieldset>
-      ) : (
-        <p className="rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center text-sm text-slate-600">
-          Nastavte počet studentů výše — pak se zde zobrazí kartičky Účastník 1, 2, …
-        </p>
-      )}
+        ) : null}
+
+        {personCount === 0 ? (
+          <p className="rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center text-sm text-slate-600">
+            Vložte jména a e-maily výše — pak se zde (nebo ve společném seznamu) přiřadí školení.
+          </p>
+        ) : null}
+      </fieldset>
 
       {cart ? (
         <div className="rounded-xl bg-brand-tint px-4 py-3 text-sm text-brand-darker">
@@ -588,14 +742,14 @@ export function CheckoutForm() {
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button
           type="submit"
-          disabled={loading || loadingBank || !cart || studentCount < 1}
+          disabled={loading || loadingBank || !cart || personCount < 1}
           className="btn-primary-lg w-full disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
           {loading ? "Přesměrování na GoPay…" : "Zaplatit přes GoPay"}
         </button>
         <button
           type="button"
-          disabled={loading || loadingBank || !cart || studentCount < 1}
+          disabled={loading || loadingBank || !cart || personCount < 1}
           onClick={handleBankTransfer}
           className="w-full rounded-lg border border-brand px-6 py-3 text-sm font-semibold text-brand-dark hover:bg-brand-tint disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
