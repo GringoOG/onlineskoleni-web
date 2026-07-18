@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useLayoutEffect } from "react";
+import { useActionState, useEffect, useLayoutEffect, useState } from "react";
 import { submitContactForm, type ContactFormState } from "@/app/kontakt/actions";
 import { courses } from "@/lib/content";
 import { trackLeadConversion } from "@/lib/track-lead-conversion";
@@ -27,6 +27,7 @@ function LeadConversionEffect({ trackId }: { trackId: string }) {
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState);
+  const [formLoadedAt] = useState(() => String(Date.now()));
 
   useEffect(() => {
     if (!state.ok || !state.message) return;
@@ -35,8 +36,21 @@ export function ContactForm() {
   }, [state.ok, state.message]);
 
   return (
-    <form action={formAction} className="space-y-5">
+    <form action={formAction} className="relative space-y-5">
       {state.ok && state.trackId ? <LeadConversionEffect trackId={state.trackId} /> : null}
+
+      {/* Honeypot + time trap – skryté před uživateli, čte je server action. */}
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Web</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+      <input type="hidden" name="formLoadedAt" value={formLoadedAt} />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>

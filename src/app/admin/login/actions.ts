@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import {
   authenticateAdminUser,
@@ -7,6 +8,8 @@ import {
   setAdminSession,
 } from "@/lib/admin/auth";
 import { getDefaultAdminRedirect } from "@/lib/admin/roles";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/request-ip";
 
 export type AdminLoginState = {
   ok: boolean;
@@ -17,6 +20,15 @@ export async function loginAdmin(
   _prev: AdminLoginState,
   formData: FormData
 ): Promise<AdminLoginState> {
+  const ip = getClientIp(await headers());
+  const rate = checkRateLimit(`admin-login:${ip}`, { limit: 10, windowMs: 15 * 60 * 1000 });
+  if (!rate.ok) {
+    return {
+      ok: false,
+      message: `Příliš mnoho pokusů o přihlášení. Zkuste to znovu za ${rate.retryAfterSec} s.`,
+    };
+  }
+
   const username = String(formData.get("username") ?? "");
   const password = String(formData.get("password") ?? "");
 
