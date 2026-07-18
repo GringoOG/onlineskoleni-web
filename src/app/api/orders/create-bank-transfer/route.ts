@@ -3,9 +3,27 @@ import { createPendingOrder } from "@/lib/orders";
 import type { CartLineInput } from "@/lib/order-catalog";
 import { validateOrderParticipants } from "@/lib/order-participants";
 import { notifyQrOrderCreated } from "@/lib/order-notify";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/request-ip";
+
+const MAX_BODY_BYTES = 100_000;
 
 export async function POST(request: Request) {
   try {
+    const ip = getClientIp(request.headers);
+    const rate = checkRateLimit(`order-bank:${ip}`, { limit: 8, windowMs: 15 * 60 * 1000 });
+    if (!rate.ok) {
+      return NextResponse.json(
+        { error: `Příliš mnoho požadavků. Zkuste to znovu za ${rate.retryAfterSec} s.` },
+        { status: 429, headers: { "Retry-After": String(rate.retryAfterSec) } }
+      );
+    }
+
+    const contentLength = Number(request.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_BODY_BYTES) {
+      return NextResponse.json({ error: "Požadavek je příliš velký." }, { status: 413 });
+    }
+
     const body = await request.json();
     const companyName = String(body.companyName ?? "").trim();
     const contactName = String(body.contactName ?? "").trim();
