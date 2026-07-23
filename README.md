@@ -36,23 +36,22 @@ Vývoj s automatickým obnovením: `npm run dev` (stejná adresa).
 
 ## GoPay – online platby
 
-1. Získejte **sandbox** credentials v [GoPay](https://www.gopay.com/) (GOID, Client ID, Client Secret).
-2. Zkopírujte `.env.example` → `.env` a vyplňte:
+Integrace je v kódu hotová. Postup pro **testovací údaje z e-mailu GoPay** (sandbox → produkce): viz [`docs/gopay-test.md`](docs/gopay-test.md).
+
+1. Na Vercelu nastavte `GOPAY_GOID`, `GOPAY_CLIENT_ID`, `GOPAY_CLIENT_SECRET`, `GOPAY_GATEWAY_URL` a `NEXT_PUBLIC_APP_URL` (viz `.env.example`).
+2. Redeploy a ověřte `GET /api/gopay/status` → `configured: true`.
+3. Testovací objednávka: `/objednavka` → platba GoPay.
+4. Notifikační URL (už v kódu): `{NEXT_PUBLIC_APP_URL}/api/gopay/webhook`
 
 ```env
-GOPAY_GOID=8123456789
-GOPAY_CLIENT_ID=...
-GOPAY_CLIENT_SECRET=...
+GOPAY_GOID=…
+GOPAY_CLIENT_ID=…
+GOPAY_CLIENT_SECRET=…
 GOPAY_GATEWAY_URL=https://gw.sandbox.gopay.com/api
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-DATABASE_URL="file:./dev.db"
+NEXT_PUBLIC_APP_URL=https://www.onlineskoleni.eu
 ```
 
-3. Inicializujte databázi: `npm run db:push`
-4. Spusťte web: `npm run dev`
-5. Objednávka: [http://localhost:3000/objednavka](http://localhost:3000/objednavka)
-
-**Produkce:** `NEXT_PUBLIC_APP_URL` musí být HTTPS (např. `https://www.onlineskoleni.eu`). GoPay webhook: `/api/gopay/webhook`.
+Lokálně: zkopírujte `.env.example` → `.env`, `npm run db:push`, `npm run dev`.
 
 Ceny za osobu upravte v `content/order-catalog.json` (částka v **haléřích**, např. 199 Kč = `19900`).
 
